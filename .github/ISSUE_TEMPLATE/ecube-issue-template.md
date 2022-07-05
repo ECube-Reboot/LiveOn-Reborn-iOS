@@ -1,5 +1,5 @@
 ---
-name: Ecube Issus Template
+name: Ecube Issue Template
 about: Ecube 기본 이슈 템플릿
 title: "[FEAT]"
 labels: ''
