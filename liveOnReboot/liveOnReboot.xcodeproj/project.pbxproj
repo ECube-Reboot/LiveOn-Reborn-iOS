@@ -32,10 +32,438 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C93A4BDA287926DC00A277AC /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				C9BE6C89287561D500B782B9 /* Assets.xcassets */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		C93A4BDB287926F900A277AC /* Util */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		C93A4BDC2879274000A277AC /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				C93A4BDD2879274A00A277AC /* Config */,
+				C93A4BDE2879275300A277AC /* Calendar */,
+				C93A4BDF2879276600A277AC /* Gift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		C93A4BDD2879274A00A277AC /* Config */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		C93A4BDE2879275300A277AC /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				C93A4BE6287927C700A277AC /* DTO */,
+				C93A4BE5287927C400A277AC /* EndPoint */,
+				C93A4BE4287927C200A277AC /* Service */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
+		C93A4BDF2879276600A277AC /* Gift */ = {
+			isa = PBXGroup;
+			children = (
+				C93A4BE32879279300A277AC /* Flower */,
+				C93A4BE22879279100A277AC /* Letter */,
+				C93A4BE12879278900A277AC /* Pictuer */,
+				C93A4BE02879278300A277AC /* Voicemail */,
+			);
+			path = Gift;
+			sourceTree = "<group>";
+		};
+		C93A4BE02879278300A277AC /* Voicemail */ = {
+			isa = PBXGroup;
+			children = (
+				C93A4BF22879282800A277AC /* DTO */,
+				C93A4BF12879282700A277AC /* EndPoint */,
+				C93A4BF02879282600A277AC /* Service */,
+			);
+			path = Voicemail;
+			sourceTree = "<group>";
+		};
+		C93A4BE12879278900A277AC /* Pictuer */ = {
+			isa = PBXGroup;
+			children = (
+				C93A4BEF2879282400A277AC /* DTO */,
+				C93A4BEE2879282300A277AC /* EndPoint */,
+				C93A4BED2879282100A277AC /* Service */,
+			);
+			path = Pictuer;
+			sourceTree = "<group>";
+		};
+		C93A4BE22879279100A277AC /* Letter */ = {
+			isa = PBXGroup;
+			children = (
+				C93A4BEC2879281F00A277AC /* DTO */,
+				C93A4BEB2879281E00A277AC /* EndPoint */,
+				C93A4BEA2879281D00A277AC /* Service */,
+			);
+			path = Letter;
+			sourceTree = "<group>";
+		};
+		C93A4BE32879279300A277AC /* Flower */ = {
+			isa = PBXGroup;
+			children = (
+				C93A4BE92879281B00A277AC /* DTO */,
+				C93A4BE82879281900A277AC /* EndPoint */,
+				C93A4BE72879281400A277AC /* Service */,
+			);
+			path = Flower;
+			sourceTree = "<group>";
+		};
+		C93A4BE4287927C200A277AC /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		C93A4BE5287927C400A277AC /* EndPoint */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = EndPoint;
+			sourceTree = "<group>";
+		};
+		C93A4BE6287927C700A277AC /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
+		C93A4BE72879281400A277AC /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		C93A4BE82879281900A277AC /* EndPoint */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = EndPoint;
+			sourceTree = "<group>";
+		};
+		C93A4BE92879281B00A277AC /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
+		C93A4BEA2879281D00A277AC /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		C93A4BEB2879281E00A277AC /* EndPoint */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = EndPoint;
+			sourceTree = "<group>";
+		};
+		C93A4BEC2879281F00A277AC /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
+		C93A4BED2879282100A277AC /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		C93A4BEE2879282300A277AC /* EndPoint */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = EndPoint;
+			sourceTree = "<group>";
+		};
+		C93A4BEF2879282400A277AC /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
+		C93A4BF02879282600A277AC /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		C93A4BF12879282700A277AC /* EndPoint */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = EndPoint;
+			sourceTree = "<group>";
+		};
+		C93A4BF22879282800A277AC /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
+		C93A4BF32879291500A277AC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C9BE6C87287561D400B782B9 /* ContentView.swift */,
+				C93A4BFB2879293400A277AC /* Calendar */,
+				C93A4BFA2879293200A277AC /* CoupleInformation */,
+				C93A4BF92879293100A277AC /* Gift */,
+				C93A4BF82879292F00A277AC /* GiftBox */,
+				C93A4BF72879292D00A277AC /* GiftList */,
+				C93A4BF62879292A00A277AC /* SignIn */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C93A4BF62879292A00A277AC /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SignIn;
+			sourceTree = "<group>";
+		};
+		C93A4BF72879292D00A277AC /* GiftList */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = GiftList;
+			sourceTree = "<group>";
+		};
+		C93A4BF82879292F00A277AC /* GiftBox */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = GiftBox;
+			sourceTree = "<group>";
+		};
+		C93A4BF92879293100A277AC /* Gift */ = {
+			isa = PBXGroup;
+			children = (
+				C93A4BFF2879298500A277AC /* Flower */,
+				C93A4BFE2879298400A277AC /* Letter */,
+				C93A4BFD2879298200A277AC /* Picture */,
+				C93A4BFC2879298100A277AC /* Voicemail */,
+			);
+			path = Gift;
+			sourceTree = "<group>";
+		};
+		C93A4BFA2879293200A277AC /* CoupleInformation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CoupleInformation;
+			sourceTree = "<group>";
+		};
+		C93A4BFB2879293400A277AC /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
+		C93A4BFC2879298100A277AC /* Voicemail */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Voicemail;
+			sourceTree = "<group>";
+		};
+		C93A4BFD2879298200A277AC /* Picture */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Picture;
+			sourceTree = "<group>";
+		};
+		C93A4BFE2879298400A277AC /* Letter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Letter;
+			sourceTree = "<group>";
+		};
+		C93A4BFF2879298500A277AC /* Flower */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Flower;
+			sourceTree = "<group>";
+		};
+		C93A4C0028792B2F00A277AC /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				C93A4C0D28792BB800A277AC /* Calendar */,
+				C93A4C0C28792BB600A277AC /* Gift */,
+				C93A4C0B28792BB500A277AC /* Network */,
+				C93A4C0A28792BB400A277AC /* SignIn */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		C93A4C0128792B3200A277AC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C93A4C0528792B6A00A277AC /* Calendar */,
+				C93A4C0428792B6800A277AC /* Gift */,
+				C93A4C0328792B6700A277AC /* LogIn */,
+				C93A4C0228792B6500A277AC /* Network */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C93A4C0228792B6500A277AC /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		C93A4C0328792B6700A277AC /* LogIn */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = LogIn;
+			sourceTree = "<group>";
+		};
+		C93A4C0428792B6800A277AC /* Gift */ = {
+			isa = PBXGroup;
+			children = (
+				C93A4C0928792B8100A277AC /* Flower */,
+				C93A4C0828792B7F00A277AC /* Letter */,
+				C93A4C0728792B7E00A277AC /* Picture */,
+				C93A4C0628792B7C00A277AC /* Voicemail */,
+			);
+			path = Gift;
+			sourceTree = "<group>";
+		};
+		C93A4C0528792B6A00A277AC /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
+		C93A4C0628792B7C00A277AC /* Voicemail */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Voicemail;
+			sourceTree = "<group>";
+		};
+		C93A4C0728792B7E00A277AC /* Picture */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Picture;
+			sourceTree = "<group>";
+		};
+		C93A4C0828792B7F00A277AC /* Letter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Letter;
+			sourceTree = "<group>";
+		};
+		C93A4C0928792B8100A277AC /* Flower */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Flower;
+			sourceTree = "<group>";
+		};
+		C93A4C0A28792BB400A277AC /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SignIn;
+			sourceTree = "<group>";
+		};
+		C93A4C0B28792BB500A277AC /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		C93A4C0C28792BB600A277AC /* Gift */ = {
+			isa = PBXGroup;
+			children = (
+				C93A4C1128792BFC00A277AC /* Flower */,
+				C93A4C1028792BFB00A277AC /* Letter */,
+				C93A4C0F28792BF900A277AC /* Picture */,
+				C93A4C0E28792BF700A277AC /* Voicemail */,
+			);
+			path = Gift;
+			sourceTree = "<group>";
+		};
+		C93A4C0D28792BB800A277AC /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
+		C93A4C0E28792BF700A277AC /* Voicemail */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Voicemail;
+			sourceTree = "<group>";
+		};
+		C93A4C0F28792BF900A277AC /* Picture */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Picture;
+			sourceTree = "<group>";
+		};
+		C93A4C1028792BFB00A277AC /* Letter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Letter;
+			sourceTree = "<group>";
+		};
+		C93A4C1128792BFC00A277AC /* Flower */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Flower;
+			sourceTree = "<group>";
+		};
 		C9BE6C79287561D400B782B9 = {
 			isa = PBXGroup;
 			children = (
-				C9BE6C84287561D400B782B9 /* liveOnReboot */,
+				C9BE6C84287561D400B782B9 /* liveOn */,
 				C9BE6C83287561D400B782B9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -48,15 +476,19 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C9BE6C84287561D400B782B9 /* liveOnReboot */ = {
+		C9BE6C84287561D400B782B9 /* liveOn */ = {
 			isa = PBXGroup;
 			children = (
 				C9BE6C85287561D400B782B9 /* liveOnRebootApp.swift */,
-				C9BE6C87287561D400B782B9 /* ContentView.swift */,
-				C9BE6C89287561D500B782B9 /* Assets.xcassets */,
+				C93A4C0128792B3200A277AC /* Model */,
+				C93A4BF32879291500A277AC /* View */,
+				C93A4C0028792B2F00A277AC /* ViewModel */,
+				C93A4BDC2879274000A277AC /* Network */,
+				C93A4BDA287926DC00A277AC /* Resource */,
+				C93A4BDB287926F900A277AC /* Util */,
 				C9BE6C8B287561D500B782B9 /* Preview Content */,
 			);
-			path = liveOnReboot;
+			path = liveOn;
 			sourceTree = "<group>";
 		};
 		C9BE6C8B287561D500B782B9 /* Preview Content */ = {
@@ -195,7 +627,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -249,7 +681,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
