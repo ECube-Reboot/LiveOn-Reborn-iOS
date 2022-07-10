@@ -9,5 +9,11 @@ import Foundation
 
 struct Voicemail: Codable {
     
-    var 
+    let createdAt: String
+    let giftVoiceMailDuration: String
+    let title: String
+    var userNickName: String
+    var voiceMail: String
+    var voiceMailId: Int
+
 }
