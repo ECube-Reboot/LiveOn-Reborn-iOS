@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3EEF02CF287AC9DE0010CA03 /* VoicemailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEF02CE287AC9DE0010CA03 /* VoicemailViewModel.swift */; };
 		3EEF02D1287AF3960010CA03 /* VoicemailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEF02D0287AF3960010CA03 /* VoicemailModel.swift */; };
+		3EEF02D3287AFA920010CA03 /* SingleVoicemailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEF02D2287AFA920010CA03 /* SingleVoicemailView.swift */; };
 		C92E31CD28795A25000A315C /* CalendarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E31CC28795A25000A315C /* CalendarModel.swift */; };
 		C92E31CF28795B0E000A315C /* FlowerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E31CE28795B0E000A315C /* FlowerModel.swift */; };
 		C92E31D128795B1A000A315C /* LetterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E31D028795B1A000A315C /* LetterModel.swift */; };
@@ -60,6 +61,7 @@
 /* Begin PBXFileReference section */
 		3EEF02CE287AC9DE0010CA03 /* VoicemailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoicemailViewModel.swift; sourceTree = "<group>"; };
 		3EEF02D0287AF3960010CA03 /* VoicemailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoicemailModel.swift; sourceTree = "<group>"; };
+		3EEF02D2287AFA920010CA03 /* SingleVoicemailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleVoicemailView.swift; sourceTree = "<group>"; };
 		C92E31CC28795A25000A315C /* CalendarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarModel.swift; sourceTree = "<group>"; };
 		C92E31CE28795B0E000A315C /* FlowerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowerModel.swift; sourceTree = "<group>"; };
 		C92E31D028795B1A000A315C /* LetterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterModel.swift; sourceTree = "<group>"; };
@@ -405,6 +407,7 @@
 			isa = PBXGroup;
 			children = (
 				C92E31E428795B96000A315C /* VoicemailView.swift */,
+				3EEF02D2287AFA920010CA03 /* SingleVoicemailView.swift */,
 			);
 			path = VoiceMail;
 			sourceTree = "<group>";
@@ -742,6 +745,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C92E31EB28795BB0000A315C /* SignInView.swift in Sources */,
+				3EEF02D3287AFA920010CA03 /* SingleVoicemailView.swift in Sources */,
 				C92E320728795C9A000A315C /* LetterDTO.swift in Sources */,
 				C92E31F128795C1A000A315C /* LetterViewModel.swift in Sources */,
 				C92E321B28795D1D000A315C /* VoiceMailService.swift in Sources */,

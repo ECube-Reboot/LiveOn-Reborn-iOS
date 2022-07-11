@@ -8,8 +8,40 @@
 import SwiftUI
 
 struct VoiceMailView: View {
+    
+    let voicemailDummy = [
+        Voicemail(createdAt: "2022-07-10",
+                  giftVoiceMailDuration: "string",
+                  title: "title",
+                  userNickName: "userNickName",
+                  voiceMail: "voiceMail",
+                  voiceMailId: 0),
+        Voicemail(createdAt: "2022-07-10",
+                  giftVoiceMailDuration: "string",
+                  title: "title",
+                  userNickName: "userNickName",
+                  voiceMail: "voiceMail",
+                  voiceMailId: 0),
+        Voicemail(createdAt: "2022-07-10",
+                  giftVoiceMailDuration: "string",
+                  title: "title",
+                  userNickName: "userNickName",
+                  voiceMail: "voiceMail",
+                  voiceMailId: 0)
+    ]
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            if voicemailDummy.count > 8 {
+                ScrollView(showsIndicators: false) {
+                    VStack {
+                        Spacer()
+                        
+                        
+                    }
+                }
+            }
+        }
     }
 }
 

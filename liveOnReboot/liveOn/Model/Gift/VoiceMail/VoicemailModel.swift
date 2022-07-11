@@ -12,6 +12,7 @@ struct Voicemail: Codable {
     let createdAt: String
     let giftVoiceMailDuration: String
     let title: String
+    let voiceMailIconNum: Int
     var userNickName: String
     var voiceMail: String
     var voiceMailId: Int
