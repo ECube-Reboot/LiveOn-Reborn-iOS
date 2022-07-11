@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A4DE3015287C3B9600DD3DBB /* Flower.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DE3014287C3B9600DD3DBB /* Flower.swift */; };
 		C92E31CD28795A25000A315C /* CalendarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E31CC28795A25000A315C /* CalendarModel.swift */; };
 		C92E31CF28795B0E000A315C /* FlowerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E31CE28795B0E000A315C /* FlowerModel.swift */; };
 		C92E31D128795B1A000A315C /* LetterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E31D028795B1A000A315C /* LetterModel.swift */; };
@@ -58,6 +59,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A4DE3014287C3B9600DD3DBB /* Flower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flower.swift; sourceTree = "<group>"; };
 		C92E31CC28795A25000A315C /* CalendarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarModel.swift; sourceTree = "<group>"; };
 		C92E31CE28795B0E000A315C /* FlowerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowerModel.swift; sourceTree = "<group>"; };
 		C92E31D028795B1A000A315C /* LetterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterModel.swift; sourceTree = "<group>"; };
@@ -518,6 +520,7 @@
 			isa = PBXGroup;
 			children = (
 				C92E31CE28795B0E000A315C /* FlowerModel.swift */,
+				A4DE3014287C3B9600DD3DBB /* Flower.swift */,
 			);
 			path = Flower;
 			sourceTree = "<group>";
@@ -746,6 +749,7 @@
 				C92E31F128795C1A000A315C /* LetterViewModel.swift in Sources */,
 				C92E321B28795D1D000A315C /* VoiceMailService.swift in Sources */,
 				C93DEA29287ACE8D0045508C /* SendLetterView.swift in Sources */,
+				A4DE3015287C3B9600DD3DBB /* Flower.swift in Sources */,
 				C92E31FD28795C62000A315C /* Config.swift in Sources */,
 				C92E321328795CF8000A315C /* VoiceMailEndPoint.swift in Sources */,
 				C92E31DB28795B60000A315C /* CalendarView.swift in Sources */,
