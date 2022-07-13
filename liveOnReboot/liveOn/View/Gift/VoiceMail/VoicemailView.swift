@@ -30,6 +30,48 @@ struct VoiceMailView: View {
                   voiceMailIconNum: 0,
                   userNickName: "userNickName",
                   voiceMail: "voiceMail",
+                  voiceMailId: 0),
+        Voicemail(createdAt: "2022-07-10",
+                  giftVoiceMailDuration: "10",
+                  title: "title",
+                  voiceMailIconNum: 0,
+                  userNickName: "userNickName",
+                  voiceMail: "voiceMail",
+                  voiceMailId: 0),
+        Voicemail(createdAt: "2022-07-10",
+                  giftVoiceMailDuration: "10",
+                  title: "title",
+                  voiceMailIconNum: 0,
+                  userNickName: "userNickName",
+                  voiceMail: "voiceMail",
+                  voiceMailId: 0),
+        Voicemail(createdAt: "2022-07-10",
+                  giftVoiceMailDuration: "10",
+                  title: "title",
+                  voiceMailIconNum: 0,
+                  userNickName: "userNickName",
+                  voiceMail: "voiceMail",
+                  voiceMailId: 0),
+        Voicemail(createdAt: "2022-07-10",
+                  giftVoiceMailDuration: "10",
+                  title: "title",
+                  voiceMailIconNum: 0,
+                  userNickName: "userNickName",
+                  voiceMail: "voiceMail",
+                  voiceMailId: 0),
+        Voicemail(createdAt: "2022-07-10",
+                  giftVoiceMailDuration: "10",
+                  title: "title",
+                  voiceMailIconNum: 0,
+                  userNickName: "userNickName",
+                  voiceMail: "voiceMail",
+                  voiceMailId: 0),
+        Voicemail(createdAt: "2022-07-10",
+                  giftVoiceMailDuration: "10",
+                  title: "title",
+                  voiceMailIconNum: 0,
+                  userNickName: "userNickName",
+                  voiceMail: "voiceMail",
                   voiceMailId: 0)
     ]
     
@@ -46,7 +88,9 @@ struct VoiceMailView: View {
                     .border(.thinMaterial, width: 1)
                     .background(.regularMaterial)
                     .padding(16)
+                    .rotationEffect(Angle(degrees: 180))
                 }
+                .rotationEffect(Angle(degrees: 180))
             } else {
                 Spacer()
                 VStack {
