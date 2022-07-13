@@ -14,8 +14,9 @@ enum liveOnFonts: String {
     // 캘린더뷰에 사용되는 월,년 표시용 폰트
     case calendarNumber = "NerkoOne-Regular"
     // 편지, 사진뷰에 사용되는 손글씨 폰트
-    case handWritten = "나눔손글씨 또박또박"
+    case handWritten = "나눔손글씨 중학생"
 }
+// 폰트 추가 원할 시, asset폴더에 폰트 파일 추가 위 enum에 case 추가, info plist에 추가 하시면 됩니다.
 
 extension Font {
     enum TextStyles {
