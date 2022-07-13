@@ -11,7 +11,7 @@ import SwiftUI
 extension Color {
     static let backgroundGray = Color(hex: "#FCFAFA")
     static let burgundy = Color(hex: "#6B0600")
-    static let body = Color(hex: "#5A4C4C")
+    static let textBodyColor = Color(hex: "#5A4C4C")
     static let lightgray = Color(hex: "#F2F0F0") //shadow 또는 박스 배경
     
     init(hex: String) {
