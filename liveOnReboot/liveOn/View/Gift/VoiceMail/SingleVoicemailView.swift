@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SingleVoicemailView: View {
     
-    let vm: Voicemail
+    let voicemail: Voicemail
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -19,20 +19,20 @@ struct SingleVoicemailView: View {
                     .frame(width: 10, height: 60, alignment: .center)
                 
                 HStack {
-//                    Image(vm.voiceMailIconNum)
+//                    Image(voicemail.voiceMailIconNum)
 //                        .resizable()
 //                        .aspectRatio(contentMode: .fit)
 //                        .frame(width: 44, height: 44, alignment: .center)
                     
                     // MARK: 정보부분
                     VStack(alignment: .leading, spacing: 4) {
-                        Text(vm.title)
+                        Text(voicemail.title)
                             .font(.subheadline)
                             .fontWeight(.bold)
                         HStack {
-                            Text(vm.createdAt)
+                            Text(voicemail.createdAt)
                             Spacer()
-                            Text("from. \(vm.userNickName)")
+                            Text("from. \(voicemail.userNickName)")
                         }
                     }
                     .font(.caption)
@@ -43,13 +43,13 @@ struct SingleVoicemailView: View {
                     .foregroundColor(.white)
                     
                     VStack(alignment: .center) {
-                        if Int(vm.giftVoiceMailDuration)! < 10 {
-                        Text("00:0\(vm.giftVoiceMailDuration)")
+                        if Int(voicemail.giftVoiceMailDuration)! < 10 {
+                        Text("00:0\(voicemail.giftVoiceMailDuration)")
                             .rotationEffect(.degrees(-90.0))
                             .font(.caption)
                             .foregroundColor(.black)
                         } else {
-                            Text("00:\(vm.giftVoiceMailDuration)")
+                            Text("00:\(voicemail.giftVoiceMailDuration)")
                                 .rotationEffect(.degrees(-90.0))
                                 .font(.caption)
                                 .foregroundColor(.black)
@@ -72,7 +72,7 @@ struct SingleVoicemailView: View {
 
 struct SingleVoicemailView_Previews: PreviewProvider {
     static var previews: some View {
-        SingleVoicemailView(vm: Voicemail(createdAt: "2022-07-10",
+        SingleVoicemailView(voicemail: Voicemail(createdAt: "2022-07-10",
                                           giftVoiceMailDuration: "10",
                                           title: "title",
                                           voiceMailIconNum: 0,
