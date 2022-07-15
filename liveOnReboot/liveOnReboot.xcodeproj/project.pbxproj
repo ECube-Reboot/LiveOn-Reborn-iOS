@@ -7,9 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+
+		77079570287E91F000D8C081 /* 나눔손글씨 중학생.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7707956F287E91F000D8C081 /* 나눔손글씨 중학생.ttf */; };
+		773185BB287C4A9F00120FF9 /* Font+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773185BA287C4A9F00120FF9 /* Font+Extension.swift */; };
+		773185BE287C4B9400120FF9 /* NerkoOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 773185BD287C4B8F00120FF9 /* NerkoOne-Regular.ttf */; };
+		773185C3287C56FE00120FF9 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773185C2287C56FE00120FF9 /* Color+Extension.swift */; };
+
 		3EEF02CF287AC9DE0010CA03 /* VoicemailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEF02CE287AC9DE0010CA03 /* VoicemailViewModel.swift */; };
 		3EEF02D1287AF3960010CA03 /* VoicemailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEF02D0287AF3960010CA03 /* VoicemailModel.swift */; };
 		3EEF02D3287AFA920010CA03 /* SingleVoicemailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEF02D2287AFA920010CA03 /* SingleVoicemailView.swift */; };
+
 		C92E31CD28795A25000A315C /* CalendarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E31CC28795A25000A315C /* CalendarModel.swift */; };
 		C92E31CF28795B0E000A315C /* FlowerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E31CE28795B0E000A315C /* FlowerModel.swift */; };
 		C92E31D128795B1A000A315C /* LetterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E31D028795B1A000A315C /* LetterModel.swift */; };
@@ -59,9 +66,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+
+		7707956F287E91F000D8C081 /* 나눔손글씨 중학생.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "나눔손글씨 중학생.ttf"; sourceTree = "<group>"; };
+		773185BA287C4A9F00120FF9 /* Font+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Extension.swift"; sourceTree = "<group>"; };
+		773185BD287C4B8F00120FF9 /* NerkoOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NerkoOne-Regular.ttf"; sourceTree = "<group>"; };
+		773185BF287C4CB900120FF9 /* liveOnReboot-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "liveOnReboot-Info.plist"; sourceTree = "<group>"; };
+		773185C2287C56FE00120FF9 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
+
 		3EEF02CE287AC9DE0010CA03 /* VoicemailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoicemailViewModel.swift; sourceTree = "<group>"; };
 		3EEF02D0287AF3960010CA03 /* VoicemailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoicemailModel.swift; sourceTree = "<group>"; };
 		3EEF02D2287AFA920010CA03 /* SingleVoicemailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleVoicemailView.swift; sourceTree = "<group>"; };
+
 		C92E31CC28795A25000A315C /* CalendarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarModel.swift; sourceTree = "<group>"; };
 		C92E31CE28795B0E000A315C /* FlowerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowerModel.swift; sourceTree = "<group>"; };
 		C92E31D028795B1A000A315C /* LetterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterModel.swift; sourceTree = "<group>"; };
@@ -122,9 +137,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		773185B9287C4A6500120FF9 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				773185BA287C4A9F00120FF9 /* Font+Extension.swift */,
+				773185C2287C56FE00120FF9 /* Color+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		773185BC287C4B7D00120FF9 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				7707956F287E91F000D8C081 /* 나눔손글씨 중학생.ttf */,
+				773185BD287C4B8F00120FF9 /* NerkoOne-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		C93A4BDA287926DC00A277AC /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				773185BC287C4B7D00120FF9 /* Fonts */,
 				C9BE6C89287561D500B782B9 /* Assets.xcassets */,
 			);
 			path = Resource;
@@ -638,6 +672,7 @@
 		C9BE6C79287561D400B782B9 = {
 			isa = PBXGroup;
 			children = (
+				773185BF287C4CB900120FF9 /* liveOnReboot-Info.plist */,
 				C9BE6C84287561D400B782B9 /* liveOn */,
 				C9BE6C83287561D400B782B9 /* Products */,
 			);
@@ -654,6 +689,7 @@
 		C9BE6C84287561D400B782B9 /* liveOn */ = {
 			isa = PBXGroup;
 			children = (
+				773185B9287C4A6500120FF9 /* Extensions */,
 				C9BE6C85287561D400B782B9 /* liveOnRebootApp.swift */,
 				C93A4C0128792B3200A277AC /* Model */,
 				C93A4BF32879291500A277AC /* View */,
@@ -733,6 +769,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9BE6C8D287561D500B782B9 /* Preview Assets.xcassets in Resources */,
+				77079570287E91F000D8C081 /* 나눔손글씨 중학생.ttf in Resources */,
+				773185BE287C4B9400120FF9 /* NerkoOne-Regular.ttf in Resources */,
 				C9BE6C8A287561D500B782B9 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -745,7 +783,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				C92E31EB28795BB0000A315C /* SignInView.swift in Sources */,
+
+				773185C3287C56FE00120FF9 /* Color+Extension.swift in Sources */,
+
 				3EEF02D3287AFA920010CA03 /* SingleVoicemailView.swift in Sources */,
+
 				C92E320728795C9A000A315C /* LetterDTO.swift in Sources */,
 				C92E31F128795C1A000A315C /* LetterViewModel.swift in Sources */,
 				C92E321B28795D1D000A315C /* VoiceMailService.swift in Sources */,
@@ -762,6 +804,7 @@
 				C92E31CF28795B0E000A315C /* FlowerModel.swift in Sources */,
 				C92E31FB28795C54000A315C /* Util.swift in Sources */,
 				C92E31FF28795C6F000A315C /* CalendarDTO.swift in Sources */,
+				773185BB287C4A9F00120FF9 /* Font+Extension.swift in Sources */,
 				C92E320D28795CDD000A315C /* FlowerEndPoint.swift in Sources */,
 				C92E31F728795C36000A315C /* NetworkViewModel.swift in Sources */,
 				C92E31F328795C21000A315C /* PictureViewModel.swift in Sources */,
@@ -923,6 +966,7 @@
 				DEVELOPMENT_TEAM = C95YD9G273;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "liveOnReboot-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -954,6 +998,7 @@
 				DEVELOPMENT_TEAM = C95YD9G273;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "liveOnReboot-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
