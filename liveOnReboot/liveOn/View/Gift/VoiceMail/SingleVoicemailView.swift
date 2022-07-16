@@ -19,10 +19,10 @@ struct SingleVoicemailView: View {
                     .frame(width: 10, height: 60, alignment: .center)
                 
                 HStack {
-//                    Image(voicemail.voiceMailIconNum)
-//                        .resizable()
-//                        .aspectRatio(contentMode: .fit)
-//                        .frame(width: 44, height: 44, alignment: .center)
+                    Image("cassetteIcon0\(voicemail.voiceMailIconNum)")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 44, height: 44, alignment: .center)
                     
                     // MARK: 정보부분
                     VStack(alignment: .leading, spacing: 4) {
@@ -39,7 +39,7 @@ struct SingleVoicemailView: View {
                     .opacity(0.9)
                     .padding()
                     .frame(maxWidth: .infinity, maxHeight: 60, alignment: .center)
-                    .background(Color.blue)
+                    .background(Color.cassetteGreen)
                     .foregroundColor(.white)
                     
                     VStack(alignment: .center) {
