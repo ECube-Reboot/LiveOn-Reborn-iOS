@@ -78,7 +78,6 @@ struct PhotoGiftView: View {
                                     loadingState += 1
                                     isSent.toggle()
                                 }
-                                
                             }) {
                                 Text("선물하기")
                                     .fontWeight(.bold)
@@ -100,23 +99,17 @@ struct PhotoGiftView: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .background(Color.background)
                     .blur(radius: showLoading ? 6 : 0)
-
                 }
-                 
                 .padding()
                 .padding(.top, 80)
                 .onTapGesture {
                     hideKeyboard()
                 }
-                
             }
-            
             if showLoading == true {
-                
                 Image(loadingState == 0 ? "LoadingCharacter" : "")
                     .frame(width: 300, height: 300, alignment: .center)
                     .frame(maxWidth:.infinity, maxHeight: .infinity)
-
             }
         }
         .frame(maxWidth:.infinity, maxHeight: .infinity)

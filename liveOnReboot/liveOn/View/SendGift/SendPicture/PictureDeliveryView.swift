@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct PhotoTransport: View {
+struct PictureDelivery: View {
     
     @Environment(\.dismiss) private var dismiss
     @Binding var gotoMain: Bool
