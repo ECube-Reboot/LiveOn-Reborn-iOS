@@ -12,11 +12,11 @@ import UIKit
 import SwiftUI
 
 // 이미지 가져오기
-struct ImagePicker: UIViewControllerRepresentable {
+struct PicturePicker: UIViewControllerRepresentable {
     var sourceType: UIImagePickerController.SourceType = .photoLibrary
     @Binding var selectedImage: UIImage?
     @Environment(\.presentationMode) private var presentationMode
-    func makeUIViewController(context: UIViewControllerRepresentableContext<ImagePicker>) -> UIImagePickerController {
+    func makeUIViewController(context: UIViewControllerRepresentableContext<PicturePicker>) -> UIImagePickerController {
         let imagePicker = UIImagePickerController()
         imagePicker.allowsEditing = false
         imagePicker.sourceType = sourceType
@@ -24,7 +24,7 @@ struct ImagePicker: UIViewControllerRepresentable {
         return imagePicker
     }
     
-    func updateUIViewController(_ uiViewController: UIImagePickerController, context: UIViewControllerRepresentableContext<ImagePicker>) {
+    func updateUIViewController(_ uiViewController: UIImagePickerController, context: UIViewControllerRepresentableContext<PicturePicker>) {
     }
     
     func makeCoordinator() -> Coordinator {
@@ -32,8 +32,8 @@ struct ImagePicker: UIViewControllerRepresentable {
     }
     
     final class Coordinator: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-        var parent: ImagePicker
-        init(_ parent: ImagePicker) {
+        var parent: PicturePicker
+        init(_ parent: PicturePicker) {
             self.parent = parent
         }
         

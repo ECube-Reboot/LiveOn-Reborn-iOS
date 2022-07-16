@@ -9,12 +9,12 @@
 import Foundation
 import SwiftUI
 
-struct MyImage: Identifiable, Codable {
+struct MyPicture: Identifiable, Codable {
     var id = UUID()
     var name: String
 }
 
-enum MyImageError: Error, LocalizedError {
+enum MyPictureError: Error, LocalizedError {
     case readError
     case decodingError
     case encodingError
@@ -41,7 +41,7 @@ enum MyImageError: Error, LocalizedError {
     
     struct ErrorType: Identifiable {
         let id = UUID()
-        let error: MyImageError
+        let error: MyPictureError
         var message: String {
             error.localizedDescription
         }

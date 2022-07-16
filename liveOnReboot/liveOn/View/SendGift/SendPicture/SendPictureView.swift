@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PhotoGiftView: View {
-    @StateObject var imageModel = ImageViewModel()
+    @StateObject var pictureModel = PictureViewModel()
     @Environment(\.dismiss) private var dismiss
     @State private var comment: String = ""
     @State private var showAlertforSend: Bool = false
@@ -17,7 +17,6 @@ struct PhotoGiftView: View {
     @State private var loadingState: Int = 0
     
     @Binding var gotoMain: Bool
-    
     var commentLimit: Int = 20
     
     var body: some View {
@@ -53,7 +52,7 @@ struct PhotoGiftView: View {
                                 .foregroundColor(.bodyTextColor).opacity(0.5)
                         }
                         
-                        NavigationLink("", destination: PhotoTransport(gotoMain: $gotoMain), isActive: $isSent)
+                        NavigationLink("", destination: PictureDelivery(gotoMain: $gotoMain), isActive: $isSent)
                     }
                     .padding()
                     .background(Color.white
@@ -92,8 +91,8 @@ struct PhotoGiftView: View {
                         }
                     } // toolbar 끝
                     // MARK: ImagePicker에 selectedImage가 binding으로 묶여있어 ImaageViewModel 내의 데이터가 바뀌게 됨
-                    .sheet(isPresented: $imageModel.showPicker) {
-                        ImagePicker(sourceType: imageModel.source == .library ? .photoLibrary : .camera, selectedImage: $imageModel.image)
+                    .sheet(isPresented: $pictureModel.showPicker) {
+                        PicturePicker(sourceType: pictureModel.source == .library ? .photoLibrary : .camera, selectedImage: $pictureModel.image)
                             .ignoresSafeArea()
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -117,11 +116,11 @@ struct PhotoGiftView: View {
     }
     
     func imagePost() {
-        moyaService.request( .imagePost(comment: comment, polaroid: imageModel.image!)) { response in
+        moyaService.request( .imagePost(comment: comment, polaroid: pictureModel.image!)) { response in
             switch response {
             case .success(let result):
                 do {
-                    print("전송되는 이미지 데이터는 다음과 같습니다:\(imageModel.image!)")
+                    print("전송되는 이미지 데이터는 다음과 같습니다:\(pictureModel.image!)")
                     testImageData = try result.map(PicturePostResponse.self)
                 } catch let err {
                     print(err.localizedDescription)

@@ -9,7 +9,7 @@ import SwiftUI
 import Foundation
 import Combine
 
-class ImageViewModel: ObservableObject {
+class PictureViewModel: ObservableObject {
     @Published var image: UIImage?
     @Published var showPicker = false
     @Published var source: Picker.Source = .library
@@ -17,10 +17,10 @@ class ImageViewModel: ObservableObject {
     @Published var cameraError: Picker.CameraErrorType?
     @Published var imageName: String = ""
     @Published var isEditing = false
-    @Published var selectedImage: MyImage?
-    @Published var myImages: [MyImage] = []
+    @Published var selectedImage: MyPicture?
+    @Published var myImages: [MyPicture] = []
     @Published var showFileAlert = false
-    @Published var appError: MyImageError.ErrorType?
+    @Published var appError: MyPictureError.ErrorType?
     @Published var isSent = false
     
     // MARK: 파일저장 시 경로를 프린트해줌
