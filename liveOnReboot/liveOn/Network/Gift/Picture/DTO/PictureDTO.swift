@@ -12,7 +12,7 @@ struct PicturePostResponse: Codable {
     let imageName: String
 }
 
-struct ImageGetResponse: Codable {
+struct PictureGetResponse: Codable {
     let createdAt: String
     var giftPolaroidId: Int64
     let giftPolaroidImage: String
@@ -21,4 +21,4 @@ struct ImageGetResponse: Codable {
 
 // MARK: Test용 임시 데이터
 var testImageData: PicturePostResponse?
-var loadedImage: ImageGetResponse?
+var loadedImage: PictureGetResponse?
