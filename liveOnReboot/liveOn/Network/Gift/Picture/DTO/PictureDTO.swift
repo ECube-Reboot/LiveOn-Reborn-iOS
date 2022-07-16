@@ -1,20 +1,24 @@
 //
-//  PictureDTO.swift
+//  PictureEndPoint.swift
 //  liveOnReboot
 //
-//  Created by Keum MinSeok on 2022/07/09.
-//
+//  Created by Jisu Jang on 2022/07/16.
 
-import SwiftUI
+import Foundation
+import Moya
 
-struct PictureDTO: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
+struct PicturePostResponse: Codable {
+    let contentRecieved: String
+    let imageName: String
 }
 
-struct PictureDTO_Previews: PreviewProvider {
-    static var previews: some View {
-        PictureDTO()
-    }
+struct ImageGetResponse: Codable {
+    let createdAt: String
+    var giftPolaroidId: Int64
+    let giftPolaroidImage: String
+    let userNickName: String
 }
+
+// MARK: Test용 임시 데이터
+var testImageData: PicturePostResponse?
+var loadedImage: ImageGetResponse?
