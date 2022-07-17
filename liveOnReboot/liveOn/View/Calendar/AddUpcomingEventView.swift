@@ -53,6 +53,7 @@ struct AddUpcomingEventView: View {
             
             DatePicker("기념일 추가", selection: $upcomingEventBaseDate, displayedComponents: .date)
                 .datePickerStyle(.graphical)
+                .accentColor(.black)
                 .background(Color.backgroundGray.cornerRadius(30))
                 .frame(width: UIScreen.main.bounds.width * 0.85, height: UIScreen.main.bounds.height * 0.4)
             
