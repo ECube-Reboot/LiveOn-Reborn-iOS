@@ -23,10 +23,6 @@ class PictureViewModel: ObservableObject {
     @Published var appError: MyPictureError.ErrorType?
     @Published var isSent = false
     
-    // MARK: 파일저장 시 경로를 프린트해줌
-    //    init() {
-    //        print(FileManager.docDirURL.path)
-    //    }
     func showPhotoPicker() {
         do {
             if source == .camera {

@@ -11,7 +11,6 @@ import AVFoundation
 import UIKit
 import SwiftUI
 
-// 이미지 가져오기
 struct PicturePicker: UIViewControllerRepresentable {
     var sourceType: UIImagePickerController.SourceType = .photoLibrary
     @Binding var selectedImage: UIImage?
@@ -46,8 +45,6 @@ struct PicturePicker: UIViewControllerRepresentable {
     }
 }
 
-
-// 이미지 에러처리
 enum Picker {
     enum Source: String {
         case library, camera
@@ -85,7 +82,7 @@ enum Picker {
             throw PickerError.unavailable
         }
     }
-//
+
     struct CameraErrorType {
         let error: Picker.PickerError
         var message: String {
