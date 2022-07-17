@@ -7,9 +7,7 @@
 
 import SwiftUI
 import AVFoundation
-
 import UIKit
-import SwiftUI
 
 struct PicturePicker: UIViewControllerRepresentable {
     var sourceType: UIImagePickerController.SourceType = .photoLibrary
