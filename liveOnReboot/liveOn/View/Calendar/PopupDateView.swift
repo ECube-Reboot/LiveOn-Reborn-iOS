@@ -24,7 +24,6 @@ struct PopupDateView: View {
                 DatePicker("PopUp", selection: $popupDate, displayedComponents: [.date])
                     .datePickerStyle(GraphicalDatePickerStyle())
                     .accentColor(.black)
-//                    .applyTextColor(.burgundy)
                                 
                 HStack {
                     Button("취소") {

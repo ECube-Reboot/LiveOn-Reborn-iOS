@@ -8,17 +8,16 @@
 import SwiftUI
 
 struct CalendarView: View {
-    
     // 기본 베이스가 되는 날짜 변수
     @State var currentDate: Date = Date()
     
     // 기념일 추가 Button
     @State var showSheet = false
     
-    // MoveDatePicker 아래에 블러 효과 넣기
+    // PopupDateView 아래에 블러 효과 넣기
     @State private var isClicked = false
     
-    // 달력에서 Date Picker로 날짜 이동 Button
+    // 달력에서 PopupDatePicker로 날짜 이동 Button
     @State var showDatePicker = false
     
     // 화살표 버튼 클릭 시 달력의 월 이동
@@ -30,8 +29,7 @@ struct CalendarView: View {
     @State private var upcomingEventTitle: String = ""
     @State private var upcomingEventMemo: String = ""
     
-    @Environment(\.dismiss) private var dismiss
-    
+    //Upcoming Events 추가
     @EnvironmentObject var store: EventStore
     
     var body: some View {
@@ -44,8 +42,7 @@ struct CalendarView: View {
                             let days: [String] =
                             ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
                             
-                            HStack(spacing: 1) {
-                                
+                            HStack {
                                 // 달력 이전 달로 이동
                                 Button {
                                     withAnimation {
@@ -54,9 +51,10 @@ struct CalendarView: View {
                                 } label: {
                                     Image(systemName: "chevron.left")
                                         .foregroundColor(.burgundy)
-                                        .font(.system(size: 18, weight: .light))
+                                        .font(.body)
                                 }
-                                .padding(.trailing)
+                                .padding(.top, 40)
+                                
                                 
                                 VStack {
                                     // 달력의 년+월
@@ -68,27 +66,30 @@ struct CalendarView: View {
                                         .font(.largeTitle.bold())
                                         .foregroundColor(.burgundy)
                                 }
+                            
                                 
-                                // 달력 다음 달로 이동
-                                Button {
-                                    withAnimation {
-                                        self.currentDate =  self.moveCurrentMonth(isUp: true)
+                                VStack {
+                                    // 메인 달력 날짜 고르는 PopupDateView Button
+                                    Button {
+                                        showDatePicker.toggle()
+                                        isClicked.toggle()
+                                    } label: {
+                                        Image(systemName: "calendar")
+                                            .foregroundColor(.burgundy)
+                                            .font(.title3)
                                     }
-                                } label: {
-                                    Image(systemName: "chevron.right")
-                                        .foregroundColor(.burgundy)
-                                        .font(.system(size: 18, weight: .light))
-                                }
-                                .padding(.leading)
-                                
-                                // 메인 달력 날짜 고르는 PopupDateView Button
-                                Button {
-                                    showDatePicker.toggle()
-                                    isClicked.toggle()
-                                } label: {
-                                    Image(systemName: "calendar")
-                                        .foregroundColor(.burgundy)
-                                        .font(.title3)
+                                    
+                                    // 달력 다음 달로 이동
+                                    Button {
+                                        withAnimation {
+                                            self.currentDate =  self.moveCurrentMonth(isUp: true)
+                                        }
+                                    } label: {
+                                        Image(systemName: "chevron.right")
+                                            .foregroundColor(.burgundy)
+                                            .font(.body)
+                                    }
+                                    .padding(.top, 15)
                                 }
                             }
                             
@@ -108,7 +109,6 @@ struct CalendarView: View {
                             let columns = Array(repeating: GridItem(.flexible(), spacing: 0, alignment: nil), count: 7)
                             
                             LazyVGrid(columns: columns, spacing: 0) {
-                                
                                 ForEach(extractDate(currentDate: self.currentDate)) { value in
                                     ZStack(alignment: .topLeading) {
                                         CardView(value: value)
@@ -119,12 +119,11 @@ struct CalendarView: View {
                                     }
                                 }
                             }
-                            
                             // Upcoming Events
                             VStack(spacing: 10) {
                                 HStack {
                                     Text("Upcoming Events")
-                                        .font(.system(size: 18, weight: .bold))
+                                        .font(.title3.bold())
                                         .foregroundColor(.burgundy)
                                         .frame(maxWidth: .infinity, alignment: .leading)
                                         .padding(.vertical, -10)
@@ -138,7 +137,7 @@ struct CalendarView: View {
                                         upcomingEventMemo = ""
                                     }) {
                                         Image(systemName: "plus")
-                                            .font(.system(size: 18, weight: .light))
+                                            .font(.title3)
                                             .foregroundColor(.burgundy)
                                             .sheet(isPresented: $showSheet, content: {
                                                 AddUpcomingEventView(
@@ -149,19 +148,17 @@ struct CalendarView: View {
                                                 .frame(maxWidth: .infinity, alignment: .center)
                                             })
                                     }
-                                    .padding(.trailing, -1)
+                                    .padding(.trailing, 6)
                                 }
-                                
+                                // UpcomingEvents 추가
                                 VStack {
                                     ForEach(store.list) { upcoming in
                                         UpcomingEventsView(event: upcoming)
                                     }
                                 }
-                                
                             }
                             .padding()
                         }
-                        
                         // PopupDateView와 CalendarView 사이에 블러 효과
                         .opacity(isClicked ? 0.1 : 1 )
                         
@@ -177,10 +174,10 @@ struct CalendarView: View {
             // PopUpView 띄우는 코드
             if showDatePicker {
                 PopupDateView(popupDate: self.currentDate,
-                               currentDate: $currentDate,
-                               showDatePicker: $showDatePicker,
-                               popUpBoolean: $showDatePicker,
-                               isClicked: $isClicked)
+                              currentDate: $currentDate,
+                              showDatePicker: $showDatePicker,
+                              popUpBoolean: $showDatePicker,
+                              isClicked: $isClicked)
             }
         }
     }
@@ -216,7 +213,7 @@ struct CalendarView: View {
 
 struct CalendarMain_Previews: PreviewProvider {
     static var previews: some View {
-            CalendarView().environmentObject(EventStore())
+        CalendarView().environmentObject(EventStore())
     }
 }
 

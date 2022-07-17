@@ -55,7 +55,6 @@ struct AddUpcomingEventView: View {
             DatePicker("기념일 추가", selection: $upcomingEventBaseDate, displayedComponents: .date)
                 .datePickerStyle(GraphicalDatePickerStyle())
                 .accentColor(.black)
-//                .applyTextColor(.burgundy)
                 .padding(.top, -190)
             
             TextField("Comment", text: $upcomingEventTitle, prompt: Text("어떤 기념일인가요?"))
