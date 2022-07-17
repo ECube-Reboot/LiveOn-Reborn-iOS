@@ -2,19 +2,39 @@
 //  FlowerModel.swift
 //  liveOnReboot
 //
-//  Created by Keum MinSeok on 2022/07/09.
+//  Created by 김보영 on 2022/07/11.
 //
 
-import SwiftUI
+import Foundation
 
-struct FlowerModel: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+enum Flower {
+    case rose
+    case sunflower
+    case dandelion
+}
+
+class FlowerGift: Identifiable, ObservableObject {
+    
+    let id: UUID
+    @Published var flower: Flower?
+    let createdDate: String
+    let writer : String
+    var message : String
+    
+    init(flower: Flower, createdDate: String, writer: String, message: String) {
+        
+        id = UUID()
+        self.flower = flower
+        self.writer = writer
+        self.createdDate = createdDate
+        // DateToString 함수 필요
+        self.message = message
+        
     }
 }
 
-struct FlowerModel_Previews: PreviewProvider {
-    static var previews: some View {
-        FlowerModel()
-    }
-}
+var sampleData: [FlowerGift] = [
+    FlowerGift(flower: Flower.rose, createdDate: "2022-07-10", writer: "재헌", message: "엄지 손가락으로 장미꽃을 피워"),
+    FlowerGift(flower: Flower.rose, createdDate: "2022-07-10", writer: "재헌", message: "엄지 손가락으로 장미꽃을 피워"),
+    FlowerGift(flower: Flower.rose, createdDate: "2022-07-10", writer: "재헌", message: "엄지 손가락으로 장미꽃을 피워")
+]
