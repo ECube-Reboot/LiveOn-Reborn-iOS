@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-import SwiftUI
-
 // Extending Date to get Current Month Dates
  extension Date {
     

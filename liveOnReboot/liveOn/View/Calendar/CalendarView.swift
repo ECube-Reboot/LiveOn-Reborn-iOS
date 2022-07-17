@@ -42,7 +42,7 @@ struct CalendarView: View {
                             let days: [String] =
                             ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
                             
-                            HStack {
+                            HStack(alignment: .center) {
                                 // 달력 이전 달로 이동
                                 Button {
                                     withAnimation {
@@ -54,8 +54,8 @@ struct CalendarView: View {
                                         .font(.body)
                                 }
                                 .padding(.top, 40)
-                                
-                                
+                                .padding(.trailing, 50)
+
                                 VStack {
                                     // 달력의 년+월
                                     Text(extraDate(currentDate: self.currentDate)[0])
@@ -66,6 +66,7 @@ struct CalendarView: View {
                                         .font(.largeTitle.bold())
                                         .foregroundColor(.burgundy)
                                 }
+                                .padding(.leading, 80)
                             
                                 
                                 VStack {
@@ -78,6 +79,7 @@ struct CalendarView: View {
                                             .foregroundColor(.burgundy)
                                             .font(.title3)
                                     }
+                                    .padding(.leading, -8)
                                     
                                     // 달력 다음 달로 이동
                                     Button {
@@ -91,6 +93,7 @@ struct CalendarView: View {
                                     }
                                     .padding(.top, 15)
                                 }
+                                .padding(.leading, 125)
                             }
                             
                             // Day View

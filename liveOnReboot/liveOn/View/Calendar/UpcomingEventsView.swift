@@ -6,23 +6,16 @@
 //
 
 import SwiftUI
-
+// Test용으로 넣어 놓은거고 UI에 맞게 수정할 예정
 struct UpcomingEventsView: View {
     let event : UpcomingEventsModel
     var body: some View {
         HStack {
             ZStack {
                 RoundedRectangle(cornerRadius: 10)
-                    .fill(Color.white)
+                    .fill(Color.backgroundGray)
                     .frame(width: 355, height: 66)
                 
-                HStack {
-                    Capsule()
-                        .fill(Color.burgundy)
-                        .frame(width: 38, height: 8)
-                        .rotationEffect(Angle(degrees: 90))
-                        .padding(.trailing, 14)
-                    
                     VStack {
                         //  upcomingEventDate
                         Text(event.upcomingEventDate)
@@ -48,8 +41,6 @@ struct UpcomingEventsView: View {
                             .padding(.trailing, -32)
                     }
                     .padding(.leading, 6)
-                }
-                .padding(.leading, -45.5)
             }
             .padding(.top, 2)
         }

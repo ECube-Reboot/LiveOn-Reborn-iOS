@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-import SwiftUI
-
 struct PopupDateView: View {
     
     @State var popupDate: Date = Date()
@@ -48,7 +46,7 @@ struct PopupDateView: View {
                 .padding(.horizontal)
             }
             .padding(.bottom)
-            .background(Color.white.cornerRadius(30))
+            .background(Color.backgroundGray.cornerRadius(30))
         }
         .frame(width: UIScreen.main.bounds.width * 0.8, height: UIScreen.main.bounds.height * 0.36, alignment: .center)
         .padding(.bottom, 235)
