@@ -14,3 +14,8 @@ struct API {
 enum AuthAPI {
     case login(request: LoginRequestDTO)
 }
+
+struct GeneralAPI {
+    static let baseURL = "http://13.124.90.96:8080"
+    static let token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdHJpbmciLCJyb2xlIjoiVVNFUiIsImV4cCI6MTY1ODIxNTgwMSwiaWF0IjoxNjU1NjIzODAxfQ.grBYdobpNbQ80e-OdqAED0DD-jjRF10a-vaKam06fHk"
+}

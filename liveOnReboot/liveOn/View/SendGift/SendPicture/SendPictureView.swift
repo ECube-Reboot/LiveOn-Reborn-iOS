@@ -28,7 +28,7 @@ struct PhotoGiftView: View {
                             imageModel.source = .library
                             imageModel.showPhotoPicker()
                         } label: {
-                            if let image = imageModel.image {
+                            if let image = pictureModel.image {
                                 Image(uiImage: image)
                                     .resizable()
                                     .scaledToFit()
@@ -52,7 +52,7 @@ struct PhotoGiftView: View {
                                 .foregroundColor(.bodyTextColor).opacity(0.5)
                         }
                         
-                        NavigationLink("", destination: PictureDelivery(gotoMain: $gotoMain), isActive: $isSent)
+                        NavigationLink("", destination: GiftDeliveryView(gotoMain: $gotoMain), isActive: $isSent)
                     }
                     .padding()
                     .background(Color.white

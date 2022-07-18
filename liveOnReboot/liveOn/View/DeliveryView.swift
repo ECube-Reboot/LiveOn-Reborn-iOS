@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct PictureDelivery: View {
+struct GiftDeliveryView: View {
     
     @Environment(\.dismiss) private var dismiss
     @Binding var gotoMain: Bool
