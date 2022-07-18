@@ -26,9 +26,9 @@ extension Font {
         static var smallCalendarNumber: Font { Font.liveOnFont(weight: .calendarNumber, size: 24.0)}
         
         // 편지용 손글씨 폰트
-        static var handWrittenTitle: Font { Font.liveOnFont(weight: .calendarNumber, size: 32.0)}
-        static var handWrittenBody: Font { Font.liveOnFont(weight: .calendarNumber, size: 26.0)}
-        static var handWrittenCallout: Font { Font.liveOnFont(weight: .calendarNumber, size: 24.0)}
+      static var handWrittenTitle: Font { Font.liveOnFont(weight: .handWritten, size: 32.0)}
+        static var handWrittenBody: Font { Font.liveOnFont(weight: .handWritten, size: 26.0)}
+        static var handWrittenCallout: Font { Font.liveOnFont(weight: .handWritten, size: 24.0)}
     }
 }
 
