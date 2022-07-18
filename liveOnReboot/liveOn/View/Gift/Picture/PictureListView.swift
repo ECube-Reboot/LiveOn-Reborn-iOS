@@ -25,7 +25,7 @@ struct PictureListView: View {
                             print("This is Button Print")
                             photoIndexPath = data.giftPolaroidId
                             detailedImage = loadedImageList.first(where: {
-                                $0.giftPolaroidId == photoIndexPath}) ?? PhotoCardsView.defaultImageData()
+                                $0.giftPolaroidId == photoIndexPath}) ?? PictureListView.defaultImageData()
                         }) {
                             PhotoCard(indexPath: data.giftPolaroidId, imageURLString: data.giftPolaroidImage, isTapped: $isTapped)
                         }
