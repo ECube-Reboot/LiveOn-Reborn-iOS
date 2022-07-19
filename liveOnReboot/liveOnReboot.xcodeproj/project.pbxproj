@@ -26,6 +26,9 @@
 		A932C46628858F3B00803302 /* DeliveryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A932C46528858F3B00803302 /* DeliveryView.swift */; };
 		A932C47428859FE600803302 /* PictureErrorHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = A932C47328859FE600803302 /* PictureErrorHandling.swift */; };
 		A973F1E1287B19D700323A17 /* PicturePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A973F1E0287B19D700323A17 /* PicturePicker.swift */; };
+		A9B32A8828867A9600530B51 /* Text+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B32A8728867A9600530B51 /* Text+Extension.swift */; };
+		A9B32A8A28867AB600530B51 /* BackButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B32A8928867AB600530B51 /* BackButton+Extension.swift */; };
+		A9B32A8C28867B1000530B51 /* 나눔손글씨 나의 아내 손글씨.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A9B32A8B28867B1000530B51 /* 나눔손글씨 나의 아내 손글씨.ttf */; };
 		C92E31CD28795A25000A315C /* CalendarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E31CC28795A25000A315C /* CalendarModel.swift */; };
 		C92E31CF28795B0E000A315C /* FlowerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E31CE28795B0E000A315C /* FlowerModel.swift */; };
 		C92E31D128795B1A000A315C /* LetterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E31D028795B1A000A315C /* LetterModel.swift */; };
@@ -90,6 +93,9 @@
 		A932C46528858F3B00803302 /* DeliveryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryView.swift; sourceTree = "<group>"; };
 		A932C47328859FE600803302 /* PictureErrorHandling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureErrorHandling.swift; sourceTree = "<group>"; };
 		A973F1E0287B19D700323A17 /* PicturePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicturePicker.swift; sourceTree = "<group>"; };
+		A9B32A8728867A9600530B51 /* Text+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Text+Extension.swift"; sourceTree = "<group>"; };
+		A9B32A8928867AB600530B51 /* BackButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BackButton+Extension.swift"; sourceTree = "<group>"; };
+		A9B32A8B28867B1000530B51 /* 나눔손글씨 나의 아내 손글씨.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "나눔손글씨 나의 아내 손글씨.ttf"; sourceTree = "<group>"; };
 		C92E31CC28795A25000A315C /* CalendarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarModel.swift; sourceTree = "<group>"; };
 		C92E31CE28795B0E000A315C /* FlowerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowerModel.swift; sourceTree = "<group>"; };
 		C92E31D028795B1A000A315C /* LetterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterModel.swift; sourceTree = "<group>"; };
@@ -156,8 +162,11 @@
 		773185B9287C4A6500120FF9 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				A9B32A8B28867B1000530B51 /* 나눔손글씨 나의 아내 손글씨.ttf */,
 				773185BA287C4A9F00120FF9 /* Font+Extension.swift */,
 				773185C2287C56FE00120FF9 /* Color+Extension.swift */,
+				A9B32A8728867A9600530B51 /* Text+Extension.swift */,
+				A9B32A8928867AB600530B51 /* BackButton+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -804,6 +813,7 @@
 				C9BE6C8D287561D500B782B9 /* Preview Assets.xcassets in Resources */,
 				77079570287E91F000D8C081 /* 나눔손글씨 중학생.ttf in Resources */,
 				773185BE287C4B9400120FF9 /* NerkoOne-Regular.ttf in Resources */,
+				A9B32A8C28867B1000530B51 /* 나눔손글씨 나의 아내 손글씨.ttf in Resources */,
 				C9BE6C8A287561D500B782B9 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -827,6 +837,7 @@
 				C92E31DB28795B60000A315C /* CalendarView.swift in Sources */,
 				A973F1E1287B19D700323A17 /* PicturePicker.swift in Sources */,
 				C92E320528795C94000A315C /* FlowerDTO.swift in Sources */,
+				A9B32A8A28867AB600530B51 /* BackButton+Extension.swift in Sources */,
 				C92E31DF28795B7A000A315C /* FlowerView.swift in Sources */,
 				3EEF02D1287AF3960010CA03 /* VoicemailModel.swift in Sources */,
 				C92E321928795D13000A315C /* PictureService.swift in Sources */,
@@ -861,6 +872,7 @@
 				C93DEA2D287ACEA20045508C /* SendVoiceMailView.swift in Sources */,
 				A929FDE62882671400334E21 /* NetworkLoggerPlugIn.swift in Sources */,
 				C92E31E728795BA0000A315C /* GiftBoxView.swift in Sources */,
+				A9B32A8828867A9600530B51 /* Text+Extension.swift in Sources */,
 				C92E31ED28795C06000A315C /* CalendarViewModel.swift in Sources */,
 				C92E31D728795B38000A315C /* LogInModel.swift in Sources */,
 				A929FDE12882486A00334E21 /* LoginDTO.swift in Sources */,
