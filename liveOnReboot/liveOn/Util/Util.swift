@@ -2,19 +2,39 @@
 //  Util.swift
 //  liveOnReboot
 //
-//  Created by Keum MinSeok on 2022/07/09.
+//  Created by Jisu Jang on 2022/07/17.
 //
 
 import SwiftUI
 
-struct Util: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+extension View {
+    func navigationToBack( _ dismissAction: DismissAction) -> some View {
+        navigationBarBackButtonHidden(true)
+            .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button(action: {
+                    dismissAction()
+                }) {
+                    Image(systemName: "chevron.left")
+                        .font(.system(size: 16))
+                        .foregroundColor(.black)
+                }
+            }
+        }
     }
-}
-
-struct Util_Previews: PreviewProvider {
-    static var previews: some View {
-        Util()
+    
+    func navigationCancel( _ dismissAction: DismissAction) -> some View {
+        navigationBarBackButtonHidden(true)
+            .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button(action: {
+                    dismissAction()
+                }) {
+                    Image(systemName: "xmark")
+                        .font(.system(size: 16))
+                        .foregroundColor(.black)
+                }
+            }
+        }
     }
 }
