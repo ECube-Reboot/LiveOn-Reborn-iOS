@@ -25,8 +25,8 @@ struct PhotoGiftView: View {
                 ZStack {
                     VStack {
                         Button {
-                            imageModel.source = .library
-                            imageModel.showPhotoPicker()
+                            pictureModel.source = .library
+                            pictureModel.showPhotoPicker()
                         } label: {
                             if let image = pictureModel.image {
                                 Image(uiImage: image)
