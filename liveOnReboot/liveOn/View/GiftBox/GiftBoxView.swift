@@ -10,7 +10,7 @@ import SwiftUI
 struct GiftBoxView: View {
     var body: some View {
         
-        VStack {
+        VStack (alignment: .leading, spacing: 12) {
             HStack {
                 CoupleInfoLabel()
                 Spacer()
@@ -21,10 +21,17 @@ struct GiftBoxView: View {
                         .frame(width: 36, height: 36, alignment: .center)
                 }
             }
-            .padding(.horizontal)
             CalendarLinkView()
-            LetterAndPictureLinkView()
+            
+            VStack {
+                LetterAndPictureLinkView()
+                VoiceAndFlowerLinkView()
+            } // VStack
+            .padding(.horizontal)
+            
         } // VStack
+        .padding(.horizontal)
+
     } // body
 }
 
@@ -100,6 +107,27 @@ struct LetterAndPictureLinkView: View {
             
             NavigationLink(destination: PictureView()) {
                 Image("photocard")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+            }
+        }
+        
+    }
+}
+
+struct VoiceAndFlowerLinkView: View {
+    var body: some View {
+        
+        HStack {
+            
+            NavigationLink(destination: VoiceMailView()) {
+                Image("cassette")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+            }
+            
+            NavigationLink(destination: FlowerView()) {
+                Image("flower")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
             }
