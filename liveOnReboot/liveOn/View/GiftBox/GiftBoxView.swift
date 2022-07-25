@@ -22,6 +22,7 @@ struct GiftBoxView: View {
                 }
             }
             .padding(.horizontal)
+            CalendarInGiftBoxView()
         } // VStack
     } // body
 }
@@ -59,6 +60,31 @@ struct CoupleInfoLabel: View {
     } // body
 }
 
+struct CalendarInGiftBoxView: View {
+    var body: some View {
+        
+        NavigationLink(destination: CalendarView()){
+            
+            ZStack {
+                Image("calendar")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                
+                VStack {
+                    
+                    // TODO: 앱이 실행되는 시점의 달을 영어로 표시
+                    Text("July")
+                        .foregroundColor(.textBodyColor)
+                    
+                    // TODO: 앱이 실행되는 시점의 달을 숫자로 표시
+                    Text("07")
+                        .foregroundColor(.textBodyColor)
+                    
+                }
+            } // ZStack
+        } // NavigationLink
+    } // body
+}
 
 
 struct GiftBoxView_Previews: PreviewProvider {
