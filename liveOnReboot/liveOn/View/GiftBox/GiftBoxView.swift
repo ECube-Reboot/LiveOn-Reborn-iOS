@@ -22,7 +22,8 @@ struct GiftBoxView: View {
                 }
             }
             .padding(.horizontal)
-            CalendarInGiftBoxView()
+            CalendarLinkView()
+            LetterAndPictureLinkView()
         } // VStack
     } // body
 }
@@ -60,10 +61,10 @@ struct CoupleInfoLabel: View {
     } // body
 }
 
-struct CalendarInGiftBoxView: View {
+struct CalendarLinkView: View {
     var body: some View {
         
-        NavigationLink(destination: CalendarView()){
+        NavigationLink(destination: CalendarView()) {
             
             ZStack {
                 Image("calendar")
@@ -86,6 +87,26 @@ struct CalendarInGiftBoxView: View {
     } // body
 }
 
+struct LetterAndPictureLinkView: View {
+    var body: some View {
+        
+        HStack {
+            
+            NavigationLink(destination: LetterView()) {
+                Image("letter")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+            }
+            
+            NavigationLink(destination: PictureView()) {
+                Image("photocard")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+            }
+        }
+        
+    }
+}
 
 struct GiftBoxView_Previews: PreviewProvider {
     static var previews: some View {
