@@ -17,5 +17,5 @@ enum AuthAPI {
 
 struct GeneralAPI {
     static let baseURL = "http://13.124.90.96:8080"
-    static let token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdHJpbmciLCJyb2xlIjoiVVNFUiIsImV4cCI6MTY1ODIxNTgwMSwiaWF0IjoxNjU1NjIzODAxfQ.grBYdobpNbQ80e-OdqAED0DD-jjRF10a-vaKam06fHk"
+    static let token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdHJpbmciLCJyb2xlIjoiVVNFUiIsImV4cCI6MTY2MTMyMjg4NCwiaWF0IjoxNjU4NzMwODg0fQ.10quBoJQVn5Ct0qO1yWU6bKDoAGL5hrTShOsEdWQ0fw"
 }
