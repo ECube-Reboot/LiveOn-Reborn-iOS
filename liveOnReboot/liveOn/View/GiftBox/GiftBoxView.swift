@@ -9,9 +9,57 @@ import SwiftUI
 
 struct GiftBoxView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
+        
+        VStack {
+            HStack {
+                CoupleInfoLabel()
+                Spacer()
+                NavigationLink(destination: GiftListView()) {
+                    Image("addButton")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 36, height: 36, alignment: .center)
+                }
+            }
+            .padding(.horizontal)
+        } // VStack
+    } // body
 }
+
+struct CoupleInfoLabel: View {
+    var body: some View {
+        
+        ZStack {
+            
+            RoundedRectangle(cornerRadius: 10)
+                .stroke(lineWidth: 1)
+                .padding(8)
+            // TODO: 파란색 테두리 색상 변경
+                .foregroundColor(Color.teal)
+                .frame(width: 194, height: 54, alignment: .center)
+                .background(RoundedRectangle(cornerRadius: 10)
+                    .fill(.thinMaterial)
+                    .shadow(color: Color(red: 239, green: 238, blue: 35), radius: 4, x: 0, y: 4))
+            
+            HStack {
+                
+                // TODO: "재헌" -> 상대방의 이름이 들어가게 바꿀 것
+                Text("재헌")
+                Image("heart")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 20, height: 22, alignment: .center)
+                // TODO: "유진" -> 유저의 이름이 들어가게 바꿀 것
+                Text("유진")
+                // TODO: "365" -> 설정된 첫 날 부터 앱이 실행되고 있는 시점까지의 날짜 계산해서 넣기
+                Text("D+365")
+                
+            } // HStack
+        } // ZStack
+    } // body
+}
+
+
 
 struct GiftBoxView_Previews: PreviewProvider {
     static var previews: some View {
