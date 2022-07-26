@@ -7,14 +7,27 @@
 
 import SwiftUI
 
-struct LetterViewModel: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
+struct LetterViewModel {
+  var newLetter = Letter()
+  
+  mutating func updateContent(content: String) {
+    newLetter.content = content
+  }
+  
 }
 
-struct LetterViewModel_Previews: PreviewProvider {
-    static var previews: some View {
-        LetterViewModel()
+
+public extension Binding where Value: Equatable {
+    init(_ source: Binding<Value?>, replacingNilWith nilProxy: Value) {
+        self.init(
+            get: { source.wrappedValue ?? nilProxy },
+            set: { newValue in
+                if newValue == nilProxy {
+                    source.wrappedValue = nil
+                }
+                else {
+                    source.wrappedValue = newValue
+                }
+            })
     }
 }
