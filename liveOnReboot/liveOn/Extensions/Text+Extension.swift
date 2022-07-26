@@ -12,5 +12,20 @@ extension Text {
             .font(.system(size: 20))
             .fontWeight(.regular)
     }
+    
+    func letterCountSyle() -> some View {
+        modifier(LetterCountCaption())
+    }
 }
+
+struct LetterCountCaption: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .frame(maxWidth: .infinity, alignment: .trailing)
+            .foregroundColor(.textBodyColor)
+            .opacity(0.6)
+            .padding(.vertical)
+    }
+}
+
 

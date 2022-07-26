@@ -9,7 +9,7 @@ import SwiftUI
 
 enum liveOnFonts: String {
     case calendarNumber = "NerkoOne-Regular"
-    case handWritten = "나눔손글씨 중학생"
+    case handWritten = "NanumJungHagSaeng"
 }
 
 extension Font {
@@ -48,6 +48,12 @@ extension TextEditor {
 }
 
 extension View {
+    func setHandWritten() -> some View {
+        self.font(.custom(FontNames.handWritten, size: 24))
+    }
+}
+
+extension TextField {
     func setHandWritten() -> some View {
         self.font(.custom(FontNames.handWritten, size: 24))
     }
