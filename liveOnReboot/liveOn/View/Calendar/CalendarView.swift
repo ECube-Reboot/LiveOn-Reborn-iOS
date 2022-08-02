@@ -39,8 +39,7 @@ struct CalendarView: View {
                     ZStack {
                         VStack(spacing: 20) {
                             // 요일
-                            let days: [String] =
-                            ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+                            let days: [String] = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
                             
                             HStack(alignment: .center) {
                                 // 달력 이전 달로 이동
@@ -59,16 +58,16 @@ struct CalendarView: View {
                                 VStack {
                                     // 달력의 년+월
                                     Text(extraDate(currentDate: self.currentDate)[0])
-                                        .font(.headline.bold())
+                                        .font(.TextStyles.smallCalendarNumber)
                                         .foregroundColor(.burgundy)
+                                        .padding(.bottom, -50)
                                     
                                     Text(extraDate(currentDate: self.currentDate)[1])
-                                        .font(.largeTitle.bold())
+                                        .font(.TextStyles.largeCalendarNumber)
                                         .foregroundColor(.burgundy)
                                 }
                                 .padding(.leading, 80)
                             
-                                
                                 VStack {
                                     // 메인 달력 날짜 고르는 PopupDateView Button
                                     Button {
@@ -101,7 +100,6 @@ struct CalendarView: View {
                                 ForEach(days, id: \.self) {day in
                                     Text(day)
                                         .font(.callout)
-                                        .fontWeight(.semibold)
                                         .foregroundColor(.gray)
                                         .frame(maxWidth: .infinity)
                                 }

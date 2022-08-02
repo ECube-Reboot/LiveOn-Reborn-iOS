@@ -19,15 +19,3 @@ class UpcomingEventsModel: Identifiable, ObservableObject {
         self.upcomingEventMemo = upcomingEventMemo
     }
 }
-
-class EventStore: ObservableObject {
-    @Published var list: [UpcomingEventsModel]
-    
-    init() {
-        list = []
-    }
-    
-    func insert(upcomingEventDate: Date, upcomingEventTitle: String, upcomingEventMemo: String) {
-        list.insert(UpcomingEventsModel(upcomingEventDate: upcomingEventDate, upcomingEventTitle: upcomingEventTitle, upcomingEventMemo: upcomingEventMemo), at: 0)
-    }
-}

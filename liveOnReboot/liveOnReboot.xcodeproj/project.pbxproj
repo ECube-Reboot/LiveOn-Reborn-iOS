@@ -14,6 +14,7 @@
 		773185BB287C4A9F00120FF9 /* Font+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773185BA287C4A9F00120FF9 /* Font+Extension.swift */; };
 		773185BE287C4B9400120FF9 /* NerkoOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 773185BD287C4B8F00120FF9 /* NerkoOne-Regular.ttf */; };
 		773185C3287C56FE00120FF9 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773185C2287C56FE00120FF9 /* Color+Extension.swift */; };
+		C915A80928990592003154AB /* EventStoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C915A80828990592003154AB /* EventStoreViewModel.swift */; };
 		C92E31CD28795A25000A315C /* CalendarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E31CC28795A25000A315C /* CalendarModel.swift */; };
 		C92E31CF28795B0E000A315C /* FlowerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E31CE28795B0E000A315C /* FlowerModel.swift */; };
 		C92E31D128795B1A000A315C /* LetterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E31D028795B1A000A315C /* LetterModel.swift */; };
@@ -77,6 +78,7 @@
 		773185BD287C4B8F00120FF9 /* NerkoOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NerkoOne-Regular.ttf"; sourceTree = "<group>"; };
 		773185BF287C4CB900120FF9 /* liveOnReboot-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "liveOnReboot-Info.plist"; sourceTree = "<group>"; };
 		773185C2287C56FE00120FF9 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
+		C915A80828990592003154AB /* EventStoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventStoreViewModel.swift; sourceTree = "<group>"; };
 		C92E31CC28795A25000A315C /* CalendarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarModel.swift; sourceTree = "<group>"; };
 		C92E31CE28795B0E000A315C /* FlowerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowerModel.swift; sourceTree = "<group>"; };
 		C92E31D028795B1A000A315C /* LetterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterModel.swift; sourceTree = "<group>"; };
@@ -602,6 +604,7 @@
 			isa = PBXGroup;
 			children = (
 				C92E31EC28795C06000A315C /* DateToStringUpcomingEventsViewModel.swift */,
+				C915A80828990592003154AB /* EventStoreViewModel.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -841,6 +844,7 @@
 				C93DEA2D287ACEA20045508C /* SendVoiceMailView.swift in Sources */,
 				C92E31E728795BA0000A315C /* GiftBoxView.swift in Sources */,
 				C92E31ED28795C06000A315C /* DateToStringUpcomingEventsViewModel.swift in Sources */,
+				C915A80928990592003154AB /* EventStoreViewModel.swift in Sources */,
 				C92E31D728795B38000A315C /* LogInModel.swift in Sources */,
 				C92E31DD28795B71000A315C /* CoupleInformationView.swift in Sources */,
 				C92E320928795CA2000A315C /* PictureDTO.swift in Sources */,

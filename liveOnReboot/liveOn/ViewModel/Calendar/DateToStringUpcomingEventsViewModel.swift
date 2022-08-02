@@ -9,7 +9,6 @@ import Foundation
 
 func DateToStringUpcomingEventsViewModel(_ date: Date) -> String {
     let dateFormatter = DateFormatter()
-    
     dateFormatter.dateFormat = "MM/dd"
     
     let dateString = dateFormatter.string(from: date)
