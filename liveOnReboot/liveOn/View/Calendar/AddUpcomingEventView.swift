@@ -24,33 +24,8 @@ struct AddUpcomingEventView: View {
     
     var body: some View {
         VStack {
-            HStack(alignment: .center, spacing: 0) {
-                Button("취소") {
-                    upcomingEventBaseDate = Date.now
-                    dismiss()
-                }
-                .font(.callout)
-                .foregroundColor(.burgundy)
-                
-                Spacer()
-                
-                Text("기념일 추가")
-                    .font(.title2.bold())
-                    .foregroundColor(.burgundy)
-                
-                Spacer()
-                
-                Button("확인") {
-                    upcomingEventDate = self.upcomingEventBaseDate
-                    store.insert(upcomingEventDate: upcomingEventDate, upcomingEventTitle: upcomingEventTitle, upcomingEventMemo: upcomingEventMemo)
-                    upcomingEventBaseDate = Date.now
-                    presentationMode.wrappedValue.dismiss()
-                }
-                .font(.callout)
-                .foregroundColor(.burgundy)
-            }
-            .padding([.trailing, .leading], 15)
-            
+            header
+
             DatePicker("기념일 추가", selection: $upcomingEventBaseDate, displayedComponents: .date)
                 .datePickerStyle(.graphical)
                 .accentColor(.black)
@@ -58,6 +33,35 @@ struct AddUpcomingEventView: View {
                 .frame(width: UIScreen.main.bounds.width * 0.85, height: UIScreen.main.bounds.height * 0.4)
         }
         .padding(.top, -330)
+    }
+    
+    var header: some View {
+        HStack(alignment: .center, spacing: 0) {
+            Button("취소") {
+                upcomingEventBaseDate = Date.now
+                dismiss()
+            }
+            .font(.callout)
+            .foregroundColor(.burgundy)
+            
+            Spacer()
+            
+            Text("기념일 추가")
+                .font(.title2.bold())
+                .foregroundColor(.burgundy)
+            
+            Spacer()
+            
+            Button("확인") {
+                upcomingEventDate = self.upcomingEventBaseDate
+                store.insert(upcomingEventDate: upcomingEventDate, upcomingEventTitle: upcomingEventTitle, upcomingEventMemo: upcomingEventMemo)
+                upcomingEventBaseDate = Date.now
+                presentationMode.wrappedValue.dismiss()
+            }
+            .font(.callout)
+            .foregroundColor(.burgundy)
+        }
+        .padding([.trailing, .leading], 15)
     }
 }
 
