@@ -2,19 +2,18 @@
 //  PictureService.swift
 //  liveOnReboot
 //
-//  Created by Keum MinSeok on 2022/07/09.
+//  Created by Jisu Jang on 2022/07/16.
 //
-
+import Foundation
 import SwiftUI
+import Moya
 
-struct PictureService: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
+let moyaService = MoyaProvider<PictureServerCommunication>(plugins: [NetworkLoggerPlugin()])
 
-struct PictureService_Previews: PreviewProvider {
-    static var previews: some View {
-        PictureService()
-    }
+enum PictureServerCommunication {
+    case login(param: LoginRequest)
+    case imagePost(comment: String, polaroid: UIImage)
+    //MARK: Test용 이미지 GET. 추후 수정하거나 삭제 예정
+    case imageGet
+    case imageListGet
 }
