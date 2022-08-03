@@ -38,9 +38,6 @@ struct CalendarView: View {
                 VStack {
                     ZStack {
                         VStack(spacing: 20) {
-                            // 요일
-                            let days: [String] = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
-                            
                             HStack(alignment: .center) {
                                 // 달력 이전 달로 이동
                                 Button {
@@ -97,8 +94,8 @@ struct CalendarView: View {
                             
                             // Day View
                             HStack(spacing: 0) {
-                                ForEach(days, id: \.self) {day in
-                                    Text(day)
+                                ForEach(CalendarDay.allCases, id: \.self) {day in
+                                    Text(day.rawValue)
                                         .font(.callout)
                                         .foregroundColor(.gray)
                                         .frame(maxWidth: .infinity)
@@ -183,6 +180,16 @@ struct CalendarView: View {
         }
     }
     
+    enum CalendarDay: String, CaseIterable {
+        case Sun = "Sun"
+        case Mon = "Mon"
+        case Tue = "Tue"
+        case Wed = "Wed"
+        case Thu = "Thu"
+        case Fri = "Fri"
+        case Sat = "Sat"
+    }
+    
     // 문제의 구간 -> 아래 두 함수를 Calendar+Extension 파일에 분리하고 싶은데 어렵네
     func moveCurrentMonth(isUp: Bool) -> Date {
         
@@ -209,7 +216,6 @@ struct CalendarView: View {
         
         return currentMonth
     }
-    
 }
 
 struct CalendarMain_Previews: PreviewProvider {
