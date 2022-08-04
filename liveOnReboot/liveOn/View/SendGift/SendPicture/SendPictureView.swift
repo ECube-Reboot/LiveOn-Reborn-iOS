@@ -4,10 +4,9 @@
 //
 //  Created by Keum MinSeok on 2022/07/10.
 //
-
 import SwiftUI
 
-struct PhotoGiftView: View {
+struct SendPictureView: View {
     @StateObject var pictureModel = PictureViewModel()
     @Environment(\.dismiss) private var dismiss
     @State private var comment: String = ""
@@ -23,7 +22,7 @@ struct PhotoGiftView: View {
         ZStack {
             ScrollView {
                 ZStack {
-                    VStack {
+                    VStack(spacing: 15) {
                         Button {
                             pictureModel.source = .library
                             pictureModel.showPhotoPicker()
@@ -32,18 +31,16 @@ struct PhotoGiftView: View {
                                 Image(uiImage: image)
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(width: 300, height: 400)
+                                    .frame(width: UIScreen.main.bounds.width * 0.8, height: UIScreen.main.bounds.width * 0.8)
                             } else {
                                 Text("사진을 선택해주세요!")
                                     .frame(width: 300, height: 400, alignment: .center)
                                     .background(Color.lightGray)
-                                    .foregroundColor(.bodyTextColor)
+                                    .cornerRadius(2)
                             }
                         }
                         TextField("Comment", text: $comment, prompt: Text("한 줄 편지를 써주세요!"))
-                            .setHandWritten()
                             .limitInputLength(value: $comment, length: 20)
-                            .foregroundColor(.bodyTextColor)
                             .frame(width: 300, height: 20, alignment: .leading)
                         
                         HStack {
@@ -59,27 +56,27 @@ struct PhotoGiftView: View {
                         .cornerRadius(5)
                         .shadow(color: Color.black.opacity(0.25), radius: 4, x: 0, y: 4))
                     .navigationBarBackButtonHidden(true)
+                    .navigationBarTitleDisplayMode(.inline)
                     .toolbar {
                         ToolbarItem(placement: .navigationBarLeading) {
                             Button {
                                 dismiss()
                             } label: {
                                 Image(systemName: "chevron.left")
-                                //                                .font(.system(size: 20))
                                     .foregroundColor(.black)
                             }
                         }
                         ToolbarItem(placement: .navigationBarTrailing) {
                             Button(action: {
                                 showLoading.toggle()
-                                hideKeyboard()
+                                imagePost()
                                 Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false) { _ in
                                     loadingState += 1
                                     isSent.toggle()
                                 }
                             }) {
                                 Text("선물하기")
-                                    .fontWeight(.bold)
+                                    .fontWeight(.medium)
                                     .foregroundColor(.black)
                                     .preferredColorScheme(.light)
                             }
@@ -115,8 +112,8 @@ struct PhotoGiftView: View {
         .background(Color.background)
     }
     
-    func imagePost() {
-        moyaService.request( .imagePost(comment: comment, polaroid: pictureModel.image!)) { response in
+    private func imagePost() {
+        moyaService.request( .imagePost(comment: comment, polaroid: pictureModel.image ?? UIImage())) { response in
             switch response {
             case .success(let result):
                 do {
