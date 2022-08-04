@@ -6,15 +6,11 @@
 //
 
 import SwiftUI
+import Foundation
 
-struct CalendarModel: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
-
-struct CalendarModel_Previews: PreviewProvider {
-    static var previews: some View {
-        CalendarModel()
-    }
+// Date
+struct CalendarModel: Identifiable {
+    var id = UUID().uuidString
+    var day: Int
+    var date: Date
 }
