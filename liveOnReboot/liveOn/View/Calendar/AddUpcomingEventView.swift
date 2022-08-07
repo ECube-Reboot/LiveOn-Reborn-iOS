@@ -29,10 +29,11 @@ struct AddUpcomingEventView: View {
             DatePicker("기념일 추가", selection: $upcomingEventBaseDate, displayedComponents: .date)
                 .datePickerStyle(.graphical)
                 .accentColor(.black)
+                .applyTextColor(.burgundy)
                 .background(Color.backgroundGray.cornerRadius(30))
                 .frame(width: UIScreen.main.bounds.width * 0.85, height: UIScreen.main.bounds.height * 0.4)
         }
-        .padding(.top, -330)
+        .padding(.top, -340)
     }
     
     var header: some View {
@@ -41,7 +42,7 @@ struct AddUpcomingEventView: View {
                 upcomingEventBaseDate = Date.now
                 dismiss()
             }
-            .font(.callout)
+            .font(.title2)
             .foregroundColor(.burgundy)
             
             Spacer()
@@ -58,10 +59,10 @@ struct AddUpcomingEventView: View {
                 upcomingEventBaseDate = Date.now
                 presentationMode.wrappedValue.dismiss()
             }
-            .font(.callout)
+            .font(.title2)
             .foregroundColor(.burgundy)
         }
-        .padding([.trailing, .leading], 15)
+        .padding([.trailing, .leading], 20)
     }
 }
 

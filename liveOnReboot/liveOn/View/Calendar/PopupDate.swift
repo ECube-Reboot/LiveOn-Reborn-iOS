@@ -21,6 +21,7 @@ struct PopupDate: View {
             VStack {
                 DatePicker("PopUp", selection: $popupDate, displayedComponents: [.date])
                     .datePickerStyle(GraphicalDatePickerStyle())
+                    .applyTextColor(.burgundy)
                     .accentColor(.black)
                                 
                 HStack {
