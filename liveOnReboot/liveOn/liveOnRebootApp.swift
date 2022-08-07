@@ -13,7 +13,10 @@ struct liveOnRebootApp: App {
   @State var tempGotoMain = false
     var body: some Scene {
         WindowGroup {
-            SendLetterView(gotoMain: $tempGotoMain)
+            //SendLetterView(gotoMain: $tempGotoMain)
+          NavigationView {
+            LetterListView()
+          }
         }
     }
   

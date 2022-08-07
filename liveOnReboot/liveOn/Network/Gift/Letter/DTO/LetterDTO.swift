@@ -18,6 +18,6 @@ struct LettersGetResponse: Codable {
 struct LetterGet: Codable {
     let content: String
     let createdAt: String
-    let noteId: Int
-    let senderName: String
+    let giftMemoId: Int64
+    let userNickName: String
 }

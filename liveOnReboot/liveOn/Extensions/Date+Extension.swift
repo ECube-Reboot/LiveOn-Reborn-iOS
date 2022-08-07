@@ -13,4 +13,10 @@ extension Date {
     dateFormatter.dateFormat = "YYMMdd"
     return dateFormatter.string(from: format)
   }
+  
+  public func stringDateToFormat(_ date: String) -> String {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "YYYY-MM-dd"
+    return dateToString(dateFormatter.date(from: date)!)
+  }
 }
