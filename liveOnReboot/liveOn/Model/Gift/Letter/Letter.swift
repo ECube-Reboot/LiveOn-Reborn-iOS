@@ -2,7 +2,7 @@
 //  LetterModel.swift
 //  liveOnReboot
 //
-//  Created by Keum MinSeok on 2022/07/09.
+//  Created by Jineeee on 2022/07/09.
 //
 
 import SwiftUI
