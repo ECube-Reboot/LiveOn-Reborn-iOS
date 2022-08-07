@@ -14,6 +14,7 @@
 		773185BB287C4A9F00120FF9 /* Font+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773185BA287C4A9F00120FF9 /* Font+Extension.swift */; };
 		773185BE287C4B9400120FF9 /* NerkoOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 773185BD287C4B8F00120FF9 /* NerkoOne-Regular.ttf */; };
 		773185C3287C56FE00120FF9 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773185C2287C56FE00120FF9 /* Color+Extension.swift */; };
+		77EB4485289FC4200006F3CB /* SendLetterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93DEA28287ACE8D0045508C /* SendLetterView.swift */; };
 		77F6F128288FCF9700263BBB /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F6F127288FCF9700263BBB /* Date+Extension.swift */; };
 		77F6F12E288FD5E700263BBB /* textLimit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F6F12D288FD5E700263BBB /* textLimit.swift */; };
 		77F6F19328900C5700263BBB /* placeHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F6F19228900C5700263BBB /* placeHolder.swift */; };
@@ -69,7 +70,6 @@
 		C92E321928795D13000A315C /* PictureService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E321828795D13000A315C /* PictureService.swift */; };
 		C92E321B28795D1D000A315C /* VoiceMailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E321A28795D1D000A315C /* VoiceMailService.swift */; };
 		C93DEA23287ACE440045508C /* SendFlowerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93DEA22287ACE440045508C /* SendFlowerView.swift */; };
-		C93DEA29287ACE8D0045508C /* SendLetterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93DEA28287ACE8D0045508C /* SendLetterView.swift */; };
 		C93DEA2B287ACE960045508C /* SendPictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93DEA2A287ACE960045508C /* SendPictureView.swift */; };
 		C93DEA2D287ACEA20045508C /* SendVoiceMailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93DEA2C287ACEA20045508C /* SendVoiceMailView.swift */; };
 		C9BE6C86287561D400B782B9 /* liveOnRebootApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BE6C85287561D400B782B9 /* liveOnRebootApp.swift */; };
@@ -844,7 +844,6 @@
 				C92E320728795C9A000A315C /* LetterDTO.swift in Sources */,
 				C92E31F128795C1A000A315C /* LetterViewModel.swift in Sources */,
 				C92E321B28795D1D000A315C /* VoiceMailService.swift in Sources */,
-				C93DEA29287ACE8D0045508C /* SendLetterView.swift in Sources */,
 				C92E31FD28795C62000A315C /* Config.swift in Sources */,
 				C92E321328795CF8000A315C /* VoiceMailEndPoint.swift in Sources */,
 				C92E31DB28795B60000A315C /* CalendarView.swift in Sources */,
@@ -861,6 +860,7 @@
 				C92E31CF28795B0E000A315C /* FlowerModel.swift in Sources */,
 				A932C47428859FE600803302 /* PictureErrorHandling.swift in Sources */,
 				C92E31FB28795C54000A315C /* Util.swift in Sources */,
+				77EB4485289FC4200006F3CB /* SendLetterView.swift in Sources */,
 				C92E31FF28795C6F000A315C /* CalendarDTO.swift in Sources */,
 				773185BB287C4A9F00120FF9 /* Font+Extension.swift in Sources */,
 				C92E320D28795CDD000A315C /* FlowerEndPoint.swift in Sources */,
