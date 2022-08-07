@@ -1,5 +1,5 @@
 //
-//  PopupDateView.swift
+//  PopupDate.swift
 //  liveOnReboot
 //
 //  Created by Keum MinSeok on 2022/07/17.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct PopupDateView: View {
+struct PopupDate: View {
     
     @State var popupDate: Date = Date()
     

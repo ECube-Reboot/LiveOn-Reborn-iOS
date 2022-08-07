@@ -14,7 +14,7 @@ struct CalendarView: View {
     // 기념일 추가 Button
     @State var showSheet = false
     
-    // PopupDateView 아래에 블러 효과 넣기
+    // PopupDate 아래에 블러 효과 넣기
     @State private var isClicked = false
     
     // 달력에서 PopupDatePicker로 날짜 이동 Button
@@ -66,7 +66,7 @@ struct CalendarView: View {
                                 .padding(.leading, 80)
                             
                                 VStack {
-                                    // 메인 달력 날짜 고르는 PopupDateView Button
+                                    // 메인 달력 날짜 고르는 PopupDate Button
                                     Button {
                                         showDatePicker.toggle()
                                         isClicked.toggle()
@@ -171,7 +171,7 @@ struct CalendarView: View {
             
             // PopUpView 띄우는 코드
             if showDatePicker {
-                PopupDateView(popupDate: self.currentDate,
+                PopupDate(popupDate: self.currentDate,
                               currentDate: $currentDate,
                               showDatePicker: $showDatePicker,
                               popUpBoolean: $showDatePicker,
