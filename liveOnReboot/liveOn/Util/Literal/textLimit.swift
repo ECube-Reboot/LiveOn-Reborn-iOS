@@ -8,5 +8,5 @@
 import Foundation
 enum textLimit {
   static var nickName: Int { return 10 }
-  static var letterGift: Int { return 10 }
+  static var letterGift: Int { return 140 }
 }
