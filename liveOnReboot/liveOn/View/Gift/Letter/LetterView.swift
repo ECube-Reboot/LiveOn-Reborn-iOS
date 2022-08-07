@@ -30,7 +30,7 @@ struct LetterView: View {
                 if let input = input {
                     let limit = textLimit.letterGift
                     Text("\(input.count )/\(textLimit.letterGift)")
-                        .letterCountSyle()
+                        .letterCountStyle()
                         .onReceive(input.publisher.collect()) { _ in
                             if input.count > limit {
                                 withAnimation() {
@@ -42,7 +42,7 @@ struct LetterView: View {
                 }
                 else {
                     Text("0/\(textLimit.letterGift)")
-                        .letterCountSyle()
+                        .letterCountStyle()
                         .onAppear {
                             isValidate = false
                         }
@@ -71,7 +71,8 @@ struct LetterView: View {
                     .alert(isPresented: $showAlertforSend) {
                         Alert(title: Text("선물하기"), message: Text("선물은 하루에 하나만 보낼 수 있어요. 쪽지를 보낼까요?"), primaryButton: .cancel(Text("취소")), secondaryButton: Alert.Button.default(Text("보내기")) {
                             //TODO: 서버 연동
-                            dismiss()
+                            LetterViewModel.viewModel.updateContent(content: input!)
+                            LetterViewModel.viewModel.letterPost(letter: Letter())
                         })
                         
                     })

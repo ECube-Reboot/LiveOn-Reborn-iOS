@@ -13,7 +13,7 @@ extension Text {
             .fontWeight(.regular)
     }
     
-    func letterCountSyle() -> some View {
+    func letterCountStyle() -> some View {
         modifier(LetterCountCaption())
     }
 }
