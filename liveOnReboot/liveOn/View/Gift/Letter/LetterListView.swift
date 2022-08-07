@@ -18,7 +18,7 @@ struct LetterListView: View {
         let columns = Array(repeating: GridItem(.flexible(), spacing: 1, alignment: .center), count: 2)
         
         LazyVGrid(columns: columns, spacing: 1) {
-          ForEach(viewModel.letterList,  id: \.giftMemoId) { letter in
+          ForEach(viewModel.letterList.reversed(),  id: \.giftMemoId) { letter in
             LetterView(letter: letter)
               .onTapGesture {
                 selectedLetter = letter
