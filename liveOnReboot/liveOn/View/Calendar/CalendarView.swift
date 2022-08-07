@@ -14,7 +14,7 @@ struct CalendarView: View {
     // 기념일 추가 Button
     @State var showSheet = false
     
-    // PopupDate 아래에 블러 효과 넣기
+    // PopupDateView 아래에 블러 효과 넣기
     @State private var isClicked = false
     
     // 달력에서 PopupDatePicker로 날짜 이동 Button
@@ -34,89 +34,91 @@ struct CalendarView: View {
     
     var body: some View {
         ZStack {
-            ScrollView(.vertical, showsIndicators: false) {
-                VStack {
-                    ZStack {
-                        VStack(spacing: 20) {
-                            HStack(alignment: .center) {
-                                // 달력 이전 달로 이동
+            //            ScrollView(.vertical, showsIndicators: false) {
+            VStack {
+                ZStack {
+                    VStack(spacing: 20) {
+                        HStack(alignment: .center) {
+                            // 달력 이전 달로 이동
+                            Button {
+                                withAnimation {
+                                    self.currentDate = self.moveCurrentMonth(isUp: false)
+                                }
+                            } label: {
+                                Image(systemName: "chevron.left")
+                                    .foregroundColor(.burgundy)
+                                    .font(.body)
+                            }
+                            .padding(.top, 40)
+                            .padding(.trailing, 50)
+                            
+                            VStack {
+                                // 달력의 년+월
+                                Text(extraDate(currentDate: self.currentDate)[0])
+                                    .font(.TextStyles.smallCalendarNumber)
+                                    .foregroundColor(.burgundy)
+                                    .padding(.bottom, -50)
+                                
+                                Text(extraDate(currentDate: self.currentDate)[1])
+                                    .font(.TextStyles.largeCalendarNumber)
+                                    .foregroundColor(.burgundy)
+                            }
+                            .padding(.leading, 80)
+                            
+                            VStack {
+                                // 메인 달력 날짜 고르는 PopupDateView Button
+                                Button {
+                                    showDatePicker.toggle()
+                                    isClicked.toggle()
+                                } label: {
+                                    Image(systemName: "calendar")
+                                        .foregroundColor(.burgundy)
+                                        .font(.title3)
+                                }
+                                .padding(.leading, -8)
+                                
+                                // 달력 다음 달로 이동
                                 Button {
                                     withAnimation {
-                                        self.currentDate = self.moveCurrentMonth(isUp: false)
+                                        self.currentDate =  self.moveCurrentMonth(isUp: true)
                                     }
                                 } label: {
-                                    Image(systemName: "chevron.left")
+                                    Image(systemName: "chevron.right")
                                         .foregroundColor(.burgundy)
                                         .font(.body)
                                 }
-                                .padding(.top, 40)
-                                .padding(.trailing, 50)
-
-                                VStack {
-                                    // 달력의 년+월
-                                    Text(extraDate(currentDate: self.currentDate)[0])
-                                        .font(.TextStyles.smallCalendarNumber)
-                                        .foregroundColor(.burgundy)
-                                        .padding(.bottom, -50)
-                                    
-                                    Text(extraDate(currentDate: self.currentDate)[1])
-                                        .font(.TextStyles.largeCalendarNumber)
-                                        .foregroundColor(.burgundy)
-                                }
-                                .padding(.leading, 80)
-                            
-                                VStack {
-                                    // 메인 달력 날짜 고르는 PopupDate Button
-                                    Button {
-                                        showDatePicker.toggle()
-                                        isClicked.toggle()
-                                    } label: {
-                                        Image(systemName: "calendar")
-                                            .foregroundColor(.burgundy)
-                                            .font(.title3)
-                                    }
-                                    .padding(.leading, -8)
-                                    
-                                    // 달력 다음 달로 이동
-                                    Button {
-                                        withAnimation {
-                                            self.currentDate =  self.moveCurrentMonth(isUp: true)
+                                .padding(.top, 15)
+                            }
+                            .padding(.leading, 125)
+                        }
+                        
+                        // Day View
+                        HStack(spacing: 0) {
+                            ForEach(CalendarDay.allCases, id: \.self) {day in
+                                Text(day.rawValue)
+                                    .font(.callout)
+                                    .foregroundColor(.gray)
+                                    .frame(maxWidth: .infinity)
+                            }
+                        }
+                        .padding(.top, -15)
+                        
+                        // Dates
+                        // Lazy Grid
+                        let columns = Array(repeating: GridItem(.flexible(), spacing: 0, alignment: nil), count: 7)
+                        
+                        LazyVGrid(columns: columns, spacing: 0) {
+                            ForEach(extractDate(currentDate: self.currentDate)) { value in
+                                ZStack(alignment: .topLeading) {
+                                    CardView(value: value)
+                                    // 이 부분 수정해서 해당날짜에 받은 선물보관함 뷰로 연결되게 하면 될 듯
+                                        .onTapGesture {
+                                            currentDate = value.date
                                         }
-                                    } label: {
-                                        Image(systemName: "chevron.right")
-                                            .foregroundColor(.burgundy)
-                                            .font(.body)
-                                    }
-                                    .padding(.top, 15)
-                                }
-                                .padding(.leading, 125)
-                            }
-                            
-                            // Day View
-                            HStack(spacing: 0) {
-                                ForEach(CalendarDay.allCases, id: \.self) {day in
-                                    Text(day.rawValue)
-                                        .font(.callout)
-                                        .foregroundColor(.gray)
-                                        .frame(maxWidth: .infinity)
                                 }
                             }
-                            
-                            // Dates
-                            // Lazy Grid
-                            let columns = Array(repeating: GridItem(.flexible(), spacing: 0, alignment: nil), count: 7)
-                            
-                            LazyVGrid(columns: columns, spacing: 0) {
-                                ForEach(extractDate(currentDate: self.currentDate)) { value in
-                                    ZStack(alignment: .topLeading) {
-                                        CardView(value: value)
-                                        // 이 부분 수정해서 해당날짜에 받은 선물보관함 뷰로 연결되게 하면 될 듯
-                                            .onTapGesture {
-                                                currentDate = value.date
-                                            }
-                                    }
-                                }
-                            }
+                        }
+                        ScrollView(.vertical, showsIndicators: false) {
                             // Upcoming Events
                             VStack(spacing: 10) {
                                 HStack {
@@ -157,27 +159,31 @@ struct CalendarView: View {
                             }
                             .padding()
                         }
-                        // PopupDateView와 CalendarView 사이에 블러 효과
-                        .opacity(isClicked ? 0.1 : 1 )
-                        
-                        // 달력의 월 계속해서 업데이트
-                        .onChange(of: currentMonth) { _ in
-                            currentDate =  getCurrentMonth()
-                        }
+                        .padding(.vertical)
+                        .background(Color.lightGray)
+                    }
+                    // PopupDateView와 CalendarView 사이에 블러 효과
+                    .opacity(isClicked ? 0.1 : 1 )
+                    
+                    // 달력의 월 계속해서 업데이트
+                    .onChange(of: currentMonth) { _ in
+                        currentDate =  getCurrentMonth()
                     }
                 }
             }
-            .padding(.vertical)
+            //            }
+            //            .padding(.vertical)
             
             // PopUpView 띄우는 코드
             if showDatePicker {
                 PopupDate(popupDate: self.currentDate,
-                              currentDate: $currentDate,
-                              showDatePicker: $showDatePicker,
-                              popUpBoolean: $showDatePicker,
-                              isClicked: $isClicked)
+                          currentDate: $currentDate,
+                          showDatePicker: $showDatePicker,
+                          popUpBoolean: $showDatePicker,
+                          isClicked: $isClicked)
             }
         }
+        .ignoresSafeArea(.all, edges: .bottom)
     }
     
     enum CalendarDay: String, CaseIterable {

@@ -20,7 +20,7 @@ extension View {
             }
         }
         .padding(.vertical, 6)
-        .frame(height: 80)
+        .frame(height: UIScreen.main.bounds.height * 0.075)
         //        .border(Color(uiColor: .systemGray3), width: 0.16)
         .overlay(Rectangle().frame(width: nil, height: 1, alignment: .top).foregroundColor(Color(uiColor: .systemGray6)), alignment: .top)
     }
