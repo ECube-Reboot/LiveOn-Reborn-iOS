@@ -51,7 +51,7 @@ struct LetterView: View {
             // MARK: 쪽지 크기&배경 설정
             .frame(maxWidth: UIScreen.main.bounds.width*0.8, maxHeight: UIScreen.main.bounds.width*0.7)
             .padding(24)
-            .background(Image(letterStyle ?? "letter_green").resizable().shadow(color: Color(uiColor: .systemGray4), radius: 4, x: 1, y: 3))
+            .background(Image( "letter_green").resizable().shadow(color: Color(uiColor: .systemGray4), radius: 4, x: 1, y: 3))
             .overlay {
                 Text(input ?? placeHolder)
                     .font(.TextStyles.handWrittenBody)
