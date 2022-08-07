@@ -25,7 +25,6 @@ struct LetterListView: View {
                 withAnimation {
                   showDetail.toggle()
                 }
-                
               }
           }
         }
@@ -107,7 +106,6 @@ extension LetterListView {
                   .lineSpacing(4)
                   .padding()
                   .frame(maxWidth: .infinity, alignment: .leading)
-              
               Spacer()
               VStack {
                 Text(Date().stringDateToFormat(letter.createdAt))
@@ -118,9 +116,7 @@ extension LetterListView {
               .opacity(0.8)
               .frame(maxWidth: .infinity, alignment: .trailing)
           }
-          
           .frame(width: UIScreen.main.bounds.width*0.65, height: UIScreen.main.bounds.width*0.55, alignment: .leading)
-          
       }
       .foregroundColor(.textBodyColor)
       .frame(width: UIScreen.main.bounds.width*0.8, height: UIScreen.main.bounds.width*0.9, alignment: .center)
