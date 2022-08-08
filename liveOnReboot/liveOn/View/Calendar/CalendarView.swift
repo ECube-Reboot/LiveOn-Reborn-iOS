@@ -62,7 +62,6 @@ struct CalendarView: View {
                                 .padding(.top, -10)
                                 .padding(.bottom, -10)
                         }
-                        
                         // 달력 다음 달로 이동
                         Button {
                             withAnimation {
@@ -76,7 +75,6 @@ struct CalendarView: View {
                         .padding(.top, 30)
                         .padding(.leading, 30)
                     }
-                    
                     // Day View
                     HStack(spacing: 0) {
                         ForEach(CalendarDay.allCases, id: \.self) {day in
@@ -86,7 +84,6 @@ struct CalendarView: View {
                                 .frame(maxWidth: .infinity)
                         }
                     }
-                    
                     // Dates
                     // Lazy Grid
                     let columns = Array(repeating: GridItem(.flexible(), spacing: 0, alignment: nil), count: 7)
@@ -151,7 +148,7 @@ struct CalendarView: View {
                             }
                         }
                     }
-                    .padding()
+                    .padding([.leading, .trailing, .top])
                 }
                 // PopupDate와 CalendarView 사이에 블러 효과
                 .opacity(isClicked ? 0.1 : 1 )
@@ -163,18 +160,17 @@ struct CalendarView: View {
                     currentDate = getNextMonth()
                 }
             }
+            // PopUpView 띄우는 코드
+            if showDatePicker {
+                PopupDate(popupDate: self.currentDate,
+                          currentDate: $currentDate,
+                          showDatePicker: $showDatePicker,
+                          popUpBoolean: $showDatePicker,
+                          isClicked: $isClicked)
+            }
         }
         .padding(.vertical)
         .ignoresSafeArea(.all, edges: .bottom)
-        
-        // PopUpView 띄우는 코드
-        if showDatePicker {
-            PopupDate(popupDate: self.currentDate,
-                      currentDate: $currentDate,
-                      showDatePicker: $showDatePicker,
-                      popUpBoolean: $showDatePicker,
-                      isClicked: $isClicked)
-        }
     }
     
     enum CalendarDay: String, CaseIterable {
@@ -217,10 +213,9 @@ struct CalendarView: View {
     func getPreviousMonth() -> Date {
         
         let calendar = Calendar.current
-        _ = currentMonth - 1
         
         // Getting Current Month Date
-        guard let currentMonth = calendar.date(byAdding: .month, value: self.currentMonth, to: Date())
+        guard let currentMonth = calendar.date(byAdding: .month, value: self.currentMonth - 1, to: Date())
         else {
             return Date()
         }
@@ -231,10 +226,9 @@ struct CalendarView: View {
     func getNextMonth() -> Date {
         
         let calendar = Calendar.current
-        _ = currentMonth + 1
         
         // Getting Current Month Date
-        guard let currentMonth = calendar.date(byAdding: .month, value: self.currentMonth, to: Date())
+        guard let currentMonth = calendar.date(byAdding: .month, value: self.currentMonth + 1, to: Date())
         else {
             return Date()
         }
