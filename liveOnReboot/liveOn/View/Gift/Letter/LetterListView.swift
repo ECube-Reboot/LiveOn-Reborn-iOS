@@ -15,7 +15,7 @@ struct LetterListView: View {
   var body: some View {
     ZStack {
       ScrollView(.vertical) {
-        let columns = Array(repeating: GridItem(.flexible(), spacing: 1, alignment: .center), count: 2)
+        let columns = Array(repeating: GridItem(.adaptive(minimum: 300), spacing: 1, alignment: .center), count: 2)
         
         LazyVGrid(columns: columns, spacing: 1) {
           ForEach(viewModel.letterList.reversed(),  id: \.giftMemoId) { letter in
