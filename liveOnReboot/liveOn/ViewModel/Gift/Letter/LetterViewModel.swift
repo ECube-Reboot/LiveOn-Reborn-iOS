@@ -21,12 +21,8 @@ class LetterViewModel: ObservableObject {
     let param = LetterPostRequest.init(content: content)
     letterMoyaService.request(.postNote(content:param)) { response in
       switch response {
-        case .success(let result):
-          do {
-            print("Letter Upload \(result)")
-          } catch let err {
-            print(err.localizedDescription)
-          }
+        case .success(_):
+          return
         case .failure(let err):
           print(err.localizedDescription)
       }
