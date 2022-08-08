@@ -59,11 +59,7 @@ struct LetterListView: View {
       }
     }
     .task {
-      do  {
-        try await viewModel.letterListGet()
-      } catch {
-        print("error")
-      }
+      await viewModel.letterListGet()
     }
   }
 }
