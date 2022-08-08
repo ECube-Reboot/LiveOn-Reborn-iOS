@@ -8,7 +8,7 @@
 import SwiftUI
 
 // Extending Date to get Current Month Dates
- extension Date {
+extension Date {
     
     func getAllDates() -> [Date] {
         
@@ -25,4 +25,12 @@ import SwiftUI
             return calendar.date(byAdding: .day, value: day - 1, to: startDate)!
         }
     }
- }
+    
+    func getNextMonth() -> Date? {
+        return Calendar.current.date(byAdding: .month, value: 1, to: self)
+    }
+    
+    func getPreviousMonth() -> Date? {
+        return Calendar.current.date(byAdding: .month, value: -1, to: self)
+    }
+}
