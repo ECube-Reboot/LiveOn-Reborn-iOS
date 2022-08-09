@@ -20,7 +20,6 @@ extension Color {
     static let placeHolderColor = Color(hex: "D9D9D9")
     static let crimson = Color(hex: "902F2F")
     static let mainBrown = Color(hex: "6C5151")
-    static let lightGray = Color(hex: "EFEFEF")
 
     static let recordingBtn = Color("Orange")
     static let recordingBtnBackground = Color("Grey")
