@@ -6,6 +6,12 @@
 //
 import SwiftUI
 
+extension Text {
+    func letterCountStyle() -> some View {
+        modifier(LetterCountCaption())
+    }
+}
+
 struct LetterCountCaption: ViewModifier {
     func body(content: Content) -> some View {
         content
