@@ -23,7 +23,7 @@ struct AddUpcomingEventView: View {
     var body: some View {
         VStack {
             header
-
+            
             DatePicker("기념일 추가", selection: $upcomingEventBaseDate, displayedComponents: .date)
                 .datePickerStyle(.graphical)
                 .accentColor(.black)
@@ -41,34 +41,12 @@ struct AddUpcomingEventView: View {
                 .background(Color.backgroundGray.cornerRadius(6))
                 .padding(.top, 15)
             
-            ZStack {
-            if upcomingEventMemo.isEmpty {
-              TextEditor(text: $placeholderText)
-                .multilineTextAlignment(.leading)
-                .padding(.leading, 7)
-                .font(.body)
-                .foregroundColor(Color(UIColor.systemGray3))
-                .padding(.top, 5)
-            }
-            TextEditor(text: $upcomingEventMemo)
-              .multilineTextAlignment(.leading)
-              .padding(.leading, 7)
-              .font(.body)
-              .foregroundColor(.textBodyColor)
-              .lineSpacing(5)
-              .padding(.top, 5)
-            }
-            .onAppear() {
-                UITextView.appearance().backgroundColor = .clear
-            }
-            .onDisappear() {
-                UITextView.appearance().backgroundColor = nil
-            }
-            .background(Color.backgroundGray.cornerRadius(6))
-            .frame(width: 345, height: 124)
-            .padding(.top, 15)
+            footer
         }
         .padding(.top, -110)
+        .onTapGesture {
+            self.hideKeyboard()
+        }
     }
     
     var header: some View {
@@ -99,6 +77,35 @@ struct AddUpcomingEventView: View {
         }
         .padding([.trailing, .leading], 20)
     }
+    
+    var footer: some View {
+        ZStack {
+            if upcomingEventMemo.isEmpty {
+                TextEditor(text: $placeholderText)
+                    .multilineTextAlignment(.leading)
+                    .padding(.leading, 7)
+                    .font(.body)
+                    .foregroundColor(Color(UIColor.systemGray3))
+                    .padding(.top, 5)
+            }
+            TextEditor(text: $upcomingEventMemo)
+                .multilineTextAlignment(.leading)
+                .padding(.leading, 7)
+                .font(.body)
+                .foregroundColor(.textBodyColor)
+                .lineSpacing(5)
+                .padding(.top, 5)
+        }
+        .onAppear() {
+            UITextView.appearance().backgroundColor = .clear
+        }
+        .onDisappear() {
+            UITextView.appearance().backgroundColor = nil
+        }
+        .background(Color.backgroundGray.cornerRadius(6))
+        .frame(width: 345, height: 124)
+        .padding(.top, 15)
+    }
 }
 
 #if canImport(UIKit)
@@ -114,24 +121,3 @@ struct PlusSetting_Previews: PreviewProvider {
         CalendarView().environmentObject(EventStore())
     }
 }
-
-// Test용으로 넣어놓은 거고 아래 코드는 UI에 맞게 수정할 예정
-//            TextField("Comment", text: $upcomingEventTitle, prompt: Text("어떤 기념일인가요?"))
-//                .multilineTextAlignment(TextAlignment.leading)
-//                .foregroundColor(.textBodyColor)
-//                .frame(width: 250, height: 20)
-//                .font(.body)
-//
-//            Text("(\(upcomingEventTitle.count)/20)")
-//                .frame(width: 300, height: 20, alignment: .trailing)
-//                .foregroundColor(.textBodyColor).opacity(0.5)
-//
-//            TextField("Comment", text: $upcomingEventMemo, prompt: Text("메모를 입력해주세요."))
-//                .multilineTextAlignment(TextAlignment.leading)
-//                .foregroundColor(.textBodyColor)
-//                .frame(width: 250, height: 20)
-//                .font(.body)
-//
-//            Text("(\(upcomingEventMemo.count)/20)")
-//                .frame(width: 300, height: 20, alignment: .trailing)
-//                .foregroundColor(.textBodyColor).opacity(0.5)
