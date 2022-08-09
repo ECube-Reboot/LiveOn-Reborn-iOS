@@ -43,8 +43,8 @@ struct CalendarView: View {
                                 self.currentDate = self.moveCurrentMonth(isUp: false)
                             }
                         } label: {
-                            Text(monthDate(currentDate: self.currentDate.getPreviousMonth()!)[0])
-                                .font(.TextStyles.mediumCalendarNumber).opacity(0.7)
+                            Text(monthDate(currentDate: self.currentDate.getPreviousMonth() ?? currentDate)[0])
+                                .font(.TextStyles.mediumCalendarNumber).opacity(0.3)
                                 .foregroundColor(.burgundy)
                         }
                         .padding(.top, 30)
@@ -68,7 +68,7 @@ struct CalendarView: View {
                                 self.currentDate =  self.moveCurrentMonth(isUp: true)
                             }
                         } label: {
-                            Text(monthDate(currentDate: self.currentDate.getNextMonth()!)[0]).opacity(0.7)
+                            Text(monthDate(currentDate: self.currentDate.getNextMonth() ?? currentDate)[0]).opacity(0.3)
                                 .font(.TextStyles.mediumCalendarNumber)
                                 .foregroundColor(.burgundy)
                         }

@@ -31,7 +31,7 @@ struct PopupDate: View {
                     }
                     .font(.system(size: 18).bold())
                     .foregroundColor(.burgundy)
-                    .padding(.top, -16)
+                    .padding(.top, -20)
                     
                     Spacer()
                     
@@ -42,7 +42,7 @@ struct PopupDate: View {
                     }
                     .font(.system(size: 18).bold())
                     .foregroundColor(.burgundy)
-                    .padding(.top, -16)
+                    .padding(.top, -20)
                 }
                 .padding(.horizontal)
             }

@@ -11,7 +11,8 @@ import SwiftUI
 struct liveOnRebootApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+//            ContentView()
+            CalendarView().environmentObject(EventStore())
         }
     }
 }

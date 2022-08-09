@@ -8,9 +8,7 @@
 import SwiftUI
 
 struct AddUpcomingEventView: View {
-    
-    @State private var showAnimation = false
-    @State var show = false
+    @State var placeholderText: String = "메모를 입력해주세요."
     
     @Binding var upcomingEventDate: Date
     @Binding var upcomingEventBaseDate: Date
@@ -31,9 +29,46 @@ struct AddUpcomingEventView: View {
                 .accentColor(.black)
                 .applyTextColor(.burgundy)
                 .background(Color.backgroundGray.cornerRadius(30))
-                .frame(width: UIScreen.main.bounds.width * 0.85, height: UIScreen.main.bounds.height * 0.4)
+                .frame(width: UIScreen.main.bounds.width * 0.88, height: UIScreen.main.bounds.height * 0.4)
+                .padding(.top, 10)
+            
+            TextField("upcomingEventTitle", text: $upcomingEventTitle, prompt: Text("어떤 기념일인가요?"))
+                .multilineTextAlignment(.leading)
+                .padding(.leading, 10)
+                .frame(width: 345, height: 40)
+                .foregroundColor(.textBodyColor)
+                .font(.body)
+                .background(Color.backgroundGray.cornerRadius(6))
+                .padding(.top, 15)
+            
+            ZStack {
+            if upcomingEventMemo.isEmpty {
+              TextEditor(text: $placeholderText)
+                .multilineTextAlignment(.leading)
+                .padding(.leading, 7)
+                .font(.body)
+                .foregroundColor(Color(UIColor.systemGray3))
+                .padding(.top, 5)
+            }
+            TextEditor(text: $upcomingEventMemo)
+              .multilineTextAlignment(.leading)
+              .padding(.leading, 7)
+              .font(.body)
+              .foregroundColor(.textBodyColor)
+              .lineSpacing(5)
+              .padding(.top, 5)
+            }
+            .onAppear() {
+                UITextView.appearance().backgroundColor = .clear
+            }
+            .onDisappear() {
+                UITextView.appearance().backgroundColor = nil
+            }
+            .background(Color.backgroundGray.cornerRadius(6))
+            .frame(width: 345, height: 124)
+            .padding(.top, 15)
         }
-        .padding(.top, -340)
+        .padding(.top, -110)
     }
     
     var header: some View {
@@ -42,13 +77,13 @@ struct AddUpcomingEventView: View {
                 upcomingEventBaseDate = Date.now
                 dismiss()
             }
-            .font(.title2)
+            .font(.title3)
             .foregroundColor(.burgundy)
             
             Spacer()
             
             Text("기념일 추가")
-                .font(.title2.bold())
+                .font(.title3.bold())
                 .foregroundColor(.burgundy)
             
             Spacer()
@@ -59,12 +94,20 @@ struct AddUpcomingEventView: View {
                 upcomingEventBaseDate = Date.now
                 presentationMode.wrappedValue.dismiss()
             }
-            .font(.title2)
+            .font(.title3)
             .foregroundColor(.burgundy)
         }
         .padding([.trailing, .leading], 20)
     }
 }
+
+#if canImport(UIKit)
+extension View {
+    func downKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+}
+#endif
 
 struct PlusSetting_Previews: PreviewProvider {
     static var previews: some View {
