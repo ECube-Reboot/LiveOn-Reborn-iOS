@@ -16,5 +16,4 @@ struct Letter {
   var createdDate: String {
     return Date().dateToString(createdAt)
   }
-  
 }

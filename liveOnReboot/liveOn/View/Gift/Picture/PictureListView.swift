@@ -46,7 +46,6 @@ struct PictureListView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.backgroundGray)
         .ignoresSafeArea(edges: .bottom)
-        
         .overlay {
             if isTapped == true {
                 PhotoCardSheet(indexPath: detailedImage.giftPolaroidId, imageURLString: detailedImage.giftPolaroidImage)
