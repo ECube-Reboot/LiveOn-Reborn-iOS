@@ -6,18 +6,6 @@
 //
 import SwiftUI
 
-extension Text {
-    func mainTextStyle() -> some View {
-        foregroundColor(.mainBrown)
-            .font(.system(size: 20))
-            .fontWeight(.regular)
-    }
-    
-    func letterCountStyle() -> some View {
-        modifier(LetterCountCaption())
-    }
-}
-
 struct LetterCountCaption: ViewModifier {
     func body(content: Content) -> some View {
         content
