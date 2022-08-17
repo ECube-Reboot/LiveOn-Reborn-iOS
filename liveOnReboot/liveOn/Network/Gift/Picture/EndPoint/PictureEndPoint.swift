@@ -44,13 +44,10 @@ extension PictureServerCommunication: TargetType, AccessTokenAuthorizable {
 
         case .imagePost(let comment, let polaroid):
             var multipartForm: [MultipartFormData] = []
-            let imageDataJPEG = polaroid.jpegData(compressionQuality: 1) ?? Data()
-            let imageDataPNG = polaroid.pngData() ?? Data()
             multipartForm.append(MultipartFormData(provider: .data(Data(String(comment).utf8)), name: "comment"))
-
-            if !imageDataJPEG.isEmpty {
+            if let imageDataJPEG = polaroid.jpegData(compressionQuality: 1) {
                 multipartForm.append(MultipartFormData(provider: .data(imageDataJPEG), name: "polaroid", fileName: "sampleTest", mimeType: "sample/png"))
-            } else {
+            } else if let imageDataPNG = polaroid.pngData(){
                 multipartForm.append(MultipartFormData(provider: .data(imageDataPNG), name: "polaroid", fileName: "sampleTest", mimeType: "sample/png"))
             }
             return .uploadMultipart(multipartForm)
