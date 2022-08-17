@@ -20,13 +20,14 @@ struct PictureListView: View {
             ScrollView {
                 LazyVGrid(columns: columns) {
                     ForEach(loadedImageList, id: \.giftPolaroidId) { data in
-                        Button(action: {
+                        Button {
                             isTapped.toggle()
                             print("This is Button Print")
                             photoIndexPath = data.giftPolaroidId
                             detailedImage = loadedImageList.first(where: {
                                 $0.giftPolaroidId == photoIndexPath}) ?? PictureListView.defaultImageData()
-                        }) {
+                        }
+                        label: {
                             PhotoCard(indexPath: data.giftPolaroidId, imageURLString: data.giftPolaroidImage, isTapped: $isTapped)
                         }
                     }
@@ -42,9 +43,9 @@ struct PictureListView: View {
             .padding()
             .blur(radius: isTapped ? 6 : 0)
         } // Zstack
-        .background(Color.background)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .ignoresSafeArea( edges: .bottom)
+        .background(Color.backgroundGray)
+        .ignoresSafeArea(edges: .bottom)
         .overlay {
             if isTapped == true {
                 PhotoCardSheet(indexPath: detailedImage.giftPolaroidId, imageURLString: detailedImage.giftPolaroidImage)
@@ -109,11 +110,11 @@ struct PhotoCard: View {
                             .progressViewStyle(.circular)
                     }
                 }
-                .foregroundColor(.bodyTextColor)
+                .foregroundColor(.textBodyColor)
                 .padding(12)
             }
             .padding(.bottom, 12)
-            .background(RoundedRectangle(cornerRadius: 6).fill(.thickMaterial)  .border(Color.shadowColor, width: 1.0).shadow(color: .gray.opacity(0.4), radius: 10, x: 0, y: 0))
+            .background(RoundedRectangle(cornerRadius: 6).fill(.thickMaterial)  .border(Color.lightgray, width: 1.0).shadow(color: .gray.opacity(0.4), radius: 10, x: 0, y: 0))
         }
         .frame(height: 240)
     }
@@ -139,7 +140,7 @@ struct PhotoCardSheet: View {
             }
             Text(photoText)
                 .setHandWritten()
-                .foregroundColor(.bodyTextColor)
+                .foregroundColor(.textBodyColor)
         }
         .frame(width: UIScreen.main.bounds.width * 0.7, height: UIScreen.main.bounds.height * 0.45, alignment: .center)
         .padding(8)
