@@ -14,7 +14,6 @@ struct SendPictureView: View {
     @State private var isSent = false
     @State private var showLoading = false
     @State private var loadingState: Int = 0
-    @State private var isValidate: Bool = true
 
     @Binding var gotoMain: Bool
     var commentLimit: Int = 20
@@ -75,17 +74,22 @@ struct SendPictureView: View {
                         }
                         ToolbarItem(placement: .navigationBarTrailing) {
                             Button {
-                                showLoading.toggle()
-                                imagePost()
-                                Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false) { _ in
-                                    loadingState += 1
-                                    isSent.toggle()
-                                }
+                                showAlertforSend.toggle()
                             } label: {
                                 Text("선물하기")
                                     .fontWeight(.medium)
                                     .foregroundColor(.black)
                                     .preferredColorScheme(.light)
+                            }
+                            .alert(isPresented: $showAlertforSend) {
+                                Alert(title: Text("선물하기"), message: Text("선물은 하루에 하나만 보낼 수 있어요. 쪽지를 보낼까요?"), primaryButton: .cancel(Text("취소")), secondaryButton: Alert.Button.default(Text("보내기")) {
+                                    showLoading.toggle()
+                                    imagePost()
+                                    Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false) { _ in
+                                        loadingState += 1
+                                        isSent.toggle()
+                                    }
+                                })
                             }
                         }
                         ToolbarItem(placement: .principal) {
