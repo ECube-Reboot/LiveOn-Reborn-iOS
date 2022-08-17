@@ -2,7 +2,7 @@
 //  SendPictureView.swift
 //  liveOnReboot
 //
-//  Created by Keum MinSeok on 2022/07/10.
+//  Created by Jisu Jang on 2022/07/10.
 //
 import SwiftUI
 
@@ -14,10 +14,11 @@ struct SendPictureView: View {
     @State private var isSent = false
     @State private var showLoading = false
     @State private var loadingState: Int = 0
-    
+    @State private var isValidate: Bool = true
+
     @Binding var gotoMain: Bool
     var commentLimit: Int = 20
-    
+
     var body: some View {
         ZStack {
             ScrollView {
@@ -35,30 +36,32 @@ struct SendPictureView: View {
                             } else {
                                 Text("사진을 선택해주세요!")
                                     .frame(width: 300, height: 400, alignment: .center)
+                                    .background(Color.lightgray)
                                     .cornerRadius(2)
                             }
                         }
-                        
                         TextField("Comment", text: $comment, prompt: Text("한 줄 편지를 써주세요!"))
-                            .limitInputLength(value: $comment, length: 20)
                             .frame(width: 300, height: 20, alignment: .leading)
-                        
+
                         HStack {
-                            Text("\(comment.count)/20")
+                            Text("\(comment.count)/\(textLimit.polaroidComment)")
+                                .letterCountStyle()
                                 .frame(width: 300, height: 20, alignment: .trailing)
-                                .foregroundColor(.textBodyColor).opacity(0.5)
+                                .onReceive(comment.publisher.collect()) { _ in
+                                    if comment.count >= 20 {
+                                        withAnimation() {
+                                            self.comment = String(comment.prefix(textLimit.polaroidComment))
+                                        }
+                                    }
+                                }
                         }
-                        
+
                         NavigationLink("", destination: GiftDeliveryView(gotoMain: $gotoMain), isActive: $isSent)
                     }
-                    .background(
-                        Color.white
+                    .padding()
+                    .background(Color.white
                         .cornerRadius(5)
-                        .shadow(color: Color.lightgray, radius: 4, x: 0, y: 4)
-                    )
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .background(Color.backgroundGray)
-                    .blur(radius: showLoading ? 6 : 0)
+                        .shadow(color: Color.black.opacity(0.25), radius: 4, x: 0, y: 4))
                     .navigationBarBackButtonHidden(true)
                     .navigationBarTitleDisplayMode(.inline)
                     .toolbar {
@@ -71,34 +74,33 @@ struct SendPictureView: View {
                             }
                         }
                         ToolbarItem(placement: .navigationBarTrailing) {
-                            //
-
-                            Button(action: {
+                            Button {
                                 showLoading.toggle()
                                 imagePost()
                                 Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false) { _ in
                                     loadingState += 1
                                     isSent.toggle()
                                 }
-                            }) {
+                            } label: {
                                 Text("선물하기")
                                     .fontWeight(.medium)
                                     .foregroundColor(.black)
                                     .preferredColorScheme(.light)
                             }
-                            //
                         }
                         ToolbarItem(placement: .principal) {
                             Text("폴라로이드")
                                 .fontWeight(.bold)
                                 .foregroundColor(.black)
                         }
-                    } // toolbar 끝
-                    // MARK: ImagePicker에 selectedImage가 binding으로 묶여있어 ImaageViewModel 내의 데이터가 바뀌게 됨
+                    }
                     .sheet(isPresented: $pictureModel.showPicker) {
                         PicturePicker(sourceType: pictureModel.source == .library ? .photoLibrary : .camera, selectedImage: $pictureModel.image)
                             .ignoresSafeArea()
                     }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(Color.background)
+                    .blur(radius: showLoading ? 6 : 0)
                 }
                 .padding()
                 .padding(.top, 80)
@@ -113,14 +115,14 @@ struct SendPictureView: View {
             }
         }
         .frame(maxWidth:.infinity, maxHeight: .infinity)
-        .background(Color.backgroundGray)
+        .background(Color.background)
     }
-    
+
     private func imagePost() {
         moyaService.request(.imagePost(comment: comment, polaroid: pictureModel.image ?? UIImage())) { response in
             switch response {
             case .success(let result):
-                    print("response는 다음과 같습니다. \(result)")
+                print("response는 다음과 같습니다. \(result)")
             case .failure(let err):
                 print(err.localizedDescription)
                 print("========= 통신 자체가 실패했습니다. ========")
