@@ -67,6 +67,8 @@ struct SendPictureView: View {
                             }
                         }
                         ToolbarItem(placement: .navigationBarTrailing) {
+                            //
+
                             Button(action: {
                                 showLoading.toggle()
                                 imagePost()
@@ -80,6 +82,7 @@ struct SendPictureView: View {
                                     .foregroundColor(.black)
                                     .preferredColorScheme(.light)
                             }
+                            //
                         }
                         ToolbarItem(placement: .principal) {
                             Text("폴라로이드")
@@ -113,17 +116,13 @@ struct SendPictureView: View {
     }
     
     private func imagePost() {
-        moyaService.request( .imagePost(comment: comment, polaroid: pictureModel.image ?? UIImage())) { response in
+        moyaService.request(.imagePost(comment: comment, polaroid: pictureModel.image ?? UIImage())) { response in
             switch response {
             case .success(let result):
-                do {
-                    print("전송되는 이미지 데이터는 다음과 같습니다:\(pictureModel.image!)")
-                    testImageData = try result.map(PicturePostResponse.self)
-                } catch let err {
-                    print(err.localizedDescription)
-                }
+                    print("response는 다음과 같습니다. \(result)")
             case .failure(let err):
                 print(err.localizedDescription)
+                print("========= 통신 자체가 실패했습니다. ========")
             }
         }
     }

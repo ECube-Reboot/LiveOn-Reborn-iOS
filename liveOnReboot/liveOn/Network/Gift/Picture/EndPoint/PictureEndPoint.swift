@@ -15,11 +15,10 @@ extension PictureServerCommunication: TargetType, AccessTokenAuthorizable {
         switch self {
         case.login:
             return "/api/v1/test/login"
-            
+
         case .imagePost:
             return "api/v1/gifts/polaroids"
-            
-            //MARK: Test용 이미지 GET. 추후 수정하거나 삭제 예정
+
         case .imageGet:
             return "/api/v1/gifts/polaroids/1"
             
@@ -42,13 +41,19 @@ extension PictureServerCommunication: TargetType, AccessTokenAuthorizable {
         switch self {
         case .login(let param):
             return .requestJSONEncodable(param)
-            
-        // MARK: MultiPart HTTP Request format 작성 -> 추후 상세사항 수정예정
+
         case .imagePost(let comment, let polaroid):
             var multipartForm: [MultipartFormData] = []
-            let imageData = polaroid.pngData()
+            let imageDataJPEG = polaroid.jpegData(compressionQuality: 1)
+            let imageDataPNG = polaroid.pngData()
             multipartForm.append(MultipartFormData(provider: .data(Data(String(comment).utf8)), name: "comment"))
-            multipartForm.append(MultipartFormData(provider: .data(imageData!), name: "polaroid", fileName: "sample.png", mimeType: "sample/png"))
+
+
+            if !imageDataJPEG!.isEmpty {
+                multipartForm.append(MultipartFormData(provider: .data(imageDataJPEG!), name: "polaroid", fileName: "sampleTest", mimeType: "sample/png"))
+            } else {
+                multipartForm.append(MultipartFormData(provider: .data(imageDataPNG!), name: "polaroid", fileName: "sampleTest", mimeType: "sample/png"))
+            }
             return .uploadMultipart(multipartForm)
             
         case .imageGet, .imageListGet:
