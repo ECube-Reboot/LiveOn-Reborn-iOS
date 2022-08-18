@@ -14,7 +14,6 @@ class VoicemailViewModel: NSObject, ObservableObject, AVAudioPlayerDelegate {
     var audioPlayer: AVAudioPlayer!
     var playingURL: URL?
     var recording: Recording?
-    let savedPath: URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
     
     @Published var title: String = ""
     @Published var countSec = 0
@@ -29,6 +28,7 @@ class VoicemailViewModel: NSObject, ObservableObject, AVAudioPlayerDelegate {
     
     // MARK: - recording 전
     func fetchRecording() {
+        let savedPath: URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
         let directoryContent = try! FileManager.default.contentsOfDirectory(at: savedPath, includingPropertiesForKeys: nil)[0]
         recording = Recording(fileURL: directoryContent, createdAt: getFileDate(for: directoryContent), title: title, duration: String(countSec))
     }
@@ -46,6 +46,7 @@ class VoicemailViewModel: NSObject, ObservableObject, AVAudioPlayerDelegate {
             fatalError()
         }
         
+        let savedPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
         let fileName = savedPath.appendingPathComponent("live-On : \(Date().toString(dateFormat: "dd-MM-YY 'at' HH:mm:ss")).m4a")
         
         let settings = [

@@ -42,23 +42,7 @@ struct CreateVoicemailView: View {
                 Spacer()
                     .frame(height: 100)
                 
-                if voicemail.isRecorded == true {
-                    Text(" ")
-                    ZStack {
-                        Image(systemName: "circle.fill")
-                            .resizable()
-                            .frame(width: 80, height: 80)
-                            .foregroundColor(Color.recordingBtnBackground)
-                        Image(systemName: "play.fill")
-                            .resizable()
-                            .scaledToFit()
-                            .foregroundColor(Color.recordingBtn)
-                            .frame(width: 40)
-                            .onTapGesture {
-                                voicemail.startPlaying(url: voicemail.savedPath)
-                            }
-                    }
-                } else if voicemail.audioRecorder.isRecording == false {
+                if voicemail.audioRecorder.isRecording == false && voicemail.isRecorded == false {
                     VStack {
                         Text(" ")
                         ZStack {
@@ -75,7 +59,7 @@ struct CreateVoicemailView: View {
                                 }
                         }
                     }
-                } else {
+                } else if voicemail.audioRecorder.isRecording == true && voicemail.isRecorded == false {
                     VStack {
                         Text(voicemail.timeInString)
                         ZStack {
@@ -94,6 +78,26 @@ struct CreateVoicemailView: View {
                                 }
                         }
                     }
+                } else {
+                    Text(" ")
+                    ZStack {
+                        Image(systemName: "circle.fill")
+                            .resizable()
+                            .frame(width: 80, height: 80)
+                            .foregroundColor(Color.recordingBtnBackground)
+                        Image(systemName: "play.fill")
+                            .resizable()
+                            .scaledToFit()
+                            .foregroundColor(Color.recordingBtn)
+                            .frame(width: 40)
+                            .onTapGesture {
+                                if let recordingURL = voicemail.recording?.fileURL {
+                                    voicemail.startPlaying(url: recordingURL)
+                                } else {
+                                    print("재생할 수 없음")
+                                }
+                            }
+                    }
                 }
                 
             }
@@ -101,8 +105,8 @@ struct CreateVoicemailView: View {
     }
 }
 
-//struct CreateVoicemailView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        CreateVoicemailView(title: "제목")
-//    }
-//}
+struct CreateVoicemailView_Previews: PreviewProvider {
+    static var previews: some View {
+        CreateVoicemailView()
+    }
+}
