@@ -18,7 +18,7 @@ struct GiftBoxView: View {
                     Image("addButton")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: 36, height: 36, alignment: .center)
+                        .frame(width: 34, height: 34, alignment: .center)
                 }
             }
             CalendarLinkView()
@@ -54,16 +54,21 @@ struct CoupleInfoLabel: View {
                 
                 // TODO: "재헌" -> 상대방의 이름이 들어가게 바꿀 것
                 Text("재헌")
+                
                 Image("heart")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 20, height: 22, alignment: .center)
+                
                 // TODO: "유진" -> 유저의 이름이 들어가게 바꿀 것
                 Text("유진")
+                
                 // TODO: "365" -> 설정된 첫 날 부터 앱이 실행되고 있는 시점까지의 날짜 계산해서 넣기
                 Text("D+365")
                 
             } // HStack
+            .font(.TextStyles.handWrittenBody)
+
         } // ZStack
     } // body
 }
@@ -89,6 +94,8 @@ struct CalendarLinkView: View {
                         .foregroundColor(.textBodyColor)
                     
                 }
+                .offset(x: -108)
+                
             } // ZStack
         } // NavigationLink
     } // body
@@ -105,13 +112,12 @@ struct LetterAndPictureLinkView: View {
                     .aspectRatio(contentMode: .fit)
             }
             
-            NavigationLink(destination: PictureView()) {
+            NavigationLink(destination: PictureListView()) {
                 Image("photocard")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
             }
-        }
-        
+        } // HStack
     }
 }
 
@@ -131,8 +137,7 @@ struct VoiceAndFlowerLinkView: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
             }
-        }
-        
+        } // HStack
     }
 }
 
