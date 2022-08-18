@@ -25,14 +25,17 @@ struct GiftBoxView: View {
             
             VStack {
                 LetterAndPictureLinkView()
+                    .padding(.bottom, 12)
                 VoiceAndFlowerLinkView()
             } // VStack
             .padding(.horizontal)
             
         } // VStack
         .padding(.horizontal)
+        .foregroundColor(.textBodyColor)
 
     } // body
+    
 }
 
 struct CoupleInfoLabel: View {
@@ -59,6 +62,7 @@ struct CoupleInfoLabel: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 20, height: 22, alignment: .center)
+                    .offset(y: 2)
                 
                 // TODO: "유진" -> 유저의 이름이 들어가게 바꿀 것
                 Text("유진")
@@ -68,6 +72,7 @@ struct CoupleInfoLabel: View {
                 
             } // HStack
             .font(.TextStyles.handWrittenBody)
+            .offset(y: -2)
 
         } // ZStack
     } // body
@@ -87,13 +92,15 @@ struct CalendarLinkView: View {
                     
                     // TODO: 앱이 실행되는 시점의 달을 영어로 표시
                     Text("July")
-                        .foregroundColor(.textBodyColor)
+                        .font(.TextStyles.mediumCalendarNumber)
+                        .offset(y: 12)
                     
                     // TODO: 앱이 실행되는 시점의 달을 숫자로 표시
                     Text("07")
-                        .foregroundColor(.textBodyColor)
-                    
+                        .font(.TextStyles.largeCalendarNumber)
+
                 }
+                .foregroundColor(.textBodyColor)
                 .offset(x: -108)
                 
             } // ZStack
@@ -106,10 +113,11 @@ struct LetterAndPictureLinkView: View {
         
         HStack {
             
-            NavigationLink(destination: LetterView()) {
+            NavigationLink(destination: LetterListView()) {
                 Image("letter")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
+                    .offset(x: -8, y: 12)
             }
             
             NavigationLink(destination: PictureListView()) {
@@ -117,8 +125,9 @@ struct LetterAndPictureLinkView: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
             }
+            
         } // HStack
-    }
+    } // body
 }
 
 struct VoiceAndFlowerLinkView: View {
