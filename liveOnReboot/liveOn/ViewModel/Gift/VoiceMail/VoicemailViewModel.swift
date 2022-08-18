@@ -17,6 +17,10 @@ class VoicemailViewModel: NSObject, ObservableObject, AVAudioPlayerDelegate {
     let savedPath: URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
     
     @Published var title: String = ""
+    @Published var countSec = 0
+    @Published var timerCount: Timer?
+    @Published var timeInString = "0:00"
+    @Published var isRecorded: Bool = false
     
     override init() {
         super.init()
@@ -26,7 +30,7 @@ class VoicemailViewModel: NSObject, ObservableObject, AVAudioPlayerDelegate {
     // MARK: - recording 전
     func fetchRecording() {
         let directoryContent = try! FileManager.default.contentsOfDirectory(at: savedPath, includingPropertiesForKeys: nil)[0]
-        recording = Recording(fileURL: directoryContent, createdAt: getFileDate(for: directoryContent), title: title, duration: "")
+        recording = Recording(fileURL: directoryContent, createdAt: getFileDate(for: directoryContent), title: title, duration: String(countSec))
     }
     
     // MARK: - recording 중
@@ -56,6 +60,11 @@ class VoicemailViewModel: NSObject, ObservableObject, AVAudioPlayerDelegate {
             audioRecorder.prepareToRecord()
             audioRecorder.record()
             
+            timerCount = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
+                self.countSec += 1
+                self.timeInString = self.convertSecToMin(seconds: self.countSec)
+            })
+            self.countSec = 0
         } catch {
             print("Failed to setup the recording")
             fatalError()
@@ -64,6 +73,8 @@ class VoicemailViewModel: NSObject, ObservableObject, AVAudioPlayerDelegate {
     
     func stopRecording() {
         audioRecorder.stop()
+        timerCount?.invalidate()
+        isRecorded = true
     }
     
     // MARK: - recording 후
@@ -99,9 +110,12 @@ class VoicemailViewModel: NSObject, ObservableObject, AVAudioPlayerDelegate {
         } catch {
             print("Can't delete")
         }
+        isRecorded = false
     }
-    
-    // MARK: - etc 함수
+}
+
+// MARK: - etc 함수
+extension VoicemailViewModel {
     func getFileDate(for file: URL) -> Date {
         if let attributes = try? FileManager.default.attributesOfItem(atPath: file.path) as [FileAttributeKey: Any],
            let creationDate = attributes[FileAttributeKey.creationDate] as? Date {
@@ -109,5 +123,11 @@ class VoicemailViewModel: NSObject, ObservableObject, AVAudioPlayerDelegate {
         } else {
             return Date()
         }
+    }
+    
+    func convertSecToMin(seconds: Int) -> String {
+        let (_, m, s) = (seconds / 3600, (seconds % 3600) / 60, (seconds % 3600) % 3600)
+        let sec: String = s < 10 ? "0\(s)" : "\(s)"
+        return "\(m):\(sec)"
     }
 }
