@@ -2,16 +2,23 @@
 //  Date+Extension.swift
 //  liveOnReboot
 //
-//  Created by Keum MinSeok on 2022/07/17.
-//
 
-import SwiftUI
+import Foundation
 
-// Extending Date to get Current Month Dates
- extension Date {
+extension Date {
+    public func dateToString(_ format: Date) -> String {
+      let dateFormatter = DateFormatter()
+      dateFormatter.dateFormat = "YYMMdd"
+      return dateFormatter.string(from: format)
+    }
+
+    public func stringDateToFormat(_ date: String) -> String {
+      let dateFormatter = DateFormatter()
+      dateFormatter.dateFormat = "YYYY-MM-dd"
+      return dateToString(dateFormatter.date(from: date)!)
+    }
     
     func getAllDates() -> [Date] {
-        
         let calendar = Calendar.current
         
         // getting start Date
@@ -26,3 +33,4 @@ import SwiftUI
         }
     }
  }
+

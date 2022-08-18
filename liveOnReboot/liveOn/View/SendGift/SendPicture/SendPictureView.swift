@@ -36,28 +36,33 @@ struct PhotoGiftView: View {
                             } else {
                                 Text("사진을 선택해주세요!")
                                     .frame(width: 300, height: 400, alignment: .center)
-                                    .background(Color.lightGray)
-                                    .foregroundColor(.bodyTextColor)
+                                    .background(Color.lightgray)
+                                    .foregroundColor(.textBodyColor)
                             }
                         }
+                        
                         TextField("Comment", text: $comment, prompt: Text("한 줄 편지를 써주세요!"))
                             .setHandWritten()
                             .limitInputLength(value: $comment, length: 20)
-                            .foregroundColor(.bodyTextColor)
+                            .foregroundColor(.textBodyColor)
                             .frame(width: 300, height: 20, alignment: .leading)
                         
                         HStack {
                             Text("\(comment.count)/20")
                                 .frame(width: 300, height: 20, alignment: .trailing)
-                                .foregroundColor(.bodyTextColor).opacity(0.5)
+                                .foregroundColor(.textBodyColor).opacity(0.5)
                         }
                         
                         NavigationLink("", destination: GiftDeliveryView(gotoMain: $gotoMain), isActive: $isSent)
                     }
-                    .padding()
-                    .background(Color.white
+                    .background(
+                        Color.white
                         .cornerRadius(5)
-                        .shadow(color: Color.black.opacity(0.25), radius: 4, x: 0, y: 4))
+                        .shadow(color: Color.lightgray, radius: 4, x: 0, y: 4)
+                    )
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(Color.backgroundGray)
+                    .blur(radius: showLoading ? 6 : 0)
                     .navigationBarBackButtonHidden(true)
                     .toolbar {
                         ToolbarItem(placement: .navigationBarLeading) {
@@ -65,7 +70,6 @@ struct PhotoGiftView: View {
                                 dismiss()
                             } label: {
                                 Image(systemName: "chevron.left")
-                                //                                .font(.system(size: 20))
                                     .foregroundColor(.black)
                             }
                         }
@@ -95,9 +99,6 @@ struct PhotoGiftView: View {
                         PicturePicker(sourceType: pictureModel.source == .library ? .photoLibrary : .camera, selectedImage: $pictureModel.image)
                             .ignoresSafeArea()
                     }
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .background(Color.background)
-                    .blur(radius: showLoading ? 6 : 0)
                 }
                 .padding()
                 .padding(.top, 80)
@@ -112,7 +113,7 @@ struct PhotoGiftView: View {
             }
         }
         .frame(maxWidth:.infinity, maxHeight: .infinity)
-        .background(Color.background)
+        .background(Color.backgroundGray)
     }
     
     func imagePost() {
