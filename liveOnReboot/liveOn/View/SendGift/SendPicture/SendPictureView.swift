@@ -16,7 +16,6 @@ struct SendPictureView: View {
     @State private var loadingState: Int = 0
 
     @Binding var gotoMain: Bool
-    var commentLimit: Int = 20
 
     var body: some View {
         ZStack {
