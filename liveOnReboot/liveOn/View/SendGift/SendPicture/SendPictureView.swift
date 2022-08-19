@@ -73,21 +73,22 @@ struct SendPictureView: View {
                         }
                         ToolbarItem(placement: .navigationBarTrailing) {
                             Button {
+                              if pictureModel.image != nil {
                                 showAlertforSend.toggle()
+                              }
                             } label: {
                                 Text("선물하기")
-                                    .fontWeight(.medium)
-                                    .foregroundColor(.black)
-                                    .preferredColorScheme(.light)
                             }
+                            .disabled(pictureModel.image == nil)
                             .alert(isPresented: $showAlertforSend) {
                                 Alert(title: Text("선물하기"), message: Text("선물은 하루에 하나만 보낼 수 있어요. 쪽지를 보낼까요?"), primaryButton: .cancel(Text("취소")), secondaryButton: Alert.Button.default(Text("보내기")) {
                                     showLoading.toggle()
-                                    imagePost()
-                                    Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false) { _ in
-                                        loadingState += 1
-                                        isSent.toggle()
-                                    }
+                                  
+                                  imagePost {
+                                    print("전송완료!")
+                                    showLoading.toggle()
+                                    isSent.toggle()
+                                  }
                                 })
                             }
                         }
@@ -103,7 +104,8 @@ struct SendPictureView: View {
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .background(Color.background)
-                    .blur(radius: showLoading ? 6 : 0)
+                    //.blur(radius: showLoading ? 6 : 0)
+                    
                 }
                 .padding()
                 .padding(.top, 80)
@@ -111,25 +113,35 @@ struct SendPictureView: View {
                     hideKeyboard()
                 }
             }
-            if showLoading == true {
-                Image(loadingState == 0 ? "LoadingCharacter" : "")
-                    .frame(width: 300, height: 300, alignment: .center)
-                    .frame(maxWidth:.infinity, maxHeight: .infinity)
+            .overlay{
+              if showLoading {
+                loadingView()
+              }
             }
         }
         .frame(maxWidth:.infinity, maxHeight: .infinity)
         .background(Color.background)
     }
 
-    private func imagePost() {
+  
+  private func imagePost(completion: @escaping () -> ()) {
         moyaService.request(.imagePost(comment: comment, polaroid: pictureModel.image ?? UIImage())) { response in
             switch response {
             case .success(_):
-                return
+                completion()
             case .failure(let err):
                 print(err.localizedDescription)
                 print("========= 통신 자체가 실패했습니다. ========")
             }
         }
+      
     }
+}
+
+struct loadingView: View {
+  var body: some View {
+      Text("선물 보내는 중...")
+      .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+      .background(.thickMaterial)
+  }
 }
