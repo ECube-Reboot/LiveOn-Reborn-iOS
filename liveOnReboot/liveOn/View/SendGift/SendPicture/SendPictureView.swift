@@ -32,8 +32,9 @@ struct SendPictureView: View {
                                     .frame(width: UIScreen.main.bounds.width * 0.8, height: UIScreen.main.bounds.width * 0.8)
                             } else {
                                 Text("사진을 선택해주세요!")
+                                    .foregroundColor(Color.textBodyColor)
                                     .frame(width: 300, height: 400, alignment: .center)
-                                    .background(Color.lightgray)
+                                    .background(Color.backgroundGray)
                                     .cornerRadius(2)
                             }
                         }
@@ -52,7 +53,6 @@ struct SendPictureView: View {
                                     }
                                 }
                         }
-
                         NavigationLink("", destination: GiftDeliveryView(gotoMain: $gotoMain), isActive: $isSent)
                     }
                     .padding()
@@ -102,7 +102,7 @@ struct SendPictureView: View {
                             .ignoresSafeArea()
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .background(Color.background)
+                    .background(Color.backgroundGray)
                 }
                 .padding()
                 .padding(.top, 80)
@@ -120,7 +120,6 @@ struct SendPictureView: View {
         .background(Color.background)
     }
 
-
     private func imagePost(completion: @escaping () -> ()) {
         moyaService.request(.imagePost(comment: comment, polaroid: pictureModel.image ?? UIImage())) { response in
             switch response {
@@ -131,7 +130,6 @@ struct SendPictureView: View {
                 print("========= 통신 자체가 실패했습니다. ========")
             }
         }
-
     }
 }
 
