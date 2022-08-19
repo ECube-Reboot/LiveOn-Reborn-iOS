@@ -9,19 +9,17 @@ import SwiftUI
 
 
 struct SendLetterView: View {
-    
-    
     @Binding var gotoMain: Bool
     @State private var isSent = false
     @Environment(\.dismiss) var dismiss
     
     @State var showAlertforSend: Bool = false
-    @State var letterStyle: String?
+    @State var letterColor: String = ""
     @State var input: String?
     @State var isValidate = false
-    
-    
+
     private let placeHolder = PlaceHolder.createLetter
+
     var body: some View {
         VStack(alignment: .center) {
             VStack(alignment: .center) {
@@ -51,7 +49,7 @@ struct SendLetterView: View {
             // MARK: 쪽지 크기&배경 설정
             .frame(maxWidth: UIScreen.main.bounds.width*0.8, maxHeight: UIScreen.main.bounds.width*0.7)
             .padding(24)
-            .background(Image( "letter_green").resizable().shadow(color: Color(uiColor: .systemGray4), radius: 4, x: 1, y: 3))
+            .background(Image(letterColor).resizable().shadow(color: Color(uiColor: .systemGray4), radius: 4, x: 1, y: 3))
             .overlay {
                 Text(input ?? placeHolder)
                     .font(.TextStyles.handWrittenBody)
@@ -71,8 +69,7 @@ struct SendLetterView: View {
                 // MARK: 보내기 전 alert창
                     .alert(isPresented: $showAlertforSend) {
                         Alert(title: Text("선물하기"), message: Text("선물은 하루에 하나만 보낼 수 있어요. 쪽지를 보낼까요?"), primaryButton: .cancel(Text("취소")), secondaryButton: Alert.Button.default(Text("보내기")) {
-                            //TODO: 서버 연동
-                            LetterViewModel.viewModel.updateContent(content: input!, completion: LetterViewModel.viewModel.letterPost)
+                            LetterViewModel.viewModel.updateContent(color: letterColor, content: input!, completion: LetterViewModel.viewModel.letterPost)
                             self.gotoMain = true
                             self.isSent = true
                         })
@@ -86,5 +83,14 @@ struct SendLetterView: View {
         }
         .frame(maxWidth: .infinity,maxHeight: .infinity, alignment: .center)
         .background(Color.backgroundGray)
+        .onAppear{
+            getRandomColor()
+        }
+    }
+    
+    private func getRandomColor() {
+        if let randomColor = LetterColorStyle.letterColors.randomElement() {
+            letterColor = randomColor
+        }
     }
 }

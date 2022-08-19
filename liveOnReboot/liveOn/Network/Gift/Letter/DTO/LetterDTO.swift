@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct LetterPostRequest: Codable {
+    let color: String
     let content: String
 }
 

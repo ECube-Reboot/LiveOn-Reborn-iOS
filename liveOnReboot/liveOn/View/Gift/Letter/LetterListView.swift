@@ -18,7 +18,7 @@ struct LetterListView: View {
                 let columns = Array(repeating: GridItem(.adaptive(minimum: 300), spacing: 1, alignment: .center), count: 2)
                 
                 LazyVGrid(columns: columns, spacing: 1) {
-                    ForEach(viewModel.letterList.reversed(),  id: \.giftMemoId) { letter in
+                    ForEach(viewModel.letterList.reversed(),  id: \.giftNoteId) { letter in
                         LetterView(letter: letter)
                             .onTapGesture {
                                 selectedLetter = letter
@@ -86,7 +86,7 @@ extension LetterListView {
                 .padding(24)
                 .frame(width: UIScreen.main.bounds.width*0.45, height: UIScreen.main.bounds.width*0.45, alignment: .center)
                 .foregroundColor(.textBodyColor)
-                .background(Image("letter_green").resizable().scaledToFit().shadow(color: .shadowColor, radius: 2, x: 1, y: 1))
+                .background(Image(letter.color).resizable().scaledToFit().shadow(color: .shadowColor, radius: 2, x: 1, y: 1))
             }
         }
     }
@@ -116,7 +116,7 @@ extension LetterListView {
             }
             .foregroundColor(.textBodyColor)
             .frame(width: UIScreen.main.bounds.width*0.8, height: UIScreen.main.bounds.width*0.9, alignment: .center)
-            .background(Image("letter_green").resizable().scaledToFit().shadow(color: Color(uiColor: .systemGray4), radius: 4, x: 1, y: 3))
+            .background(Image(letter.color).resizable().scaledToFit().shadow(color: Color(uiColor: .systemGray4), radius: 4, x: 1, y: 3))
         }
     }
 }

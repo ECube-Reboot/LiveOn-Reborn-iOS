@@ -12,13 +12,14 @@ class LetterViewModel: ObservableObject {
     
     var newLetter = Letter()
     @Published var letterList = [LetterGet]()
-    func updateContent(content: String, completion: (String) -> () ) {
+    func updateContent(color: String, content: String, completion: (String,String) -> () ) {
+        newLetter.color = color
         newLetter.content = content
-        completion(newLetter.content)
+        completion(newLetter.color, newLetter.content)
     }
     
-    func letterPost(content: String) {
-        let param = LetterPostRequest.init(content: content)
+    func letterPost(color: String, content: String) {
+        let param = LetterPostRequest.init(color: color, content: content)
         letterMoyaService.request(.postNote(content:param)) { response in
             switch response {
                 case .success(_):
