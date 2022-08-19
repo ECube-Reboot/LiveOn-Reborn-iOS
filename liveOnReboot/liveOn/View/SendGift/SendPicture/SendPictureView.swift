@@ -124,8 +124,8 @@ struct SendPictureView: View {
     private func imagePost() {
         moyaService.request(.imagePost(comment: comment, polaroid: pictureModel.image ?? UIImage())) { response in
             switch response {
-            case .success(let result):
-                print("response는 다음과 같습니다. \(result)")
+            case .success(_):
+                return
             case .failure(let err):
                 print(err.localizedDescription)
                 print("========= 통신 자체가 실패했습니다. ========")
