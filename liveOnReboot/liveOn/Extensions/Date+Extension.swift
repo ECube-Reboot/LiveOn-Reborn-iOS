@@ -7,15 +7,15 @@ import Foundation
 
 extension Date {
     public func dateToString(_ format: Date) -> String {
-      let dateFormatter = DateFormatter()
-      dateFormatter.dateFormat = "YYMMdd"
-      return dateFormatter.string(from: format)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYMMdd"
+        return dateFormatter.string(from: format)
     }
-
+    
     public func stringDateToFormat(_ date: String) -> String {
-      let dateFormatter = DateFormatter()
-      dateFormatter.dateFormat = "YYYY-MM-dd"
-      return dateToString(dateFormatter.date(from: date)!)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYY-MM-dd"
+        return dateToString(dateFormatter.date(from: date)!)
     }
     
     func getAllDates() -> [Date] {
@@ -32,5 +32,16 @@ extension Date {
             return calendar.date(byAdding: .day, value: day - 1, to: startDate)!
         }
     }
- }
+    
+    func toString(dateFormat format: String ) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format
+        return dateFormatter.string(from: self)
+    }
+    
+    func countDays() -> Int {
+        let calendar = Calendar.current
+        return calendar.dateComponents([.day], from: self, to: Date()).day! + 1
+    }
+}
 
