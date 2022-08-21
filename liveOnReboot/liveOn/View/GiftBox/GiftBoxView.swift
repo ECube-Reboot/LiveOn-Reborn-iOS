@@ -2,7 +2,7 @@
 //  GiftBoxView.swift
 //  liveOnReboot
 //
-//  Created by Keum MinSeok on 2022/07/09.
+//  Created by Boyoung Kim on 2022/07/09.
 //
 
 import SwiftUI
@@ -21,6 +21,7 @@ struct GiftBoxView: View {
                         .frame(width: 34, height: 34, alignment: .center)
                 }
             }
+            
             CalendarLinkView()
             
             VStack {
