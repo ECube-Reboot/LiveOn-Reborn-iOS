@@ -7,39 +7,26 @@
 
 import SwiftUI
 
+// FlowerListView로 바꿔야..
 struct FlowerView: View {
-    
-    // MARK: Dummy Data
-    
+        
     var body: some View {
         
         VStack {
-            
-            // TODO:  이미지를 받아 넣는 곳
-            TempCard(cardText: "오늘의 꽃 이미지")
-            
-            // TODO: 쪽지 이미지
-            TempCard(cardText: "쪽지 이미지\n&\n텍스트 필드")
+            Text("주고 받은 꽃들을 볼 수 있는 뷰")
             
         } // VStack
-        .navigationTitle("꽃 선물하기")
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                NavigationLink(destination: SendFlowerView()) {
+                    Image("addButton")
+                        .resizable()
+                        .frame(width: 24, height: 24, alignment: .center)
+                        .aspectRatio(contentMode: .fit)
+                }
+            }
+        }
     }
-}
-
-struct TempCard: View {
-    
-    let cardText: String
-    
-    var body: some View {
-        
-        ZStack{
-            RoundedRectangle(cornerRadius: 12)
-                .stroke()
-                .frame(width: 360, height: 160, alignment: .center)
-            Text(cardText)
-            
-        } // ZStack
-    } // body
 }
 
 struct FlowerView_Previews: PreviewProvider {
