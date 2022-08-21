@@ -10,31 +10,32 @@ import SwiftUI
 struct GiftBoxView: View {
     var body: some View {
         
-        VStack (alignment: .leading, spacing: 12) {
-            HStack {
-                CoupleInfoLabel()
-                Spacer()
-                NavigationLink(destination: GiftListView()) {
-                    Image("addButton")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 34, height: 34, alignment: .center)
+        NavigationView {
+            VStack (alignment: .leading, spacing: 12) {
+                HStack {
+                    CoupleInfoLabel()
+                    Spacer()
+                    NavigationLink(destination: GiftListView()) {
+                        Image("addButton")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 34, height: 34, alignment: .center)
+                    }
                 }
-            }
-            
-            CalendarLinkView()
-            
-            VStack {
-                LetterAndPictureLinkView()
-                    .padding(.bottom, 12)
-                VoiceAndFlowerLinkView()
+                
+                CalendarLinkView()
+                
+                VStack {
+                    LetterAndPictureLinkView()
+                        .padding(.bottom, 12)
+                    VoiceAndFlowerLinkView()
+                } // VStack
+                
             } // VStack
             .padding(.horizontal)
+            .foregroundColor(.textBodyColor)
             
-        } // VStack
-        .padding(.horizontal)
-        .foregroundColor(.textBodyColor)
-
+        } // NavigationView
     } // body
     
 }
@@ -74,7 +75,7 @@ struct CoupleInfoLabel: View {
             } // HStack
             .font(.TextStyles.handWrittenBody)
             .offset(y: -2)
-
+            
         } // ZStack
     } // body
 }
@@ -99,10 +100,10 @@ struct CalendarLinkView: View {
                     // TODO: 앱이 실행되는 시점의 달을 숫자로 표시
                     Text("07")
                         .font(.TextStyles.largeCalendarNumber)
-
+                    
                 }
                 .foregroundColor(.textBodyColor)
-                .offset(x: -108)
+                .offset(x: -106)
                 
             } // ZStack
         } // NavigationLink
