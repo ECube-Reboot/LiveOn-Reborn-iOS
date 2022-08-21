@@ -25,6 +25,14 @@ struct GiftBoxView: View {
                 
                 CalendarLinkView()
                 
+                // TODO: 가운데 정렬
+                /*
+                 
+                 캘린더는 가운데에 잘 붙어 있는데,
+                 쪽지랑 사진, 음성, 꽃들은 가운데에 안 붙고 왼쪽 정렬되어 있음
+                 
+                 */
+                
                 VStack {
                     LetterAndPictureLinkView()
                         .padding(.bottom, 12)
