@@ -17,6 +17,7 @@ struct SendLetterView: View {
     @State var letterColor: String = ""
     @State var input: String?
     @State var isValidate = false
+    @State var showLoading = false
 
     private let placeHolder = PlaceHolder.createLetter
 
@@ -69,11 +70,20 @@ struct SendLetterView: View {
                 // MARK: 보내기 전 alert창
                     .alert(isPresented: $showAlertforSend) {
                         Alert(title: Text("선물하기"), message: Text("선물은 하루에 하나만 보낼 수 있어요. 쪽지를 보낼까요?"), primaryButton: .cancel(Text("취소")), secondaryButton: Alert.Button.default(Text("보내기")) {
-                            LetterViewModel.viewModel.updateContent(color: letterColor, content: input!, completion: LetterViewModel.viewModel.letterPost)
-                            self.gotoMain = true
-                            self.isSent = true
+                            self.showLoading = true
+                            LetterViewModel.viewModel.updateContent(color: letterColor, content: input!, posting: LetterViewModel.viewModel.letterPost){
+                                self.showLoading = false
+                                self.gotoMain = true
+                                self.isSent = true
+                            }
                         })
                     })
+            .overlay{
+              if showLoading {
+                Text("로딩뷰")
+                  //TODO: 로딩뷰 삽입하기
+              }
+            }
             .navigationToBack(dismiss)
             .preferredColorScheme(.light)
             .navigationBarTitle("쪽지", displayMode: .inline)

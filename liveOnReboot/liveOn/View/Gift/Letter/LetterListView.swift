@@ -12,25 +12,36 @@ struct LetterListView: View {
     @State var selectedLetter: LetterGet?
     @State var showDetail = false
     @State var showCreateView = false
+    @State var isLoaded = false
     var body: some View {
-        ZStack {
-            ScrollView(.vertical) {
-                let columns = Array(repeating: GridItem(.adaptive(minimum: 300), spacing: 1, alignment: .center), count: 2)
-                
-                LazyVGrid(columns: columns, spacing: 1) {
-                    ForEach(viewModel.letterList.reversed(),  id: \.giftNoteId) { letter in
-                        LetterView(letter: letter)
-                            .onTapGesture {
-                                selectedLetter = letter
-                                withAnimation {
-                                    showDetail.toggle()
-                                }
+        VStack{
+                if !isLoaded {
+                    ProgressView()
+                } else {
+                    if !viewModel.letterList.isEmpty {
+                        ScrollView(.vertical) {
+                        let columns = Array(repeating: GridItem(.adaptive(minimum: 300), spacing: 1, alignment: .center), count: 2)
+                        LazyVGrid(columns: columns, spacing: 1) {
+                            ForEach(viewModel.letterList.reversed(),  id: \.giftNoteId) { letter in
+                                LetterView(letter: letter)
+                                    .onTapGesture {
+                                        selectedLetter = letter
+                                        withAnimation {
+                                            showDetail.toggle()
+                                        }
+                                    }
                             }
+                        }
+                        }
+                    } else {
+                        Text("아직 주고받은 쪽지가 없어요.")
+                            .foregroundColor(.textBodyColor)
+                            .opacity(0.5)
+                         //   .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
                     }
                 }
-            } // ScrollView
-        }
-        .frame(maxWidth: .infinity, alignment: .center)
+        }  // ScrollView
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
         .background(Color.backgroundGray)
         .navigationTitle("쪽지함")
         .toolbar {
@@ -59,7 +70,9 @@ struct LetterListView: View {
             }
         }
         .task {
-            await viewModel.letterListGet()
+            await viewModel.letterListGet(completion: {
+                isLoaded = true
+            })
         }
     }
 }
