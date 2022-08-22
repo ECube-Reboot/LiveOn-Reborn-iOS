@@ -50,6 +50,6 @@ struct PopupDate: View {
             .background(Color.backgroundGray.cornerRadius(30))
         }
         .frame(width: UIScreen.main.bounds.width * 0.8, height: UIScreen.main.bounds.height * 0.36, alignment: .center)
-        .padding(.top, -300)
+        .padding(.top, -540)
     }
 }
