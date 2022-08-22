@@ -9,6 +9,8 @@ import SwiftUI
 
 // FlowerListView로 바꿔야..
 struct FlowerView: View {
+    
+    @Environment(\.dismiss) var dismiss
         
     var body: some View {
         
@@ -16,6 +18,7 @@ struct FlowerView: View {
             Text("주고 받은 꽃들을 볼 수 있는 뷰")
             
         } // VStack
+        .navigationToBack(dismiss)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 NavigationLink(destination: SendFlowerView()) {

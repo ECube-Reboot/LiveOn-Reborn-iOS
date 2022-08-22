@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct SendFlowerView: View {
+    
+    @Environment(\.dismiss) var dismiss
+
     var body: some View {
         VStack {
             
@@ -18,6 +21,8 @@ struct SendFlowerView: View {
             TempCard(cardText: "쪽지 이미지\n&\n텍스트 필드")
             
         } // VStack
+        .navigationToBack(dismiss)
+
     } // body
 }
 
