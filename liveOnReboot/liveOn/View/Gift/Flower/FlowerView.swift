@@ -2,7 +2,7 @@
 //  FlowerView.swift
 //  liveOnReboot
 //
-//  Created by 김보영 on 2022/07/17.
+//  Created by teethemoji on 2022/07/17.
 //
 
 import SwiftUI

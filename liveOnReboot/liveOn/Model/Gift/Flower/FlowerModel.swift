@@ -2,7 +2,7 @@
 //  FlowerModel.swift
 //  liveOnReboot
 //
-//  Created by 김보영 on 2022/07/11.
+//  Created by teethemoji on 2022/07/11.
 //
 
 import Foundation
@@ -42,6 +42,7 @@ class FlowerGift: Identifiable, ObservableObject {
     }
 }
 
+// 더미데이터
 #if DEBUG
 extension FlowerGift {
     
