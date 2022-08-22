@@ -10,15 +10,18 @@ import SwiftUI
 struct SendFlowerView: View {
     
     @Environment(\.dismiss) var dismiss
+    
+    @State var showAlertforSend: Bool = false
+    @State var isValidate = false
 
     var body: some View {
         VStack {
             
             // TODO:  이미지를 받아 넣는 곳
-            TempCard(cardText: "오늘의 꽃 이미지")
+            tempCard(cardName: "오늘의 꽃 이미지")
             
             // TODO: 쪽지 이미지
-            TempCard(cardText: "쪽지 이미지\n&\n텍스트 필드")
+            tempCard(cardName: "쪽지 이미지\n&\n텍스트 필드")
             
         } // VStack
         .navigationToBack(dismiss)
@@ -26,9 +29,9 @@ struct SendFlowerView: View {
     } // body
 }
 
-struct TempCard: View {
+struct tempCard: View {
     
-    let cardText: String
+    let cardName: String
     
     var body: some View {
         
@@ -36,7 +39,7 @@ struct TempCard: View {
             RoundedRectangle(cornerRadius: 12)
                 .stroke()
                 .frame(width: 360, height: 160, alignment: .center)
-            Text(cardText)
+            Text(cardName)
             
         } // ZStack
     } // body
