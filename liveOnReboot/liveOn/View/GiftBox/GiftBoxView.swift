@@ -8,13 +8,10 @@
 import SwiftUI
 
 struct GiftBoxView: View {
-    
-    // MARK: Properties
-    
     var body: some View {
         
         NavigationView {
-            LazyHStack {
+            HStack(alignment: .top, spacing: 12) {
                 VStack (alignment: .center, spacing: 12) {
                     
                     // MARK: 커플 정보 라벨과 선물 제작 버튼이 들어가는 상단 바
@@ -28,7 +25,6 @@ struct GiftBoxView: View {
                                 .frame(width: 34, height: 34, alignment: .center)
                         }
                     }
-                    .frame(width: UIScreen.main.bounds.width * 0.94, height:  UIScreen.main.bounds.height * 0.14)
                     
                     CalendarLinkView()
                     
@@ -48,18 +44,17 @@ struct GiftBoxView: View {
                             .padding(.bottom, 12)
                         VoiceAndFlowerLinkView()
                         
+                        Spacer()
                     } // VStack
-                    
-                    Spacer()
                     
                 } // VStack
                 .padding(.horizontal)
                 .foregroundColor(.textBodyColor)
                 
-            } // NavigationView
-            .navigationBarHidden(true)
+            } // HStack
             
         } // NavigationView
+        .navigationBarHidden(true)
     } // body
 }
 
@@ -177,8 +172,6 @@ struct VoiceAndFlowerLinkView: View {
 
 struct GiftBoxView_Previews: PreviewProvider {
     static var previews: some View {
-        
         GiftBoxView()
-        
     }
 }
