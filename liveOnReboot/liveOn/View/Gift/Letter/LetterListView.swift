@@ -9,10 +9,10 @@ import SwiftUI
 
 struct LetterListView: View {
     @ObservedObject private var viewModel: LetterViewModel = LetterViewModel()
-    @State var selectedLetter: LetterGet?
-    @State var showDetail = false
-    @State var showCreateView = false
-    @State var isLoaded = false
+    @State private var selectedLetter: LetterGet?
+    @State private var showDetail = false
+    @State private var showCreateView = false
+    @State private var isLoaded = false
     var body: some View {
         VStack{
                 if !isLoaded {
