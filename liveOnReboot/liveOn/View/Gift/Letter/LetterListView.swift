@@ -13,6 +13,12 @@ struct LetterListView: View {
     @State private var showDetail = false
     @State private var showCreateView = false
     @State private var isLoaded = false
+    
+    private let columns = Array(repeating: GridItem(.adaptive(minimum: 300),
+                                            spacing: 1,
+                                            alignment: .center),
+
+                        count: 2)
     var body: some View {
         VStack{
                 if !isLoaded {
@@ -20,7 +26,6 @@ struct LetterListView: View {
                 } else {
                     if !viewModel.letterList.isEmpty {
                         ScrollView(.vertical) {
-                        let columns = Array(repeating: GridItem(.adaptive(minimum: 300), spacing: 1, alignment: .center), count: 2)
                         LazyVGrid(columns: columns, spacing: 1) {
                             ForEach(viewModel.letterList.reversed(),  id: \.giftNoteId) { letter in
                                 LetterView(letter: letter)
