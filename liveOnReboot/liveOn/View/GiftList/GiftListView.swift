@@ -16,16 +16,24 @@ struct GiftListView: View {
         NavigationView{
             VStack {
                 Image("cassetteIcon04")
+                
+                ZStack {
+                Image("bubble")
+                    Text("오늘은 어떤 선물을 보내볼까요?")
+                        
+                }
+                
             }
             .navigationToBack(dismiss)
+            
         } // NavigationView
     } // body
 }
 
-struct TempCard: View {
+struct CardWithStroke: View {
     
     let cardName: String
-    let
+    let cardImage: String
     
     var body: some View {
         
