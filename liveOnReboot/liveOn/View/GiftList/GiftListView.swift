@@ -31,7 +31,9 @@ struct GiftListView: View {
                     .offset(y: 4)
             } // ZStack
             
-            LazyVStack(alignment: .trailing, spacing: 8) {
+            LazyVStack(alignment: .trailing, spacing: 16) {
+                
+                // TODO: 카드 내 이미지와 텍스트 왼쪽 정렬
                 
                 NavigationLink(destination: SendLetterView(gotoMain: $tempGotoMain)) {
                     CardWithStroke(cardName: "쪽지", cardImage: "letterIcon")
@@ -49,6 +51,8 @@ struct GiftListView: View {
             } // VStack 우측 제작뷰 이동 버튼 스택
             .padding(.top, 12)
             
+            Spacer()
+            
         } // VStack
         .font(.TextStyles.handWrittenBody)
         .foregroundColor(.textBodyColor)
@@ -56,6 +60,7 @@ struct GiftListView: View {
         .navigationBarTitleDisplayMode(.inline)
         .navigationToBack(dismiss)
         .padding(.horizontal)
+        
     } // body
 }
 
