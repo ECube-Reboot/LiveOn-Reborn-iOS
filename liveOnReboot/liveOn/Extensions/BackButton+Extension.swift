@@ -7,6 +7,8 @@
 import SwiftUI
 
 extension View {
+    
+    /// 이전 페이지로 돌아가는 버튼으로 @Environment(\.dismiss) var dismiss와 함께 사용합니다
     func navigationToBack( _ dismissAction: DismissAction) -> some View {
         navigationBarBackButtonHidden(true)
             .toolbar {
@@ -21,6 +23,7 @@ extension View {
                 }
             }
     }
+    
     func navigationCancel( _ dismissAction: DismissAction) -> some View {
         navigationBarBackButtonHidden(true)
             .toolbar {
