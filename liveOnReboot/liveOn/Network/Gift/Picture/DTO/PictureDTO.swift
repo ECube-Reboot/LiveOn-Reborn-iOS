@@ -8,8 +8,8 @@ import Foundation
 import Moya
 
 struct PicturePostResponse: Codable {
-    let contentRecieved: String
-    let imageName: String
+    let comment: String
+    let polaroid: String
 }
 
 struct PictureGetResponse: Codable {
@@ -18,7 +18,3 @@ struct PictureGetResponse: Codable {
     let giftPolaroidImage: String
     let userNickName: String
 }
-
-// MARK: Test용 임시 데이터
-var testImageData: PicturePostResponse?
-var loadedImage: PictureGetResponse?
