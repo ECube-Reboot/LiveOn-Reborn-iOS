@@ -5,16 +5,21 @@
 //  Created by Keum MinSeok on 2022/07/09.
 //
 
-import SwiftUI
+import Foundation
 
-struct VoiceMailDTO: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
+struct VoicemailListGetResponse: Codable {
+    let createdAt: String
+    let currentUser: Bool
+    let giftVoiceMailDuration: String
+    let giftVoiceMailId: Int
+    let title: String
+    let userNickName: String
 }
 
-struct VoiceMailDTO_Previews: PreviewProvider {
-    static var previews: some View {
-        VoiceMailDTO()
-    }
+struct VoicemailGetResponse: Codable {
+    
+}
+
+struct VoicemailPostResponse: Codable {
+    
 }
