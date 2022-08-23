@@ -8,9 +8,9 @@ import SwiftUI
 struct PictureListView: View {
     
     @Environment(\.dismiss) private var dismiss
+    @ObservedObject var viewModel: PictureViewModel = PictureViewModel()
     @State private var photoIndexPath: Int64 = 0
     @State private var isTapped: Bool = false
-    @State private var loadedImageList: [PictureGetResponse] = []
     @State private var detailedImage: PictureGetResponse = PictureListView.defaultImageData()
     private let columns = Array(repeating: GridItem(.fixed(180), spacing: 5),count: 2)
     
@@ -18,16 +18,16 @@ struct PictureListView: View {
         ZStack {
             ScrollView {
                 LazyVGrid(columns: columns) {
-                    ForEach(loadedImageList, id: \.giftPolaroidId) { data in
+                    ForEach(viewModel.loadedImageList.reversed(), id: \.giftPolaroidId) { data in
                         Button {
                             isTapped.toggle()
                             photoIndexPath = data.giftPolaroidId
-                            detailedImage = loadedImageList.first(where: {
+                            detailedImage = viewModel.loadedImageList.first(where: {
                                 $0.giftPolaroidId == photoIndexPath}) ?? PictureListView.defaultImageData()
                         }
-                        label: {
-                            PhotoCard(indexPath: data.giftPolaroidId, imageURLString: data.giftPolaroidImage, comment: "Test", isTapped: $isTapped)
-                        }
+                    label: {
+                        PhotoCard(indexPath: data.giftPolaroidId, imageURLString: data.giftPolaroidImage, comment: "test", isTapped: $isTapped)
+                    }
                     }
                     .opacity(isTapped ? 0.2 : 1)
                 }
@@ -35,13 +35,13 @@ struct PictureListView: View {
                 .navigationBarTitleDisplayMode(.inline)
                 .navigationToBack(dismiss)
                 .task {
-                    imageListGet()
+                    viewModel.imageListGet()
                 }
             } // ScrollView
             .padding()
             .blur(radius: isTapped ? 6 : 0)
             .background(Color.lightgray)
-//            .padding(.leading, 10)
+            //            .padding(.leading, 10)
         } // Zstack
         .overlay {
             if isTapped == true {
@@ -54,34 +54,8 @@ struct PictureListView: View {
             }
         }
     }
-    
-    private func imageListGet() {
-        moyaService.request(.imageListGet) { response in
-            switch response {
-            case .success(let result):
-                do {
-                    let data = try result.map([PictureGetResponse].self)
-                    print("Data : \(data)")
-                    mapListData(listData: data)
-                    
-                } catch let err {
-                    print(err.localizedDescription)
-                    print("Failed to decode the image list")
-                    break
-                }
-            case .failure(let err):
-                print(err.localizedDescription)
-            }
-        }
-    }
-    private func mapListData(listData: [PictureGetResponse]) {
-        for data in listData {
-            loadedImageList.append(data)
-        }
-    }
 }
-// MARK: PhotoCard
-// TODO: 추후에 PictureModel에 넣을 예정
+
 struct PhotoCard: View {
     
     var indexPath: Int64
@@ -101,17 +75,17 @@ struct PhotoCard: View {
                             .frame(width: proxy.size.width * 0.85, height: proxy.size.width, alignment: .center)
                             .clipped()
                             .border(Color.gray, width: 0.45)
-
+                        
                     } placeholder: {
                         ProgressView()
                             .frame(width: proxy.size.width * 0.85, height: proxy.size.width, alignment: .center)
-
+                        
                             .progressViewStyle(.circular)
                     }
                 }
                 .foregroundColor(.textBodyColor)
                 .padding(12)
-
+                
                 Text(comment)
             }
             .padding(.bottom, 12)
@@ -134,7 +108,7 @@ struct PhotoCardSheet: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: UIScreen.main.bounds.width * 0.7, height: UIScreen.main.bounds.height * 0.4, alignment: .center)
-
+                
             } placeholder: {
                 ProgressView()
                     .progressViewStyle(.circular)
