@@ -12,8 +12,7 @@ struct PictureListView: View {
     @State private var isTapped: Bool = false
     @State private var loadedImageList: [PictureGetResponse] = []
     @State private var detailedImage: PictureGetResponse = PictureListView.defaultImageData()
-    
-    let columns: [GridItem] = [GridItem(.flexible()), GridItem(.flexible())]
+    private let columns = Array(repeating: GridItem(.fixed(180), spacing: 5),count: 2)
     
     var body: some View {
         ZStack {
@@ -22,13 +21,12 @@ struct PictureListView: View {
                     ForEach(loadedImageList, id: \.giftPolaroidId) { data in
                         Button {
                             isTapped.toggle()
-                            print("This is Button Print")
                             photoIndexPath = data.giftPolaroidId
                             detailedImage = loadedImageList.first(where: {
                                 $0.giftPolaroidId == photoIndexPath}) ?? PictureListView.defaultImageData()
                         }
                         label: {
-                            PhotoCard(indexPath: data.giftPolaroidId, imageURLString: data.giftPolaroidImage, isTapped: $isTapped)
+                            PhotoCard(indexPath: data.giftPolaroidId, imageURLString: data.giftPolaroidImage, comment: "Test", isTapped: $isTapped)
                         }
                     }
                     .opacity(isTapped ? 0.2 : 1)
@@ -42,10 +40,9 @@ struct PictureListView: View {
             } // ScrollView
             .padding()
             .blur(radius: isTapped ? 6 : 0)
+            .background(Color.lightgray)
+//            .padding(.leading, 10)
         } // Zstack
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.backgroundGray)
-        .ignoresSafeArea(edges: .bottom)
         .overlay {
             if isTapped == true {
                 PhotoCardSheet(indexPath: detailedImage.giftPolaroidId, imageURLString: detailedImage.giftPolaroidImage)
@@ -63,7 +60,6 @@ struct PictureListView: View {
             switch response {
             case .success(let result):
                 do {
-                    print("========= result :  \(result.data) =========")
                     let data = try result.map([PictureGetResponse].self)
                     print("Data : \(data)")
                     mapListData(listData: data)
@@ -90,13 +86,14 @@ struct PhotoCard: View {
     
     var indexPath: Int64
     var imageURLString: String
+    var comment: String
     @Binding var isTapped : Bool
     
     var body: some View {
         
         GeometryReader { proxy in
             VStack {
-                VStack(alignment: .leading) {
+                VStack {
                     AsyncImage(url: URL(string: imageURLString)) { image in
                         image
                             .resizable()
@@ -107,16 +104,20 @@ struct PhotoCard: View {
 
                     } placeholder: {
                         ProgressView()
+                            .frame(width: proxy.size.width * 0.85, height: proxy.size.width, alignment: .center)
+
                             .progressViewStyle(.circular)
                     }
                 }
                 .foregroundColor(.textBodyColor)
                 .padding(12)
+
+                Text(comment)
             }
             .padding(.bottom, 12)
-            .background(RoundedRectangle(cornerRadius: 6).fill(.thickMaterial)  .border(Color.lightgray, width: 1.0).shadow(color: .gray.opacity(0.4), radius: 10, x: 0, y: 0))
+            .background(RoundedRectangle(cornerRadius: 6).fill(.white).border(Color.lightgray, width: 1.0).shadow(color: .gray.opacity(0.2), radius: 10, x: 0, y: 0))
         }
-        .frame(height: 240)
+        .frame(height: 250)
     }
 }
 

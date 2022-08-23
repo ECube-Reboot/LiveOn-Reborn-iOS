@@ -16,6 +16,7 @@ struct liveOnRebootApp: App {
             //SendLetterView(gotoMain: $tempGotoMain)
           NavigationView {
             LetterListView()
+//              PictureListView()
           }
         }
     }
