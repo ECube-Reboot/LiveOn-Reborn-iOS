@@ -13,7 +13,7 @@ struct PictureListView: View {
     @State private var isTapped: Bool = false
     @State private var detailedImage: PictureGetResponse = PictureListView.defaultImageData()
     @State private var isLoaded: Bool = false
-    private let columns = Array(repeating: GridItem(.fixed(180), spacing: 5),count: 2)
+    private let columns = Array(repeating: GridItem(.fixed(175), spacing: 0),count: 2)
     
     var body: some View {
         ZStack {
@@ -42,7 +42,6 @@ struct PictureListView: View {
                         }
                     }
                 } // ScrollView
-                .padding()
                 .blur(radius: isTapped ? 6 : 0)
                 .background(Color.lightgray)
             } else {
@@ -80,38 +79,38 @@ struct PhotoCard: View {
                 ) { phase in
                     switch phase {
                     case .success(let image):
+                        // MARK: 각각의 사진 크기 조절
                         image
                             .resizable()
                             .aspectRatio(contentMode: .fill)
-                            .frame(width: UIScreen.main.bounds.width * 0.4, height: UIScreen.main.bounds.height * 0.22, alignment: .center)
+                            .frame(width: UIScreen.main.bounds.width * 0.4, height: UIScreen.main.bounds.height * 0.2, alignment: .center)
                             .clipped()
 
                     case .failure(let error):
                         Text(error.localizedDescription)
-                            .frame(width: UIScreen.main.bounds.width * 0.35, height: UIScreen.main.bounds.height * 0.2, alignment: .center)
+                            .frame(width: UIScreen.main.bounds.width * 0.4, height: UIScreen.main.bounds.height * 0.2, alignment: .center)
 
                     case .empty:
                         ProgressView()
-                            .frame(width: UIScreen.main.bounds.width * 0.35, height: UIScreen.main.bounds.height * 0.2, alignment: .center)
+                            .frame(width: UIScreen.main.bounds.width * 0.4, height: UIScreen.main.bounds.height * 0.2, alignment: .center)
                     @unknown default:
                         Image(systemName: "questionmark")
                             .resizable()
                             .aspectRatio(contentMode: .fill)
-                            .frame(width: UIScreen.main.bounds.width * 0.35, height: UIScreen.main.bounds.height * 0.2, alignment: .center)
+                            .frame(width: UIScreen.main.bounds.width * 0.4, height: UIScreen.main.bounds.height * 0.2, alignment: .center)
                             .clipped()
                             .border(Color.gray, width: 0.45)
                     }
                 }
             }
             .foregroundColor(.textBodyColor)
+            // MARK: 각 격자 내부의 사진 패딩값 조절
             .padding(6)
 
             Text(comment)
                 .font(.TextStyles.handWrittenCallout)
                 .lineLimit(1)
-                .frame(maxWidth: .infinity,maxHeight: .infinity, alignment: .center)
         }
-        .padding(.bottom, 12)
         .background(RoundedRectangle(cornerRadius: 6).fill(.white).border(Color.lightgray, width: 1.0).shadow(color: .gray.opacity(0.2), radius: 10, x: 0, y: 0))
         .frame(height: 250)
     }
@@ -130,6 +129,7 @@ struct PhotoCardSheet: View {
             ) { phase in
                 switch phase {
                 case .success(let image):
+                    // MARK: 각각의 사진 클릭시, 나오는 detial View 사진
                     image
                         .resizable()
                         .aspectRatio(contentMode: .fill)
@@ -204,10 +204,8 @@ struct CacheAsyncImage<Content>: View where Content: View {
     var body: some View {
 
         if let cached = ImageCache[url] {
-            let _ = print("cached \(url.absoluteString)")
             content(.success(cached))
         } else {
-            let _ = print("request \(url.absoluteString)")
             AsyncImage(
                 url: url,
                 scale: scale,
@@ -222,7 +220,6 @@ struct CacheAsyncImage<Content>: View where Content: View {
         if case .success(let image) = phase {
             ImageCache[url] = image
         }
-
         return content(phase)
     }
 }
