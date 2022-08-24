@@ -155,7 +155,7 @@ struct PhotoCardSheet: View {
             }
 
             Text(photoText)
-                .setHandWritten()
+                .font(.TextStyles.handWrittenCallout)
                 .foregroundColor(.textBodyColor)
         }
         .frame(width: UIScreen.main.bounds.width * 0.7, height: UIScreen.main.bounds.height * 0.45, alignment: .center)
