@@ -12,37 +12,40 @@ struct UpcomingEventsView: View {
     var body: some View {
         HStack {
             ZStack {
-                RoundedRectangle(cornerRadius: 10)
+                RoundedRectangle(cornerRadius: 15)
                     .fill(Color.backgroundGray)
-                    .frame(width: 355, height: 66)
+                    .frame(width: 360, height: 65)
                 
-                    VStack {
+                    HStack {
                         //  upcomingEventDate
                         Text(event.upcomingEventDate)
-                            .font(.system(size: 13))
-                            .foregroundColor(.burgundy)
+                            .font(.body)
+                            .foregroundColor(.textBodyColor)
                     }
-                    .padding(.leading, -21)
-                    
+                    .padding(.leading, -170)
+                    .padding(.top, -20)
+                
+                Image("highlightForCalendar")
+                    .padding(.leading, -165)
+                    .padding(.top, -14)
+                
                     VStack {
                         //  upcomingeventTitle
                         Text(event.upcomingEventTitle)
-                            .foregroundColor(.black)
-                            .font(.system(size: 18).bold())
+                            .foregroundColor(.textBodyColor)
+                            .font(.title3.bold())
                             .frame(width: 280, alignment: .leading)
-                            .padding(.trailing, -30)
-                            .padding(.bottom, 3)
+                            .padding(.trailing, -35)
                         
                         // upcomingeventMemo
                         Text(event.upcomingEventMemo)
                             .foregroundColor(.textBodyColor)
-                            .font(.system(size: 14))
+                            .font(.body)
                             .frame(width: 280, alignment: .leading)
-                            .padding(.trailing, -32)
+                            .padding(.trailing, -35)
+                            .padding(.top, -8)
                     }
-                    .padding(.leading, 6)
             }
-            .padding(.top, 2)
         }
     }
 }
