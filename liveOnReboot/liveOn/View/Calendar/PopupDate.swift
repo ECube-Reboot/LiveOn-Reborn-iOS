@@ -1,5 +1,5 @@
 //
-//  PopupDateView.swift
+//  PopupDate.swift
 //  liveOnReboot
 //
 //  Created by Keum MinSeok on 2022/07/17.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct PopupDateView: View {
+struct PopupDate: View {
     
     @State var popupDate: Date = Date()
     
@@ -21,6 +21,7 @@ struct PopupDateView: View {
             VStack {
                 DatePicker("PopUp", selection: $popupDate, displayedComponents: [.date])
                     .datePickerStyle(GraphicalDatePickerStyle())
+                    .applyTextColor(.burgundy)
                     .accentColor(.black)
                                 
                 HStack {
@@ -30,7 +31,7 @@ struct PopupDateView: View {
                     }
                     .font(.system(size: 18).bold())
                     .foregroundColor(.burgundy)
-                    .padding(.top, -16)
+                    .padding(.top, -20)
                     
                     Spacer()
                     
@@ -41,7 +42,7 @@ struct PopupDateView: View {
                     }
                     .font(.system(size: 18).bold())
                     .foregroundColor(.burgundy)
-                    .padding(.top, -16)
+                    .padding(.top, -20)
                 }
                 .padding(.horizontal)
             }
@@ -49,6 +50,6 @@ struct PopupDateView: View {
             .background(Color.backgroundGray.cornerRadius(30))
         }
         .frame(width: UIScreen.main.bounds.width * 0.8, height: UIScreen.main.bounds.height * 0.36, alignment: .center)
-        .padding(.bottom, 235)
+        .padding(.top, -540)
     }
 }

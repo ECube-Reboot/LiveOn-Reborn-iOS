@@ -12,13 +12,15 @@ class LetterViewModel: ObservableObject {
     
     var newLetter = Letter()
     @Published var letterList = [LetterGet]()
-    func updateContent(content: String, completion: (String) -> () ) {
+    func updateContent(color: String, content: String, posting: (String,String) -> (), completion: () -> () ) {
+        newLetter.color = color
         newLetter.content = content
-        completion(newLetter.content)
+        posting(newLetter.color, newLetter.content)
+        completion()
     }
     
-    func letterPost(content: String) {
-        let param = LetterPostRequest.init(content: content)
+    func letterPost(color: String, content: String) {
+        let param = LetterPostRequest.init(color: color, content: content)
         letterMoyaService.request(.postNote(content:param)) { response in
             switch response {
                 case .success(_):
@@ -29,13 +31,14 @@ class LetterViewModel: ObservableObject {
         }
     }
     
-    func letterListGet() async {
+    func letterListGet(completion: @escaping () -> ()) async {
         letterMoyaService.request(.getNotes) { response in
             switch response {
                 case .success(let result):
                     do {
                         let data = try result.map([LetterGet].self)
                         self.mapListData(listData: data)
+                        completion()
                     } catch let err {
                         print(err.localizedDescription)
                         break
