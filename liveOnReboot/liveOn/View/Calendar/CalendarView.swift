@@ -96,18 +96,18 @@ struct CalendarView: View {
                 LazyVGrid(columns: columns, spacing: 0) {
                     ForEach(extractDate(currentDate: self.currentDate)) { value in
                         ZStack(alignment: .topLeading) {
-                            CardView(value: value)
-                                .onTapGesture {
-                                    currentDate = value.date
-                                }
+//                            CardView(value: value)
+//                                .onTapGesture {
+//                                    currentDate = value.date
+//                                }
                 // 추후에 NavigationLink 모든 뷰 연결되면 사용할 예정이라 주석처리함
-    //                            NavigationLink (destination: Text(""), isActive: $isNavigationOn) {
-    //                                CardView(value: value)
-    //                                    .onTapGesture {
-    //                                        isNavigationOn.toggle()
-    //                                        currentDate = value.date
-    //                                    }
-    //                            }
+                                NavigationLink (destination: Text(""), isActive: $isNavigationOn) {
+                                    CardView(value: value)
+                                        .onTapGesture {
+                                            isNavigationOn.toggle()
+                                            currentDate = value.date
+                                        }
+                                }
                         }
                     }
                 }
@@ -170,13 +170,6 @@ struct CalendarView: View {
             }
             // PopupDate와 CalendarView 사이에 블러 효과
             .opacity(isClicked ? 0.1 : 1 )
-            
-            // 달력의 월 계속해서 업데이트
-            .onChange(of: currentMonth) { _ in
-                currentDate = getCurrentMonth()
-                currentDate = getPreviousMonth()
-                currentDate = getNextMonth()
-            }
         }
         .padding(.vertical)
         .ignoresSafeArea(.all, edges: .bottom)
@@ -276,10 +269,10 @@ struct CalendarView: View {
 
 struct CalendarMain_Previews: PreviewProvider {
     static var previews: some View {
-//        NavigationView{
+        NavigationView{
             CalendarView().environmentObject(EventStore())
-//                .navigationBarHidden(true)
-//        }
+                .navigationBarHidden(true)
+        }
     }
 }
 

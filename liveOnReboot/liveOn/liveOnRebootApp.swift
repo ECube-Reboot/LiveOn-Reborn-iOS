@@ -12,7 +12,10 @@ struct liveOnRebootApp: App {
     var body: some Scene {
         WindowGroup {
 //            ContentView()
-            CalendarView().environmentObject(EventStore())
+            NavigationView{
+                CalendarView().environmentObject(EventStore())
+                    .navigationBarHidden(true)
+            }
         }
     }
 }
