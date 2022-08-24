@@ -17,5 +17,5 @@ struct PictureGetResponse: Codable {
     let giftPolaroidId: Int64
     let giftPolaroidImage: String
     let userNickName: String
-//    let comment: String
+    let comment: String
 }

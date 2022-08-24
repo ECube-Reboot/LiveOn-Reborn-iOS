@@ -15,8 +15,8 @@ struct liveOnRebootApp: App {
         WindowGroup {
             //SendLetterView(gotoMain: $tempGotoMain)
           NavigationView {
-            LetterListView()
-//              PictureListView()
+//            LetterListView()
+              PictureListView()
           }
         }
     }

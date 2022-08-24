@@ -36,7 +36,7 @@ final class PictureViewModel: ObservableObject {
         imageName = ""
     }
     
-    func imageListGet() {
+    func imageListGet(_ completion: @escaping () -> ()) {
         moyaService.request(.imageListGet) { response in
             switch response {
             case .success(let result):
