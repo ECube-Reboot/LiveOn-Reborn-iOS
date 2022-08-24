@@ -2,19 +2,24 @@
 //  LetterDTO.swift
 //  liveOnReboot
 //
-//  Created by Keum MinSeok on 2022/07/09.
+//  Created by Keum Jineeee on 2022/07/09.
 //
 
 import SwiftUI
 
-struct LetterDTO: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
+struct LetterPostRequest: Codable {
+    let color: String
+    let content: String
 }
 
-struct LetterDTO_Previews: PreviewProvider {
-    static var previews: some View {
-        LetterDTO()
-    }
+struct LettersGetResponse: Codable {
+    let letters: [LetterGet]
+}
+
+struct LetterGet: Codable {
+    let color: String
+    let content: String
+    let createdAt: String
+    let giftNoteId: Int64
+    let userNickName: String
 }

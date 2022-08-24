@@ -1,8 +1,20 @@
 //
-//  photoCardsView.swift
-//  liveOn
+//  GiftBoxView.swift
+//  liveOnReboot
 //
-//  Created by Jisu Jang on 2022/07/16.
+//  Created by Jineeee on 2022/08/20.
 //
 
-// Empty View
+import SwiftUI
+
+struct GiftBoxView: View {
+    var body: some View {
+        Text("선물함뷰")
+    }
+}
+
+struct GiftBoxView_Previews: PreviewProvider {
+    static var previews: some View {
+        GiftBoxView()
+    }
+}

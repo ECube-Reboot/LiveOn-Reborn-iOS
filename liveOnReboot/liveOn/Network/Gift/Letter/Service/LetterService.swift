@@ -6,15 +6,11 @@
 //
 
 import SwiftUI
+import Moya
 
-struct LetterService: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
+let letterMoyaService = MoyaProvider<LetterServerCommunication>(plugins: [NetworkLoggerPlugin()])
 
-struct LetterService_Previews: PreviewProvider {
-    static var previews: some View {
-        LetterService()
-    }
+enum LetterServerCommunication {
+    case getNotes
+    case postNote(content: LetterPostRequest)
 }
