@@ -48,8 +48,6 @@
 		A973F1E1287B19D700323A17 /* PicturePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A973F1E0287B19D700323A17 /* PicturePicker.swift */; };
 		A9B32A8828867A9600530B51 /* Text+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B32A8728867A9600530B51 /* Text+Extension.swift */; };
 		A9B32A8A28867AB600530B51 /* BackButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B32A8928867AB600530B51 /* BackButton+Extension.swift */; };
-		A9B32A8C28867B1000530B51 /* 나눔손글씨 나의 아내 손글씨.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A9B32A8B28867B1000530B51 /* 나눔손글씨 나의 아내 손글씨.ttf */; };
-
 		C915A80928990592003154AB /* EventStoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C915A80828990592003154AB /* EventStoreViewModel.swift */; };
 		C92E31CD28795A25000A315C /* CalendarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E31CC28795A25000A315C /* CalendarModel.swift */; };
 		C92E31CF28795B0E000A315C /* FlowerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E31CE28795B0E000A315C /* FlowerModel.swift */; };
@@ -61,8 +59,7 @@
 		C92E31E328795B8A000A315C /* PictureListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E31E228795B8A000A315C /* PictureListView.swift */; };
 		C92E31E528795B96000A315C /* VoicemailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E31E428795B96000A315C /* VoicemailView.swift */; };
 		C92E31E928795BA9000A315C /* GiftListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E31E828795BA9000A315C /* GiftListView.swift */; };
-		C92E31EB28795BB0000A315C /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E31EA28795BB0000A315C /* SignInView.swift */; };
-
+		C92E31EB28795BB0000A315C /* (null) in Sources */ = {isa = PBXBuildFile; };
 		C92E31ED28795C06000A315C /* DateToStringUpcomingEventsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E31EC28795C06000A315C /* DateToStringUpcomingEventsViewModel.swift */; };
 		C92E31EF28795C15000A315C /* FlowerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E31EE28795C15000A315C /* FlowerViewModel.swift */; };
 		C92E31F128795C1A000A315C /* LetterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E31F028795C1A000A315C /* LetterViewModel.swift */; };
@@ -142,8 +139,6 @@
 		A973F1E0287B19D700323A17 /* PicturePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicturePicker.swift; sourceTree = "<group>"; };
 		A9B32A8728867A9600530B51 /* Text+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Text+Extension.swift"; sourceTree = "<group>"; };
 		A9B32A8928867AB600530B51 /* BackButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BackButton+Extension.swift"; sourceTree = "<group>"; };
-		A9B32A8B28867B1000530B51 /* 나눔손글씨 나의 아내 손글씨.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "나눔손글씨 나의 아내 손글씨.ttf"; sourceTree = "<group>"; };
-
 		C915A80828990592003154AB /* EventStoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventStoreViewModel.swift; sourceTree = "<group>"; };
 		C92E31CC28795A25000A315C /* CalendarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarModel.swift; sourceTree = "<group>"; };
 		C92E31CE28795B0E000A315C /* FlowerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowerModel.swift; sourceTree = "<group>"; };
@@ -908,7 +903,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C936B2F8289FB2D800011C64 /* DateToStringUpcomingEventsViewModel.swift in Sources */,
-				C92E31EB28795BB0000A315C /* SignInView.swift in Sources */,
+				C92E31EB28795BB0000A315C /* (null) in Sources */,
 				C974DDCD2883CC4900698BFA /* UpcomingEventsView.swift in Sources */,
 				773185C3287C56FE00120FF9 /* Color+Extension.swift in Sources */,
 				3EEF02D3287AFA920010CA03 /* SingleVoicemailView.swift in Sources */,
@@ -973,7 +968,6 @@
 				C93DEA2B287ACE960045508C /* SendPictureView.swift in Sources */,
 				C93DEA2D287ACEA20045508C /* SendVoiceMailView.swift in Sources */,
 				A929FDE62882671400334E21 /* NetworkLoggerPlugIn.swift in Sources */,
-				C92E31E728795BA0000A315C /* GiftBoxView.swift in Sources */,
 				C915A80928990592003154AB /* EventStoreViewModel.swift in Sources */,
 				A9B32A8828867A9600530B51 /* Text+Extension.swift in Sources */,
 				77651D1628B0B7E100994C15 /* EnterCodeView.swift in Sources */,
@@ -1121,11 +1115,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = liveOnReboot.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"liveOn/Preview Content\"";
-				DEVELOPMENT_TEAM = YYP248S73Y;
+				DEVELOPMENT_TEAM = C95YD9G273;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "liveOnReboot-Info.plist";
@@ -1141,7 +1135,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.reborn.liveOnReboot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = liveOn;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1154,11 +1148,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = liveOnReboot.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"liveOn/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = C95YD9G273;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "liveOnReboot-Info.plist";
@@ -1174,7 +1168,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.reborn.liveOnReboot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = liveOn;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
