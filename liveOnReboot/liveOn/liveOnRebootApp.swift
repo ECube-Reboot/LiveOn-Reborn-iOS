@@ -13,10 +13,12 @@ struct liveOnRebootApp: App {
   @State var tempGotoMain = false
     var body: some Scene {
         WindowGroup {
-            //SendLetterView(gotoMain: $tempGotoMain)
-          NavigationView {
-            LetterListView()
-          }
+//            SendLetterView(gotoMain: $tempGotoMain)
+//          NavigationView {
+//            LetterListView()
+//          }
+            VoiceMailView(isShowPopUp: false)
+//            CreateVoicemailView(isRecording: false, isRecorded: false)
         }
     }
   

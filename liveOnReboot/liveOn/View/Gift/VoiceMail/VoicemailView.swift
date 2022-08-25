@@ -53,14 +53,21 @@ struct VoiceMailView: View {
                     .padding(16)
                 }
             }
+            .blur(radius: isShowPopUp ? 6 : 0)
+            
+            Color(uiColor: .systemBackground)
+                .opacity(isShowPopUp ? 0.4 : 0)
             
             if isShowPopUp {
-                VoicemailPopUpView()
+                VoicemailPopUpView(isPlaying: false)
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .navigationTitle("음성메세지")
         .navigationBarTitleDisplayMode(.inline)
+        .onTapGesture {
+            isShowPopUp.toggle()
+        }
     }
 }
 

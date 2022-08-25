@@ -56,8 +56,8 @@ struct CreateVoicemailView: View {
                                 .foregroundColor(Color.recordingBtnBackground)
                             Image(systemName: "circle.fill")
                                 .resizable()
-                                .foregroundColor(Color.recordingBtn)
                                 .frame(width: 50, height: 50)
+                                .foregroundColor(Color.recordingBtn)
                                 .onTapGesture {
                                     // withviewmodel
 //                                    voicemail.startRecording()
@@ -114,10 +114,3 @@ struct CreateVoicemailView: View {
         }
     }
 }
-//
-//struct CreateVoicemailView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        CreateVoicemailView(isRecording: false, isRecorded: false)
-//    }
-//}
-

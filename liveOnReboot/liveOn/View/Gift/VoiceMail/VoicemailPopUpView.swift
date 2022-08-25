@@ -8,16 +8,47 @@
 import SwiftUI
 
 struct VoicemailPopUpView: View {
+    
+    @State var isPlaying: Bool
+    
     var body: some View {
-        VStack {
-            Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-//            Image("cassetteIcon01")
+        ZStack {
+            VStack {
+                Spacer()
+                    .frame(height: 80)
+                
+                Image("cassette_horizontal")
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 350)
+                    .padding()
+                
+                Spacer()
+                    .frame(height: 100)
+                
+                ZStack {
+                    Image(systemName: "circle.fill")
+                        .resizable()
+                        .frame(width: 80, height: 80)
+                        .foregroundColor(Color.shadowColor)
+                        .blendMode(.multiply)
+                    
+                    Image(systemName: isPlaying ? "pause.fill": "play.fill")
+                        .resizable()
+                        .scaledToFit()
+                        .foregroundColor(Color.recordingBtn)
+                        .frame(width: isPlaying ? 30 : 40)
+                        .onTapGesture {
+                            isPlaying.toggle()
+                        }
+                        .padding(.leading, isPlaying ? 0 : 5)
+                }
+            }
         }
     }
 }
 
-struct VoicemailPopUpView_Previews: PreviewProvider {
-    static var previews: some View {
-        VoicemailPopUpView()
-    }
-}
+//struct VoicemailPopUpView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        VoicemailPopUpView()
+//    }
+//}
