@@ -7,14 +7,28 @@
 
 import SwiftUI
 
-struct SignInViewModel: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+class SignInViewModel: ObservableObject {
+    static var signInViewModel: SignInViewModel = SignInViewModel()
+    @Published var inviteCode: String = ""
+  
+    func getInviteCode() async {
+        signInMoyaService.request(.getCode) { response in
+            switch response {
+                case .success(let result):
+                    do {
+                        let data = try result.map(InviteCode.self)
+                        self.fetchInviteCode(code: data.code)
+                    } catch _ {
+                        break
+                    }
+                case .failure(let err):
+                    print(err.localizedDescription)
+            }
+        }
     }
-}
-
-struct SignInViewModel_Previews: PreviewProvider {
-    static var previews: some View {
-        SignInViewModel()
+    
+    func fetchInviteCode(code: String) {
+        self.inviteCode = code
+        UserDefaults.standard.set(code, forKey: "inviteCode")
     }
 }

@@ -9,18 +9,19 @@ import SwiftUI
 
 struct InviteCodeView: View {
     @ObservedObject var userData: SignInUser
+    @ObservedObject var viewModel = SignInViewModel()
     @Environment(\.dismiss) private var dismiss
     
     @State var showEnterCodeSheet: Bool = false
     @State private var showShareSheet = false
     @State var goNext: Bool = false
-    @State var inviteCode: String = "나중에코드연동"
+    
     var body: some View {
         SignInLayoutView(title: SignInLiteral.inviteCodeTitle, description: SignInLiteral.inviteCodeDescription) {
             VStack {
                 
                 //TODO: 코드 GET API 연동
-                Text(inviteCode)
+                Text( UserDefaults.standard.string(forKey: "inviteCode") ?? viewModel.inviteCode)
                     .font(.title)
                     .fontWeight(.heavy)
                     .textSelection(.enabled)
@@ -34,7 +35,7 @@ struct InviteCodeView: View {
                 copyButton
             }
             .sheet(isPresented: $showShareSheet) {
-                ShareSheet(activityItems: [ MyActivityItemSource(title: SignInLiteral.inviteCodeShareSheetTitle, text: "\(userData.nickName)\(SignInLiteral.inviteCodeShareSheetText) 초대코드 : [ \(inviteCode) ]")])
+                ShareSheet(activityItems: [ MyActivityItemSource(title: SignInLiteral.inviteCodeShareSheetTitle, text: "\(userData.nickName)\(SignInLiteral.inviteCodeShareSheetText) 초대코드 : [ \(viewModel.inviteCode) ]")])
             }
                 
                 Spacer()
@@ -58,6 +59,11 @@ struct InviteCodeView: View {
                 }
             }
             .navigationToBack(dismiss)
+        }
+        .task {
+            if UserDefaults.standard.string(forKey: "inviteCode") == nil {
+            await viewModel.getInviteCode()
+            }
         }
     }
     
