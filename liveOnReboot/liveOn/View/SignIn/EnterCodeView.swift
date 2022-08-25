@@ -13,6 +13,9 @@ struct EnterCodeView: View {
     @State var code: String = ""
     @State var checkCode: Bool = false
     @State var presentFailAlert: Bool = false
+    @ObservedObject var viewMOdel = SignInViewModel()
+    @State private var goNext: Bool = false
+    
     var body: some View {
         NavigationView {
             SignInLayoutView(title: SignInLiteral.enterCodeTitle, description: SignInLiteral.enterCodeDescription) {
@@ -27,14 +30,13 @@ struct EnterCodeView: View {
                 }
                     // MARK: 코드 확인
                     Button {
-                        // MARK: 조건 체크 임시 비활성화
-    //                    if code == currentUser.userCode && code.count == 5 {
-    //                        checkCode.toggle()
-    //                    }
-    //                    else {
-    //                        presentFailAlert.toggle()
-    //                    }
-                        checkCode.toggle()
+                        viewMOdel.checkInviteCode(input: code) { result in
+                            turnToCorrect(status: result)
+                            if result {
+                                UserDefaults.standard.set(true, forKey: "isMatched")
+                                goNext = true
+                            }
+                        }
                     }
                 label: {
                     Text("초대코드 확인")
@@ -43,9 +45,12 @@ struct EnterCodeView: View {
                         .frame(maxWidth: .infinity, maxHeight: 60, alignment: .center).background(RoundedRectangle(cornerRadius: 10).fill(Color.accentColor))
                 }
                 .alert(isPresented: $presentFailAlert) {
-                    Alert(title: Text("매칭 실패"), message: Text("초대코드를 다시 확인해주세요"), dismissButton: .default(Text("확인"))
+                    Alert(title: Text("매칭 실패"), message: Text("초대코드를 다시 확인해주세요"), dismissButton: .default(Text("확인")){
+                        presentFailAlert = false
+                    }
                 )}
                 .disabled(code.count != 5)
+                NavigationLink("", destination: WelcomMatchingView(userData: userData), isActive: $goNext)
             }
                 .navigationCancel(dismiss)
                 .frame(maxHeight: .infinity)
@@ -53,6 +58,10 @@ struct EnterCodeView: View {
     }
     func isCorrect(userCode: String) -> Bool {
         return self.code == userCode
+    }
+    private func turnToCorrect(status: Bool) {
+        presentFailAlert = !status
+        print(presentFailAlert)
     }
 }
 

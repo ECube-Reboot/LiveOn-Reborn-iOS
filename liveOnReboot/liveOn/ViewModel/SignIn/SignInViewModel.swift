@@ -31,4 +31,22 @@ class SignInViewModel: ObservableObject {
         self.inviteCode = code
         UserDefaults.standard.set(code, forKey: "inviteCode")
     }
+    
+    func checkInviteCode(input: String, status: @escaping (Bool) -> ()) {
+        signInMoyaService.request(.checkCode(param: input)) { response in
+            switch response {
+                case .success(let result):
+                    if  (String(data: result.data, encoding: .utf8) == "success") {
+                        status(true)
+                    }
+                    else{
+                        status(false)
+                        print("실패")
+                    }
+                case .failure(let err):
+                    print(err.localizedDescription)
+            }
+            
+        }
+    }
 }
