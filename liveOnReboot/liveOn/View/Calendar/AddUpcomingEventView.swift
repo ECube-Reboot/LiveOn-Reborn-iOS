@@ -30,11 +30,12 @@ struct AddUpcomingEventView: View {
                 .applyTextColor(.burgundy)
                 .background(Color.backgroundGray.cornerRadius(30))
                 .frame(width: UIScreen.main.bounds.width * 0.88, height: UIScreen.main.bounds.height * 0.4)
-                .padding(.top, 10)
-            
+
             footer
+            
+            Spacer()
         }
-        .padding(.top, -110)
+        .padding(.vertical)
     }
     
     var header: some View {

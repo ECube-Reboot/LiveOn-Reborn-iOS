@@ -100,7 +100,7 @@ struct CalendarView: View {
                     ForEach(extractDate(currentDate: self.currentDate)) { value in
                         ZStack(alignment: .topLeading) {
                             NavigationLink(destination: CalendarGiftBox(date: value.date)) {
-                                CardView(value: value)
+                                CardView(value: value, model: store.list.filter{ $0.upcomingEventDate == DateToStringUpcomingEventsViewModel(value.date) })
                             }
 //                            CardView(value: value)
 //                                .onTapGesture {
@@ -135,17 +135,6 @@ struct CalendarView: View {
                         // API TEST
 //                        TextField("API", text: $apiTest, prompt: Text("API"))
 //                            .frame(width: 50, height: 15)
-                        
-                        // 메인 달력 날짜 고르는 PopupDate Button
-                        // 상단부에 Navigationbar 들어오면 그 때 위치 이동할 예정
-                        Button {
-                            showDatePicker.toggle()
-                            isClicked.toggle()
-                        } label: {
-                            Image(systemName: "calendar")
-                                .foregroundColor(.burgundy)
-                                .font(.title3)
-                        }
                         
                         Button(action: {
                             showSheet.toggle()
@@ -182,7 +171,17 @@ struct CalendarView: View {
             // PopupDate와 CalendarView 사이에 블러 효과
             .opacity(isClicked ? 0.1 : 1 )
         }
-        .padding(.vertical)
+        .toolbar {
+            // 메인 달력 날짜 고르는 PopupDate Button
+            Button {
+                showDatePicker.toggle()
+                isClicked.toggle()
+            } label: {
+                Image(systemName: "calendar")
+                    .foregroundColor(.burgundy)
+                    .font(.title3)
+            }
+        }
         .ignoresSafeArea(.all, edges: .bottom)
         
         // PopUpView 띄우는 코드

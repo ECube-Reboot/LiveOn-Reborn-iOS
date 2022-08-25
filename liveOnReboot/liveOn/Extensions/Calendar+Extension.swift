@@ -9,13 +9,22 @@ import SwiftUI
 
 extension View {
     @ViewBuilder
-    func CardView(value: CalendarModel)-> some View {
+    func CardView(value: CalendarModel, model: [UpcomingEventsModel])-> some View {
         VStack {
             if value.day != -1 {
-                Text("\(value.day)")
-                    .font(.footnote)
-                    .foregroundColor(.textBodyColor)
-                    .frame(maxWidth: .infinity, alignment: .center)
+                if model.isEmpty {
+                    Text("\(value.day)")
+                        .font(.footnote)
+                        .foregroundColor(.textBodyColor)
+                        .frame(maxWidth: .infinity, alignment: .center)
+                } else {
+                    Text("\(value.day)")
+                        .font(.footnote)
+                        .foregroundColor(.textBodyColor)
+                        .frame(maxWidth: .infinity, alignment: .center)
+                        .background(Image("highlightForCalendar"))
+                        .scaledToFit()
+                }
                 Spacer()
             }
         }
