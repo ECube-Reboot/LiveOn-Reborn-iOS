@@ -32,21 +32,9 @@ struct AddUpcomingEventView: View {
                 .frame(width: UIScreen.main.bounds.width * 0.88, height: UIScreen.main.bounds.height * 0.4)
                 .padding(.top, 10)
             
-//            TextField("upcomingEventTitle", text: $upcomingEventTitle, prompt: Text("어떤 기념일인가요?"))
-//                .multilineTextAlignment(.leading)
-//                .padding(.leading, 10)
-//                .frame(width: 345, height: 40)
-//                .foregroundColor(.textBodyColor)
-//                .font(.body)
-//                .background(Color.backgroundGray.cornerRadius(6))
-//                .padding(.top, 15)
-            
             footer
         }
         .padding(.top, -110)
-//        .onTapGesture {
-//            self.hideKeyboard()
-//        }
     }
     
     var header: some View {

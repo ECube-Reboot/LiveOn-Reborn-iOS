@@ -21,13 +21,11 @@ struct UpcomingEventsView: View {
                         Text(event.upcomingEventDate)
                             .font(.body)
                             .foregroundColor(.textBodyColor)
+                            .background(Image("highlightForCalendar"))
+                            .scaledToFill()
                     }
                     .padding(.leading, -170)
                     .padding(.top, -20)
-                
-                Image("highlightForCalendar")
-                    .padding(.leading, -165)
-                    .padding(.top, -14)
                 
                     VStack {
                         //  upcomingeventTitle

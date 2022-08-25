@@ -13,6 +13,12 @@ extension Date {
         return dateFormatter.string(from: format)
     }
     
+    public func eventDateToString(_ format: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/dd"
+        return dateFormatter.string(from: format)
+    }
+    
     public func stringDateToFormat(_ date: String) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "YYYY-MM-dd"
@@ -33,11 +39,11 @@ extension Date {
             return calendar.date(byAdding: .day, value: day - 1, to: startDate)!
         }
     }
-    
+
     func getNextMonth() -> Date? {
         return Calendar.current.date(byAdding: .month, value: 1, to: self)
     }
-    
+
     func getPreviousMonth() -> Date? {
         return Calendar.current.date(byAdding: .month, value: -1, to: self)
     }

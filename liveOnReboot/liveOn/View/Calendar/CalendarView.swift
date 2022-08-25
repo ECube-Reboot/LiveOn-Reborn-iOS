@@ -30,13 +30,16 @@ struct CalendarView: View {
     @State private var upcomingEventMemo: String = ""
     
     // 달력 해당 날짜 눌렀을 때 해당 날짜에 주고 받은 선물을 한 눈에 보는 뷰로 이동할 때 쓰는 변수
-    @State var isNavigationOn: Bool = false
+//    @State var isNavigationOn: Bool = false
     
     // 달력 스와이프에 필요한 변수
     @State var swipeHorizontalDirection: SwipeHorizontalDirection = .none
     
     //Upcoming Events 추가
     @EnvironmentObject var store: EventStore
+    
+    // API TEST
+//    @State private var apiTest: String = ""
     
     var body: some View {
         ZStack {
@@ -96,18 +99,22 @@ struct CalendarView: View {
                 LazyVGrid(columns: columns, spacing: 0) {
                     ForEach(extractDate(currentDate: self.currentDate)) { value in
                         ZStack(alignment: .topLeading) {
+                            NavigationLink(destination: CalendarGiftBox(date: value.date)) {
+                                CardView(value: value)
+                            }
 //                            CardView(value: value)
 //                                .onTapGesture {
 //                                    currentDate = value.date
 //                                }
-                // 추후에 NavigationLink 모든 뷰 연결되면 사용할 예정이라 주석처리함
-                                NavigationLink (destination: Text(""), isActive: $isNavigationOn) {
-                                    CardView(value: value)
-                                        .onTapGesture {
-                                            isNavigationOn.toggle()
-                                            currentDate = value.date
-                                        }
-                                }
+                            
+//                            NavigationLink (destination: APITEST(), isActive: $isNavigationOn) {
+//                                CardView(value: value)
+//                                    .onTapGesture {
+//                                        isNavigationOn.toggle()
+//                                        currentDate = value.date
+//                                        PostPracticeFunction(apiTestText: apiTest)
+//                                    }
+//                            }
                         }
                     }
                 }
@@ -122,8 +129,12 @@ struct CalendarView: View {
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .padding(.vertical, -10)
                             .padding(.leading, 2)
-                        
+                                                
                         Spacer(minLength: 0)
+                        
+                        // API TEST
+//                        TextField("API", text: $apiTest, prompt: Text("API"))
+//                            .frame(width: 50, height: 15)
                         
                         // 메인 달력 날짜 고르는 PopupDate Button
                         // 상단부에 Navigationbar 들어오면 그 때 위치 이동할 예정
@@ -265,7 +276,66 @@ struct CalendarView: View {
         
         return currentMonth
     }
+    // API TEST
+//    func PostPracticeFunction(apiTestText: String) {
+//        // 1. 전송할 데이터를 만듬
+//        let postVar = PostPractice(text: apiTestText)
+//        // 2. struct 형태를 json 형태로 바꿈
+//        guard let uploadData = try? JSONEncoder().encode(postVar) else {
+//            return
+//        }
+//        // 3. POST할 URL을 설정해줌
+//        let url = URL(string: "http://13.124.90.96:8080/api/v1/testing/test/hasReturn")!
+//
+//        // 4. URL:Request를 통해 http 프로토콜 채택 및 http 양식에 필요한 사항 작성
+//        var request = URLRequest(url:url)
+//        request.httpMethod = "POST" // RequestLine
+//        request.setValue("application/json", forHTTPHeaderField: "Content-Type") // HTTP Header
+//
+//        // 5.uploadTask라는 메소드를 통해 데이터를 URL에 올리고, completionHandler를 호출
+//        // 마지막 파라미터는 completionHandelr로
+//        let task = URLSession.shared.uploadTask(with: request, from: uploadData, completionHandler: { data, response, error in
+//            // completion handler에 의한 에러처리
+//            if let error = error {
+//                print("error: \(error)")
+//                return
+//            }
+//            guard let response = response as? HTTPURLResponse,
+//                  (200...299).contains(response.statusCode) else {
+//                print("server error")
+//                return
+//            }
+//            // Content-type 필드(데이터 타입을 적는 곳)에 MIME(Multipurpose Internet Mail Extensions)타입을 기술해줄 수 있음. 여기서는 json 타입으로 설정함
+//            // 만약 이미지 파일을 업로드 하고 싶으면 MIME 타입 중, multi part를 해야함.
+//            if let mimeType = response.mimeType,
+//               mimeType == "application/json",
+//               let data = data,// URLSession의 데이터로 data 상수를 설정한다??
+//               let dataString = String(data: data, encoding: .utf8) {
+//                print("Got Data : \(dataString)")
+//            }
+//
+//            print("HTTPresponse:\(response)")
+//            print("data : \(data!)")
+//
+//            let decodedResponse = try? JSONDecoder().decode(PostResponse.self, from: data!)
+//            print("decodedResponse: \(decodedResponse!.text)")
+//
+//        })
+//
+//
+//        // 6. uploadTask는 suspendedState에서 시작하기 때문에 resume을 통해서 업로드 과정을 실행한다.
+//        task.resume()
+//    }
 }
+
+// API TEST
+//struct PostPractice: Encodable {
+//    let text: String
+//}
+// API TEST
+//struct PostResponse: Decodable {
+//    let text: String
+//}
 
 struct CalendarMain_Previews: PreviewProvider {
     static var previews: some View {
