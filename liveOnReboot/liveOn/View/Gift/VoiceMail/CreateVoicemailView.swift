@@ -12,12 +12,14 @@ struct CreateVoicemailView: View {
     @ObservedObject var voicemail = VoicemailViewModel()
     @FocusState private var isFocused: Bool
     
+    @State var isRecording: Bool
+    @State var isRecorded: Bool
+    
     let date = Date.now
     
     var body: some View {
         GeometryReader { frame in
             VStack {
-                
                 Spacer()
                     .frame(height: 80)
                 
@@ -42,7 +44,9 @@ struct CreateVoicemailView: View {
                 Spacer()
                     .frame(height: 100)
                 
-                if voicemail.audioRecorder.isRecording == false && voicemail.isRecorded == false {
+                // with viewmodel
+                //                if voicemail.audioRecorder.isRecording == false && voicemail.isRecorded == false {
+                if isRecording == false && isRecorded == false {
                     VStack {
                         Text(" ")
                         ZStack {
@@ -55,11 +59,15 @@ struct CreateVoicemailView: View {
                                 .foregroundColor(Color.recordingBtn)
                                 .frame(width: 50, height: 50)
                                 .onTapGesture {
-                                    voicemail.startRecording()
+                                    // withviewmodel
+//                                    voicemail.startRecording()
+                                    isRecording.toggle()
                                 }
                         }
                     }
-                } else if voicemail.audioRecorder.isRecording == true && voicemail.isRecorded == false {
+                    // with viewmodel
+                    //                } else if voicemail.audioRecorder.isRecording == true && voicemail.isRecorded == false {
+                } else if isRecording == true && isRecorded == false {
                     VStack {
                         Text(voicemail.timeInString)
                         ZStack {
@@ -72,9 +80,11 @@ struct CreateVoicemailView: View {
                                 .foregroundColor(Color.recordingBtn)
                                 .frame(width: 40, height: 40)
                                 .onTapGesture {
-                                    voicemail.stopRecording()
-                                    voicemail.fetchRecording()
-                                    voicemail.timeInString = "0:00"
+                                    // with viewmodel
+//                                    voicemail.stopRecording()
+//                                    voicemail.fetchRecording()
+//                                    voicemail.timeInString = "0:00"
+                                    isRecorded.toggle()
                                 }
                         }
                     }
@@ -91,22 +101,23 @@ struct CreateVoicemailView: View {
                             .foregroundColor(Color.recordingBtn)
                             .frame(width: 40)
                             .onTapGesture {
-                                if let recordingURL = voicemail.recording?.fileURL {
-                                    voicemail.startPlaying(url: recordingURL)
-                                } else {
-                                    print("재생할 수 없음")
-                                }
+                                // with viewmodel
+//                                if let recordingURL = voicemail.recording?.fileURL {
+//                                    voicemail.startPlaying(url: recordingURL)
+//                                } else {
+//                                    print("재생할 수 없음")
+//                                }
                             }
                     }
                 }
-                
             }
         }
     }
 }
+//
+//struct CreateVoicemailView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CreateVoicemailView(isRecording: false, isRecorded: false)
+//    }
+//}
 
-struct CreateVoicemailView_Previews: PreviewProvider {
-    static var previews: some View {
-        CreateVoicemailView()
-    }
-}

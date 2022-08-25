@@ -12,6 +12,7 @@
 		3EEF02D3287AFA920010CA03 /* SingleVoicemailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEF02D2287AFA920010CA03 /* SingleVoicemailView.swift */; };
 		3EFF935D28AE23DD00E8B9DE /* Recording.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFF935C28AE23DD00E8B9DE /* Recording.swift */; };
 		3EFF935F28AE24B900E8B9DE /* CreateVoicemailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFF935E28AE24B900E8B9DE /* CreateVoicemailView.swift */; };
+		3EFF936128B8021F00E8B9DE /* VoicemailPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFF936028B8021F00E8B9DE /* VoicemailPopUpView.swift */; };
 		77079570287E91F000D8C081 /* 나눔손글씨 중학생.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7707956F287E91F000D8C081 /* 나눔손글씨 중학생.ttf */; };
 		773185BB287C4A9F00120FF9 /* Font+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773185BA287C4A9F00120FF9 /* Font+Extension.swift */; };
 		773185BE287C4B9400120FF9 /* NerkoOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 773185BD287C4B8F00120FF9 /* NerkoOne-Regular.ttf */; };
@@ -93,6 +94,7 @@
 		3EEF02D2287AFA920010CA03 /* SingleVoicemailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleVoicemailView.swift; sourceTree = "<group>"; };
 		3EFF935C28AE23DD00E8B9DE /* Recording.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recording.swift; sourceTree = "<group>"; };
 		3EFF935E28AE24B900E8B9DE /* CreateVoicemailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateVoicemailView.swift; sourceTree = "<group>"; };
+		3EFF936028B8021F00E8B9DE /* VoicemailPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoicemailPopUpView.swift; sourceTree = "<group>"; };
 		7707956F287E91F000D8C081 /* 나눔손글씨 중학생.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "나눔손글씨 중학생.ttf"; sourceTree = "<group>"; };
 		773185BA287C4A9F00120FF9 /* Font+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Extension.swift"; sourceTree = "<group>"; };
 		773185BD287C4B8F00120FF9 /* NerkoOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NerkoOne-Regular.ttf"; sourceTree = "<group>"; };
@@ -511,6 +513,7 @@
 				C92E31E428795B96000A315C /* VoicemailView.swift */,
 				3EEF02D2287AFA920010CA03 /* SingleVoicemailView.swift */,
 				3EFF935E28AE24B900E8B9DE /* CreateVoicemailView.swift */,
+				3EFF936028B8021F00E8B9DE /* VoicemailPopUpView.swift */,
 			);
 			path = VoiceMail;
 			sourceTree = "<group>";
@@ -884,6 +887,7 @@
 				A9B32A8A28867AB600530B51 /* BackButton+Extension.swift in Sources */,
 				C92E31DF28795B7A000A315C /* FlowerView.swift in Sources */,
 				77F6F12E288FD5E700263BBB /* textLimit.swift in Sources */,
+				3EFF936128B8021F00E8B9DE /* VoicemailPopUpView.swift in Sources */,
 				3EFF935D28AE23DD00E8B9DE /* Recording.swift in Sources */,
 				3EEF02D1287AF3960010CA03 /* Voicemail.swift in Sources */,
 				C92E321928795D13000A315C /* PictureService.swift in Sources */,

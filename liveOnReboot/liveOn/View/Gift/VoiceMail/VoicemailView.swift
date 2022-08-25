@@ -9,35 +9,53 @@ import SwiftUI
 
 struct VoiceMailView: View {
     
+    @State var isShowPopUp: Bool
+    
     let voicemailDummy = Voicemail.dummyData()
     
     var body: some View {
-        VStack {
-            if voicemailDummy.count > 8 {
-                ScrollView(showsIndicators: false) {
+        ZStack {
+            VStack {
+                if voicemailDummy.count > 8 {
+                    ScrollView(showsIndicators: false) {
+                        VStack {
+                            ForEach(voicemailDummy, id:\.voiceMailId) { vm in
+                                SingleVoicemailView(voicemail: vm)
+                                    .onTapGesture {
+                                        withAnimation(.easeOut) {
+                                            isShowPopUp.toggle()
+                                        }
+                                    }
+                            }
+                        }
+                        .padding(12)
+                        .border(.thinMaterial, width: 1)
+                        .background(.regularMaterial)
+                        .padding(16)
+                        .rotationEffect(Angle(degrees: 180))
+                    }
+                    .rotationEffect(Angle(degrees: 180))
+                } else {
+                    Spacer()
                     VStack {
                         ForEach(voicemailDummy, id:\.voiceMailId) { vm in
                             SingleVoicemailView(voicemail: vm)
+                                .onTapGesture {
+                                    withAnimation(.easeOut) {
+                                        isShowPopUp.toggle()
+                                    }
+                                }
                         }
                     }
                     .padding(12)
                     .border(.thinMaterial, width: 1)
                     .background(.regularMaterial)
                     .padding(16)
-                    .rotationEffect(Angle(degrees: 180))
                 }
-                .rotationEffect(Angle(degrees: 180))
-            } else {
-                Spacer()
-                VStack {
-                    ForEach(voicemailDummy, id:\.voiceMailId) { vm in
-                        SingleVoicemailView(voicemail: vm)
-                    }
-                }
-                .padding(12)
-                .border(.thinMaterial, width: 1)
-                .background(.regularMaterial)
-                .padding(16)
+            }
+            
+            if isShowPopUp {
+                VoicemailPopUpView()
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -48,7 +66,7 @@ struct VoiceMailView: View {
 
 struct VoiceMailView_Previews: PreviewProvider {
     static var previews: some View {
-        VoiceMailView()
+        VoiceMailView(isShowPopUp: false)
     }
 }
 
@@ -120,5 +138,5 @@ extension Voicemail {
                       voiceMail: "voiceMail",
                       voiceMailId: 0)
         ]
-    }   
+    }
 }

@@ -28,9 +28,31 @@ class VoicemailViewModel: NSObject, ObservableObject, AVAudioPlayerDelegate {
     
     // MARK: - recording 전
     func fetchRecording() {
-        let savedPath: URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-        let directoryContent = try! FileManager.default.contentsOfDirectory(at: savedPath, includingPropertiesForKeys: nil)[0]
-        recording = Recording(fileURL: directoryContent, createdAt: getFileDate(for: directoryContent), title: title, duration: String(countSec))
+//        let savedPath: [URL] = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+//        let directoryContent = try! FileManager.default.contentsOfDirectory(at: savedPath, includingPropertiesForKeys: nil)[0]
+//        recording = Recording(fileURL: directoryContent, createdAt: getFileDate(for: directoryContent), title: title, duration: String(countSec))
+    }
+    
+    func prepareRecording() {
+        
+        let recordingSession = AVAudioSession.sharedInstance()
+        
+        do {
+            try recordingSession.setCategory(.playAndRecord, mode: .default)
+            try recordingSession.setActive(true)
+        } catch {
+            print("Cannot setup the recording")
+            fatalError()
+        }
+        
+        let savedPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let fileName = savedPath.appendingPathComponent("live-On : \(Date().toString(dateFormat: "dd-MM-YY 'at' HH:mm:ss")).m4a")
+        let settings = [
+            AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
+            AVSampleRateKey: 12000,
+            AVNumberOfChannelsKey: 1,
+            AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue,
+        ]
     }
     
     // MARK: - recording 중
