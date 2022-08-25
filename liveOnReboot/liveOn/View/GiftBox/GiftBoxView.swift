@@ -101,7 +101,7 @@ struct CoupleInfoLabel: View {
 struct CalendarLinkView: View {
     var body: some View {
         
-        NavigationLink(destination: CalendarView()) {
+        NavigationLink(destination: CalendarView().environmentObject(EventStore())) {
             
             ZStack {
                 Image("calendar")
