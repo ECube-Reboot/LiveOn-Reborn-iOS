@@ -23,9 +23,12 @@ extension View {
                         .foregroundColor(.textBodyColor)
                         .frame(maxWidth: .infinity, alignment: .center)
                         .background(Image("highlightForCalendar"))
-                        .scaledToFit()
+                    
+                    Image("flowerIcon")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
                 }
-                Spacer()
+                Spacer()                
             }
         }
         .padding(.vertical, 6)

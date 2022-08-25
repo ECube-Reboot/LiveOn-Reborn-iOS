@@ -179,7 +179,7 @@ struct CalendarView: View {
             } label: {
                 Image(systemName: "calendar")
                     .foregroundColor(.burgundy)
-                    .font(.title3)
+                    .font(.body)
             }
         }
         .ignoresSafeArea(.all, edges: .bottom)
