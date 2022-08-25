@@ -19,6 +19,18 @@ extension Date {
         return dateFormatter.string(from: format)
     }
     
+    public func monthEnglishToString(_ format: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMMM"
+        return dateFormatter.string(from: format)
+    }
+    
+    public func monthToString(_ format: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM"
+        return dateFormatter.string(from: format)
+    }
+    
     public func stringDateToFormat(_ date: String) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "YYYY-MM-dd"
