@@ -17,8 +17,8 @@ struct liveOnRebootApp: App {
 //          NavigationView {
 //            LetterListView()
 //          }
-            VoiceMailView(isShowPopUp: false)
-//            CreateVoicemailView(isRecording: false, isRecorded: false)
+//            VoiceMailView(isShowPopUp: false)
+            CreateVoicemailView(isRecording: false, isRecorded: false)
         }
     }
   

@@ -89,7 +89,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3EEF02CE287AC9DE0010CA03 /* VoicemailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoicemailViewModel.swift; sourceTree = "<group>"; };
+		3EEF02CE287AC9DE0010CA03 /* VoicemailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VoicemailViewModel.swift; path = "/Users/seongmin/Desktop/LiveOn-Reborn-iOS/liveOnReboot/liveOn/ViewModel/Gift/VoiceMail/VoicemailViewModel.swift"; sourceTree = "<absolute>"; };
 		3EEF02D0287AF3960010CA03 /* Voicemail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Voicemail.swift; sourceTree = "<group>"; };
 		3EEF02D2287AFA920010CA03 /* SingleVoicemailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleVoicemailView.swift; sourceTree = "<group>"; };
 		3EFF935C28AE23DD00E8B9DE /* Recording.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recording.swift; sourceTree = "<group>"; };
@@ -1073,6 +1073,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "liveOnReboot-Info.plist";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "마이크 사용 권한";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1105,6 +1106,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "liveOnReboot-Info.plist";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "마이크 사용 권한";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

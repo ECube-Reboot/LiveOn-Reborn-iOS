@@ -10,49 +10,35 @@ import AVFoundation
 
 class VoicemailViewModel: NSObject, ObservableObject, AVAudioPlayerDelegate {
     
-    var audioRecorder: AVAudioRecorder!
-    var audioPlayer: AVAudioPlayer!
-    var playingURL: URL?
+    private var audioRecorder: AVAudioRecorder!
+    private var audioPlayer: AVAudioPlayer!
+    private var savedPath: URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+    lazy var fileName: URL = savedPath.appendingPathComponent("live-On : \(Date().toString(dateFormat: "dd-MM-YY 'at' HH:mm:ss")).m4a")
     var recording: Recording?
+    var isRecording: Bool = false
+    var countSec: Int = 0
+    var recordingSec: Int = 0
+    var timerCount: Timer?
     
     @Published var title: String = ""
-    @Published var countSec = 0
-    @Published var timerCount: Timer?
-    @Published var timeInString = "0:00"
+    @Published var recordingTimeInString: String = "0:00"
+    @Published var playingTimeInString: String = ""
     @Published var isRecorded: Bool = false
     
     override init() {
         super.init()
-        fetchRecording()
+        requestMicrophonePermission()
     }
     
     // MARK: - recording 전
-    func fetchRecording() {
-//        let savedPath: [URL] = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-//        let directoryContent = try! FileManager.default.contentsOfDirectory(at: savedPath, includingPropertiesForKeys: nil)[0]
-//        recording = Recording(fileURL: directoryContent, createdAt: getFileDate(for: directoryContent), title: title, duration: String(countSec))
-    }
-    
-    func prepareRecording() {
-        
-        let recordingSession = AVAudioSession.sharedInstance()
-        
-        do {
-            try recordingSession.setCategory(.playAndRecord, mode: .default)
-            try recordingSession.setActive(true)
-        } catch {
-            print("Cannot setup the recording")
-            fatalError()
-        }
-        
-        let savedPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-        let fileName = savedPath.appendingPathComponent("live-On : \(Date().toString(dateFormat: "dd-MM-YY 'at' HH:mm:ss")).m4a")
-        let settings = [
-            AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
-            AVSampleRateKey: 12000,
-            AVNumberOfChannelsKey: 1,
-            AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue,
-        ]
+    private func requestMicrophonePermission() {
+        AVAudioSession.sharedInstance().requestRecordPermission({(granted: Bool) -> Void in
+            if granted {
+                print("Mic: 권한 허용")
+            } else {
+                print("Mic: 권한 거부")
+            }
+        })
     }
     
     // MARK: - recording 중
@@ -60,6 +46,8 @@ class VoicemailViewModel: NSObject, ObservableObject, AVAudioPlayerDelegate {
         
         let recordingSession = AVAudioSession.sharedInstance()
         
+        isRecording = true
+        
         do {
             try recordingSession.setCategory(.playAndRecord, mode: .default)
             try recordingSession.setActive(true)
@@ -67,9 +55,6 @@ class VoicemailViewModel: NSObject, ObservableObject, AVAudioPlayerDelegate {
             print("Cannot setup the recording")
             fatalError()
         }
-        
-        let savedPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-        let fileName = savedPath.appendingPathComponent("live-On : \(Date().toString(dateFormat: "dd-MM-YY 'at' HH:mm:ss")).m4a")
         
         let settings = [
             AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
@@ -85,9 +70,10 @@ class VoicemailViewModel: NSObject, ObservableObject, AVAudioPlayerDelegate {
             
             timerCount = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
                 self.countSec += 1
-                self.timeInString = self.convertSecToMin(seconds: self.countSec)
+                self.recordingTimeInString = self.convertSecToMin(seconds: self.countSec)
             })
-            self.countSec = 0
+            recordingSec = countSec
+            countSec = 0
         } catch {
             print("Failed to setup the recording")
             fatalError()
@@ -96,14 +82,19 @@ class VoicemailViewModel: NSObject, ObservableObject, AVAudioPlayerDelegate {
     
     func stopRecording() {
         audioRecorder.stop()
+        saveRecording()
         timerCount?.invalidate()
+        playingTimeInString = recordingTimeInString
+        isRecording = false
         isRecorded = true
     }
     
     // MARK: - recording 후
-    func startPlaying(url: URL) {
-        
-        playingURL = url
+    func saveRecording() {
+        recording = Recording(fileURL: savedPath, createdAt: getFileDate(for: savedPath), title: title, duration: recordingTimeInString)
+    }
+    
+    func startPlaying() {
         
         let playSession = AVAudioSession.sharedInstance()
         
@@ -114,22 +105,30 @@ class VoicemailViewModel: NSObject, ObservableObject, AVAudioPlayerDelegate {
         }
         
         do {
-            audioPlayer = try AVAudioPlayer(contentsOf: url)
+            audioPlayer = try AVAudioPlayer(contentsOf: fileName)
             audioPlayer.delegate = self
             audioPlayer.prepareToPlay()
             audioPlayer.play()
         } catch {
-            print("Playing failed")
+            print("Playing failed: \(error.localizedDescription)")
         }
+        
+        playingTimeInString = convertSecToMin(seconds: self.countSec)
+        countSec += 1
+        if countSec <= recordingSec {
+            stopPlaying()
+            timerCount?.invalidate()
+        }
+        countSec = 0
     }
     
-    func stopPlaying(url: URL) {
+    func stopPlaying() {
         audioPlayer.stop()
     }
     
-    func deleteRecording(url: URL) {
+    func deleteRecording() {
         do {
-            try FileManager.default.removeItem(at: url)
+            try FileManager.default.removeItem(at: recording!.fileURL)
         } catch {
             print("Can't delete")
         }
@@ -149,7 +148,7 @@ extension VoicemailViewModel {
     }
     
     func convertSecToMin(seconds: Int) -> String {
-        let (_, m, s) = (seconds / 3600, (seconds % 3600) / 60, (seconds % 3600) % 3600)
+        let (_, m, s) = (seconds / 3600, (seconds % 3600) / 60, (seconds % 3600) % 60)
         let sec: String = s < 10 ? "0\(s)" : "\(s)"
         return "\(m):\(sec)"
     }
