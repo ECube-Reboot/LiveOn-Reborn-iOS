@@ -11,6 +11,12 @@
 		3EEF02D1287AF3960010CA03 /* VoicemailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEF02D0287AF3960010CA03 /* VoicemailModel.swift */; };
 		3EEF02D3287AFA920010CA03 /* SingleVoicemailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEF02D2287AFA920010CA03 /* SingleVoicemailView.swift */; };
 		77079570287E91F000D8C081 /* 나눔손글씨 중학생.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7707956F287E91F000D8C081 /* 나눔손글씨 중학생.ttf */; };
+
+		7725D93628B7294700EF5BA6 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7725D93528B7294700EF5BA6 /* SettingView.swift */; };
+		7725D93A28B7488500EF5BA6 /* ChangeNickNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7725D93928B7488500EF5BA6 /* ChangeNickNameView.swift */; };
+		7725D93C28B7504700EF5BA6 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7725D93B28B7504600EF5BA6 /* WebView.swift */; };
+		7725D93E28B7572D00EF5BA6 /* WithdrawalRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7725D93D28B7572D00EF5BA6 /* WithdrawalRequestView.swift */; };
+		7725D94028B75F3A00EF5BA6 /* ChangeOfficialDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7725D93F28B75F3A00EF5BA6 /* ChangeOfficialDateView.swift */; };
 		772A607D28AFA7A7005F5A4F /* letterColorStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772A607C28AFA7A7005F5A4F /* letterColorStyle.swift */; };
 		772ED6F128B08D8E00372993 /* GettingStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772ED6F028B08D8E00372993 /* GettingStartView.swift */; };
 		772ED6F328B08DF500372993 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772ED6F228B08DF500372993 /* AuthenticationViewModel.swift */; };
@@ -108,6 +114,12 @@
 		3EEF02D0287AF3960010CA03 /* VoicemailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoicemailModel.swift; sourceTree = "<group>"; };
 		3EEF02D2287AFA920010CA03 /* SingleVoicemailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleVoicemailView.swift; sourceTree = "<group>"; };
 		7707956F287E91F000D8C081 /* 나눔손글씨 중학생.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "나눔손글씨 중학생.ttf"; sourceTree = "<group>"; };
+
+		7725D93528B7294700EF5BA6 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		7725D93928B7488500EF5BA6 /* ChangeNickNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeNickNameView.swift; sourceTree = "<group>"; };
+		7725D93B28B7504600EF5BA6 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		7725D93D28B7572D00EF5BA6 /* WithdrawalRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawalRequestView.swift; sourceTree = "<group>"; };
+		7725D93F28B75F3A00EF5BA6 /* ChangeOfficialDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeOfficialDateView.swift; sourceTree = "<group>"; };
 		772A607C28AFA7A7005F5A4F /* letterColorStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = letterColorStyle.swift; sourceTree = "<group>"; };
 		772ED6F028B08D8E00372993 /* GettingStartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GettingStartView.swift; sourceTree = "<group>"; };
 		772ED6F228B08DF500372993 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
@@ -117,6 +129,7 @@
 		773185BD287C4B8F00120FF9 /* NerkoOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NerkoOne-Regular.ttf"; sourceTree = "<group>"; };
 		773185BF287C4CB900120FF9 /* liveOnReboot-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "liveOnReboot-Info.plist"; sourceTree = "<group>"; };
 		773185C2287C56FE00120FF9 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
+
 		776502DF28B4B8E300A46153 /* SignInDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInDTO.swift; sourceTree = "<group>"; };
 		776502E428B4B92800A46153 /* SignInEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInEndPoint.swift; sourceTree = "<group>"; };
 		776502E628B4B93000A46153 /* SignInService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInService.swift; sourceTree = "<group>"; };
@@ -484,6 +497,7 @@
 		C93A4BF32879291500A277AC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7725D93B28B7504600EF5BA6 /* WebView.swift */,
 				A932C46528858F3B00803302 /* DeliveryView.swift */,
 				C9BE6C87287561D400B782B9 /* ContentView.swift */,
 				C93A4BFB2879293400A277AC /* Calendar */,
@@ -543,6 +557,10 @@
 			isa = PBXGroup;
 			children = (
 				C92E31DC28795B71000A315C /* CoupleInformationView.swift */,
+				7725D93528B7294700EF5BA6 /* SettingView.swift */,
+				7725D93D28B7572D00EF5BA6 /* WithdrawalRequestView.swift */,
+				7725D93928B7488500EF5BA6 /* ChangeNickNameView.swift */,
+				7725D93F28B75F3A00EF5BA6 /* ChangeOfficialDateView.swift */,
 			);
 			path = CoupleInformation;
 			sourceTree = "<group>";
@@ -940,6 +958,7 @@
 				A973F1E1287B19D700323A17 /* PicturePicker.swift in Sources */,
 				C92E320528795C94000A315C /* FlowerDTO.swift in Sources */,
 				77F6F19328900C5700263BBB /* placeHolder.swift in Sources */,
+				7725D93628B7294700EF5BA6 /* SettingView.swift in Sources */,
 				77EB4489289FD6C00006F3CB /* LetterListView.swift in Sources */,
 				A9B32A8A28867AB600530B51 /* BackButton+Extension.swift in Sources */,
 				C92E31DF28795B7A000A315C /* FlowerView.swift in Sources */,
@@ -952,6 +971,7 @@
 				776502E728B4B93000A46153 /* SignInService.swift in Sources */,
 				772A607D28AFA7A7005F5A4F /* letterColorStyle.swift in Sources */,
 				C92E31CF28795B0E000A315C /* FlowerModel.swift in Sources */,
+				7725D93C28B7504700EF5BA6 /* WebView.swift in Sources */,
 				772ED6F528B08E1D00372993 /* AppleUser.swift in Sources */,
 				A932C47428859FE600803302 /* PictureErrorHandling.swift in Sources */,
 				C92E31FB28795C54000A315C /* Util.swift in Sources */,
@@ -970,6 +990,7 @@
 				C974DDC72883CB5A00698BFA /* Date+Extension.swift in Sources */,
 				C92E31E928795BA9000A315C /* GiftListView.swift in Sources */,
 				77651D0E28B09FF400994C15 /* SignInUser.swift in Sources */,
+				7725D93E28B7572D00EF5BA6 /* WithdrawalRequestView.swift in Sources */,
 				A929FDE3288248A000334E21 /* LoginEndPoint.swift in Sources */,
 				77651D0C28B09F5500994C15 /* InputBirthDayView.swift in Sources */,
 				C92E31D928795B41000A315C /* NetworkModel.swift in Sources */,
@@ -994,9 +1015,11 @@
 				C92E31ED28795C06000A315C /* DateToStringUpcomingEventsViewModel.swift in Sources */,
 				C915A80928990592003154AB /* EventStoreViewModel.swift in Sources */,
 				A9B32A8828867A9600530B51 /* Text+Extension.swift in Sources */,
+				7725D94028B75F3A00EF5BA6 /* ChangeOfficialDateView.swift in Sources */,
 				C92E31ED28795C06000A315C /* DateToStringUpcomingEventsViewModel.swift in Sources */,
 				772ED6F328B08DF500372993 /* AuthenticationViewModel.swift in Sources */,
 				C92E31ED28795C06000A315C /* DateToStringUpcomingEventsViewModel.swift in Sources */,
+				7725D93A28B7488500EF5BA6 /* ChangeNickNameView.swift in Sources */,
 				77651D1828B0B7FA00994C15 /* WelcomMatchingView.swift in Sources */,
 				77651D1228B0B1DA00994C15 /* InviteCodeView.swift in Sources */,
 				A929FDE12882486A00334E21 /* LoginDTO.swift in Sources */,
