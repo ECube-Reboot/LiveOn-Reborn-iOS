@@ -16,6 +16,13 @@
 		3EEF02D1287AF3960010CA03 /* VoicemailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEF02D0287AF3960010CA03 /* VoicemailModel.swift */; };
 		3EEF02D3287AFA920010CA03 /* SingleVoicemailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEF02D2287AFA920010CA03 /* SingleVoicemailView.swift */; };
 		77079570287E91F000D8C081 /* 나눔손글씨 중학생.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7707956F287E91F000D8C081 /* 나눔손글씨 중학생.ttf */; };
+
+		7725D93628B7294700EF5BA6 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7725D93528B7294700EF5BA6 /* SettingView.swift */; };
+		7725D93A28B7488500EF5BA6 /* ChangeNickNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7725D93928B7488500EF5BA6 /* ChangeNickNameView.swift */; };
+		7725D93C28B7504700EF5BA6 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7725D93B28B7504600EF5BA6 /* WebView.swift */; };
+		7725D93E28B7572D00EF5BA6 /* WithdrawalRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7725D93D28B7572D00EF5BA6 /* WithdrawalRequestView.swift */; };
+		7725D94028B75F3A00EF5BA6 /* ChangeOfficialDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7725D93F28B75F3A00EF5BA6 /* ChangeOfficialDateView.swift */; };
+
 		772A607D28AFA7A7005F5A4F /* letterColorStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772A607C28AFA7A7005F5A4F /* letterColorStyle.swift */; };
 		772ED6F128B08D8E00372993 /* GettingStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772ED6F028B08D8E00372993 /* GettingStartView.swift */; };
 		772ED6F328B08DF500372993 /* AppleSignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772ED6F228B08DF500372993 /* AppleSignInViewModel.swift */; };
@@ -23,6 +30,9 @@
 		773185BB287C4A9F00120FF9 /* Font+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773185BA287C4A9F00120FF9 /* Font+Extension.swift */; };
 		773185BE287C4B9400120FF9 /* NerkoOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 773185BD287C4B8F00120FF9 /* NerkoOne-Regular.ttf */; };
 		773185C3287C56FE00120FF9 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773185C2287C56FE00120FF9 /* Color+Extension.swift */; };
+		776502E028B4B8E300A46153 /* SignInDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776502DF28B4B8E300A46153 /* SignInDTO.swift */; };
+		776502E528B4B92800A46153 /* SignInEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776502E428B4B92800A46153 /* SignInEndPoint.swift */; };
+		776502E728B4B93000A46153 /* SignInService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776502E628B4B93000A46153 /* SignInService.swift */; };
 		77651D0628B0924700994C15 /* SignInLayoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77651D0528B0924700994C15 /* SignInLayoutView.swift */; };
 		77651D0828B0939100994C15 /* InputNickNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77651D0728B0939100994C15 /* InputNickNameView.swift */; };
 		77651D0A28B093CF00994C15 /* SignInLiteral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77651D0928B093CF00994C15 /* SignInLiteral.swift */; };
@@ -61,6 +71,7 @@
 		C92E31E328795B8A000A315C /* PictureListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E31E228795B8A000A315C /* PictureListView.swift */; };
 		C92E31E528795B96000A315C /* VoicemailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E31E428795B96000A315C /* VoicemailView.swift */; };
 		C92E31E928795BA9000A315C /* GiftListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E31E828795BA9000A315C /* GiftListView.swift */; };
+		C92E31EB28795BB0000A315C /* (null) in Sources */ = {isa = PBXBuildFile; };
 		C92E31ED28795C06000A315C /* DateToStringUpcomingEventsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E31EC28795C06000A315C /* DateToStringUpcomingEventsViewModel.swift */; };
 		C92E31EF28795C15000A315C /* FlowerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E31EE28795C15000A315C /* FlowerViewModel.swift */; };
 		C92E31F128795C1A000A315C /* LetterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E31F028795C1A000A315C /* LetterViewModel.swift */; };
@@ -84,6 +95,8 @@
 		C92E321728795D0D000A315C /* LetterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E321628795D0D000A315C /* LetterService.swift */; };
 		C92E321928795D13000A315C /* PictureService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E321828795D13000A315C /* PictureService.swift */; };
 		C92E321B28795D1D000A315C /* VoiceMailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E321A28795D1D000A315C /* VoiceMailService.swift */; };
+		C936B2F8289FB2D800011C64 /* DateToStringUpcomingEventsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E31EC28795C06000A315C /* DateToStringUpcomingEventsViewModel.swift */; };
+		C936B2FA289FB7C800011C64 /* DatePicker+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C936B2F9289FB7C800011C64 /* DatePicker+Extension.swift */; };
 		C93DEA23287ACE440045508C /* SendFlowerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93DEA22287ACE440045508C /* SendFlowerView.swift */; };
 		C93DEA2B287ACE960045508C /* SendPictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93DEA2A287ACE960045508C /* SendPictureView.swift */; };
 		C93DEA2D287ACEA20045508C /* SendVoiceMailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93DEA2C287ACEA20045508C /* SendVoiceMailView.swift */; };
@@ -91,7 +104,7 @@
 		C974DDC72883CB5A00698BFA /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C974DDC62883CB5A00698BFA /* Date+Extension.swift */; };
 		C974DDC92883CB8D00698BFA /* Calendar+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C974DDC82883CB8D00698BFA /* Calendar+Extension.swift */; };
 		C974DDCD2883CC4900698BFA /* UpcomingEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C974DDCC2883CC4900698BFA /* UpcomingEventsView.swift */; };
-		C974DDCF2883CC6400698BFA /* PopupDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C974DDCE2883CC6400698BFA /* PopupDateView.swift */; };
+		C974DDCF2883CC6400698BFA /* PopupDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C974DDCE2883CC6400698BFA /* PopupDate.swift */; };
 		C974DDD12883CC8900698BFA /* AddUpcomingEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C974DDD02883CC8900698BFA /* AddUpcomingEventView.swift */; };
 		C9BE6C86287561D400B782B9 /* liveOnRebootApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BE6C85287561D400B782B9 /* liveOnRebootApp.swift */; };
 		C9BE6C88287561D400B782B9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BE6C87287561D400B782B9 /* ContentView.swift */; };
@@ -109,15 +122,24 @@
 		3EEF02D0287AF3960010CA03 /* VoicemailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoicemailModel.swift; sourceTree = "<group>"; };
 		3EEF02D2287AFA920010CA03 /* SingleVoicemailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleVoicemailView.swift; sourceTree = "<group>"; };
 		7707956F287E91F000D8C081 /* 나눔손글씨 중학생.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "나눔손글씨 중학생.ttf"; sourceTree = "<group>"; };
+
 		772A607C28AFA7A7005F5A4F /* letterColorStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = letterColorStyle.swift; sourceTree = "<group>"; };
 		772ED6F028B08D8E00372993 /* GettingStartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GettingStartView.swift; sourceTree = "<group>"; };
 		772ED6F228B08DF500372993 /* AppleSignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleSignInViewModel.swift; sourceTree = "<group>"; };
+
+		7725D93528B7294700EF5BA6 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		7725D93928B7488500EF5BA6 /* ChangeNickNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeNickNameView.swift; sourceTree = "<group>"; };
+		7725D93B28B7504600EF5BA6 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		7725D93D28B7572D00EF5BA6 /* WithdrawalRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawalRequestView.swift; sourceTree = "<group>"; };
+		7725D93F28B75F3A00EF5BA6 /* ChangeOfficialDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeOfficialDateView.swift; sourceTree = "<group>"; };
+		
 		772ED6F428B08E1D00372993 /* AppleUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppleUser.swift; sourceTree = "<group>"; };
 		772ED6F628B08ED100372993 /* liveOnReboot.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = liveOnReboot.entitlements; sourceTree = "<group>"; };
 		773185BA287C4A9F00120FF9 /* Font+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Extension.swift"; sourceTree = "<group>"; };
 		773185BD287C4B8F00120FF9 /* NerkoOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NerkoOne-Regular.ttf"; sourceTree = "<group>"; };
 		773185BF287C4CB900120FF9 /* liveOnReboot-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "liveOnReboot-Info.plist"; sourceTree = "<group>"; };
 		773185C2287C56FE00120FF9 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
+
 		77651D0528B0924700994C15 /* SignInLayoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInLayoutView.swift; sourceTree = "<group>"; };
 		77651D0728B0939100994C15 /* InputNickNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputNickNameView.swift; sourceTree = "<group>"; };
 		77651D0928B093CF00994C15 /* SignInLiteral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInLiteral.swift; sourceTree = "<group>"; };
@@ -174,6 +196,7 @@
 		C92E321628795D0D000A315C /* LetterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterService.swift; sourceTree = "<group>"; };
 		C92E321828795D13000A315C /* PictureService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureService.swift; sourceTree = "<group>"; };
 		C92E321A28795D1D000A315C /* VoiceMailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceMailService.swift; sourceTree = "<group>"; };
+		C936B2F9289FB7C800011C64 /* DatePicker+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DatePicker+Extension.swift"; sourceTree = "<group>"; };
 		C93DEA22287ACE440045508C /* SendFlowerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendFlowerView.swift; sourceTree = "<group>"; };
 		C93DEA28287ACE8D0045508C /* SendLetterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendLetterView.swift; sourceTree = "<group>"; };
 		C93DEA2A287ACE960045508C /* SendPictureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendPictureView.swift; sourceTree = "<group>"; };
@@ -182,7 +205,7 @@
 		C974DDC62883CB5A00698BFA /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		C974DDC82883CB8D00698BFA /* Calendar+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+Extension.swift"; sourceTree = "<group>"; };
 		C974DDCC2883CC4900698BFA /* UpcomingEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingEventsView.swift; sourceTree = "<group>"; };
-		C974DDCE2883CC6400698BFA /* PopupDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupDateView.swift; sourceTree = "<group>"; };
+		C974DDCE2883CC6400698BFA /* PopupDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupDate.swift; sourceTree = "<group>"; };
 		C974DDD02883CC8900698BFA /* AddUpcomingEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUpcomingEventView.swift; sourceTree = "<group>"; };
 		C9BE6C82287561D400B782B9 /* liveOnReboot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = liveOnReboot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9BE6C85287561D400B782B9 /* liveOnRebootApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = liveOnRebootApp.swift; sourceTree = "<group>"; };
@@ -250,6 +273,7 @@
 				C974DDC82883CB8D00698BFA /* Calendar+Extension.swift */,
 				A9B32A8728867A9600530B51 /* Text+Extension.swift */,
 				A9B32A8928867AB600530B51 /* BackButton+Extension.swift */,
+				C936B2F9289FB7C800011C64 /* DatePicker+Extension.swift */,
 				77F6F127288FCF9700263BBB /* Date+Extension.swift */,
 			);
 			path = Extensions;
@@ -262,6 +286,16 @@
 				773185BD287C4B8F00120FF9 /* NerkoOne-Regular.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		776502E128B4B8EF00A46153 /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+				776502DF28B4B8E300A46153 /* SignInDTO.swift */,
+				776502E428B4B92800A46153 /* SignInEndPoint.swift */,
+				776502E628B4B93000A46153 /* SignInService.swift */,
+			);
+			path = SignIn;
 			sourceTree = "<group>";
 		};
 		77F6F19128900C4800263BBB /* Literal */ = {
@@ -298,7 +332,9 @@
 		C93A4BDC2879274000A277AC /* Network */ = {
 			isa = PBXGroup;
 			children = (
+
 				27EE34BC28B7E52600FCC40F /* Auth */,
+
 				C93A4BDD2879274A00A277AC /* Config */,
 				C93A4BDE2879275300A277AC /* Calendar */,
 				C93A4BDF2879276600A277AC /* Gift */,
@@ -500,6 +536,7 @@
 		C93A4BF32879291500A277AC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7725D93B28B7504600EF5BA6 /* WebView.swift */,
 				A932C46528858F3B00803302 /* DeliveryView.swift */,
 				C9BE6C87287561D400B782B9 /* ContentView.swift */,
 				C93A4BFB2879293400A277AC /* Calendar */,
@@ -559,6 +596,10 @@
 			isa = PBXGroup;
 			children = (
 				C92E31DC28795B71000A315C /* CoupleInformationView.swift */,
+				7725D93528B7294700EF5BA6 /* SettingView.swift */,
+				7725D93D28B7572D00EF5BA6 /* WithdrawalRequestView.swift */,
+				7725D93928B7488500EF5BA6 /* ChangeNickNameView.swift */,
+				7725D93F28B75F3A00EF5BA6 /* ChangeOfficialDateView.swift */,
 			);
 			path = CoupleInformation;
 			sourceTree = "<group>";
@@ -568,7 +609,7 @@
 			children = (
 				C92E31DA28795B60000A315C /* CalendarView.swift */,
 				C974DDCC2883CC4900698BFA /* UpcomingEventsView.swift */,
-				C974DDCE2883CC6400698BFA /* PopupDateView.swift */,
+				C974DDCE2883CC6400698BFA /* PopupDate.swift */,
 				C974DDD02883CC8900698BFA /* AddUpcomingEventView.swift */,
 			);
 			path = Calendar;
@@ -935,12 +976,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C936B2F8289FB2D800011C64 /* DateToStringUpcomingEventsViewModel.swift in Sources */,
+				C92E31EB28795BB0000A315C /* (null) in Sources */,
 				C974DDCD2883CC4900698BFA /* UpcomingEventsView.swift in Sources */,
 				773185C3287C56FE00120FF9 /* Color+Extension.swift in Sources */,
 				3EEF02D3287AFA920010CA03 /* SingleVoicemailView.swift in Sources */,
 				C92E320728795C9A000A315C /* LetterDTO.swift in Sources */,
 				772ED6F128B08D8E00372993 /* GettingStartView.swift in Sources */,
 				C974DDD12883CC8900698BFA /* AddUpcomingEventView.swift in Sources */,
+				C936B2FA289FB7C800011C64 /* DatePicker+Extension.swift in Sources */,
 				77651D0A28B093CF00994C15 /* SignInLiteral.swift in Sources */,
 				27EE34C128B7E57900FCC40F /* AuthService.swift in Sources */,
 				C92E31F128795C1A000A315C /* LetterViewModel.swift in Sources */,
@@ -954,6 +998,7 @@
 				A973F1E1287B19D700323A17 /* PicturePicker.swift in Sources */,
 				C92E320528795C94000A315C /* FlowerDTO.swift in Sources */,
 				77F6F19328900C5700263BBB /* placeHolder.swift in Sources */,
+				7725D93628B7294700EF5BA6 /* SettingView.swift in Sources */,
 				77EB4489289FD6C00006F3CB /* LetterListView.swift in Sources */,
 				A9B32A8A28867AB600530B51 /* BackButton+Extension.swift in Sources */,
 				C92E31DF28795B7A000A315C /* FlowerView.swift in Sources */,
@@ -962,9 +1007,12 @@
 				C92E321928795D13000A315C /* PictureService.swift in Sources */,
 				27EE34CA28B8529B00FCC40F /* KeyChain.swift in Sources */,
 				C92E321128795CEF000A315C /* PictureEndPoint.swift in Sources */,
+				776502E028B4B8E300A46153 /* SignInDTO.swift in Sources */,
 				A932C46628858F3B00803302 /* DeliveryView.swift in Sources */,
+				776502E728B4B93000A46153 /* SignInService.swift in Sources */,
 				772A607D28AFA7A7005F5A4F /* letterColorStyle.swift in Sources */,
 				C92E31CF28795B0E000A315C /* FlowerModel.swift in Sources */,
+				7725D93C28B7504700EF5BA6 /* WebView.swift in Sources */,
 				772ED6F528B08E1D00372993 /* AppleUser.swift in Sources */,
 				A932C47428859FE600803302 /* PictureErrorHandling.swift in Sources */,
 				C92E31FB28795C54000A315C /* Util.swift in Sources */,
@@ -972,8 +1020,10 @@
 				77EB4485289FC4200006F3CB /* SendLetterView.swift in Sources */,
 				C92E31FF28795C6F000A315C /* CalendarDTO.swift in Sources */,
 				773185BB287C4A9F00120FF9 /* Font+Extension.swift in Sources */,
+
 				C974DDCF2883CC6400698BFA /* PopupDateView.swift in Sources */,
 				27EE34C628B7E60F00FCC40F /* LoginRequestDTO.swift in Sources */,
+
 				77651D0628B0924700994C15 /* SignInLayoutView.swift in Sources */,
 				C92E320D28795CDD000A315C /* FlowerEndPoint.swift in Sources */,
 				C92E31F728795C36000A315C /* NetworkViewModel.swift in Sources */,
@@ -984,6 +1034,9 @@
 				C974DDC72883CB5A00698BFA /* Date+Extension.swift in Sources */,
 				C92E31E928795BA9000A315C /* GiftListView.swift in Sources */,
 				77651D0E28B09FF400994C15 /* SignInUser.swift in Sources */,
+
+				7725D93E28B7572D00EF5BA6 /* WithdrawalRequestView.swift in Sources */,
+				
 				77651D0C28B09F5500994C15 /* InputBirthDayView.swift in Sources */,
 				C92E31D928795B41000A315C /* NetworkModel.swift in Sources */,
 				C92E321728795D0D000A315C /* LetterService.swift in Sources */,
@@ -997,19 +1050,28 @@
 				C92E31EF28795C15000A315C /* FlowerViewModel.swift in Sources */,
 				C92E31E528795B96000A315C /* VoicemailView.swift in Sources */,
 				77F6F128288FCF9700263BBB /* Date+Extension.swift in Sources */,
+				776502E528B4B92800A46153 /* SignInEndPoint.swift in Sources */,
 				C93DEA2B287ACE960045508C /* SendPictureView.swift in Sources */,
 				C93DEA2D287ACEA20045508C /* SendVoiceMailView.swift in Sources */,
 				A929FDE62882671400334E21 /* NetworkLoggerPlugIn.swift in Sources */,
+				C915A80928990592003154AB /* EventStoreViewModel.swift in Sources */,
+				A9B32A8828867A9600530B51 /* Text+Extension.swift in Sources */,
 				77651D1628B0B7E100994C15 /* EnterCodeView.swift in Sources */,
 				C92E31ED28795C06000A315C /* DateToStringUpcomingEventsViewModel.swift in Sources */,
 				27EE34C828B7E61B00FCC40F /* LoginResponseDTO.swift in Sources */,
 				C915A80928990592003154AB /* EventStoreViewModel.swift in Sources */,
 				A9B32A8828867A9600530B51 /* Text+Extension.swift in Sources */,
+
 				C92E31ED28795C06000A315C /* DateToStringUpcomingEventsViewModel.swift in Sources */,
 				772ED6F328B08DF500372993 /* AppleSignInViewModel.swift in Sources */,
+
+				7725D94028B75F3A00EF5BA6 /* ChangeOfficialDateView.swift in Sources */,
+				
 				C92E31ED28795C06000A315C /* DateToStringUpcomingEventsViewModel.swift in Sources */,
+				7725D93A28B7488500EF5BA6 /* ChangeNickNameView.swift in Sources */,
 				77651D1828B0B7FA00994C15 /* WelcomMatchingView.swift in Sources */,
 				77651D1228B0B1DA00994C15 /* InviteCodeView.swift in Sources */,
+
 				77651D1428B0B51600994C15 /* ShareSheet.swift in Sources */,
 				C92E31DD28795B71000A315C /* CoupleInformationView.swift in Sources */,
 				C92E320928795CA2000A315C /* PictureDTO.swift in Sources */,
@@ -1157,7 +1219,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1190,7 +1252,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
