@@ -10,7 +10,7 @@ import Moya
 
 extension AuthAPI: TargetType {
     var baseURL: URL {
-        return URL(string: API.baseURL)!
+        return URL(string: GeneralAPI.baseURL)!
     }
     var path: String {
         switch self {

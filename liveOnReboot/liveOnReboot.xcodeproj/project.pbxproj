@@ -11,6 +11,7 @@
 		3EEF02D1287AF3960010CA03 /* VoicemailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEF02D0287AF3960010CA03 /* VoicemailModel.swift */; };
 		3EEF02D3287AFA920010CA03 /* SingleVoicemailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEF02D2287AFA920010CA03 /* SingleVoicemailView.swift */; };
 		77079570287E91F000D8C081 /* 나눔손글씨 중학생.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7707956F287E91F000D8C081 /* 나눔손글씨 중학생.ttf */; };
+		772A607D28AFA7A7005F5A4F /* letterColorStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772A607C28AFA7A7005F5A4F /* letterColorStyle.swift */; };
 		772ED6F128B08D8E00372993 /* GettingStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772ED6F028B08D8E00372993 /* GettingStartView.swift */; };
 		772ED6F328B08DF500372993 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772ED6F228B08DF500372993 /* AuthenticationViewModel.swift */; };
 		772ED6F528B08E1D00372993 /* AppleUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772ED6F428B08E1D00372993 /* AppleUser.swift */; };
@@ -61,6 +62,7 @@
 		C92E31E328795B8A000A315C /* PictureListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E31E228795B8A000A315C /* PictureListView.swift */; };
 		C92E31E528795B96000A315C /* VoicemailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E31E428795B96000A315C /* VoicemailView.swift */; };
 		C92E31E928795BA9000A315C /* GiftListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E31E828795BA9000A315C /* GiftListView.swift */; };
+		C92E31EB28795BB0000A315C /* (null) in Sources */ = {isa = PBXBuildFile; };
 		C92E31ED28795C06000A315C /* DateToStringUpcomingEventsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E31EC28795C06000A315C /* DateToStringUpcomingEventsViewModel.swift */; };
 		C92E31EF28795C15000A315C /* FlowerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E31EE28795C15000A315C /* FlowerViewModel.swift */; };
 		C92E31F128795C1A000A315C /* LetterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E31F028795C1A000A315C /* LetterViewModel.swift */; };
@@ -84,6 +86,8 @@
 		C92E321728795D0D000A315C /* LetterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E321628795D0D000A315C /* LetterService.swift */; };
 		C92E321928795D13000A315C /* PictureService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E321828795D13000A315C /* PictureService.swift */; };
 		C92E321B28795D1D000A315C /* VoiceMailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E321A28795D1D000A315C /* VoiceMailService.swift */; };
+		C936B2F8289FB2D800011C64 /* DateToStringUpcomingEventsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E31EC28795C06000A315C /* DateToStringUpcomingEventsViewModel.swift */; };
+		C936B2FA289FB7C800011C64 /* DatePicker+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C936B2F9289FB7C800011C64 /* DatePicker+Extension.swift */; };
 		C93DEA23287ACE440045508C /* SendFlowerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93DEA22287ACE440045508C /* SendFlowerView.swift */; };
 		C93DEA2B287ACE960045508C /* SendPictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93DEA2A287ACE960045508C /* SendPictureView.swift */; };
 		C93DEA2D287ACEA20045508C /* SendVoiceMailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93DEA2C287ACEA20045508C /* SendVoiceMailView.swift */; };
@@ -91,7 +95,7 @@
 		C974DDC72883CB5A00698BFA /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C974DDC62883CB5A00698BFA /* Date+Extension.swift */; };
 		C974DDC92883CB8D00698BFA /* Calendar+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C974DDC82883CB8D00698BFA /* Calendar+Extension.swift */; };
 		C974DDCD2883CC4900698BFA /* UpcomingEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C974DDCC2883CC4900698BFA /* UpcomingEventsView.swift */; };
-		C974DDCF2883CC6400698BFA /* PopupDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C974DDCE2883CC6400698BFA /* PopupDateView.swift */; };
+		C974DDCF2883CC6400698BFA /* PopupDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C974DDCE2883CC6400698BFA /* PopupDate.swift */; };
 		C974DDD12883CC8900698BFA /* AddUpcomingEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C974DDD02883CC8900698BFA /* AddUpcomingEventView.swift */; };
 		C9BE6C86287561D400B782B9 /* liveOnRebootApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BE6C85287561D400B782B9 /* liveOnRebootApp.swift */; };
 		C9BE6C88287561D400B782B9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BE6C87287561D400B782B9 /* ContentView.swift */; };
@@ -104,6 +108,7 @@
 		3EEF02D0287AF3960010CA03 /* VoicemailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoicemailModel.swift; sourceTree = "<group>"; };
 		3EEF02D2287AFA920010CA03 /* SingleVoicemailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleVoicemailView.swift; sourceTree = "<group>"; };
 		7707956F287E91F000D8C081 /* 나눔손글씨 중학생.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "나눔손글씨 중학생.ttf"; sourceTree = "<group>"; };
+		772A607C28AFA7A7005F5A4F /* letterColorStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = letterColorStyle.swift; sourceTree = "<group>"; };
 		772ED6F028B08D8E00372993 /* GettingStartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GettingStartView.swift; sourceTree = "<group>"; };
 		772ED6F228B08DF500372993 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		772ED6F428B08E1D00372993 /* AppleUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppleUser.swift; sourceTree = "<group>"; };
@@ -174,6 +179,7 @@
 		C92E321628795D0D000A315C /* LetterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterService.swift; sourceTree = "<group>"; };
 		C92E321828795D13000A315C /* PictureService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureService.swift; sourceTree = "<group>"; };
 		C92E321A28795D1D000A315C /* VoiceMailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceMailService.swift; sourceTree = "<group>"; };
+		C936B2F9289FB7C800011C64 /* DatePicker+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DatePicker+Extension.swift"; sourceTree = "<group>"; };
 		C93DEA22287ACE440045508C /* SendFlowerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendFlowerView.swift; sourceTree = "<group>"; };
 		C93DEA28287ACE8D0045508C /* SendLetterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendLetterView.swift; sourceTree = "<group>"; };
 		C93DEA2A287ACE960045508C /* SendPictureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendPictureView.swift; sourceTree = "<group>"; };
@@ -182,7 +188,7 @@
 		C974DDC62883CB5A00698BFA /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		C974DDC82883CB8D00698BFA /* Calendar+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+Extension.swift"; sourceTree = "<group>"; };
 		C974DDCC2883CC4900698BFA /* UpcomingEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingEventsView.swift; sourceTree = "<group>"; };
-		C974DDCE2883CC6400698BFA /* PopupDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupDateView.swift; sourceTree = "<group>"; };
+		C974DDCE2883CC6400698BFA /* PopupDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupDate.swift; sourceTree = "<group>"; };
 		C974DDD02883CC8900698BFA /* AddUpcomingEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUpcomingEventView.swift; sourceTree = "<group>"; };
 		C9BE6C82287561D400B782B9 /* liveOnReboot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = liveOnReboot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9BE6C85287561D400B782B9 /* liveOnRebootApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = liveOnRebootApp.swift; sourceTree = "<group>"; };
@@ -215,6 +221,7 @@
 				C974DDC82883CB8D00698BFA /* Calendar+Extension.swift */,
 				A9B32A8728867A9600530B51 /* Text+Extension.swift */,
 				A9B32A8928867AB600530B51 /* BackButton+Extension.swift */,
+				C936B2F9289FB7C800011C64 /* DatePicker+Extension.swift */,
 				77F6F127288FCF9700263BBB /* Date+Extension.swift */,
 			);
 			path = Extensions;
@@ -244,6 +251,7 @@
 			children = (
 				77F6F12D288FD5E700263BBB /* textLimit.swift */,
 				77F6F19228900C5700263BBB /* placeHolder.swift */,
+				772A607C28AFA7A7005F5A4F /* letterColorStyle.swift */,
 				77651D0928B093CF00994C15 /* SignInLiteral.swift */,
 			);
 			path = Literal;
@@ -544,7 +552,7 @@
 			children = (
 				C92E31DA28795B60000A315C /* CalendarView.swift */,
 				C974DDCC2883CC4900698BFA /* UpcomingEventsView.swift */,
-				C974DDCE2883CC6400698BFA /* PopupDateView.swift */,
+				C974DDCE2883CC6400698BFA /* PopupDate.swift */,
 				C974DDD02883CC8900698BFA /* AddUpcomingEventView.swift */,
 			);
 			path = Calendar;
@@ -911,12 +919,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C936B2F8289FB2D800011C64 /* DateToStringUpcomingEventsViewModel.swift in Sources */,
+				C92E31EB28795BB0000A315C /* (null) in Sources */,
 				C974DDCD2883CC4900698BFA /* UpcomingEventsView.swift in Sources */,
 				773185C3287C56FE00120FF9 /* Color+Extension.swift in Sources */,
 				3EEF02D3287AFA920010CA03 /* SingleVoicemailView.swift in Sources */,
 				C92E320728795C9A000A315C /* LetterDTO.swift in Sources */,
 				772ED6F128B08D8E00372993 /* GettingStartView.swift in Sources */,
 				C974DDD12883CC8900698BFA /* AddUpcomingEventView.swift in Sources */,
+				C936B2FA289FB7C800011C64 /* DatePicker+Extension.swift in Sources */,
 				77651D0A28B093CF00994C15 /* SignInLiteral.swift in Sources */,
 				C92E31F128795C1A000A315C /* LetterViewModel.swift in Sources */,
 				C974DDC92883CB8D00698BFA /* Calendar+Extension.swift in Sources */,
@@ -939,6 +950,7 @@
 				776502E028B4B8E300A46153 /* SignInDTO.swift in Sources */,
 				A932C46628858F3B00803302 /* DeliveryView.swift in Sources */,
 				776502E728B4B93000A46153 /* SignInService.swift in Sources */,
+				772A607D28AFA7A7005F5A4F /* letterColorStyle.swift in Sources */,
 				C92E31CF28795B0E000A315C /* FlowerModel.swift in Sources */,
 				772ED6F528B08E1D00372993 /* AppleUser.swift in Sources */,
 				A932C47428859FE600803302 /* PictureErrorHandling.swift in Sources */,
@@ -947,7 +959,7 @@
 				77EB4485289FC4200006F3CB /* SendLetterView.swift in Sources */,
 				C92E31FF28795C6F000A315C /* CalendarDTO.swift in Sources */,
 				773185BB287C4A9F00120FF9 /* Font+Extension.swift in Sources */,
-				C974DDCF2883CC6400698BFA /* PopupDateView.swift in Sources */,
+				C974DDCF2883CC6400698BFA /* PopupDate.swift in Sources */,
 				77651D0628B0924700994C15 /* SignInLayoutView.swift in Sources */,
 				C92E320D28795CDD000A315C /* FlowerEndPoint.swift in Sources */,
 				C92E31F728795C36000A315C /* NetworkViewModel.swift in Sources */,
@@ -976,12 +988,14 @@
 				C93DEA2B287ACE960045508C /* SendPictureView.swift in Sources */,
 				C93DEA2D287ACEA20045508C /* SendVoiceMailView.swift in Sources */,
 				A929FDE62882671400334E21 /* NetworkLoggerPlugIn.swift in Sources */,
+				C915A80928990592003154AB /* EventStoreViewModel.swift in Sources */,
+				A9B32A8828867A9600530B51 /* Text+Extension.swift in Sources */,
 				77651D1628B0B7E100994C15 /* EnterCodeView.swift in Sources */,
 				C92E31ED28795C06000A315C /* DateToStringUpcomingEventsViewModel.swift in Sources */,
 				C915A80928990592003154AB /* EventStoreViewModel.swift in Sources */,
 				A9B32A8828867A9600530B51 /* Text+Extension.swift in Sources */,
-				772ED6F328B08DF500372993 /* AuthenticationViewModel.swift in Sources */,
 				C92E31ED28795C06000A315C /* DateToStringUpcomingEventsViewModel.swift in Sources */,
+				772ED6F328B08DF500372993 /* AuthenticationViewModel.swift in Sources */,
 				C92E31ED28795C06000A315C /* DateToStringUpcomingEventsViewModel.swift in Sources */,
 				77651D1828B0B7FA00994C15 /* WelcomMatchingView.swift in Sources */,
 				77651D1228B0B1DA00994C15 /* InviteCodeView.swift in Sources */,
@@ -1133,7 +1147,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1166,7 +1180,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
