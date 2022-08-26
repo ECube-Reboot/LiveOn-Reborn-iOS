@@ -31,7 +31,7 @@ struct EnterCodeView: View {
                     // MARK: 코드 확인
                     Button {
                         viewModel.checkInviteCode(input: code) { result in
-                            turnToCorrect(status: result)
+                            checkCodeMatched(status: result)
                             if result {
                                 UserDefaults.standard.set(true, forKey: "isMatched")
                                 goNext = true
@@ -59,7 +59,7 @@ struct EnterCodeView: View {
     func isCorrect(userCode: String) -> Bool {
         return self.code == userCode
     }
-    private func turnToCorrect(status: Bool) {
+    private func checkCodeMatched(status: Bool) {
         presentFailAlert = !status
     }
 }
