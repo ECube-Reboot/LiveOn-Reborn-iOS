@@ -14,7 +14,7 @@ struct GettingStartView: View {
     @State private var authenticationData: String = ""
     @State private var isActive: Bool = false
     
-    let authProvider = MoyaProvider<AuthAPI>(plugins: [NetworkLoggerPlugin(verbose: true)])
+    let authProvider = MoyaProvider<AuthEndpoint>(plugins: [NetworkLoggerPlugin(verbose: true)])
     
     var body: some View {
         VStack {

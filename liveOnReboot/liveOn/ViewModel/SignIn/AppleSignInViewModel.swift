@@ -9,7 +9,7 @@ import Foundation
 import AuthenticationServices
 
 class AppleSignInViewModel: ObservableObject {
-    private let authNetworkService = AuthNetworkService()
+    private let authService = AuthService()
 //    @ObservedObject var authNetworkService: AuthNetworkService = AuthNetworkService()
     
 //    @Published var shouldShowAlert: Bool = false
@@ -21,7 +21,6 @@ class AppleSignInViewModel: ObservableObject {
 //        NotificationCenter.default.addObserver(self, selector: #selector(getAuthorizationState), name: ASAuthorizationAppleIDProvider.credentialRevokedNotification, object: nil)
 //    }
     func didFinishAppleSignin(result: Result<ASAuthorization, Error>) -> String {
-        print("in did finish apple signin")
         switch result {
         case.success(let auth):
             switch auth.credential {
@@ -33,10 +32,7 @@ class AppleSignInViewModel: ObservableObject {
                         let idToken = appleIdCredentials.identityToken!
                         let tokenStr = String(data: idToken, encoding: .ascii)
                         
-                        print(tokenStr ?? "")
-                        print("saved apple user")
-                        return tokenStr!
-            
+                        authService.login(accessToken: tokenStr!)
                     } else {
                         print("missing some fields")
                     }
