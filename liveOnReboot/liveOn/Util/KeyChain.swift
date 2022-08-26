@@ -15,16 +15,18 @@ class KeyChain {
         let query: NSDictionary = [
             kSecClass: kSecClassGenericPassword,
             kSecAttrAccount: key,
-            kSecValueData: token.data(using: .utf8, allowLossyConversion: false) as Any  
+            kSecValueData: token.data(using: .utf8, allowLossyConversion: false) as Any
         ]
         SecItemDelete(query)
 
+        print(token)
         let status = SecItemAdd(query, nil)
         assert(status == noErr, "failed to save Token")
     }
     
     // Read
     class func read(key: String) -> String? {
+
         let query: NSDictionary = [
             kSecClass: kSecClassGenericPassword,
             kSecAttrAccount: key,

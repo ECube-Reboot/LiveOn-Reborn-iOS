@@ -26,6 +26,7 @@ class AppleSignInViewModel: ObservableObject {
             switch auth.credential {
                 case let appleIdCredentials as ASAuthorizationAppleIDCredential:
                     if let appleUser = AppleUser(credentials: appleIdCredentials),
+                       //TODO: 필요없는 코드 리팩토링
                        let appleUserData = try? JSONEncoder().encode(appleUser) {
                         UserDefaults.standard.setValue(appleUserData, forKey: appleUser.userId)
                         

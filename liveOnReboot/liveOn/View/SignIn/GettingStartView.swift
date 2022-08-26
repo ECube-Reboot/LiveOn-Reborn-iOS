@@ -43,7 +43,13 @@ struct GettingStartView: View {
                 SignInWithAppleButton(.signIn, onRequest: { request in request.requestedScopes = []
                 }, onCompletion: { result in
                     authenticationData = appleSignInViewModel.didFinishAppleSignin(result: result)
-//                    isActive.toggle()
+                    isActive.toggle()
+//                    NavigationLink(destination: SendLetterView(gotoMain: $showCreateView), isActive: $showCreateView) {
+//                        Image("addButton")
+//                            .resizable()
+//                            .frame(width: 24, height: 24, alignment: .center)
+//                            .aspectRatio(contentMode: .fit)
+//                    }
                 })
                 .frame(width: 280, height: 60)
                 .padding(.top, 50)

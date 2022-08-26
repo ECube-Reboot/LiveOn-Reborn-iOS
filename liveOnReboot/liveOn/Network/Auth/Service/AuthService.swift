@@ -23,7 +23,8 @@ class AuthService {
             switch response {
             case .success(let result):
                 tokenResponse = try! result.map(LoginResponseDTO.self)
-                
+                KeyChain.create(key: "accessToken", token: tokenResponse.accessToken)
+                KeyChain.create(key: "refreshToken", token: tokenResponse.refreshToken)
             case .failure(let err):
                 print(err.localizedDescription)
             }
