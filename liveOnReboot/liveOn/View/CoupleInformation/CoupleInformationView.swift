@@ -69,13 +69,6 @@ struct CoupleInformationView: View {
         .listStyle(.plain)
         .background(Color.backgroundGray)
     }
-    
-    init(){
-        UITableView.appearance().backgroundColor = .clear
-        UITableViewCell.appearance().backgroundColor = .red
-        UITableViewCell.appearance().backgroundView?.backgroundColor = .blue
-        UINavigationBarAppearance().backgroundColor = .clear
-    }
 }
 
 
