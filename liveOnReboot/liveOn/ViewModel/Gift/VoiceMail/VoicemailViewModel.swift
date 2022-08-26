@@ -12,6 +12,4 @@ class VoicemailViewModel: NSObject, ObservableObject, AVAudioPlayerDelegate {
     
     var audioRecorder: AVAudioRecorder!
     var audioPlayer: AVAudioPlayer!
-    
-    
 }
