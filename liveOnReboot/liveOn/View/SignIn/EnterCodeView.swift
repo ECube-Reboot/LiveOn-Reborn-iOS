@@ -13,7 +13,7 @@ struct EnterCodeView: View {
     @State var code: String = ""
     @State var checkCode: Bool = false
     @State var presentFailAlert: Bool = false
-    @ObservedObject var viewMOdel = SignInViewModel()
+    @ObservedObject var viewModel = SignInViewModel()
     @State private var goNext: Bool = false
     
     var body: some View {
@@ -30,7 +30,7 @@ struct EnterCodeView: View {
                 }
                     // MARK: 코드 확인
                     Button {
-                        viewMOdel.checkInviteCode(input: code) { result in
+                        viewModel.checkInviteCode(input: code) { result in
                             turnToCorrect(status: result)
                             if result {
                                 UserDefaults.standard.set(true, forKey: "isMatched")
@@ -61,7 +61,6 @@ struct EnterCodeView: View {
     }
     private func turnToCorrect(status: Bool) {
         presentFailAlert = !status
-        print(presentFailAlert)
     }
 }
 
