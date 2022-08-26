@@ -23,7 +23,6 @@ class AuthService {
             switch response {
             case .success(let result):
                 tokenResponse = try! result.map(LoginResponseDTO.self)
-                print(tokenResponse.accessToken)
                 
             case .failure(let err):
                 print(err.localizedDescription)
