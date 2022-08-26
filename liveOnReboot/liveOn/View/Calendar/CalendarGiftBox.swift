@@ -21,35 +21,40 @@ struct CalendarGiftBox: View {
                 
                 Spacer()
                 
-                ScrollView(.vertical, showsIndicators: false, content: {
-                    eventSection
-                    
-                    Image("flowerIcon")
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 220, height: 200, alignment: .center)
-                    
-                    Image("letter_purple")
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 250, height: 200, alignment: .center)
-                    
-                    Image("casetteIcon")
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 300, height: 200, alignment: .center)
-                    
-                    Image("photocardIcon")
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 300, height: 200, alignment: .center)
-                })
+                giftsection
             }
+            eventSection2
         }
         .navigationBarTitleDisplayMode(.inline)
     }
     
-    var eventSection: some View {
+    var giftsection: some View {
+        ScrollView(.vertical, showsIndicators: false, content: {
+            eventSection1
+            
+            Image("flowerIcon")
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: 220, height: 200, alignment: .center)
+            
+            Image("letter_purple")
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: 250, height: 200, alignment: .center)
+            
+            Image("casetteIcon")
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: 300, height: 200, alignment: .center)
+            
+            Image("photocardIcon")
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: 300, height: 200, alignment: .center)
+        })
+    }
+    
+    var eventSection1: some View {
         HStack {
             ZStack {
                 RoundedRectangle(cornerRadius: 15)
@@ -85,7 +90,25 @@ struct CalendarGiftBox: View {
                     }
             }
         }
+    }
+    
+    var eventSection2: some View {
+        VStack {
+            Image("LoadingCharacter")
+                .padding(.bottom, 20)
+            
+            Text("어떤 선물이 오고 있을까요?")
+                .foregroundColor(.textBodyColor)
+                .font(.title3)
+        }
+    }
 
+}
+
+extension View {
+    @ViewBuilder
+    func GiftView(model: [UpcomingEventsModel])-> some View {
+        
     }
 }
 

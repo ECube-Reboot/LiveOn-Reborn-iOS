@@ -19,17 +19,18 @@ struct CalendarNoGift: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.leading)
                 
-                Spacer()
+                Spacer()                
             }
-            eventSection
+            eventSection2
         }
         .navigationBarTitleDisplayMode(.inline)
     }
     
-    var eventSection: some View {
+    var eventSection2: some View {
         VStack {
             Image("LoadingCharacter")
                 .padding(.bottom, 20)
+            
             Text("어떤 선물이 오고 있을까요?")
                 .foregroundColor(.textBodyColor)
                 .font(.title3)
