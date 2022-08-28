@@ -12,22 +12,25 @@
 		3EEF02D3287AFA920010CA03 /* SingleVoicemailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEF02D2287AFA920010CA03 /* SingleVoicemailView.swift */; };
 		77079570287E91F000D8C081 /* 나눔손글씨 중학생.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7707956F287E91F000D8C081 /* 나눔손글씨 중학생.ttf */; };
 
+		7725D93628B7294700EF5BA6 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7725D93528B7294700EF5BA6 /* SettingView.swift */; };
+		7725D93A28B7488500EF5BA6 /* ChangeNickNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7725D93928B7488500EF5BA6 /* ChangeNickNameView.swift */; };
+		7725D93C28B7504700EF5BA6 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7725D93B28B7504600EF5BA6 /* WebView.swift */; };
+		7725D93E28B7572D00EF5BA6 /* WithdrawalRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7725D93D28B7572D00EF5BA6 /* WithdrawalRequestView.swift */; };
+		7725D94028B75F3A00EF5BA6 /* ChangeOfficialDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7725D93F28B75F3A00EF5BA6 /* ChangeOfficialDateView.swift */; };
 		772A607D28AFA7A7005F5A4F /* letterColorStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772A607C28AFA7A7005F5A4F /* letterColorStyle.swift */; };
-		773185BB287C4A9F00120FF9 /* Font+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773185BA287C4A9F00120FF9 /* Font+Extension.swift */; };
-		773185BE287C4B9400120FF9 /* NerkoOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 773185BD287C4B8F00120FF9 /* NerkoOne-Regular.ttf */; };
-		773185C3287C56FE00120FF9 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773185C2287C56FE00120FF9 /* Color+Extension.swift */; };
-
 		772ED6F128B08D8E00372993 /* GettingStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772ED6F028B08D8E00372993 /* GettingStartView.swift */; };
 		772ED6F328B08DF500372993 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772ED6F228B08DF500372993 /* AuthenticationViewModel.swift */; };
 		772ED6F528B08E1D00372993 /* AppleUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772ED6F428B08E1D00372993 /* AppleUser.swift */; };
 		773185BB287C4A9F00120FF9 /* Font+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773185BA287C4A9F00120FF9 /* Font+Extension.swift */; };
 		773185BE287C4B9400120FF9 /* NerkoOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 773185BD287C4B8F00120FF9 /* NerkoOne-Regular.ttf */; };
 		773185C3287C56FE00120FF9 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773185C2287C56FE00120FF9 /* Color+Extension.swift */; };
+		776502E028B4B8E300A46153 /* SignInDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776502DF28B4B8E300A46153 /* SignInDTO.swift */; };
+		776502E528B4B92800A46153 /* SignInEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776502E428B4B92800A46153 /* SignInEndPoint.swift */; };
+		776502E728B4B93000A46153 /* SignInService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776502E628B4B93000A46153 /* SignInService.swift */; };
 		77651D0628B0924700994C15 /* SignInLayoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77651D0528B0924700994C15 /* SignInLayoutView.swift */; };
 		77651D0828B0939100994C15 /* InputNickNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77651D0728B0939100994C15 /* InputNickNameView.swift */; };
 		77651D0A28B093CF00994C15 /* SignInLiteral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77651D0928B093CF00994C15 /* SignInLiteral.swift */; };
 		77651D0C28B09F5500994C15 /* InputBirthDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77651D0B28B09F5500994C15 /* InputBirthDayView.swift */; };
-				C915A80928990592003154AB /* EventStoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C915A80828990592003154AB /* EventStoreViewModel.swift */; };
 		77651D0E28B09FF400994C15 /* SignInUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77651D0D28B09FF400994C15 /* SignInUser.swift */; };
 		77651D1028B0AD3500994C15 /* InputOfficialDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77651D0F28B0AD3500994C15 /* InputOfficialDateView.swift */; };
 		77651D1228B0B1DA00994C15 /* InviteCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77651D1128B0B1DA00994C15 /* InviteCodeView.swift */; };
@@ -35,7 +38,6 @@
 		77651D1628B0B7E100994C15 /* EnterCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77651D1528B0B7E100994C15 /* EnterCodeView.swift */; };
 		77651D1828B0B7FA00994C15 /* WelcomMatchingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77651D1728B0B7FA00994C15 /* WelcomMatchingView.swift */; };
 		77651D1A28B0BD5800994C15 /* GiftBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77651D1928B0BD5800994C15 /* GiftBoxView.swift */; };
-
 		77EB4485289FC4200006F3CB /* SendLetterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93DEA28287ACE8D0045508C /* SendLetterView.swift */; };
 		77EB4489289FD6C00006F3CB /* LetterListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77EB4488289FD6C00006F3CB /* LetterListView.swift */; };
 		77F6F128288FCF9700263BBB /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F6F127288FCF9700263BBB /* Date+Extension.swift */; };
@@ -55,8 +57,6 @@
 		A973F1E1287B19D700323A17 /* PicturePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A973F1E0287B19D700323A17 /* PicturePicker.swift */; };
 		A9B32A8828867A9600530B51 /* Text+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B32A8728867A9600530B51 /* Text+Extension.swift */; };
 		A9B32A8A28867AB600530B51 /* BackButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B32A8928867AB600530B51 /* BackButton+Extension.swift */; };
-		A9B32A8C28867B1000530B51 /* 나눔손글씨 나의 아내 손글씨.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A9B32A8B28867B1000530B51 /* 나눔손글씨 나의 아내 손글씨.ttf */; };
-
 		C915A80928990592003154AB /* EventStoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C915A80828990592003154AB /* EventStoreViewModel.swift */; };
 		C92E31CD28795A25000A315C /* CalendarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E31CC28795A25000A315C /* CalendarModel.swift */; };
 		C92E31CF28795B0E000A315C /* FlowerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E31CE28795B0E000A315C /* FlowerModel.swift */; };
@@ -68,8 +68,7 @@
 		C92E31E328795B8A000A315C /* PictureListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E31E228795B8A000A315C /* PictureListView.swift */; };
 		C92E31E528795B96000A315C /* VoicemailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E31E428795B96000A315C /* VoicemailView.swift */; };
 		C92E31E928795BA9000A315C /* GiftListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E31E828795BA9000A315C /* GiftListView.swift */; };
-		C92E31EB28795BB0000A315C /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E31EA28795BB0000A315C /* SignInView.swift */; };
-
+		C92E31EB28795BB0000A315C /* (null) in Sources */ = {isa = PBXBuildFile; };
 		C92E31ED28795C06000A315C /* DateToStringUpcomingEventsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E31EC28795C06000A315C /* DateToStringUpcomingEventsViewModel.swift */; };
 		C92E31EF28795C15000A315C /* FlowerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E31EE28795C15000A315C /* FlowerViewModel.swift */; };
 		C92E31F128795C1A000A315C /* LetterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E31F028795C1A000A315C /* LetterViewModel.swift */; };
@@ -116,19 +115,24 @@
 		3EEF02D2287AFA920010CA03 /* SingleVoicemailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleVoicemailView.swift; sourceTree = "<group>"; };
 		7707956F287E91F000D8C081 /* 나눔손글씨 중학생.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "나눔손글씨 중학생.ttf"; sourceTree = "<group>"; };
 
+		7725D93528B7294700EF5BA6 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		7725D93928B7488500EF5BA6 /* ChangeNickNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeNickNameView.swift; sourceTree = "<group>"; };
+		7725D93B28B7504600EF5BA6 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		7725D93D28B7572D00EF5BA6 /* WithdrawalRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawalRequestView.swift; sourceTree = "<group>"; };
+		7725D93F28B75F3A00EF5BA6 /* ChangeOfficialDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeOfficialDateView.swift; sourceTree = "<group>"; };
 		772A607C28AFA7A7005F5A4F /* letterColorStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = letterColorStyle.swift; sourceTree = "<group>"; };
-
 		772ED6F028B08D8E00372993 /* GettingStartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GettingStartView.swift; sourceTree = "<group>"; };
-		C915A80828990592003154AB /* EventStoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventStoreViewModel.swift; sourceTree = "<group>"; };
 		772ED6F228B08DF500372993 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		772ED6F428B08E1D00372993 /* AppleUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppleUser.swift; sourceTree = "<group>"; };
 		772ED6F628B08ED100372993 /* liveOnReboot.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = liveOnReboot.entitlements; sourceTree = "<group>"; };
-
 		773185BA287C4A9F00120FF9 /* Font+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Extension.swift"; sourceTree = "<group>"; };
 		773185BD287C4B8F00120FF9 /* NerkoOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NerkoOne-Regular.ttf"; sourceTree = "<group>"; };
 		773185BF287C4CB900120FF9 /* liveOnReboot-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "liveOnReboot-Info.plist"; sourceTree = "<group>"; };
 		773185C2287C56FE00120FF9 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 
+		776502DF28B4B8E300A46153 /* SignInDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInDTO.swift; sourceTree = "<group>"; };
+		776502E428B4B92800A46153 /* SignInEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInEndPoint.swift; sourceTree = "<group>"; };
+		776502E628B4B93000A46153 /* SignInService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInService.swift; sourceTree = "<group>"; };
 		77651D0528B0924700994C15 /* SignInLayoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInLayoutView.swift; sourceTree = "<group>"; };
 		77651D0728B0939100994C15 /* InputNickNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputNickNameView.swift; sourceTree = "<group>"; };
 		77651D0928B093CF00994C15 /* SignInLiteral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInLiteral.swift; sourceTree = "<group>"; };
@@ -140,7 +144,6 @@
 		77651D1528B0B7E100994C15 /* EnterCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterCodeView.swift; sourceTree = "<group>"; };
 		77651D1728B0B7FA00994C15 /* WelcomMatchingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomMatchingView.swift; sourceTree = "<group>"; };
 		77651D1928B0BD5800994C15 /* GiftBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftBoxView.swift; sourceTree = "<group>"; };
-
 		77EB4488289FD6C00006F3CB /* LetterListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterListView.swift; sourceTree = "<group>"; };
 		77F6F127288FCF9700263BBB /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		77F6F12D288FD5E700263BBB /* textLimit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = textLimit.swift; sourceTree = "<group>"; };
@@ -155,8 +158,6 @@
 		A973F1E0287B19D700323A17 /* PicturePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicturePicker.swift; sourceTree = "<group>"; };
 		A9B32A8728867A9600530B51 /* Text+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Text+Extension.swift"; sourceTree = "<group>"; };
 		A9B32A8928867AB600530B51 /* BackButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BackButton+Extension.swift"; sourceTree = "<group>"; };
-		A9B32A8B28867B1000530B51 /* 나눔손글씨 나의 아내 손글씨.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "나눔손글씨 나의 아내 손글씨.ttf"; sourceTree = "<group>"; };
-
 		C915A80828990592003154AB /* EventStoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventStoreViewModel.swift; sourceTree = "<group>"; };
 		C92E31CC28795A25000A315C /* CalendarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarModel.swift; sourceTree = "<group>"; };
 		C92E31CE28795B0E000A315C /* FlowerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowerModel.swift; sourceTree = "<group>"; };
@@ -248,6 +249,16 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		776502E128B4B8EF00A46153 /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+				776502DF28B4B8E300A46153 /* SignInDTO.swift */,
+				776502E428B4B92800A46153 /* SignInEndPoint.swift */,
+				776502E628B4B93000A46153 /* SignInService.swift */,
+			);
+			path = SignIn;
+			sourceTree = "<group>";
+		};
 		77F6F19128900C4800263BBB /* Literal */ = {
 			isa = PBXGroup;
 			children = (
@@ -281,6 +292,7 @@
 		C93A4BDC2879274000A277AC /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				776502E128B4B8EF00A46153 /* SignIn */,
 				C93A4BDD2879274A00A277AC /* Config */,
 				C93A4BDE2879275300A277AC /* Calendar */,
 				C93A4BDF2879276600A277AC /* Gift */,
@@ -485,6 +497,7 @@
 		C93A4BF32879291500A277AC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7725D93B28B7504600EF5BA6 /* WebView.swift */,
 				A932C46528858F3B00803302 /* DeliveryView.swift */,
 				C9BE6C87287561D400B782B9 /* ContentView.swift */,
 				C93A4BFB2879293400A277AC /* Calendar */,
@@ -544,6 +557,10 @@
 			isa = PBXGroup;
 			children = (
 				C92E31DC28795B71000A315C /* CoupleInformationView.swift */,
+				7725D93528B7294700EF5BA6 /* SettingView.swift */,
+				7725D93D28B7572D00EF5BA6 /* WithdrawalRequestView.swift */,
+				7725D93928B7488500EF5BA6 /* ChangeNickNameView.swift */,
+				7725D93F28B75F3A00EF5BA6 /* ChangeOfficialDateView.swift */,
 			);
 			path = CoupleInformation;
 			sourceTree = "<group>";
@@ -921,7 +938,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C936B2F8289FB2D800011C64 /* DateToStringUpcomingEventsViewModel.swift in Sources */,
-				C92E31EB28795BB0000A315C /* SignInView.swift in Sources */,
+				C92E31EB28795BB0000A315C /* (null) in Sources */,
 				C974DDCD2883CC4900698BFA /* UpcomingEventsView.swift in Sources */,
 				773185C3287C56FE00120FF9 /* Color+Extension.swift in Sources */,
 				3EEF02D3287AFA920010CA03 /* SingleVoicemailView.swift in Sources */,
@@ -941,6 +958,7 @@
 				A973F1E1287B19D700323A17 /* PicturePicker.swift in Sources */,
 				C92E320528795C94000A315C /* FlowerDTO.swift in Sources */,
 				77F6F19328900C5700263BBB /* placeHolder.swift in Sources */,
+				7725D93628B7294700EF5BA6 /* SettingView.swift in Sources */,
 				77EB4489289FD6C00006F3CB /* LetterListView.swift in Sources */,
 				A9B32A8A28867AB600530B51 /* BackButton+Extension.swift in Sources */,
 				C92E31DF28795B7A000A315C /* FlowerView.swift in Sources */,
@@ -948,9 +966,12 @@
 				3EEF02D1287AF3960010CA03 /* VoicemailModel.swift in Sources */,
 				C92E321928795D13000A315C /* PictureService.swift in Sources */,
 				C92E321128795CEF000A315C /* PictureEndPoint.swift in Sources */,
+				776502E028B4B8E300A46153 /* SignInDTO.swift in Sources */,
 				A932C46628858F3B00803302 /* DeliveryView.swift in Sources */,
+				776502E728B4B93000A46153 /* SignInService.swift in Sources */,
 				772A607D28AFA7A7005F5A4F /* letterColorStyle.swift in Sources */,
 				C92E31CF28795B0E000A315C /* FlowerModel.swift in Sources */,
+				7725D93C28B7504700EF5BA6 /* WebView.swift in Sources */,
 				772ED6F528B08E1D00372993 /* AppleUser.swift in Sources */,
 				A932C47428859FE600803302 /* PictureErrorHandling.swift in Sources */,
 				C92E31FB28795C54000A315C /* Util.swift in Sources */,
@@ -969,6 +990,7 @@
 				C974DDC72883CB5A00698BFA /* Date+Extension.swift in Sources */,
 				C92E31E928795BA9000A315C /* GiftListView.swift in Sources */,
 				77651D0E28B09FF400994C15 /* SignInUser.swift in Sources */,
+				7725D93E28B7572D00EF5BA6 /* WithdrawalRequestView.swift in Sources */,
 				A929FDE3288248A000334E21 /* LoginEndPoint.swift in Sources */,
 				77651D0C28B09F5500994C15 /* InputBirthDayView.swift in Sources */,
 				C92E31D928795B41000A315C /* NetworkModel.swift in Sources */,
@@ -983,25 +1005,23 @@
 				A932C46428858D6500803302 /* LogInAuth.swift in Sources */,
 				C92E31E528795B96000A315C /* VoicemailView.swift in Sources */,
 				77F6F128288FCF9700263BBB /* Date+Extension.swift in Sources */,
+				776502E528B4B92800A46153 /* SignInEndPoint.swift in Sources */,
 				C93DEA2B287ACE960045508C /* SendPictureView.swift in Sources */,
 				C93DEA2D287ACEA20045508C /* SendVoiceMailView.swift in Sources */,
 				A929FDE62882671400334E21 /* NetworkLoggerPlugIn.swift in Sources */,
-				C92E31E728795BA0000A315C /* GiftBoxView.swift in Sources */,
 				C915A80928990592003154AB /* EventStoreViewModel.swift in Sources */,
 				A9B32A8828867A9600530B51 /* Text+Extension.swift in Sources */,
 				77651D1628B0B7E100994C15 /* EnterCodeView.swift in Sources */,
 				C92E31ED28795C06000A315C /* DateToStringUpcomingEventsViewModel.swift in Sources */,
 				C915A80928990592003154AB /* EventStoreViewModel.swift in Sources */,
 				A9B32A8828867A9600530B51 /* Text+Extension.swift in Sources */,
-
+				7725D94028B75F3A00EF5BA6 /* ChangeOfficialDateView.swift in Sources */,
 				C92E31ED28795C06000A315C /* DateToStringUpcomingEventsViewModel.swift in Sources */,
-				C92E31D728795B38000A315C /* LogInModel.swift in Sources */,
-
 				772ED6F328B08DF500372993 /* AuthenticationViewModel.swift in Sources */,
 				C92E31ED28795C06000A315C /* DateToStringUpcomingEventsViewModel.swift in Sources */,
+				7725D93A28B7488500EF5BA6 /* ChangeNickNameView.swift in Sources */,
 				77651D1828B0B7FA00994C15 /* WelcomMatchingView.swift in Sources */,
 				77651D1228B0B1DA00994C15 /* InviteCodeView.swift in Sources */,
-
 				A929FDE12882486A00334E21 /* LoginDTO.swift in Sources */,
 				77651D1428B0B51600994C15 /* ShareSheet.swift in Sources */,
 				C92E31DD28795B71000A315C /* CoupleInformationView.swift in Sources */,
@@ -1150,7 +1170,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1183,7 +1203,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

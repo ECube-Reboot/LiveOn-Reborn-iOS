@@ -16,7 +16,8 @@ struct GiftBoxView: View {
                     
                     // MARK: 커플 정보 라벨과 선물 제작 버튼이 들어가는 상단 바
                     HStack {
-                        CoupleInfoLabel()
+                        NavigationLink(destination: CoupleInformationView()){
+                            CoupleInfoLabel()}
                         Spacer()
                         NavigationLink(destination: GiftListView()) {
                             Image("addButton")
