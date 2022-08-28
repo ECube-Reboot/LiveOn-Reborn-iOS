@@ -16,6 +16,7 @@ class SignInViewModel: ObservableObject {
     let signInMoyaService = MoyaProvider<AuthEndpoint>(plugins: [NetworkLoggerPlugin()])
     
     func getInviteCode() async {
+        print(KeyChain.read(key: "accessToken")!)
         signInMoyaService.request(.getCode) { response in
             switch response {
                 case .success(let result):

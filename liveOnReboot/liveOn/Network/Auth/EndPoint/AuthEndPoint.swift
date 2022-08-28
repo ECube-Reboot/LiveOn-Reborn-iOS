@@ -50,6 +50,13 @@ extension AuthEndpoint: TargetType {
     }
     
     var headers: [String: String]? {
-        return ["Content-Type": "application/json"]
+        switch self {
+        case .login :
+            return ["Content-Type": "application/json"]
+        default :
+            return ["Content-Type": "application/json",
+                    "Authorization": "Bearer "+KeyChain.read(key: "accessToken")!]
+        }
+        
     }
 }
