@@ -171,6 +171,13 @@ struct VoiceAndFlowerLinkView: View {
     } // body
 }
 
+// written by Milli
+/// 사귀기 시작한 첫 날을 전달하면 커플이 된지 며칠이나 지났는지 Int값을 반환해주는 함수
+func countDays(from date: Date) -> Int {
+    let calendar = Calendar.current
+    return calendar.dateComponents([.day], from: date, to: Date()).day! + 1
+}
+
 struct GiftBoxView_Previews: PreviewProvider {
     static var previews: some View {
         GiftBoxView()
