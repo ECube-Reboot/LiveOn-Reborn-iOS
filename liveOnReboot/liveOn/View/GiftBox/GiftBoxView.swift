@@ -161,7 +161,7 @@ struct VoiceAndFlowerLinkView: View {
                     .aspectRatio(contentMode: .fit)
             }
             
-            NavigationLink(destination: FlowerView()) {
+            NavigationLink(destination: FlowerListView()) {
                 Image("flower")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
