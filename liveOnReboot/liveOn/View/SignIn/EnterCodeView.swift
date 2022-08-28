@@ -34,6 +34,7 @@ struct EnterCodeView: View {
                             checkCodeMatched(status: result)
                             if result {
                                 UserDefaults.standard.set(true, forKey: "isMatched")
+                                UserStatus.settingUserStatus(presentStatus: UserStatus.member)
                                 goNext = true
                             }
                         }
