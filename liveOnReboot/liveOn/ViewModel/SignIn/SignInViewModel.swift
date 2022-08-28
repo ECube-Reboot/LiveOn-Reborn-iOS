@@ -15,6 +15,17 @@ class SignInViewModel: ObservableObject {
     private let authService = AuthService()
     let signInMoyaService = MoyaProvider<AuthEndpoint>(plugins: [NetworkLoggerPlugin()])
     
+    func postMemeberInformation(information: PostMemberInformationDTO, completion: @escaping () -> ()) {
+        signInMoyaService.request(.postMemberInformation(param: information)) { response in
+            switch response {
+                case .success(_):
+                    completion()
+                    return
+                case .failure(let err):
+                    print(err.localizedDescription)
+            }
+        }
+    }
     func getInviteCode() async {
         signInMoyaService.request(.getCode) { response in
             switch response {
