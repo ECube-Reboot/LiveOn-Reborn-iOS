@@ -16,9 +16,26 @@ struct liveOnRebootApp: App {
     var body: some Scene {
         WindowGroup {
           NavigationView {
-//            LetterListView()
-              GettingStartView()
-          }
+              switch UserStatus.currentStatus() {
+                  case 0:
+//                          .nonMember:
+                      GettingStartView()
+                  case 1:
+//                          .appleSignInFinished:
+                      InputNickNameView()
+                  case 2:
+//                          .informationEntered:
+                      InviteCodeView(userData: SignInUser())
+                  case 3:
+//                          .allSettingFinished:
+                      GiftBoxView()
+                  default :
+                      GettingStartView()
+              }
         }
+        }
+    }
+    init() {
+        UITextView.appearance().backgroundColor = .clear
     }
 }

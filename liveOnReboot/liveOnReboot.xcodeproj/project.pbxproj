@@ -22,8 +22,8 @@
 		7725D93C28B7504700EF5BA6 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7725D93B28B7504600EF5BA6 /* WebView.swift */; };
 		7725D93E28B7572D00EF5BA6 /* WithdrawalRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7725D93D28B7572D00EF5BA6 /* WithdrawalRequestView.swift */; };
 		7725D94028B75F3A00EF5BA6 /* ChangeOfficialDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7725D93F28B75F3A00EF5BA6 /* ChangeOfficialDateView.swift */; };
-		7725D95E28BA0FAC00EF5BA6 /* UserStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7725D95D28BA0FAC00EF5BA6 /* UserStatus.swift */; };
 		7725D96028BAF61A00EF5BA6 /* PostMemberInformationRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7725D95F28BAF61A00EF5BA6 /* PostMemberInformationRequestDTO.swift */; };
+		7725D96428BB0B9100EF5BA6 /* UserStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7725D96328BB0B9100EF5BA6 /* UserStatus.swift */; };
 		772A607D28AFA7A7005F5A4F /* letterColorStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772A607C28AFA7A7005F5A4F /* letterColorStyle.swift */; };
 		772ED6F128B08D8E00372993 /* GettingStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772ED6F028B08D8E00372993 /* GettingStartView.swift */; };
 		772ED6F328B08DF500372993 /* AppleSignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772ED6F228B08DF500372993 /* AppleSignInViewModel.swift */; };
@@ -129,8 +129,8 @@
 		7725D93B28B7504600EF5BA6 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		7725D93D28B7572D00EF5BA6 /* WithdrawalRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawalRequestView.swift; sourceTree = "<group>"; };
 		7725D93F28B75F3A00EF5BA6 /* ChangeOfficialDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeOfficialDateView.swift; sourceTree = "<group>"; };
-		7725D95D28BA0FAC00EF5BA6 /* UserStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStatus.swift; sourceTree = "<group>"; };
 		7725D95F28BAF61A00EF5BA6 /* PostMemberInformationRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostMemberInformationRequestDTO.swift; sourceTree = "<group>"; };
+		7725D96328BB0B9100EF5BA6 /* UserStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStatus.swift; sourceTree = "<group>"; };
 		772A607C28AFA7A7005F5A4F /* letterColorStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = letterColorStyle.swift; sourceTree = "<group>"; };
 		772ED6F028B08D8E00372993 /* GettingStartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GettingStartView.swift; sourceTree = "<group>"; };
 		772ED6F228B08DF500372993 /* AppleSignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleSignInViewModel.swift; sourceTree = "<group>"; };
@@ -671,9 +671,9 @@
 		C93A4C0328792B6700A277AC /* SignIn */ = {
 			isa = PBXGroup;
 			children = (
-				7725D95D28BA0FAC00EF5BA6 /* UserStatus.swift */,
 				772ED6F428B08E1D00372993 /* AppleUser.swift */,
 				77651D0D28B09FF400994C15 /* SignInUser.swift */,
+				7725D96328BB0B9100EF5BA6 /* UserStatus.swift */,
 			);
 			path = SignIn;
 			sourceTree = "<group>";
@@ -1033,12 +1033,12 @@
 				C92E31D128795B1A000A315C /* Letter.swift in Sources */,
 				C92E31F928795C3D000A315C /* SignInViewModel.swift in Sources */,
 				C92E320F28795CE3000A315C /* LetterEndPoint.swift in Sources */,
+				7725D96428BB0B9100EF5BA6 /* UserStatus.swift in Sources */,
 				27EE34C328B7E5D900FCC40F /* AuthEndPoint.swift in Sources */,
 				C9BE6C88287561D400B782B9 /* ContentView.swift in Sources */,
 				3EEF02CF287AC9DE0010CA03 /* VoicemailViewModel.swift in Sources */,
 				C92E31EF28795C15000A315C /* FlowerViewModel.swift in Sources */,
 				C92E31E528795B96000A315C /* VoicemailView.swift in Sources */,
-				7725D95E28BA0FAC00EF5BA6 /* UserStatus.swift in Sources */,
 				77F6F128288FCF9700263BBB /* Date+Extension.swift in Sources */,
 				776502E528B4B92800A46153 /* (null) in Sources */,
 				C93DEA2B287ACE960045508C /* SendPictureView.swift in Sources */,

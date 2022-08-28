@@ -41,7 +41,7 @@ struct InputOfficialDateView: View {
                                                               nickName: userData.nickName,
                                                               officialDay: userData.officialDay.toString(dateFormat: "YYYY-MM-dd"))
                     ) {
-                        UserStatus.settingUserStatus(presentStatus: UserStatus.notMatchedMember)
+                        UserStatus.updateUserStatus(status: UserStatus.informationEntered)
                         goNext.toggle()
                     }
                 }

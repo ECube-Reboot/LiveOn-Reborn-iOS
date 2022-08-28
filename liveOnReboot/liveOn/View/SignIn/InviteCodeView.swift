@@ -61,7 +61,7 @@ struct InviteCodeView: View {
                     NavigationLink("둘러보기", destination: GiftBoxView())
                 }
             }
-            .navigationToBackOption(dismiss, isHidden: UserStatus.returnPresentStatus() == UserStatus.notMatchedMember.rawValue)
+            .navigationToBackShowOptional(dismiss, isHidden: UserStatus.checkStatus(status: UserStatus.informationEntered))
             
         }
         .task {
