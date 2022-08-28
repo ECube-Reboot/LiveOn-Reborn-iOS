@@ -8,12 +8,21 @@
 import Foundation
 import Moya
 
-struct CalendarMainPostResponse: Encodable {
-    let createdAt: String
-    let giftType: String
+struct CalendarMainPostRequest: Codable {
+    let upcomingEventdate: String
+    let upcomingEventTitle: String
+    let upcomingEventMemo: String
 }
 
-struct CalendarMainGetResponse: Decodable {
+struct CalendarMainGetResponse: Codable {
+    let calendarMains: [CalendarMainGet]
+}
+
+struct CalendarMainGet: Codable {
+    let upcomingEventId: Int64
+    let upcomingEventdate: String
+    let upcomingEventTitle: String
+    let upcomingEventMemo: String
     let createdAt: String
     let giftType: String
 }

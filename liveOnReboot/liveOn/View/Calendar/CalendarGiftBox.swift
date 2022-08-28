@@ -23,7 +23,6 @@ struct CalendarGiftBox: View {
                 
                 giftsection
             }
-            eventSection2
         }
         .navigationBarTitleDisplayMode(.inline)
     }
@@ -91,6 +90,26 @@ struct CalendarGiftBox: View {
             }
         }
     }
+}
+
+struct CalendarNoGift: View {
+    @State var date: Date
+    
+    var body: some View {
+        ZStack {
+            VStack {
+                Text("\(Date().eventDateToString(date))")
+                    .font(.TextStyles.largeCalendarNumber)
+                    .foregroundColor(.textBodyColor)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.leading)
+                
+                Spacer()
+            }
+            eventSection2
+        }
+        .navigationBarTitleDisplayMode(.inline)
+    }
     
     var eventSection2: some View {
         VStack {
@@ -102,7 +121,6 @@ struct CalendarGiftBox: View {
                 .font(.title3)
         }
     }
-
 }
 
 extension View {
