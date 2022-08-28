@@ -42,8 +42,14 @@ struct GettingStartView: View {
                 }
                 SignInWithAppleButton(.signIn, onRequest: { request in request.requestedScopes = []
                 }, onCompletion: { result in
-                    authenticationData = appleSignInViewModel.didFinishAppleSignin(result: result)
-                    isActive.toggle()
+                    switch result {
+                        case .success:
+                            authenticationData = appleSignInViewModel.didFinishAppleSignin(result: result)
+                            isActive.toggle()
+                        case .failure:
+                            return
+                    }
+                   
                 })
                 .frame(width: 280, height: 60)
                 .padding(.top, 50)
