@@ -8,17 +8,14 @@ import Foundation
 import Moya
 
 struct PicturePostResponse: Codable {
-    let contentRecieved: String
-    let imageName: String
+    let comment: String
+    let polaroid: String
 }
 
 struct PictureGetResponse: Codable {
     let createdAt: String
-    var giftPolaroidId: Int64
+    let giftPolaroidId: Int64
     let giftPolaroidImage: String
     let userNickName: String
+    let comment: String
 }
-
-// MARK: Test용 임시 데이터
-var testImageData: PicturePostResponse?
-var loadedImage: PictureGetResponse?

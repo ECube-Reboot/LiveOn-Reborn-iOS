@@ -5,6 +5,7 @@
 
 import Foundation
 
+// Extending Date to get Current Month Dates
 extension Date {
     public func dateToString(_ format: Date) -> String {
         let dateFormatter = DateFormatter()
@@ -38,5 +39,17 @@ extension Date {
         dateFormatter.dateFormat = format
         return dateFormatter.string(from: self)
     }
-}
 
+    func getNextMonth() -> Date? {
+        return Calendar.current.date(byAdding: .month, value: 1, to: self)
+    }
+    
+    func getPreviousMonth() -> Date? {
+        return Calendar.current.date(byAdding: .month, value: -1, to: self)
+    }
+    
+    func countDays() -> Int {
+        let calendar = Calendar.current
+        return calendar.dateComponents([.day], from: self, to: Date()).day! + 1
+    }
+}

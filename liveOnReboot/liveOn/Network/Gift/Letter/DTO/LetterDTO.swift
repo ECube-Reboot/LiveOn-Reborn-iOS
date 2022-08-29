@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct LetterPostRequest: Codable {
+    let color: String
     let content: String
 }
 
@@ -16,8 +17,9 @@ struct LettersGetResponse: Codable {
 }
 
 struct LetterGet: Codable {
+    let color: String
     let content: String
     let createdAt: String
-    let giftMemoId: Int64
+    let giftNoteId: Int64
     let userNickName: String
 }

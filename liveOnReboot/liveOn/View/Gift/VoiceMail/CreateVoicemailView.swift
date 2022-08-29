@@ -21,7 +21,7 @@ struct CreateVoicemailView: View {
         GeometryReader { frame in
             VStack {
                 Spacer()
-                    .frame(height: 80)
+                    .frame(height: frame.size.height * 0.05)
                 
                 TextField("제목을 입력하세요", text: $voicemail.title)
                     .multilineTextAlignment(.center)
@@ -30,7 +30,7 @@ struct CreateVoicemailView: View {
                 Text(date.dateToString(date))
                 
                 Spacer()
-                    .frame(height: 80)
+                    .frame(height: frame.size.height * 0.1)
                 
                 HStack {
                     Spacer()
@@ -40,10 +40,9 @@ struct CreateVoicemailView: View {
                         .frame(width: frame.size.width * 0.9)
                     Spacer()
                 }
-                .border(.red, width: 2)
                 
                 Spacer()
-                    .frame(height: 100)
+                    .frame(height: frame.size.height * 0.1)
                 
                 if voicemail.isRecording == false && voicemail.isRecorded == false {
                     VStack {
@@ -62,7 +61,6 @@ struct CreateVoicemailView: View {
                                 }
                         }
                     }
-                    .border(.red, width: 2)
                 } else if voicemail.isRecording == true && voicemail.isRecorded == false {
                     VStack {
                         Text(voicemail.recordingTimeInString)
@@ -100,7 +98,6 @@ struct CreateVoicemailView: View {
                                 }
                         }
                     }
-                    .border(.red, width: 2)
                 }
             }
         }
