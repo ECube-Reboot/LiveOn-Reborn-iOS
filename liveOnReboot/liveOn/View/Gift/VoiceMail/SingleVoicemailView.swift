@@ -4,7 +4,6 @@
 //
 //  Created by 이성민 on 2022/07/10.
 //
-
 import SwiftUI
 
 struct SingleVoicemailView: View {
@@ -19,10 +18,10 @@ struct SingleVoicemailView: View {
                     .frame(width: 10, height: 60, alignment: .center)
                 
                 HStack {
-//                    Image(voicemail.voiceMailIconNum)
-//                        .resizable()
-//                        .aspectRatio(contentMode: .fit)
-//                        .frame(width: 44, height: 44, alignment: .center)
+                    Image(voicemail.voiceMailIconName)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 44, height: 44, alignment: .center)
                     
                     // MARK: 정보부분
                     VStack(alignment: .leading, spacing: 4) {
@@ -39,7 +38,7 @@ struct SingleVoicemailView: View {
                     .opacity(0.9)
                     .padding()
                     .frame(maxWidth: .infinity, maxHeight: 60, alignment: .center)
-                    .background(Color.blue)
+                    .background(Color.cassetteGreen)
                     .foregroundColor(.white)
                     
                     VStack(alignment: .center) {
@@ -75,7 +74,7 @@ struct SingleVoicemailView_Previews: PreviewProvider {
         SingleVoicemailView(voicemail: Voicemail(createdAt: "2022-07-10",
                                           giftVoiceMailDuration: "10",
                                           title: "title",
-                                          voiceMailIconNum: 0,
+                                          voiceMailIconName: "cassetteIcon01",
                                           userNickName: "userNickName",
                                           voiceMail: "voiceMail",
                                           voiceMailId: 0))

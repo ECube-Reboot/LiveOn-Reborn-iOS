@@ -17,7 +17,8 @@ struct liveOnRebootApp: App {
         WindowGroup {
           NavigationView {
 //            LetterListView()
-              GettingStartView()
+              CreateVoicemailView(isRecording: false, isRecorded: false)
+//              GettingStartView()
           }
         }
     }
