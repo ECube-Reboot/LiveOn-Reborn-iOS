@@ -53,13 +53,17 @@ struct VoiceMailView: View {
                     .padding(16)
                 }
             }
-            .blur(radius: isShowPopUp ? 6 : 0)
-            
-            Color(uiColor: .systemBackground)
-                .opacity(isShowPopUp ? 0.4 : 0)
-            
-            if isShowPopUp {
-                VoicemailPopUpView(isPlaying: false)
+            .overlay{
+                if isShowPopUp {
+                    VoicemailPopUpView(isPlaying: false)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                        .background(.ultraThinMaterial)
+                        .onTapGesture {
+                            withAnimation {
+                                isShowPopUp.toggle()
+                            }
+                        }
+                }
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
