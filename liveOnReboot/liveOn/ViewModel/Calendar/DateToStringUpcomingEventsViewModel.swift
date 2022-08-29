@@ -7,7 +7,7 @@
 
 import Foundation
 
-func DateToStringUpcomingEventsViewModel(_ date: Date) -> String {
+func DateToStringEventMonth(_ date: Date) -> String {
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "MM/dd"
     

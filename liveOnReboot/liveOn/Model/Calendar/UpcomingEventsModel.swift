@@ -14,7 +14,7 @@ class UpcomingEventsModel: Identifiable, ObservableObject {
     let upcomingEventMemo: String
     init(upcomingEventDate: Date, upcomingEventTitle: String, upcomingEventMemo: String) {
         id = UUID()
-        self.upcomingEventdate = DateToStringUpcomingEventsViewModel(upcomingEventDate)
+        self.upcomingEventdate = DateToStringEventMonth(upcomingEventDate)
         self.upcomingEventTitle = upcomingEventTitle
         self.upcomingEventMemo = upcomingEventMemo
     }

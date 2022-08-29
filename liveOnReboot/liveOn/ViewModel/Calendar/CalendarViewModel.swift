@@ -11,7 +11,8 @@ class CalendarViewModel: ObservableObject {
     static var viewModel: CalendarViewModel = CalendarViewModel()
     
     @Published var list: [UpcomingEventsModel]
-    
+    @Published var calendarList = [CalendarMainGet]()
+
     init() {
         list = []
     }
@@ -27,6 +28,30 @@ class CalendarViewModel: ObservableObject {
                     print("Post에 실패했습니다")
                     print(err.localizedDescription)
             }
+        }
+    }
+    
+    func calendarMainGet(completion: @escaping () -> ()) async {
+        calendarMainMoyaService.request(.getCalendarMain) { response in
+            switch response {
+                case .success(let result):
+                    do {
+                        let data = try result.map([CalendarMainGet].self)
+                        self.mapListData(listData: data)
+                        completion()
+                    } catch let err {
+                        print(err.localizedDescription)
+                        break
+                    }
+                case .failure(let err):
+                    print(err.localizedDescription)
+            }
+        }
+    }
+    
+    private func mapListData(listData: [CalendarMainGet]) {
+        for data in listData {
+            calendarList.append(data)
         }
     }
     

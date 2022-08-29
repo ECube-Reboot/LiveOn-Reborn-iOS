@@ -97,7 +97,7 @@ struct CalendarView: View {
                     ForEach(extractDate(currentDate: self.currentDate)) { value in
                         ZStack(alignment: .topLeading) {
                             NavigationLink(destination: CalendarGiftBox(date: value.date)) {
-                                CardView(value: value, model: store.list.filter{ $0.upcomingEventdate == DateToStringUpcomingEventsViewModel(value.date) })
+                                CardView(value: value, model: store.list.filter{ $0.upcomingEventdate == DateToStringEventMonth(value.date) })
                             }
 //                            CardView(value: value)
 //                                .onTapGesture {

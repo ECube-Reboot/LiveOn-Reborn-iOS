@@ -19,10 +19,25 @@ struct CalendarMainGetResponse: Codable {
 }
 
 struct CalendarMainGet: Codable {
-    let upcomingEventId: Int64
-    let upcomingEventdate: String
-    let upcomingEventTitle: String
+    let eventResponseList: [EventResponseList]
+    let monthResponses: [MonthResponse]
+}
+
+struct EventResponseList: Codable {
+    let upcomingEventDate: String
+    let upcomingEventID: Int
     let upcomingEventMemo: String
+    let upcomingEventTitle: String
+
+    enum CodingKeys: String, CodingKey {
+        case upcomingEventDate
+        case upcomingEventID = "upcomingEventId"
+        case upcomingEventMemo
+        case upcomingEventTitle
+    }
+}
+
+struct MonthResponse: Codable {
     let createdAt: String
     let giftType: String
 }
