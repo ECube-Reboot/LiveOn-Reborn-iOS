@@ -10,12 +10,14 @@ import SwiftUI
 @main
 struct liveOnRebootApp: App {
 
-  @State var tempGotoMain = false
+    //테스트용 임시
+    @State var tempGotoMain = false
+    
     var body: some Scene {
         WindowGroup {
           NavigationView {
 //            LetterListView()
-              PictureListView()
+              GettingStartView()
           }
         }
     }

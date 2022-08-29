@@ -6,12 +6,17 @@
 //
 
 import SwiftUI
+import Moya
 
 class SignInViewModel: ObservableObject {
     static var signInViewModel: SignInViewModel = SignInViewModel()
     @Published var inviteCode: String = ""
   
+    private let authService = AuthService()
+    let signInMoyaService = MoyaProvider<AuthEndpoint>(plugins: [NetworkLoggerPlugin()])
+    
     func getInviteCode() async {
+        print(KeyChain.read(key: "accessToken")!)
         signInMoyaService.request(.getCode) { response in
             switch response {
                 case .success(let result):

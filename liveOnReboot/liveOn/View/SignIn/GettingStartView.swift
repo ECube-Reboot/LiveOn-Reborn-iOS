@@ -10,14 +10,12 @@ import Moya
 import AuthenticationServices
 
 struct GettingStartView: View {
-    @ObservedObject var authenticationViewModel: AuthenticationViewModel = AuthenticationViewModel()
-    @State private var authenticationData: String = ""
+    @ObservedObject var appleSignInViewModel: AppleSignInViewModel = AppleSignInViewModel()
     @State private var isActive: Bool = false
     
-    let authProvider = MoyaProvider<AuthAPI>(plugins: [NetworkLoggerPlugin(verbose: true)])
+    let authProvider = MoyaProvider<AuthEndpoint>(plugins: [NetworkLoggerPlugin(verbose: true)])
     
     var body: some View {
-
         VStack {
             VStack(alignment: .leading, spacing: 4) {
                 
@@ -43,9 +41,14 @@ struct GettingStartView: View {
                 }
                 SignInWithAppleButton(.signIn, onRequest: { request in request.requestedScopes = []
                 }, onCompletion: { result in
-                    authenticationData = authenticationViewModel.didFinishAuthentication(result: result)
-                   // print("------\(result)")
-                    isActive.toggle()
+                    switch result {
+                        case .success:
+                        appleSignInViewModel.didFinishAppleSignin(result: result)
+                            isActive.toggle()
+                        case .failure:
+                            return
+                    }
+                   
                 })
                 .frame(width: 280, height: 60)
                 .padding(.top, 50)
@@ -55,26 +58,10 @@ struct GettingStartView: View {
         .ignoresSafeArea()
         .background(Color.backgroundGray)
     }
-    // didfinishAUthenticaiton에 result를 넣으면, appleUser.identityToken을 산출해주고
-    // appleUser.identityToken을 authNetwrokService의 login 함수에 넣으면 디코딩된 결과를 반환해준다.
-}
-
-private func showAppleLoginView() {
-    
-    let provider = ASAuthorizationAppleIDProvider()
-    
-    let request = provider.createRequest()
-    
-    request.requestedScopes = [.fullName, .email]
-    
-    let controller = ASAuthorizationController(authorizationRequests: [request])
-    
-    controller.performRequests()
-    
 }
 
 struct GettingStart_Previews: PreviewProvider {
     static var previews: some View {
-        GettingStartView(authenticationViewModel: AuthenticationViewModel())
+        GettingStartView(appleSignInViewModel: AppleSignInViewModel())
     }
 }
