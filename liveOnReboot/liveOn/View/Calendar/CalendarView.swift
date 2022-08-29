@@ -36,8 +36,10 @@ struct CalendarView: View {
     @State var swipeHorizontalDirection: SwipeHorizontalDirection = .none
     
     //Upcoming Events 추가
-    @EnvironmentObject var store: CalendarViewModel
-    
+    @EnvironmentObject var calendarViewModel: CalendarViewModel
+//    @State private var isLoaded = false
+//    @ObservedObject private var calendarViewModel: CalendarViewModel = CalendarViewModel()
+        
     var body: some View {
         ZStack {
             VStack(spacing: 10) {
@@ -97,21 +99,8 @@ struct CalendarView: View {
                     ForEach(extractDate(currentDate: self.currentDate)) { value in
                         ZStack(alignment: .topLeading) {
                             NavigationLink(destination: CalendarGiftBox(date: value.date)) {
-                                CardView(value: value, model: store.list.filter{ $0.upcomingEventdate == DateToStringEventMonth(value.date) })
+                                CardView(value: value, model: calendarViewModel.list.filter{ $0.upcomingEventdate == DateToStringEventMonth(value.date) })
                             }
-//                            CardView(value: value)
-//                                .onTapGesture {
-//                                    currentDate = value.date
-//                                }
-                            
-//                            NavigationLink (destination: APITEST(), isActive: $isNavigationOn) {
-//                                CardView(value: value)
-//                                    .onTapGesture {
-//                                        isNavigationOn.toggle()
-//                                        currentDate = value.date
-//                                        PostPracticeFunction(apiTestText: apiTest)
-//                                    }
-//                            }
                         }
                     }
                 }
@@ -150,14 +139,34 @@ struct CalendarView: View {
                     }
                     .padding([.trailing, .leading])
                     
-                    // UpcomingEvents 추가
+                    // MARK: - UpcomingEvents 추가
+//                    if !isLoaded {
+//                        ProgressView()
+//                    } else {
+//                        if !calendarViewModel.list.isEmpty {
+//                            ScrollView(.vertical, showsIndicators: false) {
+//                                VStack {
+//                                    ForEach(calendarViewModel.list, id: \.upcomingEventid) { upcoming in
+//                                        UpcomingEventsView(event: upcoming)
+//                                    }
+//                                }
+//                            }
+//                            .padding([.leading, .trailing, .top])
+//                        } else {
+//                            ScrollView(.vertical, showsIndicators: false) {
+//                                VStack {
+//                                    noEvent
+//                                }
+//                            }
+//                        }
+//                    }
                     ScrollView(.vertical, showsIndicators: false) {
                         VStack {
-                            if store.list.count == 0 {
+                            if calendarViewModel.list.count == 0 {
                                 noEvent
                             }
-                            if store.list.count >= 1 {
-                                ForEach(store.list) { upcoming in
+                            if calendarViewModel.list.count >= 1 {
+                                ForEach(calendarViewModel.list, id: \.upcomingEventid) { upcoming in
                                     UpcomingEventsView(event: upcoming)
                                 }
                             }
@@ -168,6 +177,11 @@ struct CalendarView: View {
             }
             // PopupDate와 CalendarView 사이에 블러 효과
             .opacity(isClicked ? 0.1 : 1 )
+        }
+        .task {
+            await calendarViewModel.calendarMainGet(completion: {
+//                isLoaded = true
+            })
         }
         .toolbar {
             // 메인 달력 날짜 고르는 PopupDate Button
@@ -190,6 +204,7 @@ struct CalendarView: View {
                       popUpBoolean: $showDatePicker,
                       isClicked: $isClicked)
         }
+        
     }
     
     var noEvent: some View {
@@ -237,7 +252,7 @@ struct CalendarView: View {
         case left, right, none
     }
     
-    // 문제의 구간 -> 아래 두 함수를 Calendar+Extension 파일에 분리하고 싶은데 어렵네
+
     func moveCurrentMonth(isUp: Bool) -> Date {
         
         let calendar = Calendar.current
@@ -291,12 +306,12 @@ struct CalendarView: View {
     }
 }
 
-struct CalendarMain_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationView{
-            CalendarView().environmentObject(CalendarViewModel())
-                .navigationBarHidden(true)
-        }
-    }
-}
+//struct CalendarMain_Previews: PreviewProvider {
+//    static var previews: some View {
+//        NavigationView{
+//            CalendarView().environmentObject(CalendarViewModel())
+//                .navigationBarHidden(true)
+//        }
+//    }
+//}
 

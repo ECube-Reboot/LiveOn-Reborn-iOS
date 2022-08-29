@@ -13,10 +13,6 @@ struct liveOnRebootApp: App {
   @State var tempGotoMain = false
     var body: some Scene {
         WindowGroup {
-//            NavigationView{
-//                CalendarView().environmentObject(EventStore())
-//                    .navigationBarHidden(true)
-//            }
             GiftBoxView()
         }
     }

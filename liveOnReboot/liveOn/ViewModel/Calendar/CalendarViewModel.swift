@@ -39,11 +39,14 @@ class CalendarViewModel: ObservableObject {
                         let data = try result.map([CalendarMainGet].self)
                         self.mapListData(listData: data)
                         completion()
+                        print("Get에 성공했습니다")
                     } catch let err {
+                        print("Get에 실패했습니다")
                         print(err.localizedDescription)
                         break
                     }
                 case .failure(let err):
+                    print("Get에 완전히 실패했습니다")
                     print(err.localizedDescription)
             }
         }

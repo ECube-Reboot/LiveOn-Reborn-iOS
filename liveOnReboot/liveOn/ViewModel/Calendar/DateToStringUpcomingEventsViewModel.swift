@@ -25,4 +25,10 @@ func DateToStringEvent(_ date: Date) -> String {
     return dateString
 }
 
+func StringToDateEvent(strDate: String, format: String) -> Date {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "YYYY-MM-dd"
+    return dateFormatter.date(from: strDate)!
+}
+
 
