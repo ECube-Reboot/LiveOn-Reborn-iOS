@@ -18,7 +18,7 @@ struct UpcomingEventsView: View {
                 
                     HStack {
                         //  upcomingEventDate
-                        Text(event.upcomingEventDate)
+                        Text(event.upcomingEventdate)
                             .font(.body)
                             .foregroundColor(.textBodyColor)
                             .background(Image("highlightForCalendar"))

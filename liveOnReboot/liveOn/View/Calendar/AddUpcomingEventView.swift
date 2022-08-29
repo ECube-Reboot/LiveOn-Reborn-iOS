@@ -15,7 +15,7 @@ struct AddUpcomingEventView: View {
     @Binding var upcomingEventTitle: String
     @Binding var upcomingEventMemo: String
     
-    @EnvironmentObject var store: EventStore
+    @EnvironmentObject var store: CalendarViewModel
     
     @Environment(\.dismiss) private var dismiss
     @Environment(\.presentationMode) var presentationMode
@@ -58,6 +58,7 @@ struct AddUpcomingEventView: View {
             Button("확인") {
                 upcomingEventDate = self.upcomingEventBaseDate
                 store.insert(upcomingEventDate: upcomingEventDate, upcomingEventTitle: upcomingEventTitle, upcomingEventMemo: upcomingEventMemo)
+                store.calendarMainPost(upcomingEventdate: DateToStringUpcomingEventsViewModel(upcomingEventDate), upcomingEventTitle: upcomingEventTitle, upcomingEventMemo: upcomingEventMemo)
                 upcomingEventBaseDate = Date.now
                 presentationMode.wrappedValue.dismiss()
             }
@@ -120,6 +121,6 @@ extension View {
 
 struct PlusSetting_Previews: PreviewProvider {
     static var previews: some View {
-        CalendarView().environmentObject(EventStore())
+        CalendarView().environmentObject(CalendarViewModel())
     }
 }

@@ -9,7 +9,7 @@ import Foundation
 
 struct API {
     static let baseURL = "http://13.124.90.96:8080"
-    static let token = "Bearer " + "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdHJpbmciLCJyb2xlIjoiVVNFUiIsImV4cCI6MTY1NzkzOTI2NywiaWF0IjoxNjU1MzQ3MjY3fQ.EOwAlXucfoqx9dzUkcheXJAfLSZrfibSiUxDbJbJbSs"
+    static let token = "Bearer " + "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdHJpbmciLCJyb2xlIjoiVVNFUiIsImV4cCI6MTY2MzkxNTgyMSwiaWF0IjoxNjYxMzIzODIxfQ.b4kK23HP38h86h-6etYBfjbne3saDsYzhrTGufPfjcw"
 }
 enum AuthAPI {
     case login(request: LoginRequestDTO)
@@ -17,5 +17,5 @@ enum AuthAPI {
 
 struct GeneralAPI {
     static let baseURL = "http://13.124.90.96:8080"
-    static let token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdHJpbmciLCJyb2xlIjoiVVNFUiIsImV4cCI6MTY2MTMyMjg4NCwiaWF0IjoxNjU4NzMwODg0fQ.10quBoJQVn5Ct0qO1yWU6bKDoAGL5hrTShOsEdWQ0fw"
+    static let token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdHJpbmciLCJyb2xlIjoiVVNFUiIsImV4cCI6MTY2MzkxNTgyMSwiaWF0IjoxNjYxMzIzODIxfQ.b4kK23HP38h86h-6etYBfjbne3saDsYzhrTGufPfjcw"
 }

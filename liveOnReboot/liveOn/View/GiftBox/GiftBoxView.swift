@@ -104,7 +104,7 @@ struct CalendarLinkView: View {
 
     var body: some View {
         
-        NavigationLink(destination: CalendarView().environmentObject(EventStore())) {
+        NavigationLink(destination: CalendarView().environmentObject(CalendarViewModel())) {
             
             ZStack {
                 Image("calendar")

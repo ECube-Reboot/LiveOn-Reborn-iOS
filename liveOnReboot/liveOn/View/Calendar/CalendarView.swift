@@ -36,10 +36,7 @@ struct CalendarView: View {
     @State var swipeHorizontalDirection: SwipeHorizontalDirection = .none
     
     //Upcoming Events 추가
-    @EnvironmentObject var store: EventStore
-    
-    // API TEST
-//    @State private var apiTest: String = ""
+    @EnvironmentObject var store: CalendarViewModel
     
     var body: some View {
         ZStack {
@@ -100,7 +97,7 @@ struct CalendarView: View {
                     ForEach(extractDate(currentDate: self.currentDate)) { value in
                         ZStack(alignment: .topLeading) {
                             NavigationLink(destination: CalendarGiftBox(date: value.date)) {
-                                CardView(value: value, model: store.list.filter{ $0.upcomingEventDate == DateToStringUpcomingEventsViewModel(value.date) })
+                                CardView(value: value, model: store.list.filter{ $0.upcomingEventdate == DateToStringUpcomingEventsViewModel(value.date) })
                             }
 //                            CardView(value: value)
 //                                .onTapGesture {
@@ -292,64 +289,12 @@ struct CalendarView: View {
         
         return currentMonth
     }
-
-    // API TEST
-//    func PostPracticeFunction(apiTestText: String) {
-//        // 1. 전송할 데이터를 만듬
-//        let postVar = PostPractice(text: apiTestText)
-//        // 2. struct 형태를 json 형태로 바꿈
-//        guard let uploadData = try? JSONEncoder().encode(postVar) else {
-//            return
-//        }
-//        // 3. POST할 URL을 설정해줌
-//        let url = URL(string: "http://13.124.90.96:8080/api/v1/testing/test/hasReturn")!
-//
-//        // 4. URL:Request를 통해 http 프로토콜 채택 및 http 양식에 필요한 사항 작성
-//        var request = URLRequest(url:url)
-//        request.httpMethod = "POST" // RequestLine
-//        request.setValue("application/json", forHTTPHeaderField: "Content-Type") // HTTP Header
-//
-//        // 5.uploadTask라는 메소드를 통해 데이터를 URL에 올리고, completionHandler를 호출
-//        // 마지막 파라미터는 completionHandelr로
-//        let task = URLSession.shared.uploadTask(with: request, from: uploadData, completionHandler: { data, response, error in
-//            // completion handler에 의한 에러처리
-//            if let error = error {
-//                print("error: \(error)")
-//                return
-//            }
-//            guard let response = response as? HTTPURLResponse,
-//                  (200...299).contains(response.statusCode) else {
-//                print("server error")
-//                return
-//            }
-//            // Content-type 필드(데이터 타입을 적는 곳)에 MIME(Multipurpose Internet Mail Extensions)타입을 기술해줄 수 있음. 여기서는 json 타입으로 설정함
-//            // 만약 이미지 파일을 업로드 하고 싶으면 MIME 타입 중, multi part를 해야함.
-//            if let mimeType = response.mimeType,
-//               mimeType == "application/json",
-//               let data = data,// URLSession의 데이터로 data 상수를 설정한다??
-//               let dataString = String(data: data, encoding: .utf8) {
-//                print("Got Data : \(dataString)")
-//            }
-//
-//            print("HTTPresponse:\(response)")
-//            print("data : \(data!)")
-//
-//            let decodedResponse = try? JSONDecoder().decode(PostResponse.self, from: data!)
-//            print("decodedResponse: \(decodedResponse!.text)")
-//
-//        })
-//
-//
-//        // 6. uploadTask는 suspendedState에서 시작하기 때문에 resume을 통해서 업로드 과정을 실행한다.
-//        task.resume()
-//    }
-
 }
 
 struct CalendarMain_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView{
-            CalendarView().environmentObject(EventStore())
+            CalendarView().environmentObject(CalendarViewModel())
                 .navigationBarHidden(true)
         }
     }

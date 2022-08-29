@@ -9,12 +9,12 @@ import SwiftUI
 
 class UpcomingEventsModel: Identifiable, ObservableObject {
     let id: UUID
-    let upcomingEventDate: String
+    let upcomingEventdate: String
     let upcomingEventTitle: String
     let upcomingEventMemo: String
     init(upcomingEventDate: Date, upcomingEventTitle: String, upcomingEventMemo: String) {
         id = UUID()
-        self.upcomingEventDate = DateToStringUpcomingEventsViewModel(upcomingEventDate)
+        self.upcomingEventdate = DateToStringUpcomingEventsViewModel(upcomingEventDate)
         self.upcomingEventTitle = upcomingEventTitle
         self.upcomingEventMemo = upcomingEventMemo
     }
