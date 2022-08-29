@@ -47,8 +47,3 @@ struct VoicemailPopUpView: View {
     }
 }
 
-//struct VoicemailPopUpView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        VoicemailPopUpView()
-//    }
-//}
