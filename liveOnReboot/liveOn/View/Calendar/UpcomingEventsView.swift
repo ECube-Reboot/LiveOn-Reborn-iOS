@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-// Test용으로 넣어 놓은거고 UI에 맞게 수정할 예정
+
 struct UpcomingEventsView: View {
     let event: UpcomingEventsModel
     var body: some View {

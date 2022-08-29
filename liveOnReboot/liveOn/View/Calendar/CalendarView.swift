@@ -132,10 +132,6 @@ struct CalendarView: View {
                                                 
                         Spacer(minLength: 0)
                         
-                        // API TEST
-//                        TextField("API", text: $apiTest, prompt: Text("API"))
-//                            .frame(width: 50, height: 15)
-                        
                         Button(action: {
                             showSheet.toggle()
                             upcomingEventTitle = ""
@@ -160,8 +156,13 @@ struct CalendarView: View {
                     // UpcomingEvents 추가
                     ScrollView(.vertical, showsIndicators: false) {
                         VStack {
-                            ForEach(store.list) { upcoming in
-                                UpcomingEventsView(event: upcoming)
+                            if store.list.count == 0 {
+                                noEvent
+                            }
+                            if store.list.count >= 1 {
+                                ForEach(store.list) { upcoming in
+                                    UpcomingEventsView(event: upcoming)
+                                }
                             }
                         }
                     }
@@ -191,6 +192,22 @@ struct CalendarView: View {
                       showDatePicker: $showDatePicker,
                       popUpBoolean: $showDatePicker,
                       isClicked: $isClicked)
+        }
+    }
+    
+    var noEvent: some View {
+        HStack {
+            ZStack {
+                RoundedRectangle(cornerRadius: 15)
+                    .fill(Color.backgroundGray)
+                    .frame(width: 360, height: 65)
+                
+                    HStack {
+                        Text("기억하고 싶은 기념일을 추가해보세요!")
+                            .font(.body.bold())
+                            .foregroundColor(.textBodyColor)
+                    }
+            }
         }
     }
     
@@ -275,6 +292,7 @@ struct CalendarView: View {
         
         return currentMonth
     }
+
     // API TEST
 //    func PostPracticeFunction(apiTestText: String) {
 //        // 1. 전송할 데이터를 만듬
@@ -325,16 +343,8 @@ struct CalendarView: View {
 //        // 6. uploadTask는 suspendedState에서 시작하기 때문에 resume을 통해서 업로드 과정을 실행한다.
 //        task.resume()
 //    }
-}
 
-// API TEST
-//struct PostPractice: Encodable {
-//    let text: String
-//}
-// API TEST
-//struct PostResponse: Decodable {
-//    let text: String
-//}
+}
 
 struct CalendarMain_Previews: PreviewProvider {
     static var previews: some View {
