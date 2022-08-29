@@ -58,7 +58,7 @@ struct AddUpcomingEventView: View {
             Button("확인") {
                 upcomingEventDate = self.upcomingEventBaseDate
                 store.insert(upcomingEventDate: upcomingEventDate, upcomingEventTitle: upcomingEventTitle, upcomingEventMemo: upcomingEventMemo)
-                store.calendarMainPost(upcomingEventdate: DateToStringUpcomingEventsViewModel(upcomingEventDate), upcomingEventTitle: upcomingEventTitle, upcomingEventMemo: upcomingEventMemo)
+                store.calendarMainPost(upcomingEventdate: DateToStringEvent(upcomingEventDate), upcomingEventTitle: upcomingEventTitle, upcomingEventMemo: upcomingEventMemo)
                 upcomingEventBaseDate = Date.now
                 presentationMode.wrappedValue.dismiss()
             }

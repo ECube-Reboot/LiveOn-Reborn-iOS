@@ -92,6 +92,8 @@
 		C9AFD19328B6063E001781F1 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C915A80828990592003154AB /* CalendarViewModel.swift */; };
 		C9AFD19D28B6592A001781F1 /* CalendarGiftBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AFD19C28B6592A001781F1 /* CalendarGiftBox.swift */; };
 		C9AFD19F28B7104E001781F1 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AFD19E28B7104E001781F1 /* Date+Extension.swift */; };
+		C9B8CFA128BCD9DE005F07AF /* CalendarGiftBoxEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B8CFA028BCD9DE005F07AF /* CalendarGiftBoxEndPoint.swift */; };
+		C9B8CFA328BCDA21005F07AF /* CalendarGiftBoxService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B8CFA228BCDA21005F07AF /* CalendarGiftBoxService.swift */; };
 		C9BE6C86287561D400B782B9 /* liveOnRebootApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BE6C85287561D400B782B9 /* liveOnRebootApp.swift */; };
 		C9BE6C88287561D400B782B9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BE6C87287561D400B782B9 /* ContentView.swift */; };
 		C9BE6C8A287561D500B782B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9BE6C89287561D500B782B9 /* Assets.xcassets */; };
@@ -183,6 +185,8 @@
 		C974DDD02883CC8900698BFA /* AddUpcomingEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUpcomingEventView.swift; sourceTree = "<group>"; };
 		C9AFD19C28B6592A001781F1 /* CalendarGiftBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarGiftBox.swift; sourceTree = "<group>"; };
 		C9AFD19E28B7104E001781F1 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		C9B8CFA028BCD9DE005F07AF /* CalendarGiftBoxEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarGiftBoxEndPoint.swift; sourceTree = "<group>"; };
+		C9B8CFA228BCDA21005F07AF /* CalendarGiftBoxService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarGiftBoxService.swift; sourceTree = "<group>"; };
 		C9BE6C82287561D400B782B9 /* liveOnReboot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = liveOnReboot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9BE6C85287561D400B782B9 /* liveOnRebootApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = liveOnRebootApp.swift; sourceTree = "<group>"; };
 		C9BE6C87287561D400B782B9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -347,6 +351,7 @@
 			isa = PBXGroup;
 			children = (
 				C92E320228795C81000A315C /* CalendarMainService.swift */,
+				C9B8CFA228BCDA21005F07AF /* CalendarGiftBoxService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -355,6 +360,7 @@
 			isa = PBXGroup;
 			children = (
 				C92E320028795C78000A315C /* CalendarMainEndPoint.swift */,
+				C9B8CFA028BCD9DE005F07AF /* CalendarGiftBoxEndPoint.swift */,
 			);
 			path = EndPoint;
 			sourceTree = "<group>";
@@ -962,6 +968,7 @@
 				C92E31F928795C3D000A315C /* SignInViewModel.swift in Sources */,
 				C92E320F28795CE3000A315C /* LetterEndPoint.swift in Sources */,
 				C9BE6C88287561D400B782B9 /* ContentView.swift in Sources */,
+				C9B8CFA128BCD9DE005F07AF /* CalendarGiftBoxEndPoint.swift in Sources */,
 				3EEF02CF287AC9DE0010CA03 /* VoicemailViewModel.swift in Sources */,
 				C92E31EF28795C15000A315C /* FlowerViewModel.swift in Sources */,
 				A932C46428858D6500803302 /* LogInAuth.swift in Sources */,
@@ -971,6 +978,7 @@
 				C93DEA2D287ACEA20045508C /* SendVoiceMailView.swift in Sources */,
 				A929FDE62882671400334E21 /* NetworkLoggerPlugIn.swift in Sources */,
 				77651D1628B0B7E100994C15 /* EnterCodeView.swift in Sources */,
+				C9B8CFA328BCDA21005F07AF /* CalendarGiftBoxService.swift in Sources */,
 				772ED6F328B08DF500372993 /* AuthenticationViewModel.swift in Sources */,
 				77651D1828B0B7FA00994C15 /* WelcomMatchingView.swift in Sources */,
 				77651D1228B0B1DA00994C15 /* InviteCodeView.swift in Sources */,

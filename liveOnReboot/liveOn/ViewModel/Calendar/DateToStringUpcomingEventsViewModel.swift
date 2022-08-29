@@ -16,3 +16,13 @@ func DateToStringUpcomingEventsViewModel(_ date: Date) -> String {
     return dateString
 }
 
+func DateToStringEvent(_ date: Date) -> String {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "YYYY-MM-dd"
+    
+    let dateString = dateFormatter.string(from: date)
+    
+    return dateString
+}
+
+

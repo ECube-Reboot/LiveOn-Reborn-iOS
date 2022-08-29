@@ -21,15 +21,15 @@ struct CalendarGiftBox: View {
                 
                 Spacer()
                 
-                giftsection
+                giftView
             }
         }
         .navigationBarTitleDisplayMode(.inline)
     }
     
-    var giftsection: some View {
+    var giftView: some View {
         ScrollView(.vertical, showsIndicators: false, content: {
-            eventSection1
+            eventView
             
             Image("flowerIcon")
                 .resizable()
@@ -53,7 +53,7 @@ struct CalendarGiftBox: View {
         })
     }
     
-    var eventSection1: some View {
+    var eventView: some View {
         HStack {
             ZStack {
                 RoundedRectangle(cornerRadius: 15)
@@ -90,28 +90,8 @@ struct CalendarGiftBox: View {
             }
         }
     }
-}
-
-struct CalendarNoGift: View {
-    @State var date: Date
     
-    var body: some View {
-        ZStack {
-            VStack {
-                Text("\(Date().eventDateToString(date))")
-                    .font(.TextStyles.largeCalendarNumber)
-                    .foregroundColor(.textBodyColor)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.leading)
-                
-                Spacer()
-            }
-            eventSection2
-        }
-        .navigationBarTitleDisplayMode(.inline)
-    }
-    
-    var eventSection2: some View {
+    var noGiftView: some View {
         VStack {
             Image("LoadingCharacter")
                 .padding(.bottom, 20)
@@ -120,13 +100,6 @@ struct CalendarNoGift: View {
                 .foregroundColor(.textBodyColor)
                 .font(.title3)
         }
-    }
-}
-
-extension View {
-    @ViewBuilder
-    func GiftView(model: [UpcomingEventsModel])-> some View {
-        
     }
 }
 

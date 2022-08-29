@@ -14,15 +14,3 @@ struct CalendarModel: Identifiable {
     var day: Int
     var date: Date
 }
-
-struct CalendarMain {
-    private var id = UUID()
-
-    var upcomingEventTitle: String = ""
-    var upcomingEventMemo: String = ""
-    
-    var upcomingEventDate: Date = Date()
-    var upcomingEventdate: String {
-        return Date().eventDateToString(upcomingEventDate)
-    }
-}
