@@ -28,8 +28,10 @@ struct FlowerListView: View {
             
             VStack {
                 
+                Spacer()
+                
                 Text("꽃을 눌러 상세 정보를 확인할 수 있어요")
-                    .foregroundColor(.bodyTextColor)                
+                    .foregroundColor(.textBodyColor)
                 
                 Spacer()
                 
@@ -113,14 +115,17 @@ struct FlowerPopUpView: View {
                             .padding()
                             .frame(width: 300, height: 260, alignment: .center)
                         
+                        // TODO: 꽃 이름이 한글로 뜰 수 있게 수정할 것
                         Text(flowerList[cardIndex].flower!.imageFileName)
                             .font(.title3)
-                            .foregroundColor(.bodyTextColor)
+                            .foregroundColor(.textBodyColor)
                             .fontWeight(.bold)
+                        
                         Text(flowerList[cardIndex].message)
                             .font(.subheadline)
-                            .foregroundColor(.bodyTextColor)
+                            .foregroundColor(.textBodyColor)
                             .opacity(0.9)
+                            .padding(.bottom, 32)
                         
                         ZStack {
                         // 쪽지
@@ -131,7 +136,7 @@ struct FlowerPopUpView: View {
                                                         
                         }
                         .frame(width: 280, height: 240, alignment: .center)
-                        .foregroundColor(.bodyTextColor)
+                        .foregroundColor(.textBodyColor)
                         .background(
                             Image("letter_yellow")
                                 .resizable()
