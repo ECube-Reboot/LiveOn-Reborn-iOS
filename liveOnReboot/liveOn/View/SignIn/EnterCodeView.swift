@@ -30,10 +30,11 @@ struct EnterCodeView: View {
                 }
                     // MARK: 코드 확인
                     Button {
-                        viewModel.checkInviteCode(input: code) { result in
+                        MemberConfigService.checkInviteCode(input: code) { result in
                             checkCodeMatched(status: result)
                             if result {
                                 UserDefaults.standard.set(true, forKey: "isMatched")
+                                UserStatus.updateUserStatus(status: UserStatus.allSettingFinished)
                                 goNext = true
                             }
                         }

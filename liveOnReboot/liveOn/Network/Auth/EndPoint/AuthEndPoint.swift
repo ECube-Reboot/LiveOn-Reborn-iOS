@@ -12,6 +12,7 @@ enum AuthEndpoint {
     case login(request: LoginRequestDTO)
     case getCode
     case checkCode(param: String)
+    case postMemberInformation(param: PostMemberInformationDTO)
 }
 
 extension AuthEndpoint: TargetType {
@@ -25,12 +26,14 @@ extension AuthEndpoint: TargetType {
             return "api/v1/auth/login"
         case .getCode, .checkCode:
             return "/api/v1/couple/code"
+        case .postMemberInformation:
+            return  "/api/v1/member"
         }
     }
     
     var method: Moya.Method {
         switch self {
-            case .login, .checkCode:
+            case .login, .checkCode, .postMemberInformation:
                 return .post
             case .getCode:
                 return .get
@@ -45,6 +48,8 @@ extension AuthEndpoint: TargetType {
                 return .requestPlain
             case .checkCode(let code):
                 return .requestJSONEncodable(code)
+            case .postMemberInformation(let information):
+                return .requestJSONEncodable(information)
         }
         
     }
@@ -57,6 +62,5 @@ extension AuthEndpoint: TargetType {
             return ["Content-Type": "application/json",
                     "Authorization": "Bearer " + GeneralAPI.token]
         }
-        
     }
 }

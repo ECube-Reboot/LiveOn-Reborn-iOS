@@ -15,7 +15,7 @@ struct InviteCodeView: View {
     @State var showEnterCodeSheet: Bool = false
     @State private var showShareSheet = false
     @State var goNext: Bool = false
-    
+    @State private var inviteCodeToShow = ""
     var body: some View {
         SignInLayoutView(title: SignInLiteral.inviteCodeTitle, description: SignInLiteral.inviteCodeDescription) {
             VStack {
@@ -36,7 +36,9 @@ struct InviteCodeView: View {
                 copyButton
             }
             .sheet(isPresented: $showShareSheet) {
-                ShareSheet(activityItems: [ MyActivityItemSource(title: SignInLiteral.inviteCodeShareSheetTitle, text: "\(userData.nickName)\(SignInLiteral.inviteCodeShareSheetText) 초대코드 : [ \(viewModel.inviteCode) ]")])
+                if let code = UserDefaults.standard.string(forKey: "inviteCode") {
+                ShareSheet(activityItems: [ MyActivityItemSource(title: SignInLiteral.inviteCodeShareSheetTitle, text: "\(userData.nickName)\(SignInLiteral.inviteCodeShareSheetText) 초대코드 : [\(code)]")])
+                }
             }
                 
                 Spacer()
@@ -59,11 +61,12 @@ struct InviteCodeView: View {
                     NavigationLink("둘러보기", destination: GiftBoxView())
                 }
             }
-            .navigationToBack(dismiss)
+            .navigationToBackShowOptional(dismiss, isHidden: UserStatus.checkStatus(status: UserStatus.informationEntered))
+            
         }
         .task {
             if UserDefaults.standard.string(forKey: "inviteCode") == nil {
-            await viewModel.getInviteCode()
+                await MemberConfigService.getInviteCode()
             }
         }
     }
