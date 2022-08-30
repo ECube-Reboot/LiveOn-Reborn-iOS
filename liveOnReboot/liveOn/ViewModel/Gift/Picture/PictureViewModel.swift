@@ -56,6 +56,7 @@ final class PictureViewModel: ObservableObject {
                 print(err.localizedDescription)
             }
         }
+        completion()
     }
 }
 
