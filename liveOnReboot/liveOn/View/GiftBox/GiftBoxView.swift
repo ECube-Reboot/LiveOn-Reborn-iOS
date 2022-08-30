@@ -37,6 +37,8 @@ struct GiftBoxView: View {
                      
                      그리고 이 모든 것이 상단 정렬되어 있지 않음.. ^^
                      
+                     // 이거는? NavigationView가 두번이나 감싸서 벌어진 현상이었습니다. 하 하 하
+                     
                      */
                     
                     VStack(alignment: .center) {
