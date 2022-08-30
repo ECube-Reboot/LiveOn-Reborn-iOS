@@ -10,8 +10,10 @@ import SwiftUI
 struct FlowerListView: View {
     
     @Environment(\.dismiss) private var dismiss
+    
     @State var showFlowerPopUp = false
     @State var selectedCardIndex = 0
+    
     // instance 관련 오류로 인해 잠시 주석 처리
     // let rotation: Double = calculateImageRotationAngle(index: cardIndex)
     
@@ -21,6 +23,7 @@ struct FlowerListView: View {
     ]
     
     var body: some View {
+        
         ZStack {
             
             VStack {
@@ -47,11 +50,12 @@ struct FlowerListView: View {
                     LazyVGrid(columns: columns, spacing: -40) {
                         ForEach(0..<flowerList.count, id: \.self) { index in
                             FlowerPopUp(content: flowerList[index])
-                                .onTapGesture {withAnimation(.linear(duration: 0.5)) {
+                                .onTapGesture {
+                                    withAnimation(.linear(duration: 0.5)) {
                                     showFlowerPopUp = true
                                     selectedCardIndex = index
                                 }
-                                }
+                            }
                         }
                     }
                     .padding()
