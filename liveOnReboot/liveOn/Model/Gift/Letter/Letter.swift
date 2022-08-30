@@ -8,12 +8,13 @@
 import SwiftUI
 
 struct Letter {
-  private var id = UUID()
-  var content: String = ""
-  var sender: String = ""
-  var createdAt: Date = Date.now
-  
-  var createdDate: String {
-    return Date().dateToString(createdAt)
-  }
+    private var id = UUID()
+    var color: String = "color_white"
+    var content: String = ""
+    var sender: String = ""
+    var createdAt: Date = Date.now
+    
+    var createdDate: String {
+        return Date().dateToString(createdAt)
+    }
 }

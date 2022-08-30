@@ -20,8 +20,7 @@ extension View {
             }
         }
         .padding(.vertical, 6)
-        .frame(height: 80)
-        //        .border(Color(uiColor: .systemGray3), width: 0.16)
+        .frame(height: UIScreen.main.bounds.height * 0.075)
         .overlay(Rectangle().frame(width: nil, height: 1, alignment: .top).foregroundColor(Color(uiColor: .systemGray6)), alignment: .top)
     }
     
@@ -31,11 +30,19 @@ extension View {
         return calendar.isDate(date1, inSameDayAs: date2)
     }
     
-    // extrating Year and Month for display
-    func extraDate(currentDate: Date) -> [String] {
+    // extracting Year and Month for display
+    func fullDate(currentDate: Date) -> [String] {
         
         let formatter = DateFormatter()
         formatter.dateFormat = "YYYY MM"
+        let date = formatter.string(from: currentDate)
+        return date.components(separatedBy: " ")
+    }
+    
+    func monthDate(currentDate: Date) -> [String] {
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM"
         let date = formatter.string(from: currentDate)
         return date.components(separatedBy: " ")
     }

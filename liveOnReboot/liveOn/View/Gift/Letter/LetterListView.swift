@@ -9,28 +9,41 @@ import SwiftUI
 
 struct LetterListView: View {
     @ObservedObject private var viewModel: LetterViewModel = LetterViewModel()
-    @State var selectedLetter: LetterGet?
-    @State var showDetail = false
-    @State var showCreateView = false
+    @State private var selectedLetter: LetterGet?
+    @State private var showDetail = false
+    @State private var showCreateView = false
+    @State private var isLoaded = false
+    
+    private let columns = Array(repeating: GridItem(.adaptive(minimum: 300),
+                                            spacing: 1,
+                                            alignment: .center),count: 2)
     var body: some View {
-        ZStack {
-            ScrollView(.vertical) {
-                let columns = Array(repeating: GridItem(.adaptive(minimum: 300), spacing: 1, alignment: .center), count: 2)
-                
-                LazyVGrid(columns: columns, spacing: 1) {
-                    ForEach(viewModel.letterList.reversed(),  id: \.giftMemoId) { letter in
-                        LetterView(letter: letter)
-                            .onTapGesture {
-                                selectedLetter = letter
-                                withAnimation {
-                                    showDetail.toggle()
-                                }
+        VStack{
+                if !isLoaded {
+                    ProgressView()
+                } else {
+                    if !viewModel.letterList.isEmpty {
+                        ScrollView(.vertical) {
+                        LazyVGrid(columns: columns, spacing: 1) {
+                            ForEach(viewModel.letterList.reversed(),  id: \.giftNoteId) { letter in
+                                LetterView(letter: letter)
+                                    .onTapGesture {
+                                        selectedLetter = letter
+                                        withAnimation {
+                                            showDetail.toggle()
+                                        }
+                                    }
                             }
+                        }
+                        }
+                    } else {
+                        Text("아직 주고받은 쪽지가 없어요.")
+                            .foregroundColor(.textBodyColor)
+                            .opacity(0.5)
                     }
                 }
-            } // ScrollView
-        }
-        .frame(maxWidth: .infinity, alignment: .center)
+        }  // ScrollView
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
         .background(Color.backgroundGray)
         .navigationTitle("쪽지함")
         .toolbar {
@@ -59,7 +72,9 @@ struct LetterListView: View {
             }
         }
         .task {
-            await viewModel.letterListGet()
+            await viewModel.letterListGet(completion: {
+                isLoaded = true
+            })
         }
     }
 }
@@ -86,7 +101,7 @@ extension LetterListView {
                 .padding(24)
                 .frame(width: UIScreen.main.bounds.width*0.45, height: UIScreen.main.bounds.width*0.45, alignment: .center)
                 .foregroundColor(.textBodyColor)
-                .background(Image("letter_green").resizable().scaledToFit().shadow(color: .shadowColor, radius: 2, x: 1, y: 1))
+                .background(Image(letter.color).resizable().scaledToFit().shadow(color: .shadowColor, radius: 2, x: 1, y: 1))
             }
         }
     }
@@ -116,7 +131,7 @@ extension LetterListView {
             }
             .foregroundColor(.textBodyColor)
             .frame(width: UIScreen.main.bounds.width*0.8, height: UIScreen.main.bounds.width*0.9, alignment: .center)
-            .background(Image("letter_green").resizable().scaledToFit().shadow(color: Color(uiColor: .systemGray4), radius: 4, x: 1, y: 3))
+            .background(Image(letter.color).resizable().scaledToFit().shadow(color: Color(uiColor: .systemGray4), radius: 4, x: 1, y: 3))
         }
     }
 }
