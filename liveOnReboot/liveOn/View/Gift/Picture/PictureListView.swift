@@ -17,10 +17,7 @@ struct PictureListView: View {
     
     var body: some View {
         ZStack {
-            if !isLoaded {
-                ProgressView()
-            }
-            else if viewModel.loadedImageList.isEmpty {
+            if !viewModel.loadedImageList.isEmpty {
                 ScrollView {
                     LazyVGrid(columns: columns) {
                         ForEach(viewModel.loadedImageList.reversed(), id: \.giftPolaroidId) { data in
