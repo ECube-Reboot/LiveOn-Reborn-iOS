@@ -6,10 +6,7 @@
 //
 
 import Foundation
-
-import Foundation
 import Moya
-import UIKit
 
 class AuthService {
     let authProvider = MoyaProvider<AuthEndpoint>(plugins: [NetworkLoggerPlugin(verbose: true)])

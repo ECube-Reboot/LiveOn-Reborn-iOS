@@ -15,7 +15,7 @@ class MemberConfigService {
     static func postMemeberInformation(information: PostMemberInformationDTO, completion: @escaping () -> ()) {
         singleton.signInMoyaService.request(.postMemberInformation(param: information)) { response in
             switch response {
-                case .success(_):
+                case .success:
                     completion()
                     return
                 case .failure(let err):

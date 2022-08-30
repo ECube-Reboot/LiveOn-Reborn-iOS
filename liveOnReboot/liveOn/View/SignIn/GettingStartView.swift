@@ -45,7 +45,7 @@ struct GettingStartView: View {
                     switch result {
                         case .success:
                             authenticationData = appleSignInViewModel.didFinishAppleSignin(result: result)
-                    UserStatus.updateUserStatus(status: UserStatus.appleSignInFinished)
+                            UserStatus.updateUserStatus(status: UserStatus.appleSignInFinished)
                             isActive.toggle()
                         case .failure:
                             return
