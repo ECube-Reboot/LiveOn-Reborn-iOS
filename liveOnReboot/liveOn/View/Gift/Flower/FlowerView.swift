@@ -75,11 +75,15 @@ struct FlowerListView: View {
                     .padding(.bottom, 32)
                 
             } // VStack
-            .blur(radius: showFlowerPopUp ? 6 : 0)
-            Color(uiColor: .systemBackground).opacity(showFlowerPopUp ? 0.8 : 0)
             
             if showFlowerPopUp {
-                FlowerPopUpView(popUpBoolean: $showFlowerPopUp, cardIndex: $selectedCardIndex)
+                FlowerPopUpView(popUpBool: $showFlowerPopUp, cardIndex: $selectedCardIndex)
+                    .background(.ultraThinMaterial)
+                    .onTapGesture {
+                        withAnimation {
+                            showFlowerPopUp.toggle()
+                        }
+                    }
             }
             
         } // ZStack
