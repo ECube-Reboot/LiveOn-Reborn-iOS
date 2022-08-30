@@ -66,7 +66,7 @@ struct InviteCodeView: View {
         }
         .task {
             if UserDefaults.standard.string(forKey: "inviteCode") == nil {
-                await viewModel.getInviteCode()
+                await MemberConfigService.getInviteCode()
             }
         }
     }

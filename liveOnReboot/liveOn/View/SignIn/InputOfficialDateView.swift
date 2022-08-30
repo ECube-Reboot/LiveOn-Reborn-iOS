@@ -36,7 +36,7 @@ struct InputOfficialDateView: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button("다음"){
                     userData.officialDay = self.officialDate
-                    SignInViewModel().postMemeberInformation(
+                   MemberConfigService.postMemeberInformation(
                         information: PostMemberInformationDTO(birthDay: userData.birthDay.toString(dateFormat: "YYYY-MM-dd"),
                                                               nickName: userData.nickName,
                                                               officialDay: userData.officialDay.toString(dateFormat: "YYYY-MM-dd"))

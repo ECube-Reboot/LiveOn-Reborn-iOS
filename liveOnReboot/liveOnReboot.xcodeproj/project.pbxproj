@@ -31,6 +31,7 @@
 		773185BB287C4A9F00120FF9 /* Font+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773185BA287C4A9F00120FF9 /* Font+Extension.swift */; };
 		773185BE287C4B9400120FF9 /* NerkoOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 773185BD287C4B8F00120FF9 /* NerkoOne-Regular.ttf */; };
 		773185C3287C56FE00120FF9 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773185C2287C56FE00120FF9 /* Color+Extension.swift */; };
+		7745EF5128BDBF4200F182FB /* MemberConfigService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7745EF5028BDBF4200F182FB /* MemberConfigService.swift */; };
 		776502E028B4B8E300A46153 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		776502E528B4B92800A46153 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		776502E728B4B93000A46153 /* (null) in Sources */ = {isa = PBXBuildFile; };
@@ -140,6 +141,7 @@
 		773185BD287C4B8F00120FF9 /* NerkoOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NerkoOne-Regular.ttf"; sourceTree = "<group>"; };
 		773185BF287C4CB900120FF9 /* liveOnReboot-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "liveOnReboot-Info.plist"; sourceTree = "<group>"; };
 		773185C2287C56FE00120FF9 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
+		7745EF5028BDBF4200F182FB /* MemberConfigService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberConfigService.swift; sourceTree = "<group>"; };
 		77651D0528B0924700994C15 /* SignInLayoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInLayoutView.swift; sourceTree = "<group>"; };
 		77651D0728B0939100994C15 /* InputNickNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputNickNameView.swift; sourceTree = "<group>"; };
 		77651D0928B093CF00994C15 /* SignInLiteral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInLiteral.swift; sourceTree = "<group>"; };
@@ -232,6 +234,7 @@
 		27EE34BC28B7E52600FCC40F /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				7745EF4F28BDBF3500F182FB /* Member */,
 				27EE34BF28B7E56500FCC40F /* Service */,
 				27EE34BE28B7E55D00FCC40F /* EndPoint */,
 				27EE34BD28B7E55300FCC40F /* DTO */,
@@ -288,6 +291,14 @@
 				773185BD287C4B8F00120FF9 /* NerkoOne-Regular.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		7745EF4F28BDBF3500F182FB /* Member */ = {
+			isa = PBXGroup;
+			children = (
+				7745EF5028BDBF4200F182FB /* MemberConfigService.swift */,
+			);
+			path = Member;
 			sourceTree = "<group>";
 		};
 		77F6F19128900C4800263BBB /* Literal */ = {
@@ -1024,6 +1035,7 @@
 				C92E320328795C81000A315C /* CalendarService.swift in Sources */,
 				C974DDC72883CB5A00698BFA /* Date+Extension.swift in Sources */,
 				C92E31E928795BA9000A315C /* GiftListView.swift in Sources */,
+				7745EF5128BDBF4200F182FB /* MemberConfigService.swift in Sources */,
 				77651D0E28B09FF400994C15 /* SignInUser.swift in Sources */,
 				7725D93E28B7572D00EF5BA6 /* WithdrawalRequestView.swift in Sources */,
 				77651D0C28B09F5500994C15 /* InputBirthDayView.swift in Sources */,
