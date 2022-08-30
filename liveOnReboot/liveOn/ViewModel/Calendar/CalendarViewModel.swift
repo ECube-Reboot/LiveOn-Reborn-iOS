@@ -12,6 +12,7 @@ class CalendarViewModel: ObservableObject {
     
     @Published var list: [UpcomingEventsModel]
     @Published var calendarList = [CalendarMainGet]()
+    @Published var calendarGift = [MonthResponse]()
 
     init() {
         list = []
@@ -35,13 +36,14 @@ class CalendarViewModel: ObservableObject {
         calendarMainMoyaService.request(.getCalendarMain) { response in
             switch response {
                 case .success(let result):
+                    print("받아온 response는 다음과 같다 \(result)")
                     do {
                         let data = try result.map([CalendarMainGet].self)
                         self.mapListData(listData: data)
                         completion()
                         print("Get에 성공했습니다")
                     } catch let err {
-                        print("Get에 실패했습니다")
+                        print("디코딩에 실패했습니다")
                         print(err.localizedDescription)
                         break
                     }

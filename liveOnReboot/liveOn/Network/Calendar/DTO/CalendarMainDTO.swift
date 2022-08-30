@@ -25,7 +25,7 @@ struct CalendarMainGet: Codable {
 
 struct EventResponseList: Codable {
     let upcomingEventDate: String
-    let upcomingEventID: Int
+    let upcomingEventID: Int64
     let upcomingEventMemo: String
     let upcomingEventTitle: String
 

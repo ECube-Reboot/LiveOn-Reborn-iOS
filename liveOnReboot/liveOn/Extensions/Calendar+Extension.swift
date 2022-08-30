@@ -9,10 +9,12 @@ import SwiftUI
 
 extension View {
     @ViewBuilder
-    func CardView(value: CalendarModel, model: [UpcomingEventsModel])-> some View {
+    func CardView(value: CalendarModel, event: [UpcomingEventsModel]
+                  , gift: [CalendarViewModel]
+    )-> some View {
         VStack {
             if value.day != -1 {
-                if model.isEmpty {
+                if event.isEmpty {
                     Text("\(value.day)")
                         .font(.footnote)
                         .foregroundColor(.textBodyColor)
@@ -23,10 +25,11 @@ extension View {
                         .foregroundColor(.textBodyColor)
                         .frame(maxWidth: .infinity, alignment: .center)
                         .background(Image("highlightForCalendar"))
+                }
+                if gift.isEmpty {
+                    Image(gift.giftType)
+                } else {
                     
-                    Image("flowerIcon")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
                 }
                 Spacer()                
             }

@@ -29,22 +29,19 @@ struct CalendarView: View {
     @State private var upcomingEventTitle: String = ""
     @State private var upcomingEventMemo: String = ""
     
-    // 달력 해당 날짜 눌렀을 때 해당 날짜에 주고 받은 선물을 한 눈에 보는 뷰로 이동할 때 쓰는 변수
-//    @State var isNavigationOn: Bool = false
-    
     // 달력 스와이프에 필요한 변수
     @State var swipeHorizontalDirection: SwipeHorizontalDirection = .none
     
     //Upcoming Events 추가
     @EnvironmentObject var calendarViewModel: CalendarViewModel
-//    @State private var isLoaded = false
 //    @ObservedObject private var calendarViewModel: CalendarViewModel = CalendarViewModel()
+    //    @State private var isLoaded = false
         
     var body: some View {
         ZStack {
             VStack(spacing: 10) {
                 HStack(spacing: 80) {
-                    // 달력 이전 달로 이동
+                    // MARK: - 달력 이전 달로 이동
                     Button {
                         withAnimation {
                             self.currentDate = self.moveCurrentMonth(isUp: false)
@@ -58,7 +55,7 @@ struct CalendarView: View {
                     .padding(.trailing, 30)
                     
                     VStack(spacing: -6) {
-                        // 달력의 년+월
+                        // MARK: - 달력의 년+월
                         Text(fullDate(currentDate: self.currentDate)[0])
                             .font(.TextStyles.smallCalendarNumber)
                             .foregroundColor(.burgundy)
@@ -69,7 +66,7 @@ struct CalendarView: View {
                             .padding(.top, -10)
                             .padding(.bottom, -10)
                     }
-                    // 달력 다음 달로 이동
+                    // MARK: - 달력 다음 달로 이동
                     Button {
                         withAnimation {
                             self.currentDate =  self.moveCurrentMonth(isUp: true)
@@ -82,7 +79,7 @@ struct CalendarView: View {
                     .padding(.top, 30)
                     .padding(.leading, 30)
                 }
-                // Day View
+                // MARK: - Day View
                 HStack(spacing: 0) {
                     ForEach(CalendarDay.allCases, id: \.self) {day in
                         Text(day.rawValue)
@@ -91,22 +88,23 @@ struct CalendarView: View {
                             .frame(maxWidth: .infinity)
                     }
                 }
-                // Dates
-                // Lazy Grid
+                // MARK: - Dates
                 let columns = Array(repeating: GridItem(.flexible(), spacing: 0, alignment: nil), count: 7)
                 
                 LazyVGrid(columns: columns, spacing: 0) {
-                    ForEach(extractDate(currentDate: self.currentDate)) { value in
+                    ForEach(extractDate(currentDate: self.currentDate)) { calendarData in
                         ZStack(alignment: .topLeading) {
-                            NavigationLink(destination: CalendarGiftBox(date: value.date)) {
-                                CardView(value: value, model: calendarViewModel.list.filter{ $0.upcomingEventdate == DateToStringEventMonth(value.date) })
+                            NavigationLink(destination: CalendarGiftBox(date: calendarData.date)) {
+                                CardView(value: calendarData, event: calendarViewModel.list.filter{ $0.upcomingEventdate == DateToStringEventMonth(calendarData.date) }
+//                                         , gift: calendarViewModel.calendarGift.filter{ $0.createdAt == DateToStringEventMonth(calendarData.date)}
+                                )
                             }
                         }
                     }
                 }
                 .gesture(swipe)
                 
-                // Upcoming Events
+                // MARK: - Upcoming Events
                 VStack(spacing: 10) {
                     HStack {
                         Text("Upcoming Events")
@@ -175,16 +173,17 @@ struct CalendarView: View {
                     .padding([.leading, .trailing, .top])
                 }
             }
-            // PopupDate와 CalendarView 사이에 블러 효과
+            // MARK: - PopupDate와 CalendarView 사이에 블러 효과
             .opacity(isClicked ? 0.1 : 1 )
         }
+        // MARK: - 데이터 가져오는 부분
         .task {
             await calendarViewModel.calendarMainGet(completion: {
 //                isLoaded = true
             })
         }
         .toolbar {
-            // 메인 달력 날짜 고르는 PopupDate Button
+            // MARK: - 메인 달력 날짜 고르는 PopupDate Button
             Button {
                 showDatePicker.toggle()
                 isClicked.toggle()
@@ -196,7 +195,7 @@ struct CalendarView: View {
         }
         .ignoresSafeArea(.all, edges: .bottom)
         
-        // PopUpView 띄우는 코드
+        // MARK: - PopUpView
         if showDatePicker {
             PopupDate(popupDate: self.currentDate,
                       currentDate: $currentDate,
@@ -207,6 +206,7 @@ struct CalendarView: View {
         
     }
     
+    // MARK: - 기념일이 없는 경우
     var noEvent: some View {
         HStack {
             ZStack {
@@ -223,6 +223,7 @@ struct CalendarView: View {
         }
     }
     
+    // MARK: - Calendar Swipe Gesture
     var swipe: some Gesture {
         DragGesture(minimumDistance: 1)
             .onEnded {
@@ -238,6 +239,11 @@ struct CalendarView: View {
             }
     }
     
+    enum SwipeHorizontalDirection: String {
+        case left, right, none
+    }
+    
+    // MARK: - Calendar에 쓰일 날짜
     enum CalendarDay: String, CaseIterable {
         case Sun = "Sun"
         case Mon = "Mon"
@@ -247,11 +253,6 @@ struct CalendarView: View {
         case Fri = "Fri"
         case Sat = "Sat"
     }
-    
-    enum SwipeHorizontalDirection: String {
-        case left, right, none
-    }
-    
 
     func moveCurrentMonth(isUp: Bool) -> Date {
         
@@ -306,12 +307,12 @@ struct CalendarView: View {
     }
 }
 
-//struct CalendarMain_Previews: PreviewProvider {
-//    static var previews: some View {
-//        NavigationView{
-//            CalendarView().environmentObject(CalendarViewModel())
-//                .navigationBarHidden(true)
-//        }
-//    }
-//}
+struct CalendarMain_Previews: PreviewProvider {
+    static var previews: some View {
+        NavigationView{
+            CalendarView().environmentObject(CalendarViewModel())
+                .navigationBarHidden(true)
+        }
+    }
+}
 
