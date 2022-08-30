@@ -21,7 +21,7 @@ struct InviteCodeView: View {
             VStack {
                 
                 //TODO: 코드 GET API 연동
-                Text( UserDefaults.standard.string(forKey: "inviteCode") ?? "")
+                Text( UserDefaults.standard.string(forKey: "inviteCode") ?? viewModel.inviteCode)
                     .font(.title)
                     .fontWeight(.heavy)
                     .textSelection(.enabled)

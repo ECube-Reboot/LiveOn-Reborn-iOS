@@ -18,9 +18,6 @@ struct PictureListView: View {
     var body: some View {
         ZStack {
             if !isLoaded {
-                ProgressView()
-            }
-            else if viewModel.loadedImageList.isEmpty {
                 ScrollView {
                     LazyVGrid(columns: columns) {
                         ForEach(viewModel.loadedImageList.reversed(), id: \.giftPolaroidId) { data in
@@ -39,6 +36,11 @@ struct PictureListView: View {
                     .navigationTitle("사진")
                     .navigationBarTitleDisplayMode(.inline)
                     .navigationToBack(dismiss)
+                    .task {
+                        viewModel.imageListGet {
+                            isLoaded.toggle()
+                        }
+                    }
                 } // ScrollView
                 .blur(radius: isTapped ? 6 : 0)
                 .background(Color.lightgray)
@@ -47,12 +49,7 @@ struct PictureListView: View {
                     .foregroundColor(.textBodyColor)
                     .opacity(0.5)
             }
-        }
-        .task {
-            viewModel.imageListGet {
-                isLoaded.toggle()
-            }
-        }// Zstack
+        } // Zstack
         .overlay {
             if isTapped == true {
                 PhotoCardSheet(indexPath: detailedImage.giftPolaroidId, imageURLString: detailedImage.giftPolaroidImage, photoText: detailedImage.comment)
