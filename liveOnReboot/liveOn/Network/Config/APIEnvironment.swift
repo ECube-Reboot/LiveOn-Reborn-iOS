@@ -9,7 +9,7 @@ import Foundation
 
 struct GeneralAPI {
     static let baseURL = "http://13.124.90.96:8080"
-    static let token = "Bearer " + KeyChain.read(key: "acessToken")!
+    static let token = "Bearer " + KeyChain.read(key: "accessToken")!
 }
 
 enum AuthAPI {
