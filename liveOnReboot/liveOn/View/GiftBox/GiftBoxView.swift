@@ -16,6 +16,8 @@ struct GiftBoxView: View {
                     
                     // MARK: 커플 정보 라벨과 선물 제작 버튼이 들어가는 상단 바
                     HStack {
+                        
+                        // TODO: 라이트모드일때 CoupleInfoLabel에 하이라이트 되는 현상 없애기
                         NavigationLink(destination: CoupleInformationView()){
                             CoupleInfoLabel()}
                         Spacer()
@@ -28,18 +30,6 @@ struct GiftBoxView: View {
                     }
                     
                     CalendarLinkView()
-                    
-                    // TODO: 가운데 정렬
-                    /*
-                     
-                     캘린더는 가운데에 잘 붙어 있는데,
-                     쪽지랑 사진, 음성, 꽃들은 가운데에 안 붙고 왼쪽 정렬되어 있음
-                     
-                     그리고 이 모든 것이 상단 정렬되어 있지 않음.. ^^
-                     
-                     // 이거는? NavigationView가 두번이나 감싸서 벌어진 현상이었습니다. 하 하 하
-                     
-                     */
                     
                     VStack(alignment: .center) {
                         
@@ -65,20 +55,18 @@ struct CoupleInfoLabel: View {
     var body: some View {
         
         ZStack {
-            
             RoundedRectangle(cornerRadius: 10)
                 .stroke(lineWidth: 1)
                 .padding(8)
-            // TODO: 파란색 테두리 색상 변경
                 .foregroundColor(Color.teal)
                 .frame(width: 194, height: 54, alignment: .center)
                 .background(RoundedRectangle(cornerRadius: 10)
                     .fill(.thinMaterial)
                     .shadow(color: Color(red: 239, green: 238, blue: 35), radius: 4, x: 0, y: 4))
-            
+
             HStack {
                 
-                // TODO: "재헌" -> 상대방의 이름이 들어가게 바꿀 것
+                // TODO: "재헌" -> 상대방 유저의 이름이 들어가게 바꿀 것
                 Text("재헌")
                 
                 Image("heart")
@@ -173,7 +161,7 @@ struct VoiceAndFlowerLinkView: View {
     } // body
 }
 
-// written by Milli
+// Coded by Milli
 /// 사귀기 시작한 첫 날을 전달하면 커플이 된지 며칠이나 지났는지 Int값을 반환해주는 함수
 func countDays(from date: Date) -> Int {
     let calendar = Calendar.current

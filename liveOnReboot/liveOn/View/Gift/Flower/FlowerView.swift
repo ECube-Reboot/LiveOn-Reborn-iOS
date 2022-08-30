@@ -25,9 +25,7 @@ struct FlowerListView: View {
     var body: some View {
         
         ZStack {
-            
             VStack {
-                
                 Spacer()
                 
                 Text("꽃을 눌러 상세 정보를 확인할 수 있어요")
@@ -42,22 +40,29 @@ struct FlowerListView: View {
                         .aspectRatio(contentMode: .fit)
                         .shadow(color: Color.shadowColor, radius: 2, x: 0, y: 0)
                         .padding(24)
-                    Circle().fill(.white).frame(width: 160, height: 160, alignment: .center)
+                    
+                    Circle().fill(.white).frame(width: 160,
+                                                height: 160,
+                                                alignment: .center)
                     
                     Circle()
                         .fill(.regularMaterial)
                         .padding()
-                        .overlay(Circle().fill(.gray).frame(width: 100, height: 100, alignment: .center).opacity(0.9))
+                        .overlay(
+                            Circle().fill(.gray).frame(width: 100,
+                                                       height: 100,
+                                                       alignment: .center).opacity(0.9)
+                        )
                     
                     LazyVGrid(columns: columns, spacing: -40) {
                         ForEach(0..<flowerList.count, id: \.self) { index in
                             FlowerPopUp(content: flowerList[index])
                                 .onTapGesture {
                                     withAnimation(.linear(duration: 0.5)) {
-                                    showFlowerPopUp = true
-                                    selectedCardIndex = index
+                                        showFlowerPopUp = true
+                                        selectedCardIndex = index
+                                    }
                                 }
-                            }
                         }
                     }
                     .padding()
@@ -96,9 +101,7 @@ struct FlowerPopUpView: View {
     var body: some View {
         
         ZStack {
-            
             VStack(alignment: .center) {
-                
                 Button {
                     
                     withAnimation(.linear(duration: 0.24)) {
@@ -128,20 +131,20 @@ struct FlowerPopUpView: View {
                             .padding(.bottom, 32)
                         
                         ZStack {
-                        // 쪽지
-                        VStack(alignment: .center, spacing: 4) {
-                            Text(flowerList[cardIndex].message)
-                                .padding()
-                            Text("20220613")
-                                                        
-                        }
-                        .frame(width: 280, height: 240, alignment: .center)
-                        .foregroundColor(.textBodyColor)
-                        .background(
-                            Image("letter_yellow")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(maxWidth: .infinity, maxHeight: .infinity))
+                            // 쪽지
+                            VStack(alignment: .center, spacing: 4) {
+                                Text(flowerList[cardIndex].message)
+                                    .padding()
+                                Text("20220613")
+                                
+                            }
+                            .frame(width: 280, height: 240, alignment: .center)
+                            .foregroundColor(.textBodyColor)
+                            .background(
+                                Image("letter_yellow")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(maxWidth: .infinity, maxHeight: .infinity))
                         }
                         
                     } // VStack
