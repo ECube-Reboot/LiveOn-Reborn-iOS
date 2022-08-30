@@ -11,7 +11,6 @@ import AuthenticationServices
 
 struct GettingStartView: View {
     @ObservedObject var appleSignInViewModel: AppleSignInViewModel = AppleSignInViewModel()
-    @State private var authenticationData: String = ""
     @State private var isActive: Bool = false
     
     let authProvider = MoyaProvider<AuthEndpoint>(plugins: [NetworkLoggerPlugin(verbose: true)])
@@ -44,8 +43,8 @@ struct GettingStartView: View {
                 }, onCompletion: { result in
                     switch result {
                         case .success:
-                            authenticationData = appleSignInViewModel.didFinishAppleSignin(result: result)
                             UserStatus.updateUserStatus(status: UserStatus.appleSignInFinished)
+                            appleSignInViewModel.didFinishAppleSignin(result: result)
                             isActive.toggle()
                         case .failure:
                             return

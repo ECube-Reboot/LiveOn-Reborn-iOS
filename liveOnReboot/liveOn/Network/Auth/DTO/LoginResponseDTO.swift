@@ -12,5 +12,4 @@ struct LoginResponseDTO: Decodable {
     let isNewMember: Bool
     let refreshToken: String
     let userSettingDone: Bool
-    
 }

@@ -56,11 +56,11 @@ extension AuthEndpoint: TargetType {
     
     var headers: [String: String]? {
         switch self {
-            case .login:
-                return ["Content-Type": "application/json"]
-            default:
-                return ["Content-Type": "application/json",
-                        "Authorization": GeneralAPI.token]
+        case .login :
+            return ["Content-Type": "application/json"]
+        default :
+            return ["Content-Type": "application/json",
+                    "Authorization": "Bearer " + GeneralAPI.token]
         }
     }
 }

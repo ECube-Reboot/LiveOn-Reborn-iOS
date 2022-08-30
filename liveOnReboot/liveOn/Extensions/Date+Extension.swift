@@ -34,18 +34,18 @@ extension Date {
         }
     }
     
+    func toString(dateFormat format: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format
+        return dateFormatter.string(from: self)
+    }
+
     func getNextMonth() -> Date? {
         return Calendar.current.date(byAdding: .month, value: 1, to: self)
     }
     
     func getPreviousMonth() -> Date? {
         return Calendar.current.date(byAdding: .month, value: -1, to: self)
-    }
-
-    func toString(dateFormat format: String ) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = format
-        return dateFormatter.string(from: self)
     }
     
     func countDays() -> Int {

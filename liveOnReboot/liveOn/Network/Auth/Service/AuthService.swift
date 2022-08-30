@@ -22,7 +22,6 @@ class AuthService {
                 tokenResponse = try! result.map(LoginResponseDTO.self)
                 KeyChain.create(key: "accessToken", token: tokenResponse.accessToken)
                 KeyChain.create(key: "refreshToken", token: tokenResponse.refreshToken)
-                print("login")
             case .failure(let err):
                 print(err.localizedDescription)
             }
