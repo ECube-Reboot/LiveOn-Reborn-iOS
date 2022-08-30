@@ -179,20 +179,6 @@ extension FlowerListView {
     }
 }
 
-func calculateImageRotationAngle(index: Int) -> Double {
-    
-    switch index {
-    case 1:
-        return 180
-    case 2:
-        return 0
-    case 3:
-        return 270
-    default:
-        return 90
-    }
-}
-
 #if DEBUG
 let flowerList = FlowerGift.dummyData()
 #endif
