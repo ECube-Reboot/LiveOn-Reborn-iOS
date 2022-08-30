@@ -5,16 +5,75 @@
 //  Created by Keum MinSeok on 2022/07/09.
 //
 
+import Foundation
 import SwiftUI
+import Moya
 
-struct VoiceMailEndPoint: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+extension VoicemailServerCommunication: TargetType, AccessTokenAuthorizable {
+    public var baseURL: URL {
+        return URL(string: GeneralAPI.baseURL)!
     }
-}
-
-struct VoiceMailEndPoint_Previews: PreviewProvider {
-    static var previews: some View {
-        VoiceMailEndPoint()
+    
+    var path: String {
+        switch self {
+        case .login:
+            return "/api/v1/test/login"
+        case .voicemailPost:
+            return "/api/v1/gifts/voicemail"
+        case .voicemailListGet:
+            return "/api/v1/gifts/voicemail"
+        case .voicemailGet:
+            return "/api/vq/gifts/voicemail/"
+        }
     }
+    
+    var method: Moya.Method {
+        switch self {
+        case .login, .voicemailPost:
+            return .post
+        case .voicemailListGet, .voicemailGet:
+            return .get
+        }
+    }
+    
+    var task: Task {
+        switch self {
+        case .login(let param):
+            return .requestJSONEncodable(param)
+            
+        case .voicemailPost(let title, let voicemail, let voicemailDuration):
+            var multipartForm: [MultipartFormData] = []
+            multipartForm.append(MultipartFormData(provider: .data(Data(String(title).utf8)), name: "title"))
+            multipartForm.append(MultipartFormData(provider: .data(Data(String(voicemailDuration).utf8)), name: "voiceMailDuration"))
+            if let recordingData: Data = try? Data(contentsOf: voicemail.fileURL) {
+                multipartForm.append(MultipartFormData(provider: .data(recordingData), name: "voiceMail"))
+            }
+            return .uploadMultipart(multipartForm)
+            
+        case .voicemailListGet, .voicemailGet:
+            return .requestPlain
+        }
+    }
+    
+    var headers: [String : String]? {
+        switch self {
+        case .voicemailPost:
+            return ["Content-Type": "multipart/form",
+                    "Authorization": "Bearer "+GeneralAPI.token]
+        default:
+            return ["Content-Type": "application/json",
+                    "Authorization": "Bearer "+GeneralAPI.token]
+        }
+    }
+    
+    var authorizationType: AuthorizationType? {
+        switch self {
+        case .login, .voicemailPost:
+            return nil
+        default:
+            return .bearer
+        }
+    }
+    
+   
 }
