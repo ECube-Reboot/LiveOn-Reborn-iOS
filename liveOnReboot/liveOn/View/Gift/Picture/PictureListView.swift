@@ -44,7 +44,7 @@ struct PictureListView: View {
                 } // ScrollView
                 .blur(radius: isTapped ? 6 : 0)
                 .background(Color.lightgray)
-            } else {
+            } else if viewModel.loadedImageList.isEmpty {
                 Text("아직 주고받은 사진이 없어요.")
                     .foregroundColor(.textBodyColor)
                     .opacity(0.5)
