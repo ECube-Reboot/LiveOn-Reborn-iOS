@@ -14,7 +14,8 @@ struct GiftBoxView: View {
             HStack(alignment: .top, spacing: 12) {
                 VStack (alignment: .center, spacing: 12) {
                     
-                    // MARK: 커플 정보 라벨과 선물 제작 버튼이 들어가는 상단 바
+                    // MARK: 상단 바
+                    // 커플 정보 라벨과 선물 제작 버튼
                     HStack {
                         
                         // TODO: 라이트모드일때 CoupleInfoLabel에 하이라이트 되는 현상 없애기
@@ -29,10 +30,13 @@ struct GiftBoxView: View {
                         }
                     }
                     
+                    // 달력 버튼
                     CalendarLinkView()
                     
+                    // MARK: 보관함 이동 버튼 모음
                     VStack(alignment: .center) {
                         
+                        // 쪽지, 사진, 음성 메시지, 꽃 보관함 이동 버튼
                         LetterAndPictureLinkView()
                             .padding(.bottom, 12)
                         VoiceAndFlowerLinkView()
@@ -51,9 +55,8 @@ struct GiftBoxView: View {
     } // body
 }
 
-struct CoupleInfoLabel: View {
+private struct CoupleInfoLabel: View {
     var body: some View {
-        
         ZStack {
             RoundedRectangle(cornerRadius: 10)
                 .stroke(lineWidth: 1)
@@ -63,7 +66,7 @@ struct CoupleInfoLabel: View {
                 .background(RoundedRectangle(cornerRadius: 10)
                     .fill(.thinMaterial)
                     .shadow(color: Color(red: 239, green: 238, blue: 35), radius: 4, x: 0, y: 4))
-
+            
             HStack {
                 
                 // TODO: "재헌" -> 상대방 유저의 이름이 들어가게 바꿀 것
@@ -89,7 +92,7 @@ struct CoupleInfoLabel: View {
     } // body
 }
 
-struct CalendarLinkView: View {
+private struct CalendarLinkView: View {
     var body: some View {
         
         NavigationLink(destination: CalendarView()) {
@@ -119,7 +122,7 @@ struct CalendarLinkView: View {
     } // body
 }
 
-struct LetterAndPictureLinkView: View {
+private struct LetterAndPictureLinkView: View {
     var body: some View {
         
         HStack {
@@ -141,7 +144,7 @@ struct LetterAndPictureLinkView: View {
     } // body
 }
 
-struct VoiceAndFlowerLinkView: View {
+private struct VoiceAndFlowerLinkView: View {
     var body: some View {
         
         HStack {
@@ -161,11 +164,13 @@ struct VoiceAndFlowerLinkView: View {
     } // body
 }
 
-// Coded by Milli
-/// 사귀기 시작한 첫 날을 전달하면 커플이 된지 며칠이나 지났는지 Int값을 반환해주는 함수
-func countDays(from date: Date) -> Int {
-    let calendar = Calendar.current
-    return calendar.dateComponents([.day], from: date, to: Date()).day! + 1
+extension GiftBoxView {
+    // Coded by Milli
+    /// 사귀기 시작한 첫 날을 전달하면 커플이 된지 며칠이나 지났는지 Int값을 반환해주는 함수
+    private func countDays(from date: Date) -> Int {
+        let calendar = Calendar.current
+        return calendar.dateComponents([.day], from: date, to: Date()).day! + 1
+    }
 }
 
 struct GiftBoxView_Previews: PreviewProvider {
