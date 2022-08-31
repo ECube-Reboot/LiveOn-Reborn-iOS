@@ -8,22 +8,18 @@
 import SwiftUI
 
 class CalendarViewModel: ObservableObject {
-    static var viewModel: CalendarViewModel = CalendarViewModel()
-    
-    @Published var list: [UpcomingEventsModel]
-    @Published var calendarList = [CalendarMainGet]()
-    @Published var calendarGift = [MonthResponse]()
-
-    init() {
-        list = []
-    }
-    
-    func calendarMainPost(upcomingEventdate: String, upcomingEventTitle: String, upcomingEventMemo: String) {
+    @ObservedObject static var viewModel: CalendarViewModel = CalendarViewModel()
+    @Published var calendarList = CalendarMainGet()
+    func calendarMainPost(upcomingEventdate: String, upcomingEventTitle: String, upcomingEventMemo: String, completion: @escaping () -> ()) {
         let param = CalendarMainPostRequest.init(upcomingEventdate: upcomingEventdate, upcomingEventTitle: upcomingEventTitle, upcomingEventMemo: upcomingEventMemo)
         calendarMainMoyaService.request(.postCalendarMain(content:param)) { response in
             switch response {
                 case .success(_):
-                    print("Post에 성공했습니다")
+                    Task {
+                        await self.calendarMainGet(month: upcomingEventdate, completion: {
+                           completion()
+                        })
+                    }
                     return
                 case .failure(let err):
                     print("Post에 실패했습니다")
@@ -32,37 +28,26 @@ class CalendarViewModel: ObservableObject {
         }
     }
     
-    func calendarMainGet(completion: @escaping () -> ()) async {
-        calendarMainMoyaService.request(.getCalendarMain) { response in
+    func calendarMainGet(month: String, completion: @escaping () -> ()) async {
+        calendarMainMoyaService.request(.getCalendarMain(calendarRequest: month)) { response in
             switch response {
                 case .success(let result):
                     print("받아온 response는 다음과 같다 \(result)")
                     do {
-                        let data = try result.map([CalendarMainGet].self)
+                        let data = try result.map(CalendarMainGet.self)
                         self.mapListData(listData: data)
                         completion()
-                        print("Get에 성공했습니다")
                     } catch let err {
-                        print("디코딩에 실패했습니다")
                         print(err.localizedDescription)
                         break
                     }
                 case .failure(let err):
-                    print("Get에 완전히 실패했습니다")
                     print(err.localizedDescription)
             }
         }
     }
     
-    private func mapListData(listData: [CalendarMainGet]) {
-        for data in listData {
-            calendarList.append(data)
-        }
+    private func mapListData(listData: CalendarMainGet) {
+        calendarList = listData
     }
-    
-    func insert(upcomingEventDate: Date, upcomingEventTitle: String, upcomingEventMemo: String) {
-        list.insert(UpcomingEventsModel(upcomingEventDate: upcomingEventDate, upcomingEventTitle: upcomingEventTitle, upcomingEventMemo: upcomingEventMemo), at: 0)
-    }
-    
-    
 }

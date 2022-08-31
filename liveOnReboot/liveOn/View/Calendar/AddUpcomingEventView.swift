@@ -9,11 +9,11 @@ import SwiftUI
 
 struct AddUpcomingEventView: View {
     @State var placeholderText: String = "메모를 입력해주세요."
-    
+    @Binding var isLoaded: Bool
     @Binding var upcomingEventDate: Date
     @Binding var upcomingEventBaseDate: Date
-    @Binding var upcomingEventTitle: String
-    @Binding var upcomingEventMemo: String
+    @State var upcomingEventTitle: String = ""
+    @State var upcomingEventMemo: String = ""
     
     @EnvironmentObject var store: CalendarViewModel
     
@@ -23,7 +23,6 @@ struct AddUpcomingEventView: View {
     var body: some View {
         VStack {
             header
-            
             DatePicker("기념일 추가", selection: $upcomingEventBaseDate, displayedComponents: .date)
                 .datePickerStyle(.graphical)
                 .accentColor(.black)
@@ -35,13 +34,14 @@ struct AddUpcomingEventView: View {
             
             Spacer()
         }
+        .interactiveDismissDisabled()
         .padding(.vertical)
     }
     
     var header: some View {
         HStack(alignment: .center, spacing: 0) {
             Button("취소") {
-                upcomingEventBaseDate = Date.now
+                isLoaded = true
                 dismiss()
             }
             .font(.title3)
@@ -57,10 +57,11 @@ struct AddUpcomingEventView: View {
             
             Button("확인") {
                 upcomingEventDate = self.upcomingEventBaseDate
-                store.insert(upcomingEventDate: upcomingEventDate, upcomingEventTitle: upcomingEventTitle, upcomingEventMemo: upcomingEventMemo)
-                store.calendarMainPost(upcomingEventdate: DateToStringEvent(upcomingEventDate), upcomingEventTitle: upcomingEventTitle, upcomingEventMemo: upcomingEventMemo)
-                upcomingEventBaseDate = Date.now
-                presentationMode.wrappedValue.dismiss()
+                CalendarViewModel.viewModel.calendarMainPost(upcomingEventdate: self.upcomingEventDate.toServerFormatString(), upcomingEventTitle: self.upcomingEventTitle, upcomingEventMemo: self.upcomingEventMemo) {
+                    isLoaded = true
+                    presentationMode.wrappedValue.dismiss()
+                }
+                
             }
             .font(.title3)
             .foregroundColor(.burgundy)

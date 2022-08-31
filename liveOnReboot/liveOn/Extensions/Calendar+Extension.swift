@@ -9,34 +9,25 @@ import SwiftUI
 
 extension View {
     @ViewBuilder
-    func CardView(value: CalendarModel, event: [UpcomingEventsModel]
-                  , gift: [CalendarViewModel]
-    )-> some View {
-        VStack {
-            if value.day != -1 {
-                if event.isEmpty {
-                    Text("\(value.day)")
-                        .font(.footnote)
-                        .foregroundColor(.textBodyColor)
-                        .frame(maxWidth: .infinity, alignment: .center)
-                } else {
-                    Text("\(value.day)")
-                        .font(.footnote)
-                        .foregroundColor(.textBodyColor)
-                        .frame(maxWidth: .infinity, alignment: .center)
-                        .background(Image("highlightForCalendar"))
+    func CardView(value: CalendarModel, hadEvent: Bool, giftType: String?)-> some View {
+        if (value.day != -1 ) {
+            VStack(spacing: 0) {
+                Text("\(value.day)")
+                    .font(.footnote)
+                    .foregroundColor(.textBodyColor)
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .background(hadEvent ? Image("highlightForCalendar") : nil)
+                if let giftType = giftType {
+                    Image(giftType + "Icon")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(minHeight: 32)
                 }
-                if gift.isEmpty {
-                    Image(gift.giftType)
-                } else {
-                    
-                }
-                Spacer()                
             }
+            .padding(.vertical, 6)
+            .frame(height: UIScreen.main.bounds.height * 0.075, alignment: .topLeading)
+            .overlay(Rectangle().frame(width: nil, height: 1, alignment: .top).foregroundColor(Color(uiColor: .systemGray6)), alignment: .top)
         }
-        .padding(.vertical, 6)
-        .frame(height: UIScreen.main.bounds.height * 0.075)
-        .overlay(Rectangle().frame(width: nil, height: 1, alignment: .top).foregroundColor(Color(uiColor: .systemGray6)), alignment: .top)
     }
     
     // Checking dates
@@ -83,3 +74,4 @@ extension View {
         return days
     }
 }
+

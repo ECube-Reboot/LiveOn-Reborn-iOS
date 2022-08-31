@@ -8,43 +8,42 @@
 import SwiftUI
 
 struct UpcomingEventsView: View {
-    let event: UpcomingEventsModel
+    let event: EventResponseList
     var body: some View {
-        HStack {
-            ZStack {
-                RoundedRectangle(cornerRadius: 15)
-                    .fill(Color.backgroundGray)
-                    .frame(width: 360, height: 65)
+        
+        HStack(alignment: .top) {
+            //  upcomingEventDate
+            Text(Date().toServerFormatEventDateString(date: event.upcomingEventDate))
+                .font(.body)
+                .foregroundColor(.textBodyColor)
+                .background(Image("highlightForCalendar").resizable().frame(height: 10, alignment: .bottomLeading).offset(y: 5))
+                .scaledToFill()
+                .frame(maxHeight: .infinity, alignment: .top)
+            VStack(spacing: 4) {
+                //  upcomingeventTitle
+                Text(event.upcomingEventTitle)
+                    .foregroundColor(.textBodyColor)
+                    .font(.body.bold())
+                    .frame(maxWidth: .infinity, alignment: .leading)
                 
-                    HStack {
-                        //  upcomingEventDate
-                        Text(event.upcomingEventdate)
-                            .font(.body)
-                            .foregroundColor(.textBodyColor)
-                            .background(Image("highlightForCalendar"))
-                            .scaledToFill()
-                    }
-                    .padding(.leading, -170)
-                    .padding(.top, -20)
-                
-                    VStack {
-                        //  upcomingeventTitle
-                        Text(event.upcomingEventTitle)
-                            .foregroundColor(.textBodyColor)
-                            .font(.title3.bold())
-                            .frame(width: 280, alignment: .leading)
-                            .padding(.trailing, -35)
-                        
-                        // upcomingeventMemo
-                        Text(event.upcomingEventMemo)
-                            .foregroundColor(.textBodyColor)
-                            .font(.body)
-                            .frame(width: 280, alignment: .leading)
-                            .padding(.trailing, -35)
-                            .padding(.top, -8)
-                    }
+                // upcomingeventMemo
+                Text(event.upcomingEventMemo)
+                    .foregroundColor(.textBodyColor)
+                    .font(.callout)
+                    .frame(maxWidth: .infinity, alignment: .leading)
             }
+            .frame(height: UIScreen.main.bounds.height * 0.055)
+          //  .frame(maxHeight: UIScreen.main.bounds.height * 0.06)
+            .padding(.leading, 4)
         }
+        .padding(.vertical)
+        .background(RoundedRectangle(cornerRadius: 15)
+            .fill(Color.backgroundGray))
     }
 }
 
+struct UpcomingEventsView_Previews: PreviewProvider {
+    static var previews: some View {
+        UpcomingEventsView(event: EventResponseList(upcomingEventDate: Date().toServerFormatEventDateString(date: "2020-20-20"), upcomingEventId: 1, upcomingEventMemo: "안녕", upcomingEventTitle: "하하하"))
+    }
+}
