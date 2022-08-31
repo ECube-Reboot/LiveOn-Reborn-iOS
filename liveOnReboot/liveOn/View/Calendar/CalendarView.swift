@@ -31,7 +31,7 @@ struct CalendarView: View {
     
     // 달력 스와이프에 필요한 변수
     @State var swipeHorizontalDirection: SwipeHorizontalDirection = .none
-    
+    @Environment(\.dismiss) private var dismiss
     //Upcoming Events 추가
     @EnvironmentObject var calendarViewModel: CalendarViewModel
     //    @ObservedObject private var calendarViewModel: CalendarViewModel = CalendarViewModel()
@@ -214,7 +214,7 @@ struct CalendarView: View {
             }
         }
         .ignoresSafeArea(.all, edges: .bottom)
-        
+        .navigationToBack(dismiss)
         // MARK: - PopUpView
         if showDatePicker {
             PopupDate(popupDate: self.currentDate,
