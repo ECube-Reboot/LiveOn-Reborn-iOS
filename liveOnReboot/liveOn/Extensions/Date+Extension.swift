@@ -66,6 +66,19 @@ extension Date {
         return dateFormatter.string(from: self)
     }
     
+    func toServerFormatString() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYY-MM-dd"
+        return dateFormatter.string(from: self)
+    }
+    
+    func toServerFormatEventDateString(date: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYY-MM-dd"
+        if let temp = dateFormatter.date(from: date) {
+            return Date().eventDateToString(temp) }
+        else { return "" }
+    }
     func countDays() -> Int {
         let calendar = Calendar.current
         return calendar.dateComponents([.day], from: self, to: Date()).day! + 1
