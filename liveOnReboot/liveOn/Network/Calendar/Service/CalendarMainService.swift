@@ -11,6 +11,6 @@ import Moya
 let calendarMainMoyaService = MoyaProvider<CalendarMainServerCommunication>(plugins: [NetworkLoggerPlugin()])
 
 enum CalendarMainServerCommunication {
-    case getCalendarMain
+    case getCalendarMain(calendarRequest: String)
     case postCalendarMain(content: CalendarMainPostRequest)
 }

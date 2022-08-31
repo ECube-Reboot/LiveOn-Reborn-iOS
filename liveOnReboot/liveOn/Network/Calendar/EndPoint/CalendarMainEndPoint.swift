@@ -33,8 +33,8 @@ extension CalendarMainServerCommunication: TargetType, AccessTokenAuthorizable {
     
     var task: Task {
         switch self {
-            case .getCalendarMain:
-                return .requestPlain
+            case .getCalendarMain(let month):
+                return .requestParameters(parameters: ["calendarRequest" : month], encoding: URLEncoding.queryString)
             case .postCalendarMain(let content):
                 return .requestJSONEncodable(content)
         }
@@ -51,6 +51,8 @@ extension CalendarMainServerCommunication: TargetType, AccessTokenAuthorizable {
     
     var headers: [String : String]? {
         switch self {
+            case .getCalendarMain:
+                return ["Authorization": "Bearer " + GeneralAPI.token]
             default:
                 return ["Content-Type": "application/json",
                         "Authorization": "Bearer " + GeneralAPI.token]

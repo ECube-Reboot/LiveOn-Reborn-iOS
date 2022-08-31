@@ -7,7 +7,9 @@
 
 import Foundation
 import Moya
-
+struct CalendarMainGetRequest: Codable {
+    let calendarRequest: String
+}
 struct CalendarMainPostRequest: Codable {
     let upcomingEventdate: String
     let upcomingEventTitle: String
@@ -21,20 +23,18 @@ struct CalendarMainGetResponse: Codable {
 struct CalendarMainGet: Codable {
     let eventResponseList: [EventResponseList]
     let monthResponses: [MonthResponse]
+    
+    init() {
+        eventResponseList =  [EventResponseList]()
+        monthResponses = [MonthResponse]()
+    }
 }
 
 struct EventResponseList: Codable {
     let upcomingEventDate: String
-    let upcomingEventID: Int64
+    let upcomingEventId: Int64
     let upcomingEventMemo: String
     let upcomingEventTitle: String
-
-    enum CodingKeys: String, CodingKey {
-        case upcomingEventDate
-        case upcomingEventID = "upcomingEventId"
-        case upcomingEventMemo
-        case upcomingEventTitle
-    }
 }
 
 struct MonthResponse: Codable {
