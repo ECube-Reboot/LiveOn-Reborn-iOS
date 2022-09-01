@@ -9,13 +9,13 @@ import SwiftUI
 
 struct AddUpcomingEventView: View {
     @State var placeholderText: String = "메모를 입력해주세요."
-    @Binding var isLoaded: Bool
+    
     @Binding var upcomingEventDate: Date
     @Binding var upcomingEventBaseDate: Date
-    @State var upcomingEventTitle: String = ""
-    @State var upcomingEventMemo: String = ""
-    @State private var showAlert: Bool = false
-    @EnvironmentObject var store: CalendarViewModel
+    @Binding var upcomingEventTitle: String
+    @Binding var upcomingEventMemo: String
+    
+    @EnvironmentObject var store: EventStore
     
     @Environment(\.dismiss) private var dismiss
     @Environment(\.presentationMode) var presentationMode
@@ -23,25 +23,36 @@ struct AddUpcomingEventView: View {
     var body: some View {
         VStack {
             header
+            
             DatePicker("기념일 추가", selection: $upcomingEventBaseDate, displayedComponents: .date)
                 .datePickerStyle(.graphical)
                 .accentColor(.black)
                 .applyTextColor(.burgundy)
                 .background(Color.backgroundGray.cornerRadius(30))
                 .frame(width: UIScreen.main.bounds.width * 0.88, height: UIScreen.main.bounds.height * 0.4)
-
-            footer
+                .padding(.top, 10)
             
-            Spacer()
+//            TextField("upcomingEventTitle", text: $upcomingEventTitle, prompt: Text("어떤 기념일인가요?"))
+//                .multilineTextAlignment(.leading)
+//                .padding(.leading, 10)
+//                .frame(width: 345, height: 40)
+//                .foregroundColor(.textBodyColor)
+//                .font(.body)
+//                .background(Color.backgroundGray.cornerRadius(6))
+//                .padding(.top, 15)
+            
+            footer
         }
-        .interactiveDismissDisabled()
-        .padding(.vertical)
+        .padding(.top, -110)
+//        .onTapGesture {
+//            self.hideKeyboard()
+//        }
     }
     
     var header: some View {
         HStack(alignment: .center, spacing: 0) {
             Button("취소") {
-                isLoaded = true
+                upcomingEventBaseDate = Date.now
                 dismiss()
             }
             .font(.title3)
@@ -56,23 +67,13 @@ struct AddUpcomingEventView: View {
             Spacer()
             
             Button("확인") {
-                if upcomingEventTitle != "" && upcomingEventMemo != "" {
-                    upcomingEventDate = self.upcomingEventBaseDate
-                    CalendarViewModel.viewModel.calendarMainPost(upcomingEventdate: self.upcomingEventDate.toServerFormatString(), upcomingEventTitle: self.upcomingEventTitle, upcomingEventMemo: self.upcomingEventMemo) {
-                        isLoaded = true
-                        presentationMode.wrappedValue.dismiss()
-                    }
-                } else {
-                    showAlert = true
-                }
-                
+                upcomingEventDate = self.upcomingEventBaseDate
+                store.insert(upcomingEventDate: upcomingEventDate, upcomingEventTitle: upcomingEventTitle, upcomingEventMemo: upcomingEventMemo)
+                upcomingEventBaseDate = Date.now
+                presentationMode.wrappedValue.dismiss()
             }
             .font(.title3)
             .foregroundColor(.burgundy)
-            .alert(isPresented: $showAlert){
-                Alert(title: Text("기념일 내용을 입력해주세요"), dismissButton:  .default(Text("확인")))
-            }
-           
         }
         .padding([.trailing, .leading], 20)
     }
@@ -130,6 +131,6 @@ extension View {
 
 struct PlusSetting_Previews: PreviewProvider {
     static var previews: some View {
-        CalendarView().environmentObject(CalendarViewModel())
+        CalendarView().environmentObject(EventStore())
     }
 }
