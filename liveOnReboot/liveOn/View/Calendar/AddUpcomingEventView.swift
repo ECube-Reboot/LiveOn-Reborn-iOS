@@ -14,7 +14,7 @@ struct AddUpcomingEventView: View {
     @Binding var upcomingEventBaseDate: Date
     @State var upcomingEventTitle: String = ""
     @State var upcomingEventMemo: String = ""
-    
+    @State private var showAlert: Bool = false
     @EnvironmentObject var store: CalendarViewModel
     
     @Environment(\.dismiss) private var dismiss
@@ -56,15 +56,23 @@ struct AddUpcomingEventView: View {
             Spacer()
             
             Button("확인") {
-                upcomingEventDate = self.upcomingEventBaseDate
-                CalendarViewModel.viewModel.calendarMainPost(upcomingEventdate: self.upcomingEventDate.toServerFormatString(), upcomingEventTitle: self.upcomingEventTitle, upcomingEventMemo: self.upcomingEventMemo) {
-                    isLoaded = true
-                    presentationMode.wrappedValue.dismiss()
+                if upcomingEventTitle != "" && upcomingEventMemo != "" {
+                    upcomingEventDate = self.upcomingEventBaseDate
+                    CalendarViewModel.viewModel.calendarMainPost(upcomingEventdate: self.upcomingEventDate.toServerFormatString(), upcomingEventTitle: self.upcomingEventTitle, upcomingEventMemo: self.upcomingEventMemo) {
+                        isLoaded = true
+                        presentationMode.wrappedValue.dismiss()
+                    }
+                } else {
+                    showAlert = true
                 }
                 
             }
             .font(.title3)
             .foregroundColor(.burgundy)
+            .alert(isPresented: $showAlert){
+                Alert(title: Text("기념일 내용을 입력해주세요"), dismissButton:  .default(Text("확인")))
+            }
+           
         }
         .padding([.trailing, .leading], 20)
     }
