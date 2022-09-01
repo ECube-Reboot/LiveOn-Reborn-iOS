@@ -51,6 +51,12 @@ extension Date {
             return calendar.date(byAdding: .day, value: day - 1, to: startDate)!
         }
     }
+    
+    func toString(dateFormat format: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format
+        return dateFormatter.string(from: self)
+    }
 
     func getNextMonth() -> Date? {
         return Calendar.current.date(byAdding: .month, value: 1, to: self)
@@ -58,12 +64,6 @@ extension Date {
 
     func getPreviousMonth() -> Date? {
         return Calendar.current.date(byAdding: .month, value: -1, to: self)
-    }
-
-    func toString(dateFormat format: String ) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = format
-        return dateFormatter.string(from: self)
     }
     
     func toServerFormatString() -> String {
