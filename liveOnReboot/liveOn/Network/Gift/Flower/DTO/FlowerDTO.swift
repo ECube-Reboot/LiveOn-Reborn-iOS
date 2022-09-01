@@ -7,11 +7,11 @@
 import SwiftUI
 
 struct FlowerGetResponse: Codable {
-    let giftFlowerId: Int
-    let giftFlowerImage: String
+    let flowerType: String
+    let message: String
 }
 
 struct FlowerPostRequest: Codable {
-    let flowerId: String
+    let flowerType: String
     let message: String
 }

@@ -15,6 +15,8 @@ struct SendFlowerView: View {
     @State private var isValidate = false
     @State private var letterText = ""
     @State private var showLoading = false
+    @State private var isSent = false
+    @Binding var gotoMain: Bool
     let flowerName = getRandomFlower()
 
     var body: some View {
@@ -22,6 +24,7 @@ struct SendFlowerView: View {
             setFlowerChoiceText()
             setFlowerImage()
             setLetter()
+            NavigationLink("", destination: GiftDeliveryView(gotoMain: $gotoMain), isActive: $isSent)
         }//body
         .navigationToBack(dismiss)
         .toolbar {
@@ -43,10 +46,9 @@ struct SendFlowerView: View {
                 .alert(isPresented: $showAlertforSend) {
                     Alert(title: Text("선물하기"), message: Text("선물은 하루에 하나만 보낼 수 있어요. 쪽지를 보낼까요?"), primaryButton: .cancel(Text("취소")), secondaryButton: Alert.Button.default(Text("보내기")) {
                         showLoading.toggle()
-
                         viewModel.flowerPost(flowerType: flowerName, message: letterText){
                             print("전송완료!")
-                            showLoading.toggle()
+                            isSent.toggle()
                         }
                     })
                 }
@@ -80,6 +82,6 @@ struct SendFlowerView: View {
 
 struct SendFlowerView_Previews: PreviewProvider {
     static var previews: some View {
-        SendFlowerView()
+        SendFlowerView(gotoMain: .constant(false))
     }
 }

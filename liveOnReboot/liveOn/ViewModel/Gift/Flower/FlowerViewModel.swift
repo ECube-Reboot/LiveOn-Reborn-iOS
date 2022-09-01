@@ -12,7 +12,7 @@ class FlowerViewModel: ObservableObject {
     @Published var flowerList = [FlowerGetResponse]()
 
     func flowerPost(flowerType: String, message: String, completion: () -> ()) {
-        let param = FlowerPostRequest(flowerId: "", message: "")
+        let param = FlowerPostRequest(flowerType: "", message: "")
         flowerMoyaService.request(.postFlower(content: param)) { response in
             switch response {
             case .success(_):
