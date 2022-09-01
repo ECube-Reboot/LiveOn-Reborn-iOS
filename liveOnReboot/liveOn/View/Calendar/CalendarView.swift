@@ -155,7 +155,7 @@ struct CalendarView: View {
                             Spacer(minLength: 0)
                             //이벤트 추가 버튼
                             Button(action: {
-                                showSheet.toggle()
+                                showSheet = true
                                 upcomingEventTitle = ""
                                 upcomingEventMemo = ""
                                 isLoaded = false
