@@ -16,22 +16,24 @@ struct liveOnRebootApp: App {
     var body: some Scene {
         WindowGroup {
           NavigationView {
-              switch UserStatus.currentStatus() {
-                  case 0:
-//                          .nonMember:
-                      GettingStartView()
-                  case 1:
-//                          .appleSignInFinished:
-                      InputNickNameView()
-                  case 2:
-//                          .informationEntered:
-                      InviteCodeView(userData: SignInUser())
-                  case 3:
-//                          .allSettingFinished:
-                      GiftBoxView()
-                  default :
-                      GettingStartView()
-              }
+              FlowerListView()
+                  .environmentObject(FlowerViewModel())
+//              switch UserStatus.currentStatus() {
+//                  case 0:
+////                          .nonMember:
+//                      GettingStartView()
+//                  case 1:
+////                          .appleSignInFinished:
+//                      InputNickNameView()
+//                  case 2:
+////                          .informationEntered:
+//                      InviteCodeView(userData: SignInUser())
+//                  case 3:
+////                          .allSettingFinished:
+//                      GiftBoxView()
+//                  default :
+//                      GettingStartView()
+//              }
         }
         }
     }
