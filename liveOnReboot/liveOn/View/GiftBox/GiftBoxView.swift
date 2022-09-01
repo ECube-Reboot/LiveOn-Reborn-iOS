@@ -51,7 +51,6 @@ struct GiftBoxView: View {
             } // HStack
             
         } // NavigationView
-        .navigationBarTitle("")
         .navigationBarHidden(true)
     } // body
 }
@@ -96,7 +95,7 @@ private struct CoupleInfoLabel: View {
 private struct CalendarLinkView: View {
     var body: some View {
         
-        NavigationLink(destination: CalendarView().environmentObject(CalendarViewModel())) {
+        NavigationLink(destination: CalendarView()) {
             
             ZStack {
                 Image("calendar")
@@ -106,12 +105,12 @@ private struct CalendarLinkView: View {
                 VStack {
                     
                     // TODO: 앱이 실행되는 시점의 달을 영어로 표시
-                    Text("\(Date().monthEnglishToString(monthDate))")
+                    Text("July")
                         .font(.TextStyles.mediumCalendarNumber)
                         .offset(y: 12)
                     
                     // TODO: 앱이 실행되는 시점의 달을 숫자로 표시
-                    Text("\(Date().monthToString(monthDate))")
+                    Text("07")
                         .font(.TextStyles.largeCalendarNumber)
                     
                 }
@@ -120,8 +119,6 @@ private struct CalendarLinkView: View {
                 
             } // ZStack
         } // NavigationLink
-        .navigationBarTitle("", displayMode: .inline)
-        .navigationBarHidden(true)
     } // body
 }
 
