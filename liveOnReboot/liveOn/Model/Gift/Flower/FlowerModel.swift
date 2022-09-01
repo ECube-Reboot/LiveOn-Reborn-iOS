@@ -101,7 +101,9 @@ struct FlowerPopUpView: View {
         }
     }
 }
-
+#if DEBUG
+let flowerList = FlowerGift.dummyData()
+#endif
 // 더미데이터
 #if DEBUG
 extension FlowerGift {

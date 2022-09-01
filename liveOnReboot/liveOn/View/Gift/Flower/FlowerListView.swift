@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FlowerListView: View {
-    
+
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject private var viewModel: FlowerViewModel
     @State private var showFlowerPopUp = false
@@ -106,6 +106,3 @@ struct FlowerListView_Previews: PreviewProvider {
 
     }
 }
-#if DEBUG
-let flowerList = FlowerGift.dummyData()
-#endif

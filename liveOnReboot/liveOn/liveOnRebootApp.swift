@@ -16,8 +16,9 @@ struct liveOnRebootApp: App {
     var body: some Scene {
         WindowGroup {
           NavigationView {
-              FlowerListView()
-                  .environmentObject(FlowerViewModel())
+              SendFlowerView()
+//              FlowerListView()
+//                  .environmentObject(FlowerViewModel())
 //              switch UserStatus.currentStatus() {
 //                  case 0:
 ////                          .nonMember:
