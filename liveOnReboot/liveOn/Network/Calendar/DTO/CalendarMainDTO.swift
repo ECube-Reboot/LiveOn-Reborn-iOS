@@ -30,7 +30,10 @@ struct CalendarMainGet: Codable {
     }
 }
 
-struct EventResponseList: Codable {
+struct EventResponseList: Codable, Identifiable {
+    var id: Int64 {
+        return upcomingEventId
+    }
     let upcomingEventDate: String
     let upcomingEventId: Int64
     let upcomingEventMemo: String

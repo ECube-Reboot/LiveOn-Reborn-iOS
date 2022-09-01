@@ -140,7 +140,7 @@ struct CalendarView: View {
                             }
                         }
                     }
-//                     .gesture(swipe)
+                     .gesture(swipe)
                     
                     // MARK: - Upcoming Events
                     VStack(spacing: 0) {
@@ -178,12 +178,14 @@ struct CalendarView: View {
                             if isLoaded {
                             if let events = CalendarViewModel.viewModel.calendarList.eventResponseList {
                                 if !events.isEmpty {
+                                    let sortEvents = events.sorted(by: { $0.upcomingEventDate < $1.upcomingEventDate})
+
                                     VStack(spacing: 0) {
-                                        ForEach(events, id: \.upcomingEventId) { upcoming in
-                                                UpcomingEventsView(event: upcoming)
-                                                Divider()
-                                            }
+                                        ForEach(sortEvents) { upcoming in
+                                            UpcomingEventsView(event: upcoming)
+                                            Divider()
                                         }
+                                    }
                                 } else { noEvent }
                             }
                         }
@@ -243,10 +245,18 @@ struct CalendarView: View {
         }
     }
     
+    @State private var isStarted: Bool = false
+    
     // MARK: - Calendar Swipe Gesture
     private var swipe: some Gesture {
         DragGesture(minimumDistance: 1)
+            .onChanged{ value in
+                if !isLoaded {
+                    self.isLoaded = true
+                }
+            }
             .onEnded {
+                self.isLoaded = false
                 if $0.startLocation.x > $0.location.x {
                     self.swipeHorizontalDirection = .left
                     self.currentDate = self.moveCurrentMonth(isUp: true)
