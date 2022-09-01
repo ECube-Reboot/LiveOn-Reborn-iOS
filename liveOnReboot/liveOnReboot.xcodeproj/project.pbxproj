@@ -51,7 +51,6 @@
 		77651D1A28B0BD5800994C15 /* GiftBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77651D1928B0BD5800994C15 /* GiftBoxView.swift */; };
 		77EB4485289FC4200006F3CB /* SendLetterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93DEA28287ACE8D0045508C /* SendLetterView.swift */; };
 		77EB4489289FD6C00006F3CB /* LetterListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77EB4488289FD6C00006F3CB /* LetterListView.swift */; };
-		77F6F128288FCF9700263BBB /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F6F127288FCF9700263BBB /* Date+Extension.swift */; };
 		77F6F12E288FD5E700263BBB /* textLimit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F6F12D288FD5E700263BBB /* textLimit.swift */; };
 		77F6F19328900C5700263BBB /* placeHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F6F19228900C5700263BBB /* placeHolder.swift */; };
 		A929FDE62882671400334E21 /* NetworkLoggerPlugIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = A929FDE52882671400334E21 /* NetworkLoggerPlugIn.swift */; };
@@ -63,7 +62,6 @@
 		A932C46628858F3B00803302 /* DeliveryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A932C46528858F3B00803302 /* DeliveryView.swift */; };
 		A932C47428859FE600803302 /* PictureErrorHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = A932C47328859FE600803302 /* PictureErrorHandling.swift */; };
 		A973F1E1287B19D700323A17 /* PicturePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A973F1E0287B19D700323A17 /* PicturePicker.swift */; };
-		A9B32A8828867A9600530B51 /* Text+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B32A8728867A9600530B51 /* Text+Extension.swift */; };
 		A9B32A8A28867AB600530B51 /* BackButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B32A8928867AB600530B51 /* BackButton+Extension.swift */; };
 		C915A80928990592003154AB /* EventStoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C915A80828990592003154AB /* EventStoreViewModel.swift */; };
 		C92E31CD28795A25000A315C /* CalendarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E31CC28795A25000A315C /* CalendarModel.swift */; };
@@ -85,9 +83,9 @@
 		C92E31F928795C3D000A315C /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E31F828795C3D000A315C /* SignInViewModel.swift */; };
 		C92E31FB28795C54000A315C /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E31FA28795C54000A315C /* Util.swift */; };
 		C92E31FD28795C62000A315C /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E31FC28795C62000A315C /* Config.swift */; };
-		C92E31FF28795C6F000A315C /* CalendarDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E31FE28795C6F000A315C /* CalendarDTO.swift */; };
-		C92E320128795C78000A315C /* CalendarEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E320028795C78000A315C /* CalendarEndPoint.swift */; };
-		C92E320328795C81000A315C /* CalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E320228795C81000A315C /* CalendarService.swift */; };
+		C92E31FF28795C6F000A315C /* CalendarMainDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E31FE28795C6F000A315C /* CalendarMainDTO.swift */; };
+		C92E320128795C78000A315C /* CalendarMainEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E320028795C78000A315C /* CalendarMainEndPoint.swift */; };
+		C92E320328795C81000A315C /* CalendarMainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E320228795C81000A315C /* CalendarMainService.swift */; };
 		C92E320528795C94000A315C /* FlowerDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E320428795C94000A315C /* FlowerDTO.swift */; };
 		C92E320728795C9A000A315C /* LetterDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E320628795C9A000A315C /* LetterDTO.swift */; };
 		C92E320928795CA2000A315C /* PictureDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E320828795CA2000A315C /* PictureDTO.swift */; };
@@ -100,21 +98,27 @@
 		C92E321728795D0D000A315C /* LetterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E321628795D0D000A315C /* LetterService.swift */; };
 		C92E321928795D13000A315C /* PictureService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E321828795D13000A315C /* PictureService.swift */; };
 		C92E321B28795D1D000A315C /* VoiceMailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E321A28795D1D000A315C /* VoiceMailService.swift */; };
-		C936B2F8289FB2D800011C64 /* DateToStringUpcomingEventsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E31EC28795C06000A315C /* DateToStringUpcomingEventsViewModel.swift */; };
 		C936B2FA289FB7C800011C64 /* DatePicker+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C936B2F9289FB7C800011C64 /* DatePicker+Extension.swift */; };
 		C93DEA23287ACE440045508C /* SendFlowerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93DEA22287ACE440045508C /* SendFlowerView.swift */; };
 		C93DEA2B287ACE960045508C /* SendPictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93DEA2A287ACE960045508C /* SendPictureView.swift */; };
 		C93DEA2D287ACEA20045508C /* SendVoiceMailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93DEA2C287ACEA20045508C /* SendVoiceMailView.swift */; };
 		C974DDC52883C97700698BFA /* UpcomingEventsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C974DDC42883C97700698BFA /* UpcomingEventsModel.swift */; };
-		C974DDC72883CB5A00698BFA /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C974DDC62883CB5A00698BFA /* Date+Extension.swift */; };
 		C974DDC92883CB8D00698BFA /* Calendar+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C974DDC82883CB8D00698BFA /* Calendar+Extension.swift */; };
 		C974DDCD2883CC4900698BFA /* UpcomingEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C974DDCC2883CC4900698BFA /* UpcomingEventsView.swift */; };
 		C974DDCF2883CC6400698BFA /* PopupDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C974DDCE2883CC6400698BFA /* PopupDate.swift */; };
 		C974DDD12883CC8900698BFA /* AddUpcomingEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C974DDD02883CC8900698BFA /* AddUpcomingEventView.swift */; };
+		C9AFD19028B60605001781F1 /* DateToStringUpcomingEventsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E31EC28795C06000A315C /* DateToStringUpcomingEventsViewModel.swift */; };
+		C9AFD19128B60610001781F1 /* Text+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B32A8728867A9600530B51 /* Text+Extension.swift */; };
+		C9AFD19328B6063E001781F1 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C915A80828990592003154AB /* CalendarViewModel.swift */; };
+		C9AFD19D28B6592A001781F1 /* CalendarGiftBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AFD19C28B6592A001781F1 /* CalendarGiftBox.swift */; };
+		C9AFD19F28B7104E001781F1 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AFD19E28B7104E001781F1 /* Date+Extension.swift */; };
+		C9B8CFA128BCD9DE005F07AF /* CalendarGiftBoxEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B8CFA028BCD9DE005F07AF /* CalendarGiftBoxEndPoint.swift */; };
+		C9B8CFA328BCDA21005F07AF /* CalendarGiftBoxService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B8CFA228BCDA21005F07AF /* CalendarGiftBoxService.swift */; };
 		C9BE6C86287561D400B782B9 /* liveOnRebootApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BE6C85287561D400B782B9 /* liveOnRebootApp.swift */; };
 		C9BE6C88287561D400B782B9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BE6C87287561D400B782B9 /* ContentView.swift */; };
 		C9BE6C8A287561D500B782B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9BE6C89287561D500B782B9 /* Assets.xcassets */; };
 		C9BE6C8D287561D500B782B9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9BE6C8C287561D500B782B9 /* Preview Assets.xcassets */; };
+		C9C70B5E28B71EA100219EB4 /* CalendarGiftBoxDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C70B5D28B71EA100219EB4 /* CalendarGiftBoxDTO.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -160,7 +164,6 @@
 		77651D1728B0B7FA00994C15 /* WelcomMatchingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomMatchingView.swift; sourceTree = "<group>"; };
 		77651D1928B0BD5800994C15 /* GiftBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftBoxView.swift; sourceTree = "<group>"; };
 		77EB4488289FD6C00006F3CB /* LetterListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterListView.swift; sourceTree = "<group>"; };
-		77F6F127288FCF9700263BBB /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		77F6F12D288FD5E700263BBB /* textLimit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = textLimit.swift; sourceTree = "<group>"; };
 		77F6F19228900C5700263BBB /* placeHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = placeHolder.swift; sourceTree = "<group>"; };
 		A929FDE52882671400334E21 /* NetworkLoggerPlugIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLoggerPlugIn.swift; sourceTree = "<group>"; };
@@ -189,9 +192,9 @@
 		C92E31F828795C3D000A315C /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		C92E31FA28795C54000A315C /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		C92E31FC28795C62000A315C /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
-		C92E31FE28795C6F000A315C /* CalendarDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDTO.swift; sourceTree = "<group>"; };
-		C92E320028795C78000A315C /* CalendarEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEndPoint.swift; sourceTree = "<group>"; };
-		C92E320228795C81000A315C /* CalendarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarService.swift; sourceTree = "<group>"; };
+		C92E31FE28795C6F000A315C /* CalendarMainDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarMainDTO.swift; sourceTree = "<group>"; };
+		C92E320028795C78000A315C /* CalendarMainEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarMainEndPoint.swift; sourceTree = "<group>"; };
+		C92E320228795C81000A315C /* CalendarMainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarMainService.swift; sourceTree = "<group>"; };
 		C92E320428795C94000A315C /* FlowerDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowerDTO.swift; sourceTree = "<group>"; };
 		C92E320628795C9A000A315C /* LetterDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterDTO.swift; sourceTree = "<group>"; };
 		C92E320828795CA2000A315C /* PictureDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureDTO.swift; sourceTree = "<group>"; };
@@ -210,16 +213,20 @@
 		C93DEA2A287ACE960045508C /* SendPictureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendPictureView.swift; sourceTree = "<group>"; };
 		C93DEA2C287ACEA20045508C /* SendVoiceMailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendVoiceMailView.swift; sourceTree = "<group>"; };
 		C974DDC42883C97700698BFA /* UpcomingEventsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingEventsModel.swift; sourceTree = "<group>"; };
-		C974DDC62883CB5A00698BFA /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		C974DDC82883CB8D00698BFA /* Calendar+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+Extension.swift"; sourceTree = "<group>"; };
 		C974DDCC2883CC4900698BFA /* UpcomingEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingEventsView.swift; sourceTree = "<group>"; };
 		C974DDCE2883CC6400698BFA /* PopupDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupDate.swift; sourceTree = "<group>"; };
 		C974DDD02883CC8900698BFA /* AddUpcomingEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUpcomingEventView.swift; sourceTree = "<group>"; };
+		C9AFD19C28B6592A001781F1 /* CalendarGiftBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarGiftBox.swift; sourceTree = "<group>"; };
+		C9AFD19E28B7104E001781F1 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		C9B8CFA028BCD9DE005F07AF /* CalendarGiftBoxEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarGiftBoxEndPoint.swift; sourceTree = "<group>"; };
+		C9B8CFA228BCDA21005F07AF /* CalendarGiftBoxService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarGiftBoxService.swift; sourceTree = "<group>"; };
 		C9BE6C82287561D400B782B9 /* liveOnReboot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = liveOnReboot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9BE6C85287561D400B782B9 /* liveOnRebootApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = liveOnRebootApp.swift; sourceTree = "<group>"; };
 		C9BE6C87287561D400B782B9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C9BE6C89287561D500B782B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C9BE6C8C287561D500B782B9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		C9C70B5D28B71EA100219EB4 /* CalendarGiftBoxDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarGiftBoxDTO.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -280,12 +287,11 @@
 			children = (
 				773185BA287C4A9F00120FF9 /* Font+Extension.swift */,
 				773185C2287C56FE00120FF9 /* Color+Extension.swift */,
-				C974DDC62883CB5A00698BFA /* Date+Extension.swift */,
 				C974DDC82883CB8D00698BFA /* Calendar+Extension.swift */,
 				A9B32A8728867A9600530B51 /* Text+Extension.swift */,
 				A9B32A8928867AB600530B51 /* BackButton+Extension.swift */,
 				C936B2F9289FB7C800011C64 /* DatePicker+Extension.swift */,
-				77F6F127288FCF9700263BBB /* Date+Extension.swift */,
+				C9AFD19E28B7104E001781F1 /* Date+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -423,7 +429,8 @@
 		C93A4BE4287927C200A277AC /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				C92E320228795C81000A315C /* CalendarService.swift */,
+				C92E320228795C81000A315C /* CalendarMainService.swift */,
+				C9B8CFA228BCDA21005F07AF /* CalendarGiftBoxService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -431,7 +438,8 @@
 		C93A4BE5287927C400A277AC /* EndPoint */ = {
 			isa = PBXGroup;
 			children = (
-				C92E320028795C78000A315C /* CalendarEndPoint.swift */,
+				C92E320028795C78000A315C /* CalendarMainEndPoint.swift */,
+				C9B8CFA028BCD9DE005F07AF /* CalendarGiftBoxEndPoint.swift */,
 			);
 			path = EndPoint;
 			sourceTree = "<group>";
@@ -439,7 +447,8 @@
 		C93A4BE6287927C700A277AC /* DTO */ = {
 			isa = PBXGroup;
 			children = (
-				C92E31FE28795C6F000A315C /* CalendarDTO.swift */,
+				C92E31FE28795C6F000A315C /* CalendarMainDTO.swift */,
+				C9C70B5D28B71EA100219EB4 /* CalendarGiftBoxDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -546,6 +555,7 @@
 				7725D93B28B7504600EF5BA6 /* WebView.swift */,
 				A932C46528858F3B00803302 /* DeliveryView.swift */,
 				C9BE6C87287561D400B782B9 /* ContentView.swift */,
+				A932C46528858F3B00803302 /* DeliveryView.swift */,
 				C93A4BFB2879293400A277AC /* Calendar */,
 				C93A4BFA2879293200A277AC /* CoupleInformation */,
 				C93A4BF92879293100A277AC /* Gift */,
@@ -618,6 +628,7 @@
 				C974DDCC2883CC4900698BFA /* UpcomingEventsView.swift */,
 				C974DDCE2883CC6400698BFA /* PopupDate.swift */,
 				C974DDD02883CC8900698BFA /* AddUpcomingEventView.swift */,
+				C9AFD19C28B6592A001781F1 /* CalendarGiftBox.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -783,7 +794,7 @@
 			isa = PBXGroup;
 			children = (
 				C92E31EC28795C06000A315C /* DateToStringUpcomingEventsViewModel.swift */,
-				C915A80828990592003154AB /* EventStoreViewModel.swift */,
+				C915A80828990592003154AB /* CalendarViewModel.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -1030,7 +1041,7 @@
 				C92E31FB28795C54000A315C /* Util.swift in Sources */,
 				77651D1028B0AD3500994C15 /* InputOfficialDateView.swift in Sources */,
 				77EB4485289FC4200006F3CB /* SendLetterView.swift in Sources */,
-				C92E31FF28795C6F000A315C /* CalendarDTO.swift in Sources */,
+				C92E31FF28795C6F000A315C /* CalendarMainDTO.swift in Sources */,
 				773185BB287C4A9F00120FF9 /* Font+Extension.swift in Sources */,
 				C974DDCF2883CC6400698BFA /* PopupDate.swift in Sources */,
 				27EE34C628B7E60F00FCC40F /* LoginRequestDTO.swift in Sources */,
@@ -1041,8 +1052,7 @@
 				C92E31F328795C21000A315C /* PictureViewModel.swift in Sources */,
 				C92E320B28795CCB000A315C /* VoiceMailDTO.swift in Sources */,
 				C93DEA23287ACE440045508C /* SendFlowerView.swift in Sources */,
-				C92E320328795C81000A315C /* CalendarService.swift in Sources */,
-				C974DDC72883CB5A00698BFA /* Date+Extension.swift in Sources */,
+				C92E320328795C81000A315C /* CalendarMainService.swift in Sources */,
 				C92E31E928795BA9000A315C /* GiftListView.swift in Sources */,
 				7745EF5128BDBF4200F182FB /* MemberConfigService.swift in Sources */,
 				77651D0E28B09FF400994C15 /* SignInUser.swift in Sources */,
@@ -1050,18 +1060,20 @@
 				77651D0C28B09F5500994C15 /* InputBirthDayView.swift in Sources */,
 				C92E31D928795B41000A315C /* NetworkModel.swift in Sources */,
 				C92E321728795D0D000A315C /* LetterService.swift in Sources */,
-				C92E320128795C78000A315C /* CalendarEndPoint.swift in Sources */,
+				C9AFD19F28B7104E001781F1 /* Date+Extension.swift in Sources */,
+				C92E320128795C78000A315C /* CalendarMainEndPoint.swift in Sources */,
 				C92E31D128795B1A000A315C /* Letter.swift in Sources */,
 				C92E31F928795C3D000A315C /* SignInViewModel.swift in Sources */,
 				C92E320F28795CE3000A315C /* LetterEndPoint.swift in Sources */,
 				7725D96428BB0B9100EF5BA6 /* UserStatus.swift in Sources */,
 				27EE34C328B7E5D900FCC40F /* AuthEndPoint.swift in Sources */,
 				C9BE6C88287561D400B782B9 /* ContentView.swift in Sources */,
+				C9B8CFA128BCD9DE005F07AF /* CalendarGiftBoxEndPoint.swift in Sources */,
 				3EEF02CF287AC9DE0010CA03 /* VoicemailViewModel.swift in Sources */,
 				C92E31EF28795C15000A315C /* FlowerViewModel.swift in Sources */,
 				C92E31E528795B96000A315C /* VoicemailView.swift in Sources */,
-				77F6F128288FCF9700263BBB /* Date+Extension.swift in Sources */,
 				C93DEA2B287ACE960045508C /* SendPictureView.swift in Sources */,
+				C9C70B5E28B71EA100219EB4 /* CalendarGiftBoxDTO.swift in Sources */,
 				C93DEA2D287ACEA20045508C /* SendVoiceMailView.swift in Sources */,
 				A929FDE62882671400334E21 /* NetworkLoggerPlugIn.swift in Sources */,
 				C915A80928990592003154AB /* EventStoreViewModel.swift in Sources */,
@@ -1087,6 +1099,7 @@
 				C92E320928795CA2000A315C /* PictureDTO.swift in Sources */,
 				C92E31E328795B8A000A315C /* PictureListView.swift in Sources */,
 				C92E31CD28795A25000A315C /* CalendarModel.swift in Sources */,
+				C9AFD19D28B6592A001781F1 /* CalendarGiftBox.swift in Sources */,
 				A929FDF12882931800334E21 /* APIEnvironment.swift in Sources */,
 				C9BE6C86287561D400B782B9 /* liveOnRebootApp.swift in Sources */,
 				C974DDC52883C97700698BFA /* UpcomingEventsModel.swift in Sources */,
