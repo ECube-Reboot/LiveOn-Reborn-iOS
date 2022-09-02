@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CalendarView: View {
     // 기본 베이스가 되는 날짜 변수
-    @State var currentDate: Date = Date()
+    @State var currentDate: Date = Date.now
     
     // 기념일 추가 Button
     @State var showSheet = false
@@ -29,152 +29,195 @@ struct CalendarView: View {
     @State private var upcomingEventTitle: String = ""
     @State private var upcomingEventMemo: String = ""
     
-    // 달력 해당 날짜 눌렀을 때 해당 날짜에 주고 받은 선물을 한 눈에 보는 뷰로 이동할 때 쓰는 변수
-    @State var isNavigationOn: Bool = false
-    
     // 달력 스와이프에 필요한 변수
     @State var swipeHorizontalDirection: SwipeHorizontalDirection = .none
-    
+    @Environment(\.dismiss) private var dismiss
     //Upcoming Events 추가
-    @EnvironmentObject var store: EventStore
+    @EnvironmentObject var calendarViewModel: CalendarViewModel
+    //    @ObservedObject private var calendarViewModel: CalendarViewModel = CalendarViewModel()
+    //    @State private var isLoaded = false
+    let columns = Array(repeating: GridItem(.flexible(), spacing: 0, alignment: nil), count: 7)
+    
+    @State private var isLoaded = false
+    private var daysHeader: some View {
+        HStack(spacing: 0) {
+            ForEach(CalendarDay.allCases, id: \.self) {day in
+                Text(day.rawValue)
+                    .font(.callout)
+                    .foregroundColor(.gray)
+                    .frame(maxWidth: .infinity)
+            }
+        }
+    }
+    
+    private var moveMonthConroller: some View {
+        HStack(spacing: 80) {
+            // MARK: - 달력 이전 달로 이동
+            Button {
+                isLoaded = false
+                withAnimation { self.currentDate = self.moveCurrentMonth(isUp: false) }
+                fetchList(month: self.currentDate) {
+                     isLoaded = true
+                }
+            } label: {
+                Text(monthDate(currentDate: self.currentDate.getPreviousMonth() ?? currentDate)[0])
+                    .font(.TextStyles.mediumCalendarNumber).opacity(0.3)
+                    .foregroundColor(.burgundy)
+            }
+            .padding(.top, 30)
+            .padding(.trailing, 30)
+            
+            VStack(spacing: -6) {
+                // MARK: - 달력의 년+월
+                Text(fullDate(currentDate: self.currentDate)[0])
+                    .font(.TextStyles.smallCalendarNumber)
+                    .foregroundColor(.burgundy)
+                
+                Text(fullDate(currentDate: self.currentDate)[1])
+                    .font(.TextStyles.largeCalendarNumber)
+                    .foregroundColor(.burgundy)
+                    .padding(.top, -10)
+                    .padding(.bottom, -10)
+            }
+            // MARK: - 달력 다음 달로 이동
+            Button {
+                isLoaded = false
+                withAnimation { self.currentDate = self.moveCurrentMonth(isUp: true) }
+                fetchList(month: self.currentDate) {
+                   isLoaded = true
+                }
+            } label: {
+                Text(monthDate(currentDate: self.currentDate.getNextMonth() ?? currentDate)[0]).opacity(0.3)
+                    .font(.TextStyles.mediumCalendarNumber)
+                    .foregroundColor(.burgundy)
+            }
+            .padding(.top, 30)
+            .padding(.leading, 30)
+        }
+    }
+    func fetchList(month: Date, completion: @escaping ()->()) {
+        Task {
+            await CalendarViewModel.viewModel.calendarMainGet(month: month.toServerFormatString()) {
+                completion()
+            }
+        }
+    }
+    func checkEventDate(date: Date) -> Bool {
+        for event in CalendarViewModel.viewModel.calendarList.eventResponseList {
+            if event.upcomingEventDate == date.toServerFormatString() {
+                return true
+            }
+        }
+        return false
+    }
+    
+    func checkGiftType(date: Date) -> String? {
+        for gift in CalendarViewModel.viewModel.calendarList.monthResponses {
+            if gift.createdAt == date.toServerFormatString() {
+                return gift.giftType
+            }
+        }
+        return nil
+    }
+    
     
     var body: some View {
         ZStack {
             VStack(spacing: 10) {
-                HStack(spacing: 80) {
-                    // 달력 이전 달로 이동
-                    Button {
-                        withAnimation {
-                            self.currentDate = self.moveCurrentMonth(isUp: false)
-                        }
-                    } label: {
-                        Text(monthDate(currentDate: self.currentDate.getPreviousMonth() ?? currentDate)[0])
-                            .font(.TextStyles.mediumCalendarNumber).opacity(0.3)
-                            .foregroundColor(.burgundy)
-                    }
-                    .padding(.top, 30)
-                    .padding(.trailing, 30)
-                    
-                    VStack(spacing: -6) {
-                        // 달력의 년+월
-                        Text(fullDate(currentDate: self.currentDate)[0])
-                            .font(.TextStyles.smallCalendarNumber)
-                            .foregroundColor(.burgundy)
-                        
-                        Text(fullDate(currentDate: self.currentDate)[1])
-                            .font(.TextStyles.largeCalendarNumber)
-                            .foregroundColor(.burgundy)
-                            .padding(.top, -10)
-                            .padding(.bottom, -10)
-                    }
-                    // 달력 다음 달로 이동
-                    Button {
-                        withAnimation {
-                            self.currentDate =  self.moveCurrentMonth(isUp: true)
-                        }
-                    } label: {
-                        Text(monthDate(currentDate: self.currentDate.getNextMonth() ?? currentDate)[0]).opacity(0.3)
-                            .font(.TextStyles.mediumCalendarNumber)
-                            .foregroundColor(.burgundy)
-                    }
-                    .padding(.top, 30)
-                    .padding(.leading, 30)
-                }
-                // Day View
-                HStack(spacing: 0) {
-                    ForEach(CalendarDay.allCases, id: \.self) {day in
-                        Text(day.rawValue)
-                            .font(.callout)
-                            .foregroundColor(.gray)
-                            .frame(maxWidth: .infinity)
-                    }
-                }
-                // Dates
-                // Lazy Grid
-                let columns = Array(repeating: GridItem(.flexible(), spacing: 0, alignment: nil), count: 7)
-                
-                LazyVGrid(columns: columns, spacing: 0) {
-                    ForEach(extractDate(currentDate: self.currentDate)) { value in
-                        ZStack(alignment: .topLeading) {
-//                            CardView(value: value)
-//                                .onTapGesture {
-//                                    currentDate = value.date
-//                                }
-                // 추후에 NavigationLink 모든 뷰 연결되면 사용할 예정이라 주석처리함
-                                NavigationLink (destination: Text(""), isActive: $isNavigationOn) {
-                                    CardView(value: value)
-                                        .onTapGesture {
-                                            isNavigationOn.toggle()
-                                            currentDate = value.date
-                                        }
-                                }
-                        }
-                    }
-                }
-                .gesture(swipe)
-                
-                // Upcoming Events
-                VStack(spacing: 10) {
-                    HStack {
-                        Text("Upcoming Events")
-                            .font(.title3.bold())
-                            .foregroundColor(.burgundy)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .padding(.vertical, -10)
-                            .padding(.leading, 2)
-                        
-                        Spacer(minLength: 0)
-                        
-                        // 메인 달력 날짜 고르는 PopupDate Button
-                        // 상단부에 Navigationbar 들어오면 그 때 위치 이동할 예정
-                        Button {
-                            showDatePicker.toggle()
-                            isClicked.toggle()
-                        } label: {
-                            Image(systemName: "calendar")
-                                .foregroundColor(.burgundy)
-                                .font(.title3)
-                        }
-                        
-                        Button(action: {
-                            showSheet.toggle()
-                            upcomingEventTitle = ""
-                            upcomingEventMemo = ""
-                        }) {
-                            Image(systemName: "plus")
-                                .font(.title3)
-                                .foregroundColor(.burgundy)
-                                .sheet(isPresented: $showSheet, content: {
-                                    AddUpcomingEventView(
-                                        upcomingEventDate: $upcomingEventDate,
-                                        upcomingEventBaseDate: $upcomingEventBaseDate,
-                                        upcomingEventTitle: $upcomingEventTitle,
-                                        upcomingEventMemo: $upcomingEventMemo)
-                                    .frame(maxWidth: .infinity, alignment: .center)
-                                })
-                        }
-                        .padding(.trailing, 6)
-                    }
-                    .padding([.trailing, .leading])
-                    
-                    // UpcomingEvents 추가
-                    ScrollView(.vertical, showsIndicators: false) {
-                        VStack {
-                            ForEach(store.list) { upcoming in
-                                UpcomingEventsView(event: upcoming)
+//                if isLoaded {
+                    // MARK: 상단 달 이동 버튼
+                    moveMonthConroller
+                    // MARK: 요일 표시(월~일) 헤더
+                    daysHeader
+                    // MARK: 날짜 격자
+                    LazyVGrid(columns: columns, spacing: 0) {
+                        ForEach(extractDate(currentDate: self.currentDate)) { calendarData in
+                            NavigationLink(destination: CalendarGiftBox(date: calendarData.date)) {
+                                //CardView(value: calendarData)
+                                CardView(value: calendarData,
+                                         hadEvent: checkEventDate(date: calendarData.date),
+                                         giftType: checkGiftType(date: calendarData.date))
                             }
                         }
                     }
-                    .padding([.leading, .trailing, .top])
-                }
+                     .gesture(swipe)
+                    
+                    // MARK: - Upcoming Events
+                    VStack(spacing: 0) {
+                        HStack {
+                            Text("Upcoming Events")
+                                .font(.title3.bold())
+                                .foregroundColor(.burgundy)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .padding(.vertical, -10)
+                                .padding(.leading, 2)
+                            
+                            Spacer(minLength: 0)
+                            //이벤트 추가 버튼
+                            Button(action: {
+                                showSheet = true
+                                upcomingEventTitle = ""
+                                upcomingEventMemo = ""
+                                isLoaded = false
+                            }) {
+                                Image(systemName: "plus")
+                                    .font(.title3)
+                                    .foregroundColor(.burgundy)
+                                    .sheet(isPresented: $showSheet, content: {
+                                        AddUpcomingEventView(
+                                            isLoaded: self.$isLoaded,
+                                            upcomingEventDate: self.$currentDate,
+                                            upcomingEventBaseDate: self.$currentDate)
+                                        .frame(maxWidth: .infinity, alignment: .center)
+                                    })
+                            }
+                        }
+                        .padding(.vertical)
+                        // 이벤트 나열
+                        ScrollView(.vertical, showsIndicators: false) {
+                            if isLoaded {
+                            if let events = CalendarViewModel.viewModel.calendarList.eventResponseList {
+                                if !events.isEmpty {
+                                    let sortEvents = events.sorted(by: { $0.upcomingEventDate < $1.upcomingEventDate})
+
+                                    VStack(spacing: 0) {
+                                        ForEach(sortEvents) { upcoming in
+                                            UpcomingEventsView(event: upcoming)
+                                            Divider()
+                                        }
+                                    }
+                                } else { noEvent }
+                            }
+                        }
+                        }
+                    }
+                    .padding(.horizontal, 20)
+                    .padding(.bottom, 20)
+                    .background(Color.backgroundGray)
             }
-            // PopupDate와 CalendarView 사이에 블러 효과
+            // MARK: - PopupDate와 CalendarView 사이에 블러 효과
             .opacity(isClicked ? 0.1 : 1 )
         }
-        .padding(.vertical)
+        // MARK: - 데이터 가져오는 부분
+        .task {
+            await CalendarViewModel.viewModel.calendarMainGet(month: currentDate.toServerFormatString()) {
+                isLoaded = true
+            }
+        }
+        .toolbar {
+            // MARK: - 메인 달력 날짜 고르는 PopupDate Button
+            Button {
+                showDatePicker.toggle()
+                isClicked.toggle()
+            } label: {
+                Image(systemName: "calendar")
+                    .foregroundColor(.burgundy)
+                    .font(.body)
+            }
+        }
         .ignoresSafeArea(.all, edges: .bottom)
-        
-        // PopUpView 띄우는 코드
+        .navigationToBack(dismiss)
+        // MARK: - PopUpView
         if showDatePicker {
             PopupDate(popupDate: self.currentDate,
                       currentDate: $currentDate,
@@ -182,11 +225,38 @@ struct CalendarView: View {
                       popUpBoolean: $showDatePicker,
                       isClicked: $isClicked)
         }
+        
     }
     
-    var swipe: some Gesture {
+    // MARK: - 기념일이 없는 경우
+    private var noEvent: some View {
+        HStack {
+            ZStack {
+                RoundedRectangle(cornerRadius: 15)
+                    .fill(Color.backgroundGray)
+                    .frame(width: 360, height: 65)
+                
+                HStack {
+                    Text("기억하고 싶은 기념일을 추가해보세요!")
+                        .font(.body.bold())
+                        .foregroundColor(.textBodyColor)
+                }
+            }
+        }
+    }
+    
+    @State private var isStarted: Bool = false
+    
+    // MARK: - Calendar Swipe Gesture
+    private var swipe: some Gesture {
         DragGesture(minimumDistance: 1)
+            .onChanged{ value in
+                if !isLoaded {
+                    self.isLoaded = true
+                }
+            }
             .onEnded {
+                self.isLoaded = false
                 if $0.startLocation.x > $0.location.x {
                     self.swipeHorizontalDirection = .left
                     self.currentDate = self.moveCurrentMonth(isUp: true)
@@ -196,9 +266,17 @@ struct CalendarView: View {
                     self.swipeHorizontalDirection = .right
                     self.currentDate = self.moveCurrentMonth(isUp: false)
                 }
+                fetchList(month: self.currentDate) {
+                    self.isLoaded = true
+                }
             }
     }
     
+    enum SwipeHorizontalDirection: String {
+        case left, right, none
+    }
+    
+    // MARK: - Calendar에 쓰일 날짜
     enum CalendarDay: String, CaseIterable {
         case Sun = "Sun"
         case Mon = "Mon"
@@ -209,11 +287,6 @@ struct CalendarView: View {
         case Sat = "Sat"
     }
     
-    enum SwipeHorizontalDirection: String {
-        case left, right, none
-    }
-    
-    // 문제의 구간 -> 아래 두 함수를 Calendar+Extension 파일에 분리하고 싶은데 어렵네
     func moveCurrentMonth(isUp: Bool) -> Date {
         
         let calendar = Calendar.current
@@ -270,7 +343,7 @@ struct CalendarView: View {
 struct CalendarMain_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView{
-            CalendarView().environmentObject(EventStore())
+            CalendarView().environmentObject(CalendarViewModel())
                 .navigationBarHidden(true)
         }
     }

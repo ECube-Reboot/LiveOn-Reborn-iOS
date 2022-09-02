@@ -16,7 +16,9 @@ struct LetterListView: View {
     
     private let columns = Array(repeating: GridItem(.adaptive(minimum: 300),
                                             spacing: 1,
-                                            alignment: .center),count: 2)
+                                            alignment: .center),
+
+                        count: 2)
     var body: some View {
         VStack{
                 if !isLoaded {
