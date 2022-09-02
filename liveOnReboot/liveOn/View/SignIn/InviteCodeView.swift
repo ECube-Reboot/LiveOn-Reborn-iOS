@@ -9,24 +9,22 @@ import SwiftUI
 
 struct InviteCodeView: View {
     @ObservedObject var userData: SignInUser
-    @ObservedObject var viewModel = SignInViewModel()
     @Environment(\.dismiss) private var dismiss
     
     @State var showEnterCodeSheet: Bool = false
     @State private var showShareSheet = false
     @State var goNext: Bool = false
-    @State private var inviteCodeToShow = ""
+    @State var inviteCode: String = "나중에코드연동"
     var body: some View {
         SignInLayoutView(title: SignInLiteral.inviteCodeTitle, description: SignInLiteral.inviteCodeDescription) {
             VStack {
                 
                 //TODO: 코드 GET API 연동
-                Text( UserDefaults.standard.string(forKey: "inviteCode") ?? "")
+                Text(inviteCode)
                     .font(.title)
                     .fontWeight(.heavy)
                     .textSelection(.enabled)
                     .frame(width: 268, height: 170, alignment: .center)
-                    .textSelection(.enabled)
                     .background(RoundedRectangle(cornerRadius: 20).fill(Color(uiColor: .systemBackground)).shadow(color: .bodyTextColor.opacity(0.3), radius: 6, x: 0, y: 2))
                     .padding(.top, 40)
                 Button {
@@ -36,9 +34,7 @@ struct InviteCodeView: View {
                 copyButton
             }
             .sheet(isPresented: $showShareSheet) {
-                if let code = UserDefaults.standard.string(forKey: "inviteCode") {
-                ShareSheet(activityItems: [ MyActivityItemSource(title: SignInLiteral.inviteCodeShareSheetTitle, text: "\(userData.nickName)\(SignInLiteral.inviteCodeShareSheetText) 초대코드 : [\(code)]")])
-                }
+                ShareSheet(activityItems: [ MyActivityItemSource(title: SignInLiteral.inviteCodeShareSheetTitle, text: "\(userData.nickName)\(SignInLiteral.inviteCodeShareSheetText) 초대코드 : [ \(inviteCode) ]")])
             }
                 
                 Spacer()
@@ -61,13 +57,7 @@ struct InviteCodeView: View {
                     NavigationLink("둘러보기", destination: GiftBoxView())
                 }
             }
-            .navigationToBackShowOptional(dismiss, isHidden: UserStatus.checkStatus(status: UserStatus.informationEntered))
-            
-        }
-        .task {
-            if UserDefaults.standard.string(forKey: "inviteCode") == nil {
-                await MemberConfigService.getInviteCode()
-            }
+            .navigationToBack(dismiss)
         }
     }
     

@@ -21,8 +21,8 @@ extension Color {
     static let crimson = Color(hex: "902F2F")
     static let mainBrown = Color(hex: "6C5151")
 
-    static let recordingBtn = Color(hex: "#CC6541")
-    static let recordingBtnBackground = Color(hex: "#F5F3F3")
+    static let recordingBtn = Color("Orange")
+    static let recordingBtnBackground = Color("Grey")
     static let cassetteBorder = Color("CassetteBorder")
     static let deepGreen = Color(hex: "2F8F4A")
     static let coralPink = Color(hex: "DB5E5E")

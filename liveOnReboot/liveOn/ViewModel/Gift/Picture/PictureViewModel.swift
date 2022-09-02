@@ -9,15 +9,19 @@ import SwiftUI
 import Foundation
 import Combine
 
-final class PictureViewModel: ObservableObject {
+class PictureViewModel: ObservableObject {
     @Published var image: UIImage?
     @Published var showPicker = false
     @Published var source: Picker.Source = .library
     @Published var showCameraAlert = false
     @Published var cameraError: Picker.CameraErrorType?
     @Published var imageName: String = ""
+    @Published var isEditing = false
+    @Published var selectedImage: MyPicture?
     @Published var myImages: [MyPicture] = []
-    @Published var loadedImageList: [PictureGetResponse] = []
+    @Published var showFileAlert = false
+    @Published var appError: MyPictureError.ErrorType?
+    @Published var isSent = false
     
     func showPhotoPicker() {
         do {
@@ -35,26 +39,13 @@ final class PictureViewModel: ObservableObject {
         image = nil
         imageName = ""
     }
-    
-    func imageListGet(_ completion: @escaping () -> ()) {
-        moyaService.request(.imageListGet) { response in
-            switch response {
-            case .success(let result):
-                do {
-                    let data = try result.map([PictureGetResponse].self)
-                    print("Data : \(data)")
-                    for element in data {
-                        self.loadedImageList.append(element)
-                    }
-                    
-                } catch let err {
-                    print(err.localizedDescription)
-                    print("Failed to decode the image list")
-                    break
-                }
-            case .failure(let err):
-                print(err.localizedDescription)
-            }
+}
+
+class MyTimer: ObservableObject {
+    var value: Int = 0
+    init() {
+        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
+            self.value += 1
         }
     }
 }
