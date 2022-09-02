@@ -36,7 +36,14 @@ struct InputOfficialDateView: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button("다음"){
                     userData.officialDay = self.officialDate
-                    goNext.toggle()
+                   MemberConfigService.postMemeberInformation(
+                        information: PostMemberInformationDTO(birthDay: userData.birthDay.toString(dateFormat: "YYYY-MM-dd"),
+                                                              nickName: userData.nickName,
+                                                              officialDay: userData.officialDay.toString(dateFormat: "YYYY-MM-dd"))
+                    ) {
+                        UserStatus.updateUserStatus(status: UserStatus.informationEntered)
+                        goNext.toggle()
+                    }
                 }
             }
         }
