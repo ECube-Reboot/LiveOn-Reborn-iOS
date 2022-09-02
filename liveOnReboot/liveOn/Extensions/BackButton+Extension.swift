@@ -24,24 +24,6 @@ extension View {
             }
     }
     
-    func navigationToBackShowOptional( _ dismissAction: DismissAction, isHidden: Bool) -> some View {
-        navigationBarBackButtonHidden(true)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    if !isHidden {
-                        Button(action: {
-                            dismissAction()
-                        }) {
-                            Image(systemName: "chevron.left")
-                                .font(.system(size: 16))
-                                .foregroundColor(.black)
-                        }
-                    }
-                }
-            }
-    }
-    
-    
     func navigationCancel( _ dismissAction: DismissAction) -> some View {
         navigationBarBackButtonHidden(true)
             .toolbar {
