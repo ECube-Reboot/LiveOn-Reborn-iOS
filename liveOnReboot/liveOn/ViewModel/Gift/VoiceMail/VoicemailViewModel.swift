@@ -10,10 +10,16 @@ import AVFoundation
 
 class VoicemailViewModel: NSObject, ObservableObject, AVAudioPlayerDelegate {
     
+    @Published var voicemailList = [VoicemailGetResponse]()
+    
     private var audioRecorder: AVAudioRecorder!
     private var audioPlayer: AVAudioPlayer!
     private var savedPath: URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+    
+    static var voicemailViewModel = VoicemailViewModel()
+    
     lazy var fileName: URL = savedPath.appendingPathComponent("live-On : \(Date().toString(dateFormat: "dd-MM-YY 'at' HH:mm:ss")).m4a")
+    
     var recording: Recording?
     var isRecording: Bool = false
     var countSec: Int = 0
@@ -91,7 +97,7 @@ class VoicemailViewModel: NSObject, ObservableObject, AVAudioPlayerDelegate {
     
     // MARK: - recording 후
     func saveRecording() {
-        recording = Recording(fileURL: savedPath, createdAt: getFileDate(for: savedPath), title: title, duration: recordingTimeInString)
+        recording = Recording(fileURL: fileName, createdAt: getFileDate(for: savedPath), title: title, duration: recordingTimeInString)
     }
     
     func startPlaying() {
@@ -106,6 +112,7 @@ class VoicemailViewModel: NSObject, ObservableObject, AVAudioPlayerDelegate {
         
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: fileName)
+            print(fileName)
             audioPlayer.delegate = self
             audioPlayer.prepareToPlay()
             audioPlayer.play()
@@ -136,6 +143,47 @@ class VoicemailViewModel: NSObject, ObservableObject, AVAudioPlayerDelegate {
     }
 }
 
+
+// MARK: - api 관련 함수
+extension VoicemailViewModel {
+    
+    func voicemailPost(completion: @escaping () -> ()) {
+        if let recording = VoicemailViewModel.voicemailViewModel.recording {
+            voicemailMoyaService.request(.voicemailPost(title: title, voicemail: recording, voicemailDuration: recordingTimeInString)) { response in
+                switch response {
+                case .success(let result):
+                    print(result)
+                    completion()
+                case .failure(let err):
+                    print(err.localizedDescription)
+                    print("---------- 통신 실패 ----------")
+                }
+            }
+        } else {
+            print("recording not found")
+        }
+    }
+    
+    func voicemailListGet(completion: @escaping () -> ()) async {
+        voicemailMoyaService.request(.voicemailListGet) { response in
+            switch response {
+            case .success(let result):
+                do {
+                    let data = try result.map([VoicemailGetResponse].self)
+                    self.mapListData(listData: data)
+                    completion()
+                } catch {
+                    print(error.localizedDescription)
+                    break
+                }
+            case .failure(let err):
+                print(err.localizedDescription)
+            }
+        }
+    }
+}
+
+
 // MARK: - etc 함수
 extension VoicemailViewModel {
     func getFileDate(for file: URL) -> Date {
@@ -151,5 +199,11 @@ extension VoicemailViewModel {
         let (_, m, s) = (seconds / 3600, (seconds % 3600) / 60, (seconds % 3600) % 60)
         let sec: String = s < 10 ? "0\(s)" : "\(s)"
         return "\(m):\(sec)"
+    }
+    
+    private func mapListData(listData: [VoicemailGetResponse]) {
+        for data in listData {
+            voicemailList.append(data)
+        }
     }
 }
