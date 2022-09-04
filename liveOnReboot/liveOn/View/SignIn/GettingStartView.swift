@@ -43,12 +43,12 @@ struct GettingStartView: View {
                 }, onCompletion: { result in
                     switch result {
                         case .success:
-                        appleSignInViewModel.didFinishAppleSignin(result: result)
+                            UserStatus.updateUserStatus(status: UserStatus.appleSignInFinished)
+                            appleSignInViewModel.didFinishAppleSignin(result: result)
                             isActive.toggle()
                         case .failure:
                             return
                     }
-                   
                 })
                 .frame(width: 280, height: 60)
                 .padding(.top, 50)

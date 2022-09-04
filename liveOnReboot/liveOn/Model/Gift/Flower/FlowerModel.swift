@@ -20,6 +20,20 @@ enum Flower {
     case lisianthius
     // 리시안셔스
     
+    var imageFileName: String {
+        switch self {
+        case .angae:
+            return "angae"
+        case .freesia:
+            return "freesia"
+        case .keum:
+            return "keum"
+        case .larkspur:
+            return "larkspur"
+        default:
+            return "lisianthius"
+        }
+    }
 }
 
 class FlowerGift: Identifiable, ObservableObject {
@@ -60,7 +74,12 @@ extension FlowerGift {
             FlowerGift(flower: Flower.angae,
                        createdDate: "2022-07-10",
                        writer: "재헌",
-                       message: "엄지 손가락으로 장미꽃을 피워")]
+                       message: "엄지 손가락으로 장미꽃을 피워"),
+            FlowerGift(flower: Flower.angae,
+                       createdDate: "2022-07-10",
+                       writer: "재헌",
+                       message: "엄지 손가락으로 장미꽃을 피워")
+        ]
     }
 }
 #endif

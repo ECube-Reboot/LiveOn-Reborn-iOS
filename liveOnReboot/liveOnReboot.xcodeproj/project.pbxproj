@@ -25,6 +25,8 @@
 		7725D93C28B7504700EF5BA6 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7725D93B28B7504600EF5BA6 /* WebView.swift */; };
 		7725D93E28B7572D00EF5BA6 /* WithdrawalRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7725D93D28B7572D00EF5BA6 /* WithdrawalRequestView.swift */; };
 		7725D94028B75F3A00EF5BA6 /* ChangeOfficialDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7725D93F28B75F3A00EF5BA6 /* ChangeOfficialDateView.swift */; };
+		7725D96028BAF61A00EF5BA6 /* PostMemberInformationRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7725D95F28BAF61A00EF5BA6 /* PostMemberInformationRequestDTO.swift */; };
+		7725D96428BB0B9100EF5BA6 /* UserStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7725D96328BB0B9100EF5BA6 /* UserStatus.swift */; };
 		772A607D28AFA7A7005F5A4F /* letterColorStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772A607C28AFA7A7005F5A4F /* letterColorStyle.swift */; };
 		772ED6F128B08D8E00372993 /* GettingStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772ED6F028B08D8E00372993 /* GettingStartView.swift */; };
 		772ED6F328B08DF500372993 /* AppleSignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772ED6F228B08DF500372993 /* AppleSignInViewModel.swift */; };
@@ -32,6 +34,10 @@
 		773185BB287C4A9F00120FF9 /* Font+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773185BA287C4A9F00120FF9 /* Font+Extension.swift */; };
 		773185BE287C4B9400120FF9 /* NerkoOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 773185BD287C4B8F00120FF9 /* NerkoOne-Regular.ttf */; };
 		773185C3287C56FE00120FF9 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773185C2287C56FE00120FF9 /* Color+Extension.swift */; };
+		7745EF5128BDBF4200F182FB /* MemberConfigService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7745EF5028BDBF4200F182FB /* MemberConfigService.swift */; };
+		776502E028B4B8E300A46153 /* (null) in Sources */ = {isa = PBXBuildFile; };
+		776502E528B4B92800A46153 /* (null) in Sources */ = {isa = PBXBuildFile; };
+		776502E728B4B93000A46153 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		77651D0628B0924700994C15 /* SignInLayoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77651D0528B0924700994C15 /* SignInLayoutView.swift */; };
 		77651D0828B0939100994C15 /* InputNickNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77651D0728B0939100994C15 /* InputNickNameView.swift */; };
 		77651D0A28B093CF00994C15 /* SignInLiteral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77651D0928B093CF00994C15 /* SignInLiteral.swift */; };
@@ -130,6 +136,8 @@
 		7725D93B28B7504600EF5BA6 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		7725D93D28B7572D00EF5BA6 /* WithdrawalRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawalRequestView.swift; sourceTree = "<group>"; };
 		7725D93F28B75F3A00EF5BA6 /* ChangeOfficialDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeOfficialDateView.swift; sourceTree = "<group>"; };
+		7725D95F28BAF61A00EF5BA6 /* PostMemberInformationRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostMemberInformationRequestDTO.swift; sourceTree = "<group>"; };
+		7725D96328BB0B9100EF5BA6 /* UserStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStatus.swift; sourceTree = "<group>"; };
 		772A607C28AFA7A7005F5A4F /* letterColorStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = letterColorStyle.swift; sourceTree = "<group>"; };
 		772ED6F028B08D8E00372993 /* GettingStartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GettingStartView.swift; sourceTree = "<group>"; };
 		772ED6F228B08DF500372993 /* AppleSignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleSignInViewModel.swift; sourceTree = "<group>"; };
@@ -139,6 +147,7 @@
 		773185BD287C4B8F00120FF9 /* NerkoOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NerkoOne-Regular.ttf"; sourceTree = "<group>"; };
 		773185BF287C4CB900120FF9 /* liveOnReboot-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "liveOnReboot-Info.plist"; sourceTree = "<group>"; };
 		773185C2287C56FE00120FF9 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
+		7745EF5028BDBF4200F182FB /* MemberConfigService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberConfigService.swift; sourceTree = "<group>"; };
 		77651D0528B0924700994C15 /* SignInLayoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInLayoutView.swift; sourceTree = "<group>"; };
 		77651D0728B0939100994C15 /* InputNickNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputNickNameView.swift; sourceTree = "<group>"; };
 		77651D0928B093CF00994C15 /* SignInLiteral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInLiteral.swift; sourceTree = "<group>"; };
@@ -231,6 +240,7 @@
 		27EE34BC28B7E52600FCC40F /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				7745EF4F28BDBF3500F182FB /* Member */,
 				27EE34BF28B7E56500FCC40F /* Service */,
 				27EE34BE28B7E55D00FCC40F /* EndPoint */,
 				27EE34BD28B7E55300FCC40F /* DTO */,
@@ -244,6 +254,7 @@
 				27EE34C528B7E60F00FCC40F /* LoginRequestDTO.swift */,
 				27EE34C728B7E61B00FCC40F /* LoginResponseDTO.swift */,
 				27EE34CB28B86C8500FCC40F /* InviteCodeRequestDTO.swift */,
+				7725D95F28BAF61A00EF5BA6 /* PostMemberInformationRequestDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -294,6 +305,14 @@
 				773185BD287C4B8F00120FF9 /* NerkoOne-Regular.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		7745EF4F28BDBF3500F182FB /* Member */ = {
+			isa = PBXGroup;
+			children = (
+				7745EF5028BDBF4200F182FB /* MemberConfigService.swift */,
+			);
+			path = Member;
 			sourceTree = "<group>";
 		};
 		77F6F19128900C4800263BBB /* Literal */ = {
@@ -681,6 +700,7 @@
 			children = (
 				772ED6F428B08E1D00372993 /* AppleUser.swift */,
 				77651D0D28B09FF400994C15 /* SignInUser.swift */,
+				7725D96328BB0B9100EF5BA6 /* UserStatus.swift */,
 			);
 			path = SignIn;
 			sourceTree = "<group>";
@@ -999,6 +1019,7 @@
 				77F6F19328900C5700263BBB /* placeHolder.swift in Sources */,
 				7725D93628B7294700EF5BA6 /* SettingView.swift in Sources */,
 				77EB4489289FD6C00006F3CB /* LetterListView.swift in Sources */,
+				7725D96028BAF61A00EF5BA6 /* PostMemberInformationRequestDTO.swift in Sources */,
 				A9B32A8A28867AB600530B51 /* BackButton+Extension.swift in Sources */,
 				C92E31DF28795B7A000A315C /* FlowerView.swift in Sources */,
 				77F6F12E288FD5E700263BBB /* textLimit.swift in Sources */,
@@ -1031,6 +1052,7 @@
 				C92E320328795C81000A315C /* CalendarService.swift in Sources */,
 				C974DDC72883CB5A00698BFA /* Date+Extension.swift in Sources */,
 				C92E31E928795BA9000A315C /* GiftListView.swift in Sources */,
+				7745EF5128BDBF4200F182FB /* MemberConfigService.swift in Sources */,
 				77651D0E28B09FF400994C15 /* SignInUser.swift in Sources */,
 				7725D93E28B7572D00EF5BA6 /* WithdrawalRequestView.swift in Sources */,
 				77651D0C28B09F5500994C15 /* InputBirthDayView.swift in Sources */,
@@ -1040,6 +1062,7 @@
 				C92E31D128795B1A000A315C /* Letter.swift in Sources */,
 				C92E31F928795C3D000A315C /* SignInViewModel.swift in Sources */,
 				C92E320F28795CE3000A315C /* LetterEndPoint.swift in Sources */,
+				7725D96428BB0B9100EF5BA6 /* UserStatus.swift in Sources */,
 				27EE34C328B7E5D900FCC40F /* AuthEndPoint.swift in Sources */,
 				C9BE6C88287561D400B782B9 /* ContentView.swift in Sources */,
 				3ED04B5228BDF7A4000B4B4C /* LoadingView.swift in Sources */,
