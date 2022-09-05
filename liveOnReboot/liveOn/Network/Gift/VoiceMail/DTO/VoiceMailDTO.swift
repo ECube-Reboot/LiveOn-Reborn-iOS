@@ -25,6 +25,24 @@ struct VoicemailGetResponse: Codable {
     let userNickName: String
     let voiceMail: String
     let voiceMailId: Int
+    
+//    func convertResponseToModel() -> Voicemail {
+//        return Voicemail(createdAt: createdAt,
+//                         giftVoiceMailDuration: giftVoiceMailDuration,
+//                         title: title,
+//                         voiceMailIconName: "cassetteIcon0\(Int.random(in: 1..<5))",
+//                         userNickName: userNickName,
+//                         voiceMail: voiceMail,
+//                         voiceMailId: voiceMailId)
+//    }
+    
+//    let createdAt: String
+//    let giftVoiceMailDuration: String
+//    let title: String
+//    let voiceMailIconName: String
+//    let userNickName: String
+//    let voiceMail: String
+//    let voiceMailId: Int
 }
 
 struct VoicemailPostResponse: Codable {

@@ -15,18 +15,18 @@ struct VoiceMailView: View {
     @State var showCreateView: Bool = false
     @State var isLoaded: Bool = false
     
-    let voicemailDummy = Voicemail.dummyData()
-    
     var body: some View {
         ZStack {
             if !isLoaded {
                 ProgressView()
             } else {
                 VStack {
-                    if voicemailDummy.count > 8 {
+                    if voicemailViewmodel.voicemailList.isEmpty {
+                        Text("주고받은 음성메세지가 없어요🥲")
+                    } else if voicemailViewmodel.voicemailList.count > 8 {
                         ScrollView(showsIndicators: false) {
                             VStack {
-                                ForEach(voicemailDummy, id:\.voiceMailId) { vm in
+                                ForEach(voicemailViewmodel.voicemailList, id:\.voiceMailId) { vm in
                                     SingleVoicemailView(voicemail: vm)
                                         .onTapGesture {
                                             withAnimation(.easeOut) {
@@ -45,7 +45,7 @@ struct VoiceMailView: View {
                     } else {
                         Spacer()
                         VStack {
-                            ForEach(voicemailDummy, id:\.voiceMailId) { vm in
+                            ForEach(voicemailViewmodel.voicemailList, id:\.voiceMailId) { vm in
                                 SingleVoicemailView(voicemail: vm)
                                     .onTapGesture {
                                         withAnimation(.easeOut) {
@@ -60,7 +60,7 @@ struct VoiceMailView: View {
                         .padding(16)
                     }
                 }
-                .overlay{
+                .overlay {
                     if isShowPopUp {
                         VoicemailPopUpView(isPlaying: false)
                             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
@@ -139,34 +139,34 @@ extension Voicemail {
                       userNickName: "userNickName",
                       voiceMail: "voiceMail",
                       voiceMailId: 0),
-            Voicemail(createdAt: "2022-07-10",
-                      giftVoiceMailDuration: "10",
-                      title: "title",
-                      voiceMailIconName: "cassetteIcon01",
-                      userNickName: "userNickName",
-                      voiceMail: "voiceMail",
-                      voiceMailId: 0),
-            Voicemail(createdAt: "2022-07-10",
-                      giftVoiceMailDuration: "10",
-                      title: "title",
-                      voiceMailIconName: "cassetteIcon01",
-                      userNickName: "userNickName",
-                      voiceMail: "voiceMail",
-                      voiceMailId: 0),
-            Voicemail(createdAt: "2022-07-10",
-                      giftVoiceMailDuration: "10",
-                      title: "title",
-                      voiceMailIconName: "cassetteIcon01",
-                      userNickName: "userNickName",
-                      voiceMail: "voiceMail",
-                      voiceMailId: 0),
-            Voicemail(createdAt: "2022-07-10",
-                      giftVoiceMailDuration: "10",
-                      title: "title",
-                      voiceMailIconName: "cassetteIcon01",
-                      userNickName: "userNickName",
-                      voiceMail: "voiceMail",
-                      voiceMailId: 0)
+//            Voicemail(createdAt: "2022-07-10",
+//                      giftVoiceMailDuration: "10",
+//                      title: "title",
+//                      voiceMailIconName: "cassetteIcon01",
+//                      userNickName: "userNickName",
+//                      voiceMail: "voiceMail",
+//                      voiceMailId: 0),
+//            Voicemail(createdAt: "2022-07-10",
+//                      giftVoiceMailDuration: "10",
+//                      title: "title",
+//                      voiceMailIconName: "cassetteIcon01",
+//                      userNickName: "userNickName",
+//                      voiceMail: "voiceMail",
+//                      voiceMailId: 0),
+//            Voicemail(createdAt: "2022-07-10",
+//                      giftVoiceMailDuration: "10",
+//                      title: "title",
+//                      voiceMailIconName: "cassetteIcon01",
+//                      userNickName: "userNickName",
+//                      voiceMail: "voiceMail",
+//                      voiceMailId: 0),
+//            Voicemail(createdAt: "2022-07-10",
+//                      giftVoiceMailDuration: "10",
+//                      title: "title",
+//                      voiceMailIconName: "cassetteIcon01",
+//                      userNickName: "userNickName",
+//                      voiceMail: "voiceMail",
+//                      voiceMailId: 0)
         ]
     }
 #endif

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct VoicemailPopUpView: View {
     
-    @State var isPlaying: Bool
+    @State var isPlaying: Bool = false
     
     var body: some View {
         ZStack {
