@@ -58,6 +58,7 @@
 		77B5D44E28C733A80045F0BC /* MemberConfigDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B5D44D28C733A80045F0BC /* MemberConfigDTO.swift */; };
 		77B5D45028C734870045F0BC /* MemberConfigEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B5D44F28C734870045F0BC /* MemberConfigEndPoint.swift */; };
 		77B5D45A28C7C8830045F0BC /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B5D45928C7C8830045F0BC /* NetworkManager.swift */; };
+		77B5D45C28C7D2300045F0BC /* NavigationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B5D45B28C7D2300045F0BC /* NavigationController+Extension.swift */; };
 		77EB4485289FC4200006F3CB /* SendLetterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93DEA28287ACE8D0045508C /* SendLetterView.swift */; };
 		77EB4489289FD6C00006F3CB /* LetterListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77EB4488289FD6C00006F3CB /* LetterListView.swift */; };
 		77F6F128288FCF9700263BBB /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F6F127288FCF9700263BBB /* Date+Extension.swift */; };
@@ -173,10 +174,8 @@
 		77651D1928B0BD5800994C15 /* GiftBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftBoxView.swift; sourceTree = "<group>"; };
 		77B5D44D28C733A80045F0BC /* MemberConfigDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberConfigDTO.swift; sourceTree = "<group>"; };
 		77B5D44F28C734870045F0BC /* MemberConfigEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberConfigEndPoint.swift; sourceTree = "<group>"; };
-		77B5D45128C746EF0045F0BC /* CustomNetworkPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNetworkPlugin.swift; sourceTree = "<group>"; };
-
 		77B5D45928C7C8830045F0BC /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-
+		77B5D45B28C7D2300045F0BC /* NavigationController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NavigationController+Extension.swift"; sourceTree = "<group>"; };
 		77EB4488289FD6C00006F3CB /* LetterListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterListView.swift; sourceTree = "<group>"; };
 		77F6F127288FCF9700263BBB /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		77F6F12D288FD5E700263BBB /* textLimit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = textLimit.swift; sourceTree = "<group>"; };
@@ -303,6 +302,7 @@
 				C974DDC62883CB5A00698BFA /* Date+Extension.swift */,
 				C974DDC82883CB8D00698BFA /* Calendar+Extension.swift */,
 				A9B32A8728867A9600530B51 /* Text+Extension.swift */,
+				77B5D45B28C7D2300045F0BC /* NavigationController+Extension.swift */,
 				A9B32A8928867AB600530B51 /* BackButton+Extension.swift */,
 				C936B2F9289FB7C800011C64 /* DatePicker+Extension.swift */,
 				77F6F127288FCF9700263BBB /* Date+Extension.swift */,
@@ -424,9 +424,7 @@
 				C92E31FC28795C62000A315C /* Config.swift */,
 				A929FDF02882931800334E21 /* APIEnvironment.swift */,
 				A929FDE52882671400334E21 /* NetworkLoggerPlugIn.swift */,
-				77B5D45128C746EF0045F0BC /* CustomNetworkPlugin.swift */,
 				77B5D45928C7C8830045F0BC /* NetworkManager.swift */,
-
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -581,11 +579,8 @@
 		C93A4BF32879291500A277AC /* View */ = {
 			isa = PBXGroup;
 			children = (
-
 				3ED04B5028BDF796000B4B4C /* CommonComponents */,
-
 				775F6EFB28C6D3390095C5AC /* Calendar */,
-
 				7725D93B28B7504600EF5BA6 /* WebView.swift */,
 				A932C46528858F3B00803302 /* DeliveryView.swift */,
 				C9BE6C87287561D400B782B9 /* ContentView.swift */,
@@ -1058,6 +1053,7 @@
 				C92E31CF28795B0E000A315C /* FlowerModel.swift in Sources */,
 				7725D93C28B7504700EF5BA6 /* WebView.swift in Sources */,
 				775F6F0428C6D4D60095C5AC /* AddUpcomingEventView.swift in Sources */,
+				77B5D45C28C7D2300045F0BC /* NavigationController+Extension.swift in Sources */,
 				772ED6F528B08E1D00372993 /* AppleUser.swift in Sources */,
 				A932C47428859FE600803302 /* PictureErrorHandling.swift in Sources */,
 				C92E31FB28795C54000A315C /* Util.swift in Sources */,
