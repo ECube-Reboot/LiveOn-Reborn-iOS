@@ -44,7 +44,7 @@ struct GiftListView: View {
                 NavigationLink(destination: SendVoiceMailView()) {
                     CardWithStroke(cardName: "음성메세지", cardImage: "casetteIcon")
                 }
-                NavigationLink(destination: SendFlowerView(gotoMain: $tempGotoMain)) {
+                NavigationLink(destination: SendFlowerView()) {
                     CardWithStroke(cardName: "꽃", cardImage: "flowerIcon")
                 }
                 
