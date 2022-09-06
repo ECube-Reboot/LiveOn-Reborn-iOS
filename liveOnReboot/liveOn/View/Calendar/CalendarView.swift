@@ -216,6 +216,7 @@ struct CalendarView: View {
 //        }
         .ignoresSafeArea(.all, edges: .bottom)
         .navigationToBack(dismiss)
+        .navigationBarTitleDisplayMode(.inline)
         // MARK: - PopUpView
 //        if showDatePicker {
 //            PopupDate(popupDate: self.currentDate,
