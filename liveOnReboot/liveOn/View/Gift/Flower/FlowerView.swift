@@ -77,7 +77,7 @@ struct FlowerListView: View {
             } // VStack
             
             if showFlowerPopUp {
-                FlowerPopUpView(popUpBool: $showFlowerPopUp, cardIndex: $selectedCardIndex)
+                FlowerPopUpView(popUpBoolean: $showFlowerPopUp, cardIndex: $selectedCardIndex)
                     .background(.ultraThinMaterial)
                     .onTapGesture {
                         withAnimation {
