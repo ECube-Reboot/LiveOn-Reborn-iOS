@@ -8,21 +8,21 @@
 import SwiftUI
 
 struct GiftBoxView: View {
+    @State var gotoMain = false
     var body: some View {
-        
         NavigationView {
             HStack(alignment: .top, spacing: 12) {
                 VStack (alignment: .center, spacing: 12) {
-                    
                     // MARK: 상단 바
                     // 커플 정보 라벨과 선물 제작 버튼
                     HStack {
-                        
                         // TODO: 라이트모드일때 CoupleInfoLabel에 하이라이트 되는 현상 없애기
                         NavigationLink(destination: CoupleInformationView()){
                             CoupleInfoLabel()}
+
                         Spacer()
-                        NavigationLink(destination: GiftListView()) {
+
+                        NavigationLink(destination: GiftListView(gotoMain: $gotoMain), isActive: $gotoMain) {
                             Image("addButton")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
@@ -49,7 +49,8 @@ struct GiftBoxView: View {
                 .foregroundColor(.textBodyColor)
                 
             } // HStack
-            
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationTitle("")
         } // NavigationView
         .navigationBarHidden(true)
     } // body
