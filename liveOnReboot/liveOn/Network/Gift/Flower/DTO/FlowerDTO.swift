@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct FlowerGetResponse: Codable {
-    let flowerType: String
-    let message: String
+    let giftFlowerName: String
+//    let message: String
 }
 
 struct FlowerPostRequest: Codable {
-    let flowerType: String
+    let flowerName: String
     let message: String
 }

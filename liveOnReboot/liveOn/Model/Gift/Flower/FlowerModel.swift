@@ -8,29 +8,29 @@
 import Foundation
 import SwiftUI
 
-class FlowerGift: Identifiable, ObservableObject {
-
-    @Published var flower: Flower?
-
-    let id: UUID
-    let createdDate: String
-    let writer : String
-    var message : String
-
-    init(flower: Flower, createdDate: String, writer: String, message: String) {
-        id = UUID()
-        self.flower = flower
-        self.writer = writer
-        self.createdDate = createdDate
-        // DateToString 함수 필요
-        self.message = message
-    }
-}
+//class FlowerGift: Identifiable, ObservableObject {
+//
+//    @Published var flower: Flower?
+//
+//    let id: UUID
+//    let createdDate: String
+//    let writer : String
+//    var message : String
+//
+//    init(flower: Flower, createdDate: String, writer: String, message: String) {
+//        id = UUID()
+//        self.flower = flower
+//        self.writer = writer
+//        self.createdDate = createdDate
+//        // DateToString 함수 필요
+//        self.message = message
+//    }
+//}
 
 struct FlowerPopUp: View {
-    let content : FlowerGift
+    let content : String
     var body: some View {
-        Image(content.flower!.imageFileName)
+        Image(content)
             .resizable()
             .aspectRatio(contentMode: .fit)
             .frame(maxWidth: .infinity)
@@ -39,6 +39,8 @@ struct FlowerPopUp: View {
 
 struct FlowerPopUpView: View {
 
+    var imageName: String
+    var comment: String
     @Binding var popUpBoolean: Bool
     @Binding var cardIndex: Int
 
@@ -53,25 +55,25 @@ struct FlowerPopUpView: View {
                 } label: {
                     VStack(spacing: 4) {
                         // TODO: Server
-                        Image(flowerList[cardIndex].flower!.imageFileName)
+                        Image(imageName)
                             .resizable()
                             .rotationEffect(.degrees(90))
                             .padding()
                             .frame(width: 300, height: 260, alignment: .center)
 
                         // TODO: 꽃 이름이 한글로 뜰 수 있게 수정할 것
-                        Text(flowerList[cardIndex].flower!.imageFileName)
+                        Text(imageName)
                             .font(.title3)
                             .foregroundColor(.textBodyColor)
                             .fontWeight(.bold)
 
-                        Text(flowerList[cardIndex].message)
-                            .font(.subheadline)
-                            .foregroundColor(.textBodyColor)
-                            .opacity(0.9)
-                            .padding(.bottom, 32)
+//                        Text(comment)
+//                            .font(.subheadline)
+//                            .foregroundColor(.textBodyColor)
+//                            .opacity(0.9)
+//                            .padding(.bottom, 32)
 
-                        setFlowerMessage()
+                        setFlowerMessage(comment: comment)
 
                     } // VStack
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -79,11 +81,11 @@ struct FlowerPopUpView: View {
             } // VStack
         } // ZStack
     } // body
-    private func setFlowerMessage() -> some View {
+    private func setFlowerMessage(comment: String) -> some View {
         ZStack {
             VStack(alignment: .center, spacing: 4) {
                 // TODO: Server
-                Text(flowerList[cardIndex].message)
+                Text(comment)
                     .padding()
                 // TODO: Server
                 Text("20220613")
@@ -100,33 +102,33 @@ struct FlowerPopUpView: View {
         }
     }
 }
-#if DEBUG
-let flowerList = FlowerGift.dummyData()
-#endif
-// 더미데이터
-#if DEBUG
-extension FlowerGift {
-
-    static func dummyData() -> [FlowerGift] {
-
-        return [
-            FlowerGift(flower: Flower.angae,
-                       createdDate: "2022-07-10",
-                       writer: "재헌",
-                       message: "엄지 손가락으로 장미꽃을 피워"),
-            FlowerGift(flower: Flower.angae,
-                       createdDate: "2022-07-10",
-                       writer: "재헌",
-                       message: "엄지 손가락으로 장미꽃을 피워"),
-            FlowerGift(flower: Flower.angae,
-                       createdDate: "2022-07-10",
-                       writer: "재헌",
-                       message: "엄지 손가락으로 장미꽃을 피워"),
-            FlowerGift(flower: Flower.angae,
-                       createdDate: "2022-07-10",
-                       writer: "재헌",
-                       message: "엄지 손가락으로 장미꽃을 피워")
-        ]
-    }
-}
-#endif
+//#if DEBUG
+//let flowerList = FlowerGift.dummyData()
+//#endif
+//// 더미데이터
+//#if DEBUG
+//extension FlowerGift {
+//
+//    static func dummyData() -> [FlowerGift] {
+//
+//        return [
+//            FlowerGift(flower: Flower.angae,
+//                       createdDate: "2022-07-10",
+//                       writer: "재헌",
+//                       message: "엄지 손가락으로 장미꽃을 피워"),
+//            FlowerGift(flower: Flower.angae,
+//                       createdDate: "2022-07-10",
+//                       writer: "재헌",
+//                       message: "엄지 손가락으로 장미꽃을 피워"),
+//            FlowerGift(flower: Flower.angae,
+//                       createdDate: "2022-07-10",
+//                       writer: "재헌",
+//                       message: "엄지 손가락으로 장미꽃을 피워"),
+//            FlowerGift(flower: Flower.angae,
+//                       createdDate: "2022-07-10",
+//                       writer: "재헌",
+//                       message: "엄지 손가락으로 장미꽃을 피워")
+//        ]
+//    }
+//}
+//#endif
