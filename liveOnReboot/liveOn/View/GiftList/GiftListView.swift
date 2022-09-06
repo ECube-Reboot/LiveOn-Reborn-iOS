@@ -11,7 +11,8 @@ struct GiftListView: View {
 
     // 테스트용 임시
     @State var tempGotoMain = false
-
+    @Binding var gotoMain: Bool
+//    @State var tempGotoMain = false
     @Environment(\.dismiss) var dismiss
 
     var body: some View {
@@ -34,11 +35,11 @@ struct GiftListView: View {
             LazyVStack(alignment: .trailing, spacing: 16) {
 
                 // TODO: 카드 내 이미지와 텍스트 왼쪽 정렬
-
-                NavigationLink(destination: SendLetterView(gotoMain: $tempGotoMain)) {
+                
+                NavigationLink(destination: SendLetterView(gotoMain: $gotoMain)) {
                     CardWithStroke(cardName: "쪽지", cardImage: "letterIcon")
                 }
-                NavigationLink(destination: SendPictureView(gotoMain: $tempGotoMain)) {
+                NavigationLink(destination: SendPictureView(gotoMain: $gotoMain)) {
                     CardWithStroke(cardName: "폴라로이드", cardImage: "photocardIcon")
                 }
                 NavigationLink(destination: SendVoiceMailView()) {
@@ -90,12 +91,4 @@ struct CardWithStroke: View {
             } // HStack
         } // ZStack
     } // body
-}
-
-struct GiftListView_Previews: PreviewProvider {
-    static var previews: some View {
-
-        GiftListView()
-
-    }
 }

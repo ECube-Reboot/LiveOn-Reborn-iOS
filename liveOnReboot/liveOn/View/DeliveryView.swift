@@ -10,7 +10,7 @@ import SwiftUI
 
 struct GiftDeliveryView: View {
     
-    @Environment(\.dismiss) private var dismiss
+//    @Environment(\.dismiss) private var dismiss
     @Binding var gotoMain: Bool
     
     var body: some View {
@@ -26,9 +26,8 @@ struct GiftDeliveryView: View {
                         .font(.system(size: 18))
                         .foregroundColor(.mainBrown)
                         .padding(.vertical)
-                    Button {
-                        gotoMain = false
-                    } label: {
+
+                    NavigationLink(destination: GiftBoxView()) {
                         Text("보관함으로 돌아가기")
                             .foregroundColor(.white)
                             .bold()
@@ -37,6 +36,20 @@ struct GiftDeliveryView: View {
                             .background(Color.crimson)
                             .cornerRadius(12)
                     }
+//                    Button {
+//                        print("바인딩된 변수에 저장된 값을 다음과 같습니다")
+//                        print(gotoMain)
+//                        gotoMain = false
+////                        dismiss()
+//                    } label: {
+//                        Text("보관함으로 돌아가기")
+//                            .foregroundColor(.white)
+//                            .bold()
+//                            .padding()
+//                            .frame(width: 300, height: 60, alignment: .center)
+//                            .background(Color.crimson)
+//                            .cornerRadius(12)
+//                    }
                 }
             }
         }
