@@ -8,17 +8,15 @@
 import SwiftUI
 
 struct GiftBoxView: View {
+    @State private var isLoaded = false
+    
     var body: some View {
-        
-        NavigationView {
+
             HStack(alignment: .top, spacing: 12) {
                 VStack (alignment: .center, spacing: 12) {
-                    
                     // MARK: 상단 바
                     // 커플 정보 라벨과 선물 제작 버튼
                     HStack {
-                        
-                        // TODO: 라이트모드일때 CoupleInfoLabel에 하이라이트 되는 현상 없애기
                         NavigationLink(destination: CoupleInformationView()){
                             CoupleInfoLabel()}
                         Spacer()
@@ -29,6 +27,7 @@ struct GiftBoxView: View {
                                 .frame(width: 34, height: 34, alignment: .center)
                         }
                     }
+                    .padding(.bottom, 24)
                     
                     // 달력 버튼
                     CalendarLinkView()
@@ -49,28 +48,20 @@ struct GiftBoxView: View {
                 .foregroundColor(.textBodyColor)
                 
             } // HStack
-            
-        } // NavigationView
-        .navigationBarHidden(true)
+            .navigationBarHidden(true)
     } // body
 }
 
 private struct CoupleInfoLabel: View {
+    @State private var isLoaded = false
     var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 10)
-                .stroke(lineWidth: 1)
-                .padding(8)
-                .foregroundColor(Color.teal)
-                .frame(width: 194, height: 54, alignment: .center)
-                .background(RoundedRectangle(cornerRadius: 10)
-                    .fill(.thinMaterial)
-                    .shadow(color: Color(red: 239, green: 238, blue: 35), radius: 4, x: 0, y: 4))
+        
             
+            if isLoaded {
             HStack {
                 
                 // TODO: "재헌" -> 상대방 유저의 이름이 들어가게 바꿀 것
-                Text("재헌")
+                Text(MemberConfigService.singleton.profile.currentUserName)
                 
                 Image("heart")
                     .resizable()
@@ -79,16 +70,43 @@ private struct CoupleInfoLabel: View {
                     .offset(y: 2)
                 
                 // TODO: "유진" -> 유저의 이름이 들어가게 바꿀 것
-                Text("유진")
+                Text(MemberConfigService.singleton.profile.partnerName)
                 
                 // TODO: "365" -> 설정된 첫 날 부터 앱이 실행되고 있는 시점까지의 날짜 계산해서 넣기
-                Text("D+365")
+                let date = Date().stringDateToDateFormat(MemberConfigService.singleton.profile.officialDate)
+                Text("D+\(date.countDays())")
+                    .foregroundColor(.coralPink)
+                    .padding(.horizontal,4)
                 
             } // HStack
+            .padding()
+            .frame(height: UIScreen.main.bounds.width * 0.16)
+            .background(RoundedRectangle(cornerRadius: 10)
+                .stroke(lineWidth: 1)
+                .padding(8)
+                .foregroundColor(Color.teal)
+                .background(RoundedRectangle(cornerRadius: 10)
+                    .fill(.thinMaterial)
+                    .shadow(color: .gray.opacity(0.3), radius: 4, x: 0, y: 4)))
             .font(.TextStyles.handWrittenBody)
             .offset(y: -2)
-            
-        } // ZStack
+            }
+        else { ProgressView()
+                .frame(width: UIScreen.main.bounds.width * 0.4, height: UIScreen.main.bounds.width * 0.16)
+                .background(RoundedRectangle(cornerRadius: 10)
+                    .stroke(lineWidth: 1)
+                    .padding(8)
+                    .foregroundColor(Color.teal)
+                    .background(RoundedRectangle(cornerRadius: 10)
+                        .fill(.thinMaterial)
+                        .shadow(color: .gray.opacity(0.3), radius: 4, x: 0, y: 4)))
+                .task {
+                MemberConfigService.fetchMemberProfile {
+                    isLoaded.toggle()
+                }
+            } }
+         // ZStack
+        
     } // body
 }
 
@@ -162,19 +180,4 @@ private struct VoiceAndFlowerLinkView: View {
             }
         } // HStack
     } // body
-}
-
-extension GiftBoxView {
-    // Coded by Milli
-    /// 사귀기 시작한 첫 날을 전달하면 커플이 된지 며칠이나 지났는지 Int값을 반환해주는 함수
-    private func countDays(from date: Date) -> Int {
-        let calendar = Calendar.current
-        return calendar.dateComponents([.day], from: date, to: Date()).day! + 1
-    }
-}
-
-struct GiftBoxView_Previews: PreviewProvider {
-    static var previews: some View {
-        GiftBoxView()
-    }
 }
