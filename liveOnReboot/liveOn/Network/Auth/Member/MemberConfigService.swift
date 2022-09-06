@@ -79,4 +79,18 @@ class MemberConfigService: ObservableObject {
             }
         }
     }
+    
+    static func revokeMember(completion: @escaping () -> ()) {
+        singleton.memberConfigProvider.request(.revokeMember) { response in
+            switch response {
+                case .success:
+                    completion()
+                    print("성공")
+                    return
+                case .failure(let err):
+                    print("실패")
+                    print(err.localizedDescription)
+            }
+        }
+    }
 }

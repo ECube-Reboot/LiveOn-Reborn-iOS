@@ -12,6 +12,7 @@ enum MemberConfigEndPoint {
     case fetchMemberProfile
     case postMemberProfile(param: PostMemberProfile)
     case editMemberProfile(param: EditMemberProfileRequest)
+    case revokeMember
 }
 
 extension MemberConfigEndPoint: TargetType {
@@ -20,7 +21,12 @@ extension MemberConfigEndPoint: TargetType {
     }
     
     var path: String {
-        return "/api/v1/member"
+        switch self {
+            case .fetchMemberProfile, .editMemberProfile, .postMemberProfile:
+                return "/api/v1/member"
+            case .revokeMember:
+                return "/api/v1/member/withdrawl"
+        }
     }
     
     var method: Moya.Method {
@@ -31,12 +37,14 @@ extension MemberConfigEndPoint: TargetType {
                 return .post
             case .editMemberProfile:
                 return .patch
+            case .revokeMember:
+                return . patch
         }
     }
     
     var task: Task {
         switch self {
-            case .fetchMemberProfile, .postMemberProfile :
+            case .fetchMemberProfile, .postMemberProfile, .revokeMember :
                 return .requestPlain
             case .editMemberProfile(let request):
                 return .requestJSONEncodable(request)

@@ -55,7 +55,6 @@
 		77651D1628B0B7E100994C15 /* EnterCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77651D1528B0B7E100994C15 /* EnterCodeView.swift */; };
 		77651D1828B0B7FA00994C15 /* WelcomMatchingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77651D1728B0B7FA00994C15 /* WelcomMatchingView.swift */; };
 		77651D1A28B0BD5800994C15 /* GiftBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77651D1928B0BD5800994C15 /* GiftBoxView.swift */; };
-
 		77B5D44E28C733A80045F0BC /* MemberConfigDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B5D44D28C733A80045F0BC /* MemberConfigDTO.swift */; };
 		77B5D45028C734870045F0BC /* MemberConfigEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B5D44F28C734870045F0BC /* MemberConfigEndPoint.swift */; };
 		77EB4485289FC4200006F3CB /* SendLetterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93DEA28287ACE8D0045508C /* SendLetterView.swift */; };
@@ -171,11 +170,9 @@
 		77651D1528B0B7E100994C15 /* EnterCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterCodeView.swift; sourceTree = "<group>"; };
 		77651D1728B0B7FA00994C15 /* WelcomMatchingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomMatchingView.swift; sourceTree = "<group>"; };
 		77651D1928B0BD5800994C15 /* GiftBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftBoxView.swift; sourceTree = "<group>"; };
-
 		77B5D44D28C733A80045F0BC /* MemberConfigDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberConfigDTO.swift; sourceTree = "<group>"; };
 		77B5D44F28C734870045F0BC /* MemberConfigEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberConfigEndPoint.swift; sourceTree = "<group>"; };
 		77B5D45128C746EF0045F0BC /* CustomNetworkPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNetworkPlugin.swift; sourceTree = "<group>"; };
-
 		77EB4488289FD6C00006F3CB /* LetterListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterListView.swift; sourceTree = "<group>"; };
 		77F6F127288FCF9700263BBB /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		77F6F12D288FD5E700263BBB /* textLimit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = textLimit.swift; sourceTree = "<group>"; };
@@ -401,7 +398,6 @@
 		C93A4BDC2879274000A277AC /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				77B5D45528C76D670045F0BC /* NetworkResult.swift */,
 				775F6EEB28C6D2E50095C5AC /* Calendar */,
 				27EE34BC28B7E52600FCC40F /* Auth */,
 				C93A4BDD2879274A00A277AC /* Config */,
@@ -417,7 +413,6 @@
 				A929FDF02882931800334E21 /* APIEnvironment.swift */,
 				A929FDE52882671400334E21 /* NetworkLoggerPlugIn.swift */,
 				77B5D45128C746EF0045F0BC /* CustomNetworkPlugin.swift */,
-				77B5D45328C76A540045F0BC /* NetworkResult.swift */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -1009,7 +1004,6 @@
 				C936B2F8289FB2D800011C64 /* DateToStringUpcomingEventsViewModel.swift in Sources */,
 				C92E31EB28795BB0000A315C /* (null) in Sources */,
 				773185C3287C56FE00120FF9 /* Color+Extension.swift in Sources */,
-				77B5D45628C76D670045F0BC /* NetworkResult.swift in Sources */,
 				3EEF02D3287AFA920010CA03 /* SingleVoicemailView.swift in Sources */,
 				C92E320728795C9A000A315C /* LetterDTO.swift in Sources */,
 				7714BD8A28C721E8009FA24C /* CalendarDayDTO.swift in Sources */,
@@ -1108,7 +1102,6 @@
 				77B5D44E28C733A80045F0BC /* MemberConfigDTO.swift in Sources */,
 				77651D1228B0B1DA00994C15 /* InviteCodeView.swift in Sources */,
 				77651D1428B0B51600994C15 /* ShareSheet.swift in Sources */,
-				77B5D45428C76A540045F0BC /* NetworkResult.swift in Sources */,
 				C92E31DD28795B71000A315C /* CoupleInformationView.swift in Sources */,
 				C92E320928795CA2000A315C /* PictureDTO.swift in Sources */,
 				C92E31E328795B8A000A315C /* PictureListView.swift in Sources */,

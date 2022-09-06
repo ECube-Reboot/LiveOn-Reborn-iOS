@@ -9,6 +9,8 @@ import SwiftUI
 
 struct WithdrawalRequestView: View {
     @State private var confirmCheck = false
+    @State private var showAlert: Bool = false
+    @State private var isrevoked: Bool = false
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             Text("회원탈퇴하시겠어요?")
@@ -26,13 +28,31 @@ struct WithdrawalRequestView: View {
             .frame(maxWidth: .infinity)
             .background(Color.lightgray)
             
-            NavigationLink(destination: GettingStartView())
-            { Text("탈퇴하기")
-                    .foregroundColor(.white)
+//            NavigationLink(destination: GettingStartView())
+//            { Text("탈퇴하기")
+//                    .foregroundColor(.white)
+//                    .fontWeight(.bold)
+//                    .frame(maxWidth: .infinity, maxHeight: 60, alignment: .center).background(RoundedRectangle(cornerRadius: 10).fill(Color.accentColor))
+//            }
+//            .buttonStyle(.plain)
+            Button(action: {
+                showAlert = true
+            }) {
+                Text("탈퇴하기")
                     .fontWeight(.bold)
-                    .frame(maxWidth: .infinity, maxHeight: 60, alignment: .center).background(RoundedRectangle(cornerRadius: 10).fill(Color.accentColor))
+                    .font(.title)
+                    .foregroundColor(.white)
             }
-            .buttonStyle(.plain)
+            .frame(maxWidth: .infinity, maxHeight: 60, alignment: .center)
+            .background(RoundedRectangle(cornerRadius: 10).fill(Color.accentColor))
+            .alert(isPresented: $showAlert){
+                Alert(title: Text("정말 회원 탈퇴하시겠습니까?"), primaryButton: .default(Text("확인"), action: {
+                    MemberConfigService.revokeMember {
+                        isrevoked.toggle()
+                    }
+                    print("회원탈퇴")
+                }), secondaryButton: .cancel(Text("취소")))
+            }
         }
         .foregroundColor(.textBodyColor)
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
