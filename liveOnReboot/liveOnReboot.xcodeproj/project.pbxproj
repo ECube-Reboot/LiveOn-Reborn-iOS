@@ -13,11 +13,11 @@
 		27EE34C828B7E61B00FCC40F /* LoginResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EE34C728B7E61B00FCC40F /* LoginResponseDTO.swift */; };
 		27EE34CA28B8529B00FCC40F /* KeyChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EE34C928B8529B00FCC40F /* KeyChain.swift */; };
 		27EE34CC28B86C8500FCC40F /* InviteCodeRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EE34CB28B86C8500FCC40F /* InviteCodeRequestDTO.swift */; };
+		3ED04B5228BDF7A4000B4B4C /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED04B5128BDF7A4000B4B4C /* LoadingView.swift */; };
 		3EEF02CF287AC9DE0010CA03 /* VoicemailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEF02CE287AC9DE0010CA03 /* VoicemailViewModel.swift */; };
 		3EEF02D1287AF3960010CA03 /* Voicemail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEF02D0287AF3960010CA03 /* Voicemail.swift */; };
 		3EEF02D3287AFA920010CA03 /* SingleVoicemailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEF02D2287AFA920010CA03 /* SingleVoicemailView.swift */; };
 		3EFF935D28AE23DD00E8B9DE /* Recording.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFF935C28AE23DD00E8B9DE /* Recording.swift */; };
-		3EFF935F28AE24B900E8B9DE /* CreateVoicemailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFF935E28AE24B900E8B9DE /* CreateVoicemailView.swift */; };
 		3EFF936128B8021F00E8B9DE /* VoicemailPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFF936028B8021F00E8B9DE /* VoicemailPopUpView.swift */; };
 		77079570287E91F000D8C081 /* 나눔손글씨 중학생.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7707956F287E91F000D8C081 /* 나눔손글씨 중학생.ttf */; };
 		7714BD8A28C721E8009FA24C /* CalendarDayDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7714BD8928C721E8009FA24C /* CalendarDayDTO.swift */; };
@@ -126,11 +126,11 @@
 		27EE34C728B7E61B00FCC40F /* LoginResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponseDTO.swift; sourceTree = "<group>"; };
 		27EE34C928B8529B00FCC40F /* KeyChain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChain.swift; sourceTree = "<group>"; };
 		27EE34CB28B86C8500FCC40F /* InviteCodeRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteCodeRequestDTO.swift; sourceTree = "<group>"; };
+		3ED04B5128BDF7A4000B4B4C /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		3EEF02CE287AC9DE0010CA03 /* VoicemailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoicemailViewModel.swift; sourceTree = "<group>"; };
 		3EEF02D0287AF3960010CA03 /* Voicemail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Voicemail.swift; sourceTree = "<group>"; };
 		3EEF02D2287AFA920010CA03 /* SingleVoicemailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleVoicemailView.swift; sourceTree = "<group>"; };
 		3EFF935C28AE23DD00E8B9DE /* Recording.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recording.swift; sourceTree = "<group>"; };
-		3EFF935E28AE24B900E8B9DE /* CreateVoicemailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateVoicemailView.swift; sourceTree = "<group>"; };
 		3EFF936028B8021F00E8B9DE /* VoicemailPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoicemailPopUpView.swift; sourceTree = "<group>"; };
 		7707956F287E91F000D8C081 /* 나눔손글씨 중학생.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "나눔손글씨 중학생.ttf"; sourceTree = "<group>"; };
 		7714BD8928C721E8009FA24C /* CalendarDayDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDayDTO.swift; sourceTree = "<group>"; };
@@ -281,6 +281,14 @@
 				27EE34C028B7E57900FCC40F /* AuthService.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		3ED04B5028BDF796000B4B4C /* CommonComponents */ = {
+			isa = PBXGroup;
+			children = (
+				3ED04B5128BDF7A4000B4B4C /* LoadingView.swift */,
+			);
+			path = CommonComponents;
 			sourceTree = "<group>";
 		};
 		773185B9287C4A6500120FF9 /* Extensions */ = {
@@ -567,7 +575,11 @@
 		C93A4BF32879291500A277AC /* View */ = {
 			isa = PBXGroup;
 			children = (
+
+				3ED04B5028BDF796000B4B4C /* CommonComponents */,
+
 				775F6EFB28C6D3390095C5AC /* Calendar */,
+
 				7725D93B28B7504600EF5BA6 /* WebView.swift */,
 				A932C46528858F3B00803302 /* DeliveryView.swift */,
 				C9BE6C87287561D400B782B9 /* ContentView.swift */,
@@ -640,7 +652,6 @@
 			children = (
 				C92E31E428795B96000A315C /* VoicemailView.swift */,
 				3EEF02D2287AFA920010CA03 /* SingleVoicemailView.swift */,
-				3EFF935E28AE24B900E8B9DE /* CreateVoicemailView.swift */,
 				3EFF936028B8021F00E8B9DE /* VoicemailPopUpView.swift */,
 			);
 			path = VoiceMail;
@@ -1073,6 +1084,7 @@
 				27EE34C328B7E5D900FCC40F /* AuthEndPoint.swift in Sources */,
 				775F6EEA28C6D2820095C5AC /* CalendarViewModel.swift in Sources */,
 				C9BE6C88287561D400B782B9 /* ContentView.swift in Sources */,
+				3ED04B5228BDF7A4000B4B4C /* LoadingView.swift in Sources */,
 				3EEF02CF287AC9DE0010CA03 /* VoicemailViewModel.swift in Sources */,
 				C92E31EF28795C15000A315C /* FlowerViewModel.swift in Sources */,
 				C92E31E528795B96000A315C /* VoicemailView.swift in Sources */,
@@ -1084,7 +1096,6 @@
 				A9B32A8828867A9600530B51 /* Text+Extension.swift in Sources */,
 				77651D1628B0B7E100994C15 /* EnterCodeView.swift in Sources */,
 				C92E31ED28795C06000A315C /* DateToStringUpcomingEventsViewModel.swift in Sources */,
-				3EFF935F28AE24B900E8B9DE /* CreateVoicemailView.swift in Sources */,
 				C915A80928990592003154AB /* EventStoreViewModel.swift in Sources */,
 				A9B32A8828867A9600530B51 /* Text+Extension.swift in Sources */,
 				C92E31ED28795C06000A315C /* DateToStringUpcomingEventsViewModel.swift in Sources */,

@@ -8,7 +8,8 @@ import SwiftUI
 
 struct SingleVoicemailView: View {
     
-    let voicemail: Voicemail
+    let voicemail: VoicemailListGetResponse
+    let voicemailIconNumber = "cassetteIcon0\(Int.random(in: 1..<5))"
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -18,7 +19,7 @@ struct SingleVoicemailView: View {
                     .frame(width: 10, height: 60, alignment: .center)
                 
                 HStack {
-                    Image(voicemail.voiceMailIconName)
+                    Image(voicemailIconNumber)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 44, height: 44, alignment: .center)
@@ -66,17 +67,5 @@ struct SingleVoicemailView: View {
         .border(.white, width: 2)
         .border(.thinMaterial, width: 2)
         .overlay(Rectangle().fill(.regularMaterial).opacity(0.2))
-    }
-}
-
-struct SingleVoicemailView_Previews: PreviewProvider {
-    static var previews: some View {
-        SingleVoicemailView(voicemail: Voicemail(createdAt: "2022-07-10",
-                                          giftVoiceMailDuration: "10",
-                                          title: "title",
-                                          voiceMailIconName: "cassetteIcon01",
-                                          userNickName: "userNickName",
-                                          voiceMail: "voiceMail",
-                                          voiceMailId: 0))
     }
 }

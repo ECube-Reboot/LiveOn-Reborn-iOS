@@ -173,7 +173,7 @@ private struct VoiceAndFlowerLinkView: View {
         
         HStack {
             
-            NavigationLink(destination: VoiceMailView(isShowPopUp: false)) {
+            NavigationLink(destination: VoiceMailView()) {
                 Image("cassette")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
