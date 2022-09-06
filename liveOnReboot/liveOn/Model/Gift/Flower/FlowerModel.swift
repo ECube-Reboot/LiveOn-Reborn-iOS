@@ -6,80 +6,129 @@
 //
 
 import Foundation
+import SwiftUI
 
-enum Flower {
-    
-    case angae
-    // 안개꽃
-    case freesia
-    // 프리지아
-    case keum
-    // 금목서
-    case larkspur
-    // 수국
-    case lisianthius
-    // 리시안셔스
-    
-    var imageFileName: String {
-        switch self {
-        case .angae:
-            return "angae"
-        case .freesia:
-            return "freesia"
-        case .keum:
-            return "keum"
-        case .larkspur:
-            return "larkspur"
-        default:
-            return "lisianthius"
+//class FlowerGift: Identifiable, ObservableObject {
+//
+//    @Published var flower: Flower?
+//
+//    let id: UUID
+//    let createdDate: String
+//    let writer : String
+//    var message : String
+//
+//    init(flower: Flower, createdDate: String, writer: String, message: String) {
+//        id = UUID()
+//        self.flower = flower
+//        self.writer = writer
+//        self.createdDate = createdDate
+//        // DateToString 함수 필요
+//        self.message = message
+//    }
+//}
+
+struct FlowerPopUp: View {
+    let content : String
+    var body: some View {
+        Image(content)
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .frame(maxWidth: .infinity)
+    }
+}
+
+struct FlowerPopUpView: View {
+
+    var imageName: String
+    var comment: String
+    @Binding var popUpBoolean: Bool
+    @Binding var cardIndex: Int
+
+    var body: some View {
+
+        ZStack {
+            VStack(alignment: .center) {
+                Button {
+                    withAnimation(.linear(duration: 0.24)) {
+                        popUpBoolean.toggle()
+                    }
+                } label: {
+                    VStack(spacing: 4) {
+                        // TODO: Server
+                        Image(imageName)
+                            .resizable()
+                            .rotationEffect(.degrees(90))
+                            .padding()
+                            .frame(width: 300, height: 260, alignment: .center)
+
+                        // TODO: 꽃 이름이 한글로 뜰 수 있게 수정할 것
+                        Text(imageName)
+                            .font(.title3)
+                            .foregroundColor(.textBodyColor)
+                            .fontWeight(.bold)
+
+//                        Text(comment)
+//                            .font(.subheadline)
+//                            .foregroundColor(.textBodyColor)
+//                            .opacity(0.9)
+//                            .padding(.bottom, 32)
+
+                        setFlowerMessage(comment: comment)
+
+                    } // VStack
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                } // VStack
+            } // VStack
+        } // ZStack
+    } // body
+    private func setFlowerMessage(comment: String) -> some View {
+        ZStack {
+            VStack(alignment: .center, spacing: 4) {
+                // TODO: Server
+                Text(comment)
+                    .padding()
+                // TODO: Server
+                Text("20220613")
+
+            }
+            .frame(width: 280, height: 240, alignment: .center)
+            .foregroundColor(.textBodyColor)
+            .background(
+                // TODO: Server
+                Image("letter_yellow")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity))
         }
     }
 }
-
-class FlowerGift: Identifiable, ObservableObject {
-    
-    let id: UUID
-    @Published var flower: Flower?
-    let createdDate: String
-    let writer : String
-    var message : String
-    
-    init(flower: Flower, createdDate: String, writer: String, message: String) {
-        
-        id = UUID()
-        self.flower = flower
-        self.writer = writer
-        self.createdDate = createdDate
-        // DateToString 함수 필요
-        self.message = message
-        
-    }
-}
-
-// 더미데이터
-#if DEBUG
-extension FlowerGift {
-    
-    static func dummyData() -> [FlowerGift] {
-        
-        return [
-            FlowerGift(flower: Flower.angae,
-                       createdDate: "2022-07-10",
-                       writer: "재헌",
-                       message: "엄지 손가락으로 장미꽃을 피워"),
-            FlowerGift(flower: Flower.angae,
-                       createdDate: "2022-07-10",
-                       writer: "재헌",
-                       message: "엄지 손가락으로 장미꽃을 피워"),
-            FlowerGift(flower: Flower.angae,
-                       createdDate: "2022-07-10",
-                       writer: "재헌",
-                       message: "엄지 손가락으로 장미꽃을 피워"),
-            FlowerGift(flower: Flower.angae,
-                       createdDate: "2022-07-10",
-                       writer: "재헌",
-                       message: "엄지 손가락으로 장미꽃을 피워")
-        ]
-    }
-}
-#endif
+//#if DEBUG
+//let flowerList = FlowerGift.dummyData()
+//#endif
+//// 더미데이터
+//#if DEBUG
+//extension FlowerGift {
+//
+//    static func dummyData() -> [FlowerGift] {
+//
+//        return [
+//            FlowerGift(flower: Flower.angae,
+//                       createdDate: "2022-07-10",
+//                       writer: "재헌",
+//                       message: "엄지 손가락으로 장미꽃을 피워"),
+//            FlowerGift(flower: Flower.angae,
+//                       createdDate: "2022-07-10",
+//                       writer: "재헌",
+//                       message: "엄지 손가락으로 장미꽃을 피워"),
+//            FlowerGift(flower: Flower.angae,
+//                       createdDate: "2022-07-10",
+//                       writer: "재헌",
+//                       message: "엄지 손가락으로 장미꽃을 피워"),
+//            FlowerGift(flower: Flower.angae,
+//                       createdDate: "2022-07-10",
+//                       writer: "재헌",
+//                       message: "엄지 손가락으로 장미꽃을 피워")
+//        ]
+//    }
+//}
+//#endif

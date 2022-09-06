@@ -8,10 +8,11 @@
 import Foundation
 import Moya
 
-class MemberConfigService {
-    static var singleton = MemberConfigService()
+class MemberConfigService: ObservableObject {
+    static var singleton: MemberConfigService = MemberConfigService()
+    @Published var profile = FetchMemberProfile()
     let signInMoyaService = MoyaProvider<AuthEndpoint>(plugins: [NetworkLoggerPlugin()])
-    
+    let memberConfigProvider = MoyaProvider<MemberConfigEndPoint>(plugins: [NetworkLoggerPlugin()])
     static func postMemeberInformation(information: PostMemberInformationDTO, completion: @escaping () -> ()) {
         singleton.signInMoyaService.request(.postMemberInformation(param: information)) { response in
             switch response {
@@ -58,6 +59,24 @@ class MemberConfigService {
                     print(err.localizedDescription)
             }
             
+        }
+    }
+    
+    static func fetchMemberProfile(completion: @escaping () -> ()) {
+        singleton.memberConfigProvider.request(.fetchMemberProfile) { response in
+            switch response {
+                case .success(let result):
+                    do {
+                    let data = try result.map(FetchMemberProfile.self)
+                        singleton.profile = data
+                        completion()
+                    }
+                    catch _ {
+                        break
+                    }
+                case .failure(let err):
+                    print(err.localizedDescription)
+            }
         }
     }
 }

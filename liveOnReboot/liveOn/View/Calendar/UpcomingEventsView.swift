@@ -6,47 +6,40 @@
 //
 
 import SwiftUI
-// Test용으로 넣어 놓은거고 UI에 맞게 수정할 예정
+
 struct UpcomingEventsView: View {
-    let event: UpcomingEventsModel
+    let event: EventResponseList
     var body: some View {
-        HStack {
-            ZStack {
-                RoundedRectangle(cornerRadius: 15)
-                    .fill(Color.backgroundGray)
-                    .frame(width: 360, height: 65)
+        
+        HStack(alignment: .top) {
+            //  upcomingEventDate
+            Text(Date().toServerFormatEventDateString(date: event.upcomingEventDate))
+                .font(.body)
+                .foregroundColor(.textBodyColor)
+                .background(Image("highlightForCalendar").resizable().frame(height: 10, alignment: .bottomLeading).offset(y: 5))
+                .scaledToFill()
+                .frame(maxHeight: .infinity, alignment: .top)
+            VStack(spacing: 4) {
+                //  upcomingeventTitle
+                Text(event.upcomingEventTitle)
+                    .foregroundColor(.textBodyColor)
+                    .font(.body.bold())
+                    .frame(maxWidth: .infinity, alignment: .leading)
                 
-                    HStack {
-                        //  upcomingEventDate
-                        Text(event.upcomingEventDate)
-                            .font(.body)
-                            .foregroundColor(.textBodyColor)
-                    }
-                    .padding(.leading, -170)
-                    .padding(.top, -20)
-                
-                Image("highlightForCalendar")
-                    .padding(.leading, -165)
-                    .padding(.top, -14)
-                
-                    VStack {
-                        //  upcomingeventTitle
-                        Text(event.upcomingEventTitle)
-                            .foregroundColor(.textBodyColor)
-                            .font(.title3.bold())
-                            .frame(width: 280, alignment: .leading)
-                            .padding(.trailing, -35)
-                        
-                        // upcomingeventMemo
-                        Text(event.upcomingEventMemo)
-                            .foregroundColor(.textBodyColor)
-                            .font(.body)
-                            .frame(width: 280, alignment: .leading)
-                            .padding(.trailing, -35)
-                            .padding(.top, -8)
-                    }
+                // upcomingeventMemo
+                Text(event.upcomingEventMemo)
+                    .foregroundColor(.textBodyColor)
+                    .font(.callout)
+                    .frame(maxWidth: .infinity, alignment: .leading)
             }
+            .frame(height: UIScreen.main.bounds.height * 0.055)
+          //  .frame(maxHeight: UIScreen.main.bounds.height * 0.06)
+            .padding(.leading, 4)
         }
+        .padding(.vertical)
+        .background(RoundedRectangle(cornerRadius: 15)
+            .fill(Color.backgroundGray))
+        .frame(maxHeight: UIScreen.main.bounds.width * 0.16)
+        .padding(.vertical)
     }
 }
-

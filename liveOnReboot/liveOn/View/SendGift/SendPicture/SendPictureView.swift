@@ -85,7 +85,6 @@ struct SendPictureView: View {
 
                                     imagePost {
                                         print("전송완료!")
-                                        showLoading.toggle()
                                         isSent.toggle()
                                     }
                                 })
