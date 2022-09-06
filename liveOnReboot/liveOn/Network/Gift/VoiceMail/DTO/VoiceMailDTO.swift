@@ -24,8 +24,8 @@ struct VoicemailGetResponse: Codable {
     let giftVoiceMailDuration: String
     let title: String
     let userNickName: String
-//    let voiceMail: String
-    let giftVoiceMailId: Int
+    let voiceMail: String
+    let voiceMailId: Int
 }
 
 struct VoicemailPostResponse: Codable {

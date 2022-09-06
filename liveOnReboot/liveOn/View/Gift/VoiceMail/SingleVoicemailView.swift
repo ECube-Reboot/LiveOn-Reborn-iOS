@@ -8,7 +8,7 @@ import SwiftUI
 
 struct SingleVoicemailView: View {
     
-    let voicemail: VoicemailGetResponse
+    let voicemail: VoicemailListGetResponse
     let voicemailIconNumber = "cassetteIcon0\(Int.random(in: 1..<5))"
     
     var body: some View {

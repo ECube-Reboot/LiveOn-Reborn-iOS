@@ -15,6 +15,8 @@ struct VoiceMailView: View {
     @State var showCreateView: Bool = false
     @State var isLoaded: Bool = false
     
+    @State private var voicemailIndex: Int = 0
+    
     var body: some View {
         ZStack {
             if !isLoaded {
@@ -48,6 +50,8 @@ struct VoiceMailView: View {
                             ForEach(voicemailViewmodel.voicemailList, id:\.giftVoiceMailId) { vm in
                                 SingleVoicemailView(voicemail: vm)
                                     .onTapGesture {
+                                        voicemailIndex = vm.giftVoiceMailId
+                                        voicemailViewmodel.voicemailGet(id: voicemailIndex)
                                         withAnimation(.easeOut) {
                                             isShowPopUp.toggle()
                                         }
@@ -62,7 +66,7 @@ struct VoiceMailView: View {
                 }
                 .overlay {
                     if isShowPopUp {
-                        VoicemailPopUpView(isPlaying: false)
+                        VoicemailPopUpView()
                             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
                             .background(.ultraThinMaterial)
                             .onTapGesture {

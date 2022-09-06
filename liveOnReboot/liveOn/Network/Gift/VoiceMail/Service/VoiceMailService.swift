@@ -15,5 +15,5 @@ enum VoicemailServerCommunication {
     case login(param: LoginRequestDTO)
     case voicemailPost(title: String, voicemail: Recording, voicemailDuration: String)
     case voicemailListGet
-    case voicemailGet
+    case voicemailGet(id: Int)
 }

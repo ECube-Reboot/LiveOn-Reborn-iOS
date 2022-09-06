@@ -22,8 +22,8 @@ extension VoicemailServerCommunication: TargetType, AccessTokenAuthorizable {
             return "/api/v1/gifts/voicemail"
         case .voicemailListGet:
             return "/api/v1/gifts/voicemail"
-        case .voicemailGet:
-            return "/api/v1/gifts/voicemail/1"
+        case .voicemailGet(let id):
+            return "/api/v1/gifts/voicemail/\(id)"
         }
     }
     
