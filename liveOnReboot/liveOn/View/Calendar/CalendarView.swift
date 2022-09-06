@@ -206,26 +206,27 @@ struct CalendarView: View {
                 isLoaded = true
             }
         }
-        .toolbar {
+
+//        .toolbar {
             // MARK: - 메인 달력 날짜 고르는 PopupDate Button
-            Button {
-                showDatePicker.toggle()
-                isClicked.toggle()
-            } label: {
-                Image(systemName: "calendar")
-                    .foregroundColor(.burgundy)
-                    .font(.body)
-            }
-        }
+//            Button {
+//               showDatePicker.toggle()
+//                isClicked.toggle()
+//            } label: {
+//                Image(systemName: "calendar")
+//                    .foregroundColor(.burgundy)
+//                    .font(.body)
+//            }
+//        }
 
         // MARK: - PopUpView
-        if showDatePicker {
-            PopupDate(popupDate: self.currentDate,
-                      currentDate: $currentDate,
-                      showDatePicker: $showDatePicker,
-                      popUpBoolean: $showDatePicker,
-                      isClicked: $isClicked)
-        }
+//        if showDatePicker {
+//            PopupDate(popupDate: self.currentDate,
+//                      currentDate: $currentDate,
+//                      showDatePicker: $showDatePicker,
+//                      popUpBoolean: $showDatePicker,
+//                      isClicked: $isClicked)
+//        }
         
     }
     

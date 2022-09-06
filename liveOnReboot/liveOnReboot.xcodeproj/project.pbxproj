@@ -174,7 +174,9 @@
 		77B5D44D28C733A80045F0BC /* MemberConfigDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberConfigDTO.swift; sourceTree = "<group>"; };
 		77B5D44F28C734870045F0BC /* MemberConfigEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberConfigEndPoint.swift; sourceTree = "<group>"; };
 		77B5D45128C746EF0045F0BC /* CustomNetworkPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNetworkPlugin.swift; sourceTree = "<group>"; };
+
 		77B5D45928C7C8830045F0BC /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+
 		77EB4488289FD6C00006F3CB /* LetterListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterListView.swift; sourceTree = "<group>"; };
 		77F6F127288FCF9700263BBB /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		77F6F12D288FD5E700263BBB /* textLimit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = textLimit.swift; sourceTree = "<group>"; };
@@ -424,6 +426,7 @@
 				A929FDE52882671400334E21 /* NetworkLoggerPlugIn.swift */,
 				77B5D45128C746EF0045F0BC /* CustomNetworkPlugin.swift */,
 				77B5D45928C7C8830045F0BC /* NetworkManager.swift */,
+
 			);
 			path = Config;
 			sourceTree = "<group>";
