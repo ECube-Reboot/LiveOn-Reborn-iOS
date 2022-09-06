@@ -11,11 +11,12 @@ class FlowerViewModel: ObservableObject {
     static var viewModel: FlowerViewModel = FlowerViewModel()
     @Published var flowerList = [FlowerGetResponse]()
 
-    func flowerPost(flowerType: String, message: String, completion: () -> ()) {
-        let param = FlowerPostRequest(flowerType: "", message: "")
+    func flowerPost(flowerName: String, message: String, completion: () -> ()) {
+        let param = FlowerPostRequest(flowerName: flowerName, message: message)
         flowerMoyaService.request(.postFlower(content: param)) { response in
             switch response {
             case .success(_):
+                print("Post 성공!")
                 return
             case .failure(let err):
                 print(err.localizedDescription)
@@ -66,7 +67,7 @@ enum Flower: CaseIterable {
         case .larkspur:
             return "larkspur"
         case .lisianthius:
-            return "lisianthius"
+            return "lisianthius1"
         }
     }
 }
@@ -87,7 +88,7 @@ func getFlowerPhrase(flowerName: String) -> String {
         return "금목서 꽃말"
     case "larkspur":
         return "lark 꽃말"
-    case "lisianthius":
+    case "lisianthius1":
         return "리시안셔스 꽃말"
     default :
         return "Empty"

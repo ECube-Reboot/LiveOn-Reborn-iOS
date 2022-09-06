@@ -21,7 +21,6 @@ struct FlowerListView: View {
     ]
 
     var body: some View {
-
         ZStack {
             VStack {
                 Spacer()
@@ -84,19 +83,42 @@ struct FlowerListView: View {
                 )
 
             LazyVGrid(columns: columns, spacing: -40) {
-                ForEach(0..<flowerList.count, id: \.self) { index in
-                    // TODO: Server
-                    FlowerPopUp(content: flowerList[index])
-                        .onTapGesture {
-                            withAnimation(.linear(duration: 0.5)) {
-                                showFlowerPopUp = true
-                                selectedCardIndex = index
+                if viewModel.flowerList.count > 4 {
+                    ForEach(0..<extractFourFlowers().count, id: \.self) { index in
+                        // TODO: Server
+                        FlowerPopUp(content: flowerList[index])
+                            .onTapGesture {
+                                withAnimation(.linear(duration: 0.5)) {
+                                    showFlowerPopUp = true
+                                    selectedCardIndex = index
+                                }
                             }
-                        }
+                    }
+                } else {
+                    ForEach(0..<viewModel.flowerList.count, id: \.self) { index in
+                        // TODO: Server
+                        FlowerPopUp(content: flowerList[index])
+                            .onTapGesture {
+                                withAnimation(.linear(duration: 0.5)) {
+                                    showFlowerPopUp = true
+                                    selectedCardIndex = index
+                                }
+                            }
+                    }
                 }
             }
             .padding()
         }
+    }
+
+    private func extractFourFlowers() -> [FlowerGetResponse]{
+        var tempArray: [FlowerGetResponse] = []
+        var i = 0
+        while i < 3 {
+            tempArray.append(viewModel.flowerList.removeFirst())
+            i += 1
+        }
+        return tempArray
     }
 }
 

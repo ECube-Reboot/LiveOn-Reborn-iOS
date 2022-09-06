@@ -20,12 +20,17 @@ struct SendFlowerView: View {
     let flowerName = getRandomFlower()
 
     var body: some View {
-        VStack {
-            setFlowerChoiceText()
-            setFlowerImage()
-            setLetter()
-            NavigationLink("", destination: GiftDeliveryView(gotoMain: $gotoMain), isActive: $isSent)
-        }//body
+        ScrollView(showsIndicators: false) {
+            VStack {
+                setFlowerChoiceText()
+                setFlowerImage()
+                setLetter()
+                NavigationLink("", destination: GiftDeliveryView(gotoMain: $gotoMain), isActive: $isSent)
+            }//body
+        }
+        .onTapGesture {
+            hideKeyboard()
+        }
         .navigationToBack(dismiss)
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
@@ -46,7 +51,7 @@ struct SendFlowerView: View {
                 .alert(isPresented: $showAlertforSend) {
                     Alert(title: Text("선물하기"), message: Text("선물은 하루에 하나만 보낼 수 있어요. 쪽지를 보낼까요?"), primaryButton: .cancel(Text("취소")), secondaryButton: Alert.Button.default(Text("보내기")) {
                         showLoading.toggle()
-                        viewModel.flowerPost(flowerType: flowerName, message: letterText){
+                        viewModel.flowerPost(flowerName: flowerName, message: letterText){
                             print("전송완료!")
                             isSent.toggle()
                         }
@@ -68,15 +73,19 @@ struct SendFlowerView: View {
         }
     }
 
-    private func setFlowerImage() -> Image {
+    private func setFlowerImage() -> some View {
         let image = Image(flowerName)
+            .resizable()
+            .scaledToFit()
+            .frame(width: UIScreen.main.bounds.width * 0.8, height: UIScreen.main.bounds.width * 0.8)
         return image
     }
 
     private func setLetter() -> some View {
         TextEditor(text: $letterText)
+            .frame(width: UIScreen.main.bounds.width * 0.8, height: UIScreen.main.bounds.height * 0.25)
             .background(Color.lightgray)
-            .frame(width: 300, height: 300, alignment: .center)
+            .cornerRadius(15)
     }
 }
 
