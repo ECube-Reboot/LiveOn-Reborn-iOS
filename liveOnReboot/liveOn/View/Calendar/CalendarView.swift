@@ -134,8 +134,9 @@ struct CalendarView: View {
                         ForEach(extractDate(currentDate: self.currentDate)) { calendarData in
                             NavigationLink(destination: CalendarGiftBox(date: calendarData.date)) {
                                 //CardView(value: calendarData)
-                                CardView(value: calendarData
-                                         )
+                                CardView(value: calendarData,
+                                         hadEvent: checkEventDate(date: calendarData.date),
+                                         giftType: checkGiftType(date: calendarData.date))
                             }
                         }
                     }
