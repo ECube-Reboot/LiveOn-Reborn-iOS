@@ -196,6 +196,9 @@ struct CalendarView: View {
             }
             // MARK: - PopupDate와 CalendarView 사이에 블러 효과
             .opacity(isClicked ? 0.1 : 1 )
+            .ignoresSafeArea(.all, edges: .bottom)
+            .navigationToBack(dismiss)
+            .navigationBarTitleDisplayMode(.inline)
         }
         // MARK: - 데이터 가져오는 부분
         .task {
@@ -203,10 +206,11 @@ struct CalendarView: View {
                 isLoaded = true
             }
         }
+
 //        .toolbar {
-//            // MARK: - 메인 달력 날짜 고르는 PopupDate Button
+            // MARK: - 메인 달력 날짜 고르는 PopupDate Button
 //            Button {
-//                showDatePicker.toggle()
+//               showDatePicker.toggle()
 //                isClicked.toggle()
 //            } label: {
 //                Image(systemName: "calendar")
@@ -214,9 +218,7 @@ struct CalendarView: View {
 //                    .font(.body)
 //            }
 //        }
-        .ignoresSafeArea(.all, edges: .bottom)
-        .navigationToBack(dismiss)
-        .navigationBarTitleDisplayMode(.inline)
+
         // MARK: - PopUpView
 //        if showDatePicker {
 //            PopupDate(popupDate: self.currentDate,

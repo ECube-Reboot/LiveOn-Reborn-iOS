@@ -13,17 +13,24 @@ class VoicemailViewModel: NSObject, ObservableObject, AVAudioPlayerDelegate {
     private var audioRecorder: AVAudioRecorder!
     private var audioPlayer: AVAudioPlayer!
     private var savedPath: URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+    
+    static var voicemailViewModel = VoicemailViewModel()
+    
     lazy var fileName: URL = savedPath.appendingPathComponent("live-On : \(Date().toString(dateFormat: "dd-MM-YY 'at' HH:mm:ss")).m4a")
+    
     var recording: Recording?
     var isRecording: Bool = false
     var countSec: Int = 0
     var recordingSec: Int = 0
     var timerCount: Timer?
+    var duration: String = ""
     
     @Published var title: String = ""
     @Published var recordingTimeInString: String = "0:00"
     @Published var playingTimeInString: String = ""
     @Published var isRecorded: Bool = false
+    @Published var voicemailList = [VoicemailListGetResponse]()
+    @Published var singleVoicemail: VoicemailGetResponse?
     
     override init() {
         super.init()
@@ -70,6 +77,7 @@ class VoicemailViewModel: NSObject, ObservableObject, AVAudioPlayerDelegate {
             
             timerCount = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
                 self.countSec += 1
+                self.duration = String(self.countSec)
                 self.recordingTimeInString = self.convertSecToMin(seconds: self.countSec)
             })
             recordingSec = countSec
@@ -91,7 +99,7 @@ class VoicemailViewModel: NSObject, ObservableObject, AVAudioPlayerDelegate {
     
     // MARK: - recording 후
     func saveRecording() {
-        recording = Recording(fileURL: savedPath, createdAt: getFileDate(for: savedPath), title: title, duration: recordingTimeInString)
+        recording = Recording(fileURL: fileName, createdAt: getFileDate(for: savedPath), title: title, duration: duration)
     }
     
     func startPlaying() {
@@ -101,11 +109,13 @@ class VoicemailViewModel: NSObject, ObservableObject, AVAudioPlayerDelegate {
         do {
             try playSession.overrideOutputAudioPort(AVAudioSession.PortOverride.speaker)
         } catch {
+            print(error.localizedDescription)
             print("Playing failed in device")
         }
         
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: fileName)
+            print(fileName)
             audioPlayer.delegate = self
             audioPlayer.prepareToPlay()
             audioPlayer.play()
@@ -126,15 +136,113 @@ class VoicemailViewModel: NSObject, ObservableObject, AVAudioPlayerDelegate {
         audioPlayer.stop()
     }
     
-    func deleteRecording() {
+    func playGet() {
+        
+        let playSession = AVAudioSession.sharedInstance()
+
         do {
-            try FileManager.default.removeItem(at: recording!.fileURL)
+            try playSession.overrideOutputAudioPort(AVAudioSession.PortOverride.speaker)
         } catch {
-            print("Can't delete")
+            print("Playing failed in device")
         }
-        isRecorded = false
+
+        do {
+            let url = URL(string: singleVoicemail!.voiceMail)!
+            let data = try Data(contentsOf: url)
+            audioPlayer = try AVAudioPlayer(data: data)
+            audioPlayer.delegate = self
+            audioPlayer.prepareToPlay()
+            audioPlayer.play()
+        } catch {
+            print("Playing failed: \(error)")
+        }
+    }
+    
+//    func downloadVoicemail() {
+//        let session = URLSession(configuration: .default)
+//        let url = URL(string: singleVoicemail!.voiceMail)!
+//        let request = URLRequest(url: url)
+//        let dataTask = session.dataTask(with: request) { data, _, err in
+//            guard err == nil else {
+//                print("error: \(String(describing: err))")
+//                return
+//            }
+//            guard let data = data else {
+//                return
+//            }
+//            self.playGet(data: data)
+//        }
+//        dataTask.resume()
+//    }
+    
+//    MARK: 혹시나 삭제가 필요할수도 있다고 생각해 일단 남겨둠
+//    func deleteRecording() {
+//        do {
+//            try FileManager.default.removeItem(at: recording!.fileURL)
+//        } catch {
+//            print("Can't delete")
+//        }
+//        isRecorded = false
+//    }
+}
+
+
+// MARK: - api 관련 함수
+extension VoicemailViewModel {
+    
+    func voicemailPost(completion: @escaping () -> ()) {
+        if let recording = VoicemailViewModel.voicemailViewModel.recording {
+            voicemailMoyaService.request(.voicemailPost(title: title, voicemail: recording, voicemailDuration: duration)) { response in
+                switch response {
+                case .success:
+                    completion()
+                case .failure(let err):
+                    print(err.localizedDescription)
+                    print("---------- 통신 실패 ----------")
+                }
+            }
+        } else {
+            print("recording not found")
+        }
+    }
+    
+    func voicemailListGet(completion: @escaping () -> ()) async {
+        voicemailMoyaService.request(.voicemailListGet) { response in
+            switch response {
+            case .success(let result):
+                do {
+                    let data = try result.map([VoicemailListGetResponse].self)
+                    self.mapListData(listData: data)
+                    completion()
+                } catch {
+                    print(error.localizedDescription)
+                    break
+                }
+            case .failure(let err):
+                print(err.localizedDescription)
+            }
+        }
+    }
+    
+    func voicemailGet(id: Int) {
+        voicemailMoyaService.request(.voicemailGet(id: id)) { response in
+            switch response {
+            case .success(let result):
+                do {
+                    let data = result.data
+                    print("\ndata: \(data.description)\n")
+                    let decoder = JSONDecoder()
+                    self.singleVoicemail = try decoder.decode(VoicemailGetResponse.self, from: data)
+                } catch {
+                    print(error)
+                }
+            case .failure(let err):
+                print(err.localizedDescription)
+            }
+        }
     }
 }
+
 
 // MARK: - etc 함수
 extension VoicemailViewModel {
@@ -151,5 +259,11 @@ extension VoicemailViewModel {
         let (_, m, s) = (seconds / 3600, (seconds % 3600) / 60, (seconds % 3600) % 60)
         let sec: String = s < 10 ? "0\(s)" : "\(s)"
         return "\(m):\(sec)"
+    }
+    
+    private func mapListData(listData: [VoicemailListGetResponse]) {
+        for data in listData {
+            voicemailList.append(data)
+        }
     }
 }

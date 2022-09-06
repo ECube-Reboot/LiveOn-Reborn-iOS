@@ -73,7 +73,7 @@ struct SendLetterView: View {
                             self.showLoading = true
                             LetterViewModel.viewModel.updateContent(color: letterColor, content: input!, posting: LetterViewModel.viewModel.letterPost){
                                 self.showLoading = false
-                                self.gotoMain = true
+//                                self.gotoMain = false
                                 self.isSent = true
                             }
                         })
@@ -89,6 +89,7 @@ struct SendLetterView: View {
             .navigationBarTitle("쪽지", displayMode: .inline)
             .ignoresSafeArea()
             .navigationBarBackButtonHidden(true)
+
             NavigationLink("", destination: GiftDeliveryView(gotoMain: $gotoMain), isActive: $isSent)
         }
         .frame(maxWidth: .infinity,maxHeight: .infinity, alignment: .center)

@@ -20,7 +20,7 @@ struct CalendarGiftBox: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                 ScrollView(.vertical, showsIndicators: false) {
                 //MARK: EVENT LIST
-                VStack {
+                    VStack(spacing: 0) {
                         ForEach(CalendarViewModel.viewModel.boxList.eventResponse, id: \.upcomingEventID) { event in
                             let eventShow = EventResponseList(upcomingEventDate: event.upcomingEventDate, upcomingEventId: Int64(event.upcomingEventID), upcomingEventMemo: event.upcomingEventMemo, upcomingEventTitle: event.upcomingEventTitle)
                             UpcomingEventsView(event: eventShow)
@@ -53,7 +53,7 @@ struct CalendarGiftBox: View {
                         // ScrollView
                         .navigationBarTitleDisplayMode(.inline)
                     }
-                } else { noGiftView.frame(maxHeight: .infinity) }
+                } else { noGiftView.opacity(0.6) }
             }
             } else {
                 ProgressView()

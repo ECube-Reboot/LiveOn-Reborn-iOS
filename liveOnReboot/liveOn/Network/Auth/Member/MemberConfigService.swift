@@ -7,12 +7,14 @@
 
 import Foundation
 import Moya
+import SwiftUI
 
 class MemberConfigService: ObservableObject {
-    static var singleton: MemberConfigService = MemberConfigService()
-    @Published var profile = FetchMemberProfile()
     let signInMoyaService = MoyaProvider<AuthEndpoint>(plugins: [NetworkLoggerPlugin()])
     let memberConfigProvider = MoyaProvider<MemberConfigEndPoint>(plugins: [NetworkLoggerPlugin()])
+    
+    @ObservedObject static var singleton: MemberConfigService = MemberConfigService()
+    @Published var profile = FetchMemberProfile()
     static func postMemeberInformation(information: PostMemberInformationDTO, completion: @escaping () -> ()) {
         singleton.signInMoyaService.request(.postMemberInformation(param: information)) { response in
             switch response {
@@ -24,7 +26,7 @@ class MemberConfigService: ObservableObject {
             }
         }
     }
-    static func getInviteCode() async {
+    static func getInviteCode(){
         singleton.signInMoyaService.request(.getCode) { response in
             switch response {
                 case .success(let result):
@@ -80,6 +82,7 @@ class MemberConfigService: ObservableObject {
         }
     }
     
+
     static func revokeMember(completion: @escaping () -> ()) {
         singleton.memberConfigProvider.request(.revokeMember) { response in
             switch response {
@@ -88,7 +91,18 @@ class MemberConfigService: ObservableObject {
                     print("성공")
                     return
                 case .failure(let err):
-                    print("실패")
+                    print(err.localizedDescription)
+            }
+        }
+    }
+
+    static func editNickName(currentNickName: String, completion: @escaping () -> ()) {
+        singleton.memberConfigProvider.request(.editNickName(param: EditNickNameRequest(nickName: currentNickName))) { response in
+            switch response {
+                case .success:
+                    completion()
+                    break
+                case .failure(let err):
                     print(err.localizedDescription)
             }
         }

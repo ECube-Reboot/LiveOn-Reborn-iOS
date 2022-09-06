@@ -11,8 +11,9 @@ import Moya
 enum MemberConfigEndPoint {
     case fetchMemberProfile
     case postMemberProfile(param: PostMemberProfile)
-    case editMemberProfile(param: EditMemberProfileRequest)
     case revokeMember
+    case editNickName(param: EditNickNameRequest)
+    case editOfficialDate(param: String)
 }
 
 extension MemberConfigEndPoint: TargetType {
@@ -22,10 +23,16 @@ extension MemberConfigEndPoint: TargetType {
     
     var path: String {
         switch self {
-            case .fetchMemberProfile, .editMemberProfile, .postMemberProfile:
+            case .fetchMemberProfile, .postMemberProfile:
                 return "/api/v1/member"
             case .revokeMember:
                 return "/api/v1/member/withdrawl"
+            case .editNickName:
+                return "/api/v1/member/nickname"
+            case .editOfficialDate:
+                return "api/v1/member/officialDate"
+            default :
+                return "/api/v1/member"
         }
     }
     
@@ -35,7 +42,7 @@ extension MemberConfigEndPoint: TargetType {
                 return .get
             case .postMemberProfile:
                 return .post
-            case .editMemberProfile:
+            case .editNickName, .editOfficialDate:
                 return .patch
             case .revokeMember:
                 return . patch
@@ -46,7 +53,9 @@ extension MemberConfigEndPoint: TargetType {
         switch self {
             case .fetchMemberProfile, .postMemberProfile, .revokeMember :
                 return .requestPlain
-            case .editMemberProfile(let request):
+            case .editNickName(let request):
+                return .requestJSONEncodable(request)
+            case  .editOfficialDate(let request):
                 return .requestJSONEncodable(request)
         }
     }

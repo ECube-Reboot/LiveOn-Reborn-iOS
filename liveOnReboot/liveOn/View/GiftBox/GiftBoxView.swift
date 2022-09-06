@@ -8,19 +8,22 @@
 import SwiftUI
 
 struct GiftBoxView: View {
-    @State private var isLoaded = false
-    
+    @State var gotoMain = false
     var body: some View {
+        NavigationView {
 
             HStack(alignment: .top, spacing: 12) {
                 VStack (alignment: .center, spacing: 12) {
                     // MARK: 상단 바
                     // 커플 정보 라벨과 선물 제작 버튼
                     HStack {
+                        // TODO: 라이트모드일때 CoupleInfoLabel에 하이라이트 되는 현상 없애기
                         NavigationLink(destination: CoupleInformationView()){
                             CoupleInfoLabel()}
+
                         Spacer()
-                        NavigationLink(destination: GiftListView()) {
+
+                        NavigationLink(destination: GiftListView(gotoMain: $gotoMain), isActive: $gotoMain) {
                             Image("addButton")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
@@ -48,7 +51,10 @@ struct GiftBoxView: View {
                 .foregroundColor(.textBodyColor)
                 
             } // HStack
-            .navigationBarHidden(true)
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationTitle("")
+        } // NavigationView
+        .navigationBarHidden(true)
     } // body
 }
 
@@ -123,12 +129,12 @@ private struct CalendarLinkView: View {
                 VStack {
                     
                     // TODO: 앱이 실행되는 시점의 달을 영어로 표시
-                    Text("July")
-                        .font(.TextStyles.mediumCalendarNumber)
+                    Text(Date().monthEnglishToString(Date.now))
+                        .font(.TextStyles.smallCalendarNumber)
                         .offset(y: 12)
                     
                     // TODO: 앱이 실행되는 시점의 달을 숫자로 표시
-                    Text("07")
+                    Text(Date().monthToString(Date.now))
                         .font(.TextStyles.largeCalendarNumber)
                     
                 }
@@ -167,13 +173,13 @@ private struct VoiceAndFlowerLinkView: View {
         
         HStack {
             
-            NavigationLink(destination: VoiceMailView(isShowPopUp: false)) {
+            NavigationLink(destination: VoiceMailView()) {
                 Image("cassette")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
             }
             
-            NavigationLink(destination: FlowerListView()) {
+            NavigationLink(destination: FlowerListView().environmentObject(FlowerViewModel())) {
                 Image("flower")
                     .resizable()
                     .aspectRatio(contentMode: .fit)

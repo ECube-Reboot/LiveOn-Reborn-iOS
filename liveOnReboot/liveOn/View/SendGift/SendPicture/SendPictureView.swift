@@ -131,11 +131,3 @@ struct SendPictureView: View {
         }
     }
 }
-
-struct LoadingView: View {
-    var body: some View {
-        Text("선물 보내는 중...")
-            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-            .background(.thickMaterial)
-    }
-}
