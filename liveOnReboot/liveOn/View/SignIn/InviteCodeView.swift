@@ -56,11 +56,11 @@ struct InviteCodeView: View {
             }
             }
             .frame(maxWidth: .infinity)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    NavigationLink("둘러보기", destination: GiftBoxView())
-                }
-            }
+//            .toolbar {
+//                ToolbarItem(placement: .navigationBarTrailing) {
+//                    NavigationLink("둘러보기", destination: GiftBoxView())
+//                }
+//            }
             .navigationToBackShowOptional(dismiss, isHidden: UserStatus.checkStatus(status: UserStatus.informationEntered))
             
         }
