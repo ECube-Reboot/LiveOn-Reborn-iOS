@@ -57,6 +57,7 @@
 		77651D1A28B0BD5800994C15 /* GiftBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77651D1928B0BD5800994C15 /* GiftBoxView.swift */; };
 		77B5D44E28C733A80045F0BC /* MemberConfigDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B5D44D28C733A80045F0BC /* MemberConfigDTO.swift */; };
 		77B5D45028C734870045F0BC /* MemberConfigEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B5D44F28C734870045F0BC /* MemberConfigEndPoint.swift */; };
+		77B5D45A28C7C8830045F0BC /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B5D45928C7C8830045F0BC /* NetworkManager.swift */; };
 		77EB4485289FC4200006F3CB /* SendLetterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93DEA28287ACE8D0045508C /* SendLetterView.swift */; };
 		77EB4489289FD6C00006F3CB /* LetterListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77EB4488289FD6C00006F3CB /* LetterListView.swift */; };
 		77F6F128288FCF9700263BBB /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F6F127288FCF9700263BBB /* Date+Extension.swift */; };
@@ -173,6 +174,7 @@
 		77B5D44D28C733A80045F0BC /* MemberConfigDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberConfigDTO.swift; sourceTree = "<group>"; };
 		77B5D44F28C734870045F0BC /* MemberConfigEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberConfigEndPoint.swift; sourceTree = "<group>"; };
 		77B5D45128C746EF0045F0BC /* CustomNetworkPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNetworkPlugin.swift; sourceTree = "<group>"; };
+		77B5D45928C7C8830045F0BC /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		77EB4488289FD6C00006F3CB /* LetterListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterListView.swift; sourceTree = "<group>"; };
 		77F6F127288FCF9700263BBB /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		77F6F12D288FD5E700263BBB /* textLimit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = textLimit.swift; sourceTree = "<group>"; };
@@ -421,6 +423,7 @@
 				A929FDF02882931800334E21 /* APIEnvironment.swift */,
 				A929FDE52882671400334E21 /* NetworkLoggerPlugIn.swift */,
 				77B5D45128C746EF0045F0BC /* CustomNetworkPlugin.swift */,
+				77B5D45928C7C8830045F0BC /* NetworkManager.swift */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -1104,6 +1107,7 @@
 				77B5D45028C734870045F0BC /* MemberConfigEndPoint.swift in Sources */,
 				A9B32A8828867A9600530B51 /* Text+Extension.swift in Sources */,
 				C92E31ED28795C06000A315C /* DateToStringUpcomingEventsViewModel.swift in Sources */,
+				77B5D45A28C7C8830045F0BC /* NetworkManager.swift in Sources */,
 				772ED6F328B08DF500372993 /* AppleSignInViewModel.swift in Sources */,
 				775F6F0328C6D4D40095C5AC /* UpcomingEventsView.swift in Sources */,
 				7725D94028B75F3A00EF5BA6 /* ChangeOfficialDateView.swift in Sources */,
