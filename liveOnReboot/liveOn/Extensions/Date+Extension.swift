@@ -34,6 +34,7 @@ extension Date {
     public func monthEnglishToString(_ format: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMMM"
+        dateFormatter.locale = Locale(identifier: "en_US")
         return dateFormatter.string(from: format)
     }
     

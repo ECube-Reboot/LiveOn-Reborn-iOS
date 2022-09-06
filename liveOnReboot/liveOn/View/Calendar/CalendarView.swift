@@ -196,6 +196,9 @@ struct CalendarView: View {
             }
             // MARK: - PopupDate와 CalendarView 사이에 블러 효과
             .opacity(isClicked ? 0.1 : 1 )
+            .ignoresSafeArea(.all, edges: .bottom)
+            .navigationToBack(dismiss)
+            .navigationBarTitleDisplayMode(.inline)
         }
         // MARK: - 데이터 가져오는 부분
         .task {
@@ -214,8 +217,7 @@ struct CalendarView: View {
                     .font(.body)
             }
         }
-        .ignoresSafeArea(.all, edges: .bottom)
-        .navigationToBack(dismiss)
+
         // MARK: - PopUpView
         if showDatePicker {
             PopupDate(popupDate: self.currentDate,
