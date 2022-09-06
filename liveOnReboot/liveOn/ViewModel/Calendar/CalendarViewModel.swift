@@ -77,24 +77,24 @@ class CalendarViewModel: ObservableObject {
         }
     }
 
-    private func judgeLoginStatus(by statusCode: Int, _ data: Data) -> NetworkResult<Any> {
-        let decoder = JSONDecoder()
-        guard let decodedData = try? decoder.decode(GenericResponse<CalendarDayResponse>.self, from: data)
-        else {
-            return .pathErr
-        }
-
-        switch statusCode {
-        case 200:
-            return .success(decodedData.data ?? "None-Data")
-        case 400..<500:
-            return .requestErr(decodedData.message)
-        case 500:
-            return .serverErr
-        default:
-            return .networkFail
-        }
-    }
+//    private func judgeLoginStatus(by statusCode: Int, _ data: Data) -> NetworkResult<Any> {
+//        let decoder = JSONDecoder()
+//        guard let decodedData = try? decoder.decode(GenericResponse<CalendarDayResponse>.self, from: data)
+//        else {
+//            return .pathErr
+//        }
+//
+//        switch statusCode {
+//        case 200:
+//            return .success(decodedData.data ?? "None-Data")
+//        case 400..<500:
+//            return .requestErr(decodedData.message)
+//        case 500:
+//            return .serverErr
+//        default:
+//            return .networkFail
+//        }
+//    }
 
 }
 
