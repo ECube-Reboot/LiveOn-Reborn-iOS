@@ -19,6 +19,25 @@ extension Date {
         return dateToString(dateFormatter.date(from: date)!)
     }
     
+    public func eventDateToString(_ format: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/dd"
+        return dateFormatter.string(from: format)
+    }
+    
+    public func monthEnglishToString(_ format: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMMM"
+        return dateFormatter.string(from: format)
+    }
+    
+    public func monthToString(_ format: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM"
+        return dateFormatter.string(from: format)
+    }
+    
+    
     func getAllDates() -> [Date] {
         let calendar = Calendar.current
         
@@ -39,7 +58,7 @@ extension Date {
         dateFormatter.dateFormat = format
         return dateFormatter.string(from: self)
     }
-
+    
     func getNextMonth() -> Date? {
         return Calendar.current.date(byAdding: .month, value: 1, to: self)
     }
@@ -52,4 +71,19 @@ extension Date {
         let calendar = Calendar.current
         return calendar.dateComponents([.day], from: self, to: Date()).day! + 1
     }
+    
+    func toServerFormatString() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYY-MM-dd"
+        return dateFormatter.string(from: self)
+    }
+    
+    func toServerFormatEventDateString(date: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYY-MM-dd"
+        if let temp = dateFormatter.date(from: date) {
+            return Date().eventDateToString(temp) }
+        else { return "" }
+    }
+    
 }
