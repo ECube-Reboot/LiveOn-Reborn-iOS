@@ -9,6 +9,8 @@ import SwiftUI
 
 struct VoicemailPopUpView: View {
     
+    @ObservedObject private var voicemailViewmodel: VoicemailViewModel = VoicemailViewModel.voicemailViewModel
+    
     @State var isPlaying: Bool = false
     
     var body: some View {
@@ -38,6 +40,7 @@ struct VoicemailPopUpView: View {
                         .foregroundColor(Color.recordingBtn)
                         .frame(width: isPlaying ? 30 : 40)
                         .onTapGesture {
+                            
                             isPlaying.toggle()
                         }
                         .padding(.leading, isPlaying ? 0 : 5)

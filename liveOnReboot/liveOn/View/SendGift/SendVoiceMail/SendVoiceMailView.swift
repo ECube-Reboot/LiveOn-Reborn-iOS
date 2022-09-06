@@ -135,6 +135,17 @@ struct SendVoicemailView: View {
                                 gotoMain = true
                                 isSent = true
                             }
+//                            voicemailMoyaService.request(.voicemailPost(title: voicemail.title, voicemail: voicemail.recording!, voicemailDuration: voicemail.recordingTimeInString)) { response in
+//                                switch response {
+//                                case .success(let result):
+//                                    print(result)
+//                                    showLoading = false
+//                                    gotoMain = true
+//                                    isSent = true
+//                                case .failure(let err):
+//                                    print(err.localizedDescription)
+//                                }
+//                            }
                         })
                     }
                 }

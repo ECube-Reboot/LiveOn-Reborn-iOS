@@ -69,15 +69,3 @@ struct SingleVoicemailView: View {
         .overlay(Rectangle().fill(.regularMaterial).opacity(0.2))
     }
 }
-
-//struct SingleVoicemailView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        SingleVoicemailView(voicemail: Voicemail(createdAt: "2022-07-10",
-//                                          giftVoiceMailDuration: "10",
-//                                          title: "title",
-//                                          voiceMailIconName: "cassetteIcon01",
-//                                          userNickName: "userNickName",
-//                                          voiceMail: "voiceMail",
-//                                          voiceMailId: 0))
-//    }
-//}

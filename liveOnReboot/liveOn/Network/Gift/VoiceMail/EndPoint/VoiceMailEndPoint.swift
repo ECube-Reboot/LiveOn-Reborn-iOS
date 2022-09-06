@@ -43,11 +43,15 @@ extension VoicemailServerCommunication: TargetType, AccessTokenAuthorizable {
             
         case .voicemailPost(let title, let voicemail, let voicemailDuration):
             var multipartForm: [MultipartFormData] = []
-            multipartForm.append(MultipartFormData(provider: .data(Data(String(title).utf8)), name: "title"))
+            
+            multipartForm.append(MultipartFormData(provider: .data(Data(String(title).utf8)), name: "title", fileName: "title"))
             if let recordingData: Data = try? Data(contentsOf: voicemail.fileURL) {
-                multipartForm.append(MultipartFormData(provider: .data(recordingData), name: "voiceMail"))
+                multipartForm.append(MultipartFormData(provider: .data(recordingData), name: "voiceMail", fileName: "\(title).m4a", mimeType: "audio/m4a"))
             }
-            multipartForm.append(MultipartFormData(provider: .data(Data(String(voicemailDuration).utf8)), name: "voiceMailDuration"))
+            multipartForm.append(MultipartFormData(provider: .data(Data(String(voicemailDuration).utf8)), name: "voiceMailDuration", fileName: "voiceMailDuration"))
+            print("")
+            print("multipartForm----------: \(multipartForm)")
+            print("")
             return .uploadMultipart(multipartForm)
             
         case .voicemailListGet, .voicemailGet:

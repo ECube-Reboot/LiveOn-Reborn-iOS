@@ -26,7 +26,7 @@ struct VoiceMailView: View {
                     } else if voicemailViewmodel.voicemailList.count > 8 {
                         ScrollView(showsIndicators: false) {
                             VStack {
-                                ForEach(voicemailViewmodel.voicemailList, id:\.voiceMailId) { vm in
+                                ForEach(voicemailViewmodel.voicemailList, id:\.giftVoiceMailId) { vm in
                                     SingleVoicemailView(voicemail: vm)
                                         .onTapGesture {
                                             withAnimation(.easeOut) {
@@ -45,7 +45,7 @@ struct VoiceMailView: View {
                     } else {
                         Spacer()
                         VStack {
-                            ForEach(voicemailViewmodel.voicemailList, id:\.voiceMailId) { vm in
+                            ForEach(voicemailViewmodel.voicemailList, id:\.giftVoiceMailId) { vm in
                                 SingleVoicemailView(voicemail: vm)
                                     .onTapGesture {
                                         withAnimation(.easeOut) {

@@ -10,8 +10,6 @@ import AVFoundation
 
 class VoicemailViewModel: NSObject, ObservableObject, AVAudioPlayerDelegate {
     
-    @Published var voicemailList = [VoicemailGetResponse]()
-    
     private var audioRecorder: AVAudioRecorder!
     private var audioPlayer: AVAudioPlayer!
     private var savedPath: URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
@@ -25,11 +23,13 @@ class VoicemailViewModel: NSObject, ObservableObject, AVAudioPlayerDelegate {
     var countSec: Int = 0
     var recordingSec: Int = 0
     var timerCount: Timer?
+    var duration: String = ""
     
     @Published var title: String = ""
     @Published var recordingTimeInString: String = "0:00"
     @Published var playingTimeInString: String = ""
     @Published var isRecorded: Bool = false
+    @Published var voicemailList = [VoicemailGetResponse]()
     
     override init() {
         super.init()
@@ -76,6 +76,7 @@ class VoicemailViewModel: NSObject, ObservableObject, AVAudioPlayerDelegate {
             
             timerCount = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
                 self.countSec += 1
+                self.duration = String(self.countSec)
                 self.recordingTimeInString = self.convertSecToMin(seconds: self.countSec)
             })
             recordingSec = countSec
@@ -97,7 +98,7 @@ class VoicemailViewModel: NSObject, ObservableObject, AVAudioPlayerDelegate {
     
     // MARK: - recording 후
     func saveRecording() {
-        recording = Recording(fileURL: fileName, createdAt: getFileDate(for: savedPath), title: title, duration: recordingTimeInString)
+        recording = Recording(fileURL: fileName, createdAt: getFileDate(for: savedPath), title: title, duration: duration)
     }
     
     func startPlaying() {
