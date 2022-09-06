@@ -14,6 +14,8 @@ struct FlowerListView: View {
     @State private var showFlowerPopUp = false
     @State private var isLoaded = false
     @State private var selectedCardIndex = 0
+    @State private var imageName = ""
+    @State private var comment = ""
 
     private let columns : [GridItem] = [
         GridItem(.flexible(), spacing: -10, alignment: .bottom),
@@ -38,7 +40,7 @@ struct FlowerListView: View {
             }
 
             if showFlowerPopUp {
-                FlowerPopUpView(popUpBoolean: $showFlowerPopUp, cardIndex: $selectedCardIndex)
+                FlowerPopUpView(imageName: imageName, comment: comment, popUpBoolean: $showFlowerPopUp, cardIndex: $selectedCardIndex)
                     .background(.ultraThinMaterial)
                     .onTapGesture {
                         withAnimation {
@@ -50,6 +52,7 @@ struct FlowerListView: View {
         .task {
             viewModel.flowerListGet(completion: {
                 isLoaded = true
+                
             })
         }
 
@@ -84,10 +87,11 @@ struct FlowerListView: View {
 
             LazyVGrid(columns: columns, spacing: -40) {
                 if viewModel.flowerList.count > 4 {
-                    ForEach(0..<extractFourFlowers().count, id: \.self) { index in
+                    ForEach(0..<viewModel.flowerListExtracted.count, id: \.self) { index in
                         // TODO: Server
-                        FlowerPopUp(content: flowerList[index])
+                        FlowerPopUp(content: viewModel.flowerListExtracted[index].giftFlowerName)
                             .onTapGesture {
+                                imageName = viewModel.flowerListExtracted[index].giftFlowerName
                                 withAnimation(.linear(duration: 0.5)) {
                                     showFlowerPopUp = true
                                     selectedCardIndex = index
@@ -97,8 +101,9 @@ struct FlowerListView: View {
                 } else {
                     ForEach(0..<viewModel.flowerList.count, id: \.self) { index in
                         // TODO: Server
-                        FlowerPopUp(content: flowerList[index])
+                        FlowerPopUp(content: viewModel.flowerList[index].giftFlowerName)
                             .onTapGesture {
+                                imageName = viewModel.flowerList[index].giftFlowerName
                                 withAnimation(.linear(duration: 0.5)) {
                                     showFlowerPopUp = true
                                     selectedCardIndex = index
@@ -111,15 +116,15 @@ struct FlowerListView: View {
         }
     }
 
-    private func extractFourFlowers() -> [FlowerGetResponse]{
-        var tempArray: [FlowerGetResponse] = []
-        var i = 0
-        while i < 3 {
-            tempArray.append(viewModel.flowerList.removeFirst())
-            i += 1
-        }
-        return tempArray
-    }
+//    private func extractFourFlowers() -> [FlowerGetResponse]{
+//        var tempArray: [FlowerGetResponse] = []
+//        var i = 0
+//        while i < 3 {
+//            tempArray.append(viewModel.flowerList.removeFirst())
+//            i += 1
+//        }
+//        return tempArray
+//    }
 }
 
 struct FlowerListView_Previews: PreviewProvider {

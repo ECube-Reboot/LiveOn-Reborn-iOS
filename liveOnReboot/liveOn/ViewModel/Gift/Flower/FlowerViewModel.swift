@@ -10,6 +10,7 @@ import SwiftUI
 class FlowerViewModel: ObservableObject {
     static var viewModel: FlowerViewModel = FlowerViewModel()
     @Published var flowerList = [FlowerGetResponse]()
+    @Published var flowerListExtracted = [FlowerGetResponse]()
 
     func flowerPost(flowerName: String, message: String, completion: () -> ()) {
         let param = FlowerPostRequest(flowerName: flowerName, message: message)
@@ -34,6 +35,16 @@ class FlowerViewModel: ObservableObject {
                     let data = try result.map([FlowerGetResponse].self)
                     self.mapListData(listData: data)
                     print("저장된 꽃 데이터는 다음과 같습니다 \(self.flowerList)")
+                    if self.flowerList.count > 4 {
+
+                        var tempArray: [FlowerGetResponse] = []
+                        var i = 0
+                        while i < 4 {
+                            tempArray.append(self.flowerList.removeFirst())
+                            i += 1
+                        }
+                        self.flowerListExtracted = tempArray
+                    }
                     completion()
 
                 } catch let err {
@@ -81,15 +92,15 @@ func getRandomFlower() -> String {
 func getFlowerPhrase(flowerName: String) -> String {
     switch flowerName {
     case "angae":
-        return "안개 꽃말"
+        return "맑고 깨끗한 마음"
     case "freesia":
-        return "프리지아 꽃말"
+        return "천진난만함"
     case "keum":
-        return "금목서 꽃말"
+        return " 진정한 사랑"
     case "larkspur":
-        return "lark 꽃말"
+        return "청명과 자유"
     case "lisianthius1":
-        return "리시안셔스 꽃말"
+        return "변치않는 사랑"
     default :
         return "Empty"
     }
