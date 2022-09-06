@@ -31,7 +31,7 @@ struct liveOnRebootApp: App {
                                       default :
                                           GettingStartView()
                                   }
-                    GiftBoxView()
+
                 }
             } else {
                 Text("네트워크에 연결되지 않았어요 ㅠ")

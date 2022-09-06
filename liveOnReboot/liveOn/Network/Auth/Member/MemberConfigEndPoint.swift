@@ -14,6 +14,7 @@ enum MemberConfigEndPoint {
     case revokeMember
     case editNickName(param: EditNickNameRequest)
     case editOfficialDate(param: String)
+    case validateCoupleMatching
 }
 
 extension MemberConfigEndPoint: TargetType {
@@ -31,14 +32,14 @@ extension MemberConfigEndPoint: TargetType {
                 return "/api/v1/member/nickname"
             case .editOfficialDate:
                 return "api/v1/member/officialDate"
-            default :
-                return "/api/v1/member"
+            case .validateCoupleMatching:
+                return "/api/v1/member/couple"
         }
     }
     
     var method: Moya.Method {
         switch self {
-            case .fetchMemberProfile:
+            case .fetchMemberProfile, .validateCoupleMatching:
                 return .get
             case .postMemberProfile:
                 return .post
@@ -51,7 +52,7 @@ extension MemberConfigEndPoint: TargetType {
     
     var task: Task {
         switch self {
-            case .fetchMemberProfile, .postMemberProfile, .revokeMember :
+            case .fetchMemberProfile, .postMemberProfile, .revokeMember, .validateCoupleMatching :
                 return .requestPlain
             case .editNickName(let request):
                 return .requestJSONEncodable(request)
