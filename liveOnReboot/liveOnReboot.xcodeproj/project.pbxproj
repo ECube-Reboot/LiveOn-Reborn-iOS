@@ -77,7 +77,7 @@
 		C92E31D128795B1A000A315C /* Letter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E31D028795B1A000A315C /* Letter.swift */; };
 		C92E31D928795B41000A315C /* NetworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E31D828795B41000A315C /* NetworkModel.swift */; };
 		C92E31DD28795B71000A315C /* CoupleInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E31DC28795B71000A315C /* CoupleInformationView.swift */; };
-		C92E31DF28795B7A000A315C /* FlowerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E31DE28795B7A000A315C /* FlowerView.swift */; };
+		C92E31DF28795B7A000A315C /* FlowerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E31DE28795B7A000A315C /* FlowerListView.swift */; };
 		C92E31E328795B8A000A315C /* PictureListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E31E228795B8A000A315C /* PictureListView.swift */; };
 		C92E31E528795B96000A315C /* VoicemailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E31E428795B96000A315C /* VoicemailView.swift */; };
 		C92E31E928795BA9000A315C /* GiftListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E31E828795BA9000A315C /* GiftListView.swift */; };
@@ -184,7 +184,7 @@
 		C92E31D028795B1A000A315C /* Letter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Letter.swift; sourceTree = "<group>"; };
 		C92E31D828795B41000A315C /* NetworkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkModel.swift; sourceTree = "<group>"; };
 		C92E31DC28795B71000A315C /* CoupleInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoupleInformationView.swift; sourceTree = "<group>"; };
-		C92E31DE28795B7A000A315C /* FlowerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowerView.swift; sourceTree = "<group>"; };
+		C92E31DE28795B7A000A315C /* FlowerListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowerListView.swift; sourceTree = "<group>"; };
 		C92E31E228795B8A000A315C /* PictureListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureListView.swift; sourceTree = "<group>"; };
 		C92E31E428795B96000A315C /* VoicemailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoicemailView.swift; sourceTree = "<group>"; };
 		C92E31E828795BA9000A315C /* GiftListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftListView.swift; sourceTree = "<group>"; };
@@ -654,7 +654,7 @@
 		C93A4BFF2879298500A277AC /* Flower */ = {
 			isa = PBXGroup;
 			children = (
-				C92E31DE28795B7A000A315C /* FlowerView.swift */,
+				C92E31DE28795B7A000A315C /* FlowerListView.swift */,
 			);
 			path = Flower;
 			sourceTree = "<group>";
@@ -1014,7 +1014,7 @@
 				77EB4489289FD6C00006F3CB /* LetterListView.swift in Sources */,
 				7725D96028BAF61A00EF5BA6 /* PostMemberInformationRequestDTO.swift in Sources */,
 				A9B32A8A28867AB600530B51 /* BackButton+Extension.swift in Sources */,
-				C92E31DF28795B7A000A315C /* FlowerView.swift in Sources */,
+				C92E31DF28795B7A000A315C /* FlowerListView.swift in Sources */,
 				775F6EFA28C6D2E50095C5AC /* CalendarMainService.swift in Sources */,
 				77F6F12E288FD5E700263BBB /* textLimit.swift in Sources */,
 				3EFF936128B8021F00E8B9DE /* VoicemailPopUpView.swift in Sources */,
