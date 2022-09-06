@@ -9,7 +9,8 @@ import SwiftUI
 
 struct SendVoiceMailView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text("새로운 선물을 개발하고 있어요.")
+        Text("조금만 기다려주세요!")
     }
 }
 

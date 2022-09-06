@@ -42,9 +42,9 @@ struct CalendarGiftBox: View {
                                     LetterListView.LetterDetailView(letter: temp)
                                 }
                                 //MARK: AUDIO
-                                ForEach(CalendarViewModel.viewModel.boxList.audioResponseList, id: \.voiceMailID){ voiceMail in
-                                   //TODO: VoiceMail POPUP VIEW 넣기
-                                }
+//                                ForEach(CalendarViewModel.viewModel.boxList.audioResponseList, id: \.voiceMailID){ voiceMail in
+//                                   //TODO: VoiceMail POPUP VIEW 넣기
+//                                }
                                 //MARK: FLOWER
                                 ForEach(CalendarViewModel.viewModel.boxList.flowerResponseList, id: \.senderName){ flower in
                                     //TODO: FLOWERVIEW POPUP VIEW 넣기

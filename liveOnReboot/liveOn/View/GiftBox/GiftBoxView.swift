@@ -172,12 +172,17 @@ private struct VoiceAndFlowerLinkView: View {
     var body: some View {
         
         HStack {
-            
-            NavigationLink(destination: VoiceMailView(isShowPopUp: false)) {
+
+            ZStack {
                 Image("cassette")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
+                    .opacity(0.2)
+
+                Text("Coming Soon")
+                    .bold()
             }
+
             
             NavigationLink(destination: FlowerListView().environmentObject(FlowerViewModel())) {
                 Image("flower")
