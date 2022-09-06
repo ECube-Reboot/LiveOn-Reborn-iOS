@@ -9,102 +9,85 @@ import SwiftUI
 
 struct CalendarGiftBox: View {
     @State var date: Date
-    
+    @State private var isLoaded: Bool = false
+    private let responseList = CalendarViewModel.viewModel.boxList
     var body: some View {
-        ZStack {
-            VStack {
-                Text("\(Date().eventDateToString(date))")
+        VStack(alignment: .center, spacing: 0) {
+            if isLoaded {
+                Text(Date().eventDateToString(self.date))
                     .font(.TextStyles.largeCalendarNumber)
                     .foregroundColor(.textBodyColor)
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.leading)
-                
-                Spacer()
-                
-                giftView
+                ScrollView(.vertical, showsIndicators: false) {
+                //MARK: EVENT LIST
+                VStack {
+                        ForEach(CalendarViewModel.viewModel.boxList.eventResponse, id: \.upcomingEventID) { event in
+                            let eventShow = EventResponseList(upcomingEventDate: event.upcomingEventDate, upcomingEventId: Int64(event.upcomingEventID), upcomingEventMemo: event.upcomingEventMemo, upcomingEventTitle: event.upcomingEventTitle)
+                            UpcomingEventsView(event: eventShow)
+                        }
+                }
+                .padding(.bottom, 24)
+                if CalendarViewModel.viewModel.checkGift() {
+                    VStack(alignment: .center, spacing: 0) {
+                        
+                            /// 이벤트 목록 넣기
+                            VStack(spacing: 0) {
+                                //MARK: PHOTOCARD
+                                ForEach(CalendarViewModel.viewModel.boxList.polaroidResponseList, id: \.polaroidID) { polaroid in
+                                    PhotoCardSheet(indexPath: Int64(polaroid.giftPolaroidID), imageURLString: polaroid.giftPolaroidImage, photoText: polaroid.comment)
+                                }
+                                //MARK: NOTE
+                                ForEach(CalendarViewModel.viewModel.boxList.noteResponseList, id: \.noteID) { letter in
+                                    let temp = LetterGet(color: letter.color, content: letter.content, createdAt: letter.createdAt, giftNoteId: Int64(letter.noteID), userNickName: letter.senderName)
+                                    LetterListView.LetterDetailView(letter: temp)
+                                }
+                                //MARK: AUDIO
+                                ForEach(CalendarViewModel.viewModel.boxList.audioResponseList, id: \.voiceMailID){ voiceMail in
+                                   //TODO: VoiceMail POPUP VIEW 넣기
+                                }
+                                //MARK: FLOWER
+                                ForEach(CalendarViewModel.viewModel.boxList.flowerResponseList, id: \.senderName){ flower in
+                                    //TODO: FLOWERVIEW POPUP VIEW 넣기
+                                }
+                            }
+                        // ScrollView
+                        .navigationBarTitleDisplayMode(.inline)
+                    }
+                } else { noGiftView.frame(maxHeight: .infinity) }
+            }
+            } else {
+                ProgressView()
+                    .task {
+                        await CalendarViewModel.viewModel.calendarDayGet(month: date.toServerFormatString()) {
+                            isLoaded = true
+                        }
+                    }
+                    .navigationBarTitleDisplayMode(.inline)
             }
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .padding(.horizontal, 20)
         .navigationBarTitleDisplayMode(.inline)
     }
     
-    var giftView: some View {
-        ScrollView(.vertical, showsIndicators: false, content: {
-            eventView
-            
-            Image("flowerIcon")
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(width: 220, height: 200, alignment: .center)
-            
-            Image("letter_purple")
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(width: 250, height: 200, alignment: .center)
-            
-            Image("casetteIcon")
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(width: 300, height: 200, alignment: .center)
-            
-            Image("photocardIcon")
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(width: 300, height: 200, alignment: .center)
-        })
-    }
-    
-    var eventView: some View {
-        HStack {
-            ZStack {
-                RoundedRectangle(cornerRadius: 15)
-                    .fill(Color.backgroundGray)
-                    .frame(width: 360, height: 65)
-                
-                    HStack {
-                        //  upcomingEventDate
-                        Text("08/26")
-                            .font(.body)
-                            .foregroundColor(.textBodyColor)
-                            .background(Image("highlightForCalendar"))
-                            .scaledToFill()
-                    }
-                    .padding(.leading, -170)
-                    .padding(.top, -20)
-                
-                    VStack {
-                        //  upcomingeventTitle
-                        Text("삼겹살 먹는 날")
-                            .foregroundColor(.textBodyColor)
-                            .font(.title3.bold())
-                            .frame(width: 280, alignment: .leading)
-                            .padding(.trailing, -35)
-                        
-                        // upcomingeventMemo
-                        Text("영일대 맛찬들가서 삼겹살 + 소주 때리기")
-                            .foregroundColor(.textBodyColor)
-                            .font(.body)
-                            .frame(width: 280, alignment: .leading)
-                            .padding(.trailing, -35)
-                            .padding(.top, -8)
-                    }
-            }
-        }
-    }
     
     var noGiftView: some View {
-        VStack {
+        VStack(alignment: .center, spacing: 12) {
             Image("LoadingCharacter")
-                .padding(.bottom, 20)
-            
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(height: UIScreen.main.bounds.width*0.5)
+                
             Text("어떤 선물이 오고 있을까요?")
                 .foregroundColor(.textBodyColor)
-                .font(.title3)
+                .font(.TextStyles.handWrittenBody)
         }
+        .frame(maxWidth: .infinity)
     }
 }
 
 struct CalendarGiftBox_Previews: PreviewProvider {
     static var previews: some View {
-            CalendarGiftBox(date: Date.now)
+        CalendarGiftBox(date: Date.now)
     }
 }

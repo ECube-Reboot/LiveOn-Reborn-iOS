@@ -7,14 +7,12 @@
 
 import SwiftUI
 
-struct FlowerDTO: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
+struct FlowerGetResponse: Codable {
+    let flowerType: String
+    let message: String
 }
 
-struct FlowerDTO_Previews: PreviewProvider {
-    static var previews: some View {
-        FlowerDTO()
-    }
+struct FlowerPostRequest: Codable {
+    let flowerType: String
+    let message: String
 }
