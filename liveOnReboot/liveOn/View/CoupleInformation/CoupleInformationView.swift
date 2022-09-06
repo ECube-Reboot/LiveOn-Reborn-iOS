@@ -10,16 +10,15 @@ import SwiftUI
 struct CoupleInformationView: View {
     @State private var showChangeNickNameAlert = false
     @State private var showChangeOfficialDayAlert = false
-    @State private var changeNickNameInput = "재헌"
     @State private var officialDate = Date.now
     var body: some View {
                 List {
-                    NavigationLink(destination: ChangeNickNameView(nickNameTemp: $changeNickNameInput)){
+                    NavigationLink(destination: ChangeNickNameView()){
                         HStack {
                         Text("내 이름")
                                 .font(.TextStyles.handWrittenBody)
                         Spacer()
-                            Text(changeNickNameInput)
+                            Text(MemberConfigService.singleton.profile.currentUserName)
                                 .font(.TextStyles.handWrittenCallout)
                                 .opacity(0.8)
                         }
@@ -33,7 +32,7 @@ struct CoupleInformationView: View {
                         Text("상대")
                                 .font(.TextStyles.handWrittenBody)
                         Spacer()
-                            Text("유진")
+                        Text(MemberConfigService.singleton.profile.partnerName)
                                 .font(.TextStyles.handWrittenCallout)
                                 .opacity(0.8)
                     }
@@ -46,7 +45,7 @@ struct CoupleInformationView: View {
                         Text("우리의 1일")
                                 .font(.TextStyles.handWrittenBody)
                         Spacer()
-                            Text(officialDate.toString(dateFormat: "YYYY년 M월 d일"))
+                            Text(MemberConfigService.singleton.profile.officialDate)
                                 .font(.TextStyles.handWrittenCallout)
                                 .opacity(0.8)
                         }
@@ -59,6 +58,11 @@ struct CoupleInformationView: View {
         .listRowBackground(Color.clear)
         .navigationTitle("커플정보")
         .navigationBarTitleDisplayMode(.inline)
+        .onAppear {
+            MemberConfigService.fetchMemberProfile {
+                    
+            }
+        }
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 NavigationLink(destination: SettingView()) {

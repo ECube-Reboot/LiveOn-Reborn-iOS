@@ -31,3 +31,7 @@ struct EditMemberProfileResponse: Codable {
     let officialDate: String
     let partnerName: String
 }
+
+struct EditNickNameRequest: Codable {
+    let nickName: String
+}
