@@ -8,11 +8,10 @@
 import SwiftUI
 
 struct GiftListView: View {
-
     // 테스트용 임시
-    @State var tempGotoMain = false
     @Binding var gotoMain: Bool
 //    @State var tempGotoMain = false
+
     @Environment(\.dismiss) var dismiss
 
     var body: some View {
@@ -45,7 +44,7 @@ struct GiftListView: View {
                 NavigationLink(destination: SendVoiceMailView()) {
                     CardWithStroke(cardName: "음성메세지", cardImage: "casetteIcon")
                 }
-                NavigationLink(destination: SendFlowerView(gotoMain: $tempGotoMain)) {
+                NavigationLink(destination: SendFlowerView(gotoMain: $gotoMain)) {
                     CardWithStroke(cardName: "꽃", cardImage: "flowerIcon")
                 }
 
