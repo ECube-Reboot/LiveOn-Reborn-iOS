@@ -13,11 +13,12 @@ struct SendFlowerView: View {
     @ObservedObject private var viewModel: FlowerViewModel = FlowerViewModel()
     @State private var showAlertforSend: Bool = false
     @State private var isValidate = false
-    @State private var letterText = ""
+    @State private var input: String?
     @State private var showLoading = false
     @State private var isSent = false
     @Binding var gotoMain: Bool
-    let flowerName = getRandomFlower()
+    private let flowerName = getRandomFlower()
+    private let placeHolder = "한 줄 편지를 써보세요!"
 
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -47,11 +48,11 @@ struct SendFlowerView: View {
                 } label: {
                     Text("선물하기")
                 }
-                .disabled(letterText.isEmpty == true)
+                .disabled(!isValidate)
                 .alert(isPresented: $showAlertforSend) {
                     Alert(title: Text("선물하기"), message: Text("선물은 하루에 하나만 보낼 수 있어요. 쪽지를 보낼까요?"), primaryButton: .cancel(Text("취소")), secondaryButton: Alert.Button.default(Text("보내기")) {
                         showLoading.toggle()
-                        viewModel.flowerPost(flowerName: flowerName, message: letterText){
+                        viewModel.flowerPost(flowerName: flowerName, message: input ?? ""){
                             print("전송완료!")
                             isSent.toggle()
                         }
@@ -82,10 +83,44 @@ struct SendFlowerView: View {
     }
 
     private func setLetter() -> some View {
-        TextEditor(text: $letterText)
-            .frame(width: UIScreen.main.bounds.width * 0.8, height: UIScreen.main.bounds.height * 0.25)
-            .background(Color.lightgray)
-            .cornerRadius(15)
+        VStack(alignment: .center) {
+            TextEditor(text: Binding($input, replacingNilWith: ""))
+                .padding()
+                .font(.TextStyles.handWrittenBody)
+                .foregroundColor(.textBodyColor)
+            if let input = input {
+                let limit = textLimit.flowerComment
+                Text("\(input.count )/\(textLimit.flowerComment)")
+                    .letterCountStyle()
+                    .padding()
+                    .onReceive(input.publisher.collect()) { _ in
+                        if input.count > limit {
+                            withAnimation() {
+                                self.input = String(input.prefix(limit))
+                            }
+                        }
+                        isValidate = true
+                    }
+            } else {
+                Text("0/\(textLimit.flowerComment)")
+                    .letterCountStyle()
+                    .onAppear {
+                        isValidate = false
+                    }
+            }
+        }
+        // MARK: 쪽지 크기&배경 설정
+        .frame(maxWidth: UIScreen.main.bounds.width*0.8, maxHeight: UIScreen.main.bounds.height*0.2)
+        .padding(24)
+        .background(Image("letterBackGround").resizable().shadow(color: Color(uiColor: .systemGray4), radius: 4, x: 1, y: 3))
+        .overlay {
+            Text(input ?? placeHolder)
+                .font(.TextStyles.handWrittenBody)
+                .padding(40)
+                .frame(maxWidth: .infinity,maxHeight: .infinity, alignment: .topLeading)
+                .foregroundColor(.textBodyColor)
+                .opacity(input == nil ? 0.6 : 0)
+        }
     }
 }
 
