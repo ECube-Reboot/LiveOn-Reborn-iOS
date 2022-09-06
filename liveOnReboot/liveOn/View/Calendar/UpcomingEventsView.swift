@@ -39,11 +39,7 @@ struct UpcomingEventsView: View {
         .padding(.vertical)
         .background(RoundedRectangle(cornerRadius: 15)
             .fill(Color.backgroundGray))
-    }
-}
-
-struct UpcomingEventsView_Previews: PreviewProvider {
-    static var previews: some View {
-        UpcomingEventsView(event: EventResponseList(upcomingEventDate: Date().toServerFormatEventDateString(date: "2020-20-20"), upcomingEventId: 1, upcomingEventMemo: "안녕", upcomingEventTitle: "하하하"))
+        .frame(maxHeight: UIScreen.main.bounds.width * 0.16)
+        .padding(.vertical)
     }
 }

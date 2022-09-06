@@ -19,6 +19,12 @@ extension Date {
         return dateToString(dateFormatter.date(from: date)!)
     }
     
+    public func stringDateToDateFormat(_ date: String) -> Date {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYY-MM-dd"
+        return dateFormatter.date(from: date)!
+    }
+    
     public func eventDateToString(_ format: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM/dd"
@@ -28,6 +34,7 @@ extension Date {
     public func monthEnglishToString(_ format: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMMM"
+        dateFormatter.locale = Locale(identifier: "en_US")
         return dateFormatter.string(from: format)
     }
     

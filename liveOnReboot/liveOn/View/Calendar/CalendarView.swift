@@ -133,7 +133,6 @@ struct CalendarView: View {
                     LazyVGrid(columns: columns, spacing: 0) {
                         ForEach(extractDate(currentDate: self.currentDate)) { calendarData in
                             NavigationLink(destination: CalendarGiftBox(date: calendarData.date)) {
-                                //CardView(value: calendarData)
                                 CardView(value: calendarData,
                                          hadEvent: checkEventDate(date: calendarData.date),
                                          giftType: checkGiftType(date: calendarData.date))
@@ -197,6 +196,9 @@ struct CalendarView: View {
             }
             // MARK: - PopupDate와 CalendarView 사이에 블러 효과
             .opacity(isClicked ? 0.1 : 1 )
+            .ignoresSafeArea(.all, edges: .bottom)
+            .navigationToBack(dismiss)
+            .navigationBarTitleDisplayMode(.inline)
         }
         // MARK: - 데이터 가져오는 부분
         .task {
@@ -215,8 +217,7 @@ struct CalendarView: View {
                     .font(.body)
             }
         }
-        .ignoresSafeArea(.all, edges: .bottom)
-        .navigationToBack(dismiss)
+
         // MARK: - PopUpView
         if showDatePicker {
             PopupDate(popupDate: self.currentDate,
@@ -229,7 +230,7 @@ struct CalendarView: View {
     }
     
     // MARK: - 기념일이 없는 경우
-    private var noEvent: some View {
+    var noEvent: some View {
         HStack {
             ZStack {
                 RoundedRectangle(cornerRadius: 15)
