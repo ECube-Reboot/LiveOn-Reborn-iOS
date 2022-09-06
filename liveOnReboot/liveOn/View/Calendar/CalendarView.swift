@@ -133,7 +133,6 @@ struct CalendarView: View {
                     LazyVGrid(columns: columns, spacing: 0) {
                         ForEach(extractDate(currentDate: self.currentDate)) { calendarData in
                             NavigationLink(destination: CalendarGiftBox(date: calendarData.date)) {
-                                //CardView(value: calendarData)
                                 CardView(value: calendarData,
                                          hadEvent: checkEventDate(date: calendarData.date),
                                          giftType: checkGiftType(date: calendarData.date))
@@ -229,7 +228,7 @@ struct CalendarView: View {
     }
     
     // MARK: - 기념일이 없는 경우
-    private var noEvent: some View {
+    var noEvent: some View {
         HStack {
             ZStack {
                 RoundedRectangle(cornerRadius: 15)
