@@ -6,15 +6,54 @@
 //
 
 import SwiftUI
+import Moya
 
-struct LetterEndPoint: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+extension LetterServerCommunication: TargetType, AccessTokenAuthorizable {
+    public var baseURL: URL {
+        return URL(string: GeneralAPI.baseURL)!
     }
-}
+    
+    var path: String {
+        switch self {
+            case .getNotes:
+                return "/api/v1/gifts/notes"
+            case .postNote:
+                return "/api/v1/gifts/notes"
+        }
+    }
+    
+    var method: Moya.Method {
+        switch self {
+            case .getNotes:
+                return .get
+            case .postNote:
+                return .post
+        }
+    }
+    
+    var task: Task {
+        switch self {
+            case .getNotes:
+                return .requestPlain
+            case .postNote(let content):
+                return .requestJSONEncodable(content)
+        }
+    }
+    
+    var authorizationType: AuthorizationType? {
+        switch self {
 
-struct LetterEndPoint_Previews: PreviewProvider {
-    static var previews: some View {
-        LetterEndPoint()
+        default:
+            return .bearer
+        }
+    }
+
+    
+    var headers: [String : String]? {
+        switch self {
+            default:
+                return ["Content-Type": "application/json",
+                        "Authorization": "Bearer " + GeneralAPI.token]
+        }
     }
 }

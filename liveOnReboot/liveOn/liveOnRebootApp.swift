@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct liveOnRebootApp: App {
+
+  @State var tempGotoMain = false
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            GiftBoxView()
         }
     }
 }

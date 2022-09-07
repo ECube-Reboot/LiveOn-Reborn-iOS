@@ -2,19 +2,24 @@
 //  Util.swift
 //  liveOnReboot
 //
-//  Created by Keum MinSeok on 2022/07/09.
+//  Created by Jisu Jang on 2022/07/17.
 //
-
+import Foundation
 import SwiftUI
 
-struct Util: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
+struct TextFieldLimitModifer: ViewModifier {
+  @Binding var value: String
+  var length: Int
+  func body(content: Content) -> some View {
+    content
+      .onReceive(value.publisher.collect()) {
+        value = String($0.prefix(length))
+      }
+  }
 }
 
-struct Util_Previews: PreviewProvider {
-    static var previews: some View {
-        Util()
-    }
+extension View {
+  func limitInputLength(value: Binding<String>, length: Int) -> some View {
+    self.modifier(TextFieldLimitModifer(value: value, length: length))
+  }
 }
