@@ -4,12 +4,17 @@
 //
 //  Created by Keum MinSeok on 2022/07/09.
 //
+
 import SwiftUI
-import Moya
 
-let flowerMoyaService = MoyaProvider<FlowerServerCommunication>(plugins: [NetworkLoggerPlugin()])
+struct FlowerService: View {
+    var body: some View {
+        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+    }
+}
 
-enum FlowerServerCommunication {
-    case getFlower
-    case postFlower(content: FlowerPostRequest)
+struct FlowerService_Previews: PreviewProvider {
+    static var previews: some View {
+        FlowerService()
+    }
 }

@@ -5,15 +5,16 @@
 //  Created by Keum MinSeok on 2022/07/09.
 //
 
-import Foundation
 import SwiftUI
-import Moya
 
-let voicemailMoyaService = MoyaProvider<VoicemailServerCommunication>(plugins: [NetworkLoggerPlugin()])
+struct VoiceMailService: View {
+    var body: some View {
+        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+    }
+}
 
-enum VoicemailServerCommunication {
-    case login(param: LoginRequestDTO)
-    case voicemailPost(title: String, voicemail: Recording, voicemailDuration: String)
-    case voicemailListGet
-    case voicemailGet(id: Int)
+struct VoiceMailService_Previews: PreviewProvider {
+    static var previews: some View {
+        VoiceMailService()
+    }
 }

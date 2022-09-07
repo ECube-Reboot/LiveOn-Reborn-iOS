@@ -8,12 +8,10 @@
 import SwiftUI
 
 struct ChangeNickNameView: View {
-    @State private var input: String = MemberConfigService.singleton.profile.currentUserName
+    @Binding var nickNameTemp: String
+    @State private var input: String = "재헌"
     @State private var showCompletionAlert = false
     @Environment(\.dismiss) private var dismiss
-    init() {
-        self.input = MemberConfigService.singleton.profile.currentUserName
-    }
     var body: some View {
         VStack(alignment: .leading){
             Text("이름")
@@ -32,23 +30,14 @@ struct ChangeNickNameView: View {
         .toolbar(content: {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button("저장"){
-                    MemberConfigService.editNickName(currentNickName: input) {
-                        showCompletionAlert.toggle()
-                    }
+                    nickNameTemp = input
+                    showCompletionAlert.toggle()
                 }
-                .disabled(MemberConfigService.singleton.profile.currentUserName == input)
+                .disabled(nickNameTemp == input)
             }
         })
         .alert(isPresented: $showCompletionAlert) {
-            Alert(title: Text("수정 완료"),
-                  message: Text("이제 \(input)님으로 불러드릴게요!"),
-                  dismissButton: .default(Text("확인")) {
-                MemberConfigService.fetchMemberProfile {
-                    dismiss()
-                }
-                
-            }
-            )
+            Alert(title: Text("수정 완료"), message: Text("이제 \(nickNameTemp)님으로 불러드릴게요!"), dismissButton: .default(Text("확인")))
         }
         .navigationToBack(dismiss)
         .navigationTitle("이름 수정")

@@ -5,29 +5,16 @@
 //  Created by Keum MinSeok on 2022/07/09.
 //
 
-import Foundation
+import SwiftUI
 
-// TODO: 이게 필요할지 필요 없을지 아직 모르겠어서 일단 남겨둠요
-struct VoicemailListGetResponse: Codable {
-    let createdAt: String
-    let currentUser: Bool
-    let giftVoiceMailDuration: String
-    let giftVoiceMailId: Int
-    let title: String
-    let userNickName: String
+struct VoiceMailDTO: View {
+    var body: some View {
+        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+    }
 }
 
-
-struct VoicemailGetResponse: Codable {
-    let createdAt: String
-    let currentUser: Bool
-    let giftVoiceMailDuration: String
-    let title: String
-    let userNickName: String
-    let voiceMail: String
-    let voiceMailId: Int
-}
-
-struct VoicemailPostResponse: Codable {
-    
+struct VoiceMailDTO_Previews: PreviewProvider {
+    static var previews: some View {
+        VoiceMailDTO()
+    }
 }

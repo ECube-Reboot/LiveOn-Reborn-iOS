@@ -17,13 +17,4 @@ struct Voicemail: Codable {
     var voiceMail: String
     var voiceMailId: Int
 
-//    init(getResopnse: VoicemailGetResponse) {
-//        createdAt = getResopnse.createdAt
-//        giftVoiceMailDuration = getResopnse.giftVoiceMailDuration
-//        title = getResopnse.title
-//        voiceMailIconName = "cassetteIcon0\(Int.random(in: 1..<5))"
-//        userNickName = getResopnse.userNickName
-//        voiceMail = getResopnse.voiceMail
-//        voiceMailId = getResopnse.voiceMailId
-//    }
 }
