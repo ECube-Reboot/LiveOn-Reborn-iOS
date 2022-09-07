@@ -85,7 +85,6 @@ struct SendPictureView: View {
 
                                     imagePost {
                                         print("전송완료!")
-                                        showLoading.toggle()
                                         isSent.toggle()
                                     }
                                 })
@@ -130,13 +129,5 @@ struct SendPictureView: View {
                 print("========= 통신 자체가 실패했습니다. ========")
             }
         }
-    }
-}
-
-struct LoadingView: View {
-    var body: some View {
-        Text("선물 보내는 중...")
-            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-            .background(.thickMaterial)
     }
 }
