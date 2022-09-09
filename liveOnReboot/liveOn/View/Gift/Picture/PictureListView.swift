@@ -41,7 +41,18 @@ struct PictureListView: View {
                             isLoaded.toggle()
                         }
                     }
-                } // ScrollView
+                }
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        NavigationLink(destination: SendPictureView(gotoMain: .constant(false))) {
+                            Image("addButton")
+                                .resizable()
+                                .frame(width: 24, height: 24, alignment: .center)
+                                .aspectRatio(contentMode: .fit)
+                        }
+                    }
+                }
+                // ScrollView
                 .blur(radius: isTapped ? 6 : 0)
                 .background(Color.lightgray)
             } else if viewModel.loadedImageList.isEmpty {
