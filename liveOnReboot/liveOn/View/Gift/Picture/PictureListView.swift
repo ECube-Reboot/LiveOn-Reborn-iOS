@@ -120,7 +120,10 @@ struct PhotoCard: View {
 
             Text(comment)
                 .font(.TextStyles.handWrittenCallout)
+                .foregroundColor(Color.textBodyColor)
+                .frame(width: UIScreen.main.bounds.width * 0.3)
                 .lineLimit(1)
+                .padding(.bottom, 5)
         }
         .background(RoundedRectangle(cornerRadius: 6).fill(.white).border(Color.lightgray, width: 1.0).shadow(color: .gray.opacity(0.2), radius: 10, x: 0, y: 0))
         .frame(height: 250)

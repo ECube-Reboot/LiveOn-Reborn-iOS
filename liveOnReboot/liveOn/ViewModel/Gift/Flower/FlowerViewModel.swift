@@ -36,11 +36,10 @@ class FlowerViewModel: ObservableObject {
                     self.mapListData(listData: data)
                     print("저장된 꽃 데이터는 다음과 같습니다 \(self.flowerList)")
                     if self.flowerList.count > 4 {
-
                         var tempArray: [FlowerGetResponse] = []
                         var i = 0
                         while i < 4 {
-                            tempArray.append(self.flowerList.removeFirst())
+                            tempArray.append(self.flowerList[i])
                             i += 1
                         }
                         self.flowerListExtracted = tempArray

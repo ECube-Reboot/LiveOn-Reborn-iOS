@@ -55,7 +55,16 @@ struct FlowerListView: View {
                 
             })
         }
-
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                NavigationLink(destination: SendFlowerView(gotoMain: .constant(false))) {
+                    Image("addButton")
+                        .resizable()
+                        .frame(width: 24, height: 24, alignment: .center)
+                        .aspectRatio(contentMode: .fit)
+                }
+            }
+        }
         .navigationToBack(dismiss)
         .navigationTitle("꽃")
         .navigationBarTitleDisplayMode(.inline)
@@ -88,7 +97,6 @@ struct FlowerListView: View {
             LazyVGrid(columns: columns, spacing: -40) {
                 if viewModel.flowerList.count > 4 {
                     ForEach(0..<viewModel.flowerListExtracted.count, id: \.self) { index in
-                        // TODO: Server
                         FlowerPopUp(content: viewModel.flowerListExtracted[index].giftFlowerName)
                             .onTapGesture {
                                 imageName = viewModel.flowerListExtracted[index].giftFlowerName
@@ -115,16 +123,6 @@ struct FlowerListView: View {
             .padding()
         }
     }
-
-//    private func extractFourFlowers() -> [FlowerGetResponse]{
-//        var tempArray: [FlowerGetResponse] = []
-//        var i = 0
-//        while i < 3 {
-//            tempArray.append(viewModel.flowerList.removeFirst())
-//            i += 1
-//        }
-//        return tempArray
-//    }
 }
 
 struct FlowerListView_Previews: PreviewProvider {
