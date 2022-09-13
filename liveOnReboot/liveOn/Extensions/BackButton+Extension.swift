@@ -16,8 +16,10 @@ extension View {
                     Button(action: {
                         dismissAction()
                     }) {
-                        Image(systemName: "chevron.left")
-                            .font(.system(size: 16))
+                        Image("backChevron")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 18, height: 18, alignment: .center)
                             .frame(width: 60, height: 44, alignment: .leading)
                             .foregroundColor(.textBodyColor)
                     }
