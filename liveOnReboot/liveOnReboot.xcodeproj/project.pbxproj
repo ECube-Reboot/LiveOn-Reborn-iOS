@@ -1258,7 +1258,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "liveOnReboot-Info.plist";
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "마이크 사용 권한";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "음성메세지 선물을 남기기 위해, 마이크 사용 권한이 필요해요.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1293,7 +1293,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "liveOnReboot-Info.plist";
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "마이크 사용 권한";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "음성메세지 선물을 남기기 위해, 마이크 사용 권한이 필요해요.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

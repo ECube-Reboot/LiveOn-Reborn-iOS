@@ -8,7 +8,7 @@
 import Foundation
 
 struct GeneralAPI {
-    static let baseURL = "http://13.124.90.96:8080"
+    static let baseURL = "https://prod.liveon-api.shop"
     static let token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiLsnqztl4wiLCJyb2xlIjoiVVNFUiIsImV4cCI6MTY2NDQzODA1MCwiaWF0IjoxNjYxODQ2MDUwfQ.SDIg3XmZsNjiqOohjrP98hjvJ1eMYORgKTcVwizB7NA"
     static var prodtoken = KeyChain.read(key: "accessToken") ?? ""
 }

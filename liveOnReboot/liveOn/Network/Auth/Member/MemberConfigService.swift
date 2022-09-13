@@ -107,4 +107,19 @@ class MemberConfigService: ObservableObject {
             }
         }
     }
+    
+    static func validateCoupleMatching(completion: @escaping () -> ())->Bool {
+        var isMatched = false
+        singleton.memberConfigProvider.request(.validateCoupleMatching) { response in
+            switch response {
+                case .success:
+                    isMatched = true
+                    completion()
+                    break
+                case .failure:
+                    isMatched = false
+            }
+        }
+        return isMatched
+    }
 }

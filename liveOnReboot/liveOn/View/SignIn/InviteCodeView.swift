@@ -16,10 +16,12 @@ struct InviteCodeView: View {
     @State private var showShareSheet = false
     @State var goNext: Bool = false
     @State private var inviteCodeToShow = ""
+    @State private var isMatched = false
     var body: some View {
+        if !isMatched {
         SignInLayoutView(title: SignInLiteral.inviteCodeTitle, description: SignInLiteral.inviteCodeDescription) {
             VStack {
-                
+                NavigationLink("", destination: GiftBoxView(), isActive: $isMatched)
                 //TODO: 코드 GET API 연동
                 Text( UserDefaults.standard.string(forKey: "inviteCode") ?? "")
                     .font(.title)
@@ -54,6 +56,7 @@ struct InviteCodeView: View {
             .fullScreenCover(isPresented: $showEnterCodeSheet) {
                 EnterCodeView(userData: userData)
             }
+                
             }
             .frame(maxWidth: .infinity)
 //            .toolbar {
@@ -68,7 +71,15 @@ struct InviteCodeView: View {
             if UserDefaults.standard.string(forKey: "inviteCode") == nil {
                 await MemberConfigService.getInviteCode()
             }
+             MemberConfigService.validateCoupleMatching {
+                self.isMatched = true
+                UserStatus.updateUserStatus(status: UserStatus.allSettingFinished)
+            }
         }
+        } else {
+            GiftBoxView()
+        }
+        
     }
     
     var copyButton: some View {
