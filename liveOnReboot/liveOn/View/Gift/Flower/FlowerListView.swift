@@ -11,6 +11,7 @@ struct FlowerListView: View {
 
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject private var viewModel: FlowerViewModel
+    @State private var showCreateView = false
     @State private var showFlowerPopUp = false
     @State private var isLoaded = false
     @State private var selectedCardIndex = 0
@@ -58,6 +59,16 @@ struct FlowerListView: View {
 
         .navigationToBack(dismiss)
         .navigationTitle("꽃")
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                NavigationLink(destination: SendFlowerView(gotoMain: $showCreateView), isActive: $showCreateView) {
+                    Image("addButton")
+                        .resizable()
+                        .frame(width: 24, height: 24, alignment: .center)
+                        .aspectRatio(contentMode: .fit)
+                }
+            }
+        }
         .navigationBarTitleDisplayMode(.inline)
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
         .background(Color.background)
