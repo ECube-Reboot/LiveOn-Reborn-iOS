@@ -222,6 +222,7 @@ extension VoicemailViewModel {
                 print(err.localizedDescription)
             }
         }
+        voicemailList = []
     }
     
     func voicemailGet(id: Int) {
