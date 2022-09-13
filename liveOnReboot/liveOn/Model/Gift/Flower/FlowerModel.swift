@@ -8,25 +8,6 @@
 import Foundation
 import SwiftUI
 
-//class FlowerGift: Identifiable, ObservableObject {
-//
-//    @Published var flower: Flower?
-//
-//    let id: UUID
-//    let createdDate: String
-//    let writer : String
-//    var message : String
-//
-//    init(flower: Flower, createdDate: String, writer: String, message: String) {
-//        id = UUID()
-//        self.flower = flower
-//        self.writer = writer
-//        self.createdDate = createdDate
-//        // DateToString 함수 필요
-//        self.message = message
-//    }
-//}
-
 struct FlowerPopUp: View {
     let content : String
     var body: some View {
@@ -54,24 +35,16 @@ struct FlowerPopUpView: View {
                     }
                 } label: {
                     VStack(spacing: 4) {
-                        // TODO: Server
                         Image(imageName)
                             .resizable()
                             .rotationEffect(.degrees(90))
                             .padding()
                             .frame(width: 300, height: 260, alignment: .center)
 
-                        // TODO: 꽃 이름이 한글로 뜰 수 있게 수정할 것
                         Text(imageName)
                             .font(.title3)
                             .foregroundColor(.textBodyColor)
                             .fontWeight(.bold)
-
-//                        Text(comment)
-//                            .font(.subheadline)
-//                            .foregroundColor(.textBodyColor)
-//                            .opacity(0.9)
-//                            .padding(.bottom, 32)
 
                         setFlowerMessage(comment: comment)
 
@@ -84,17 +57,14 @@ struct FlowerPopUpView: View {
     private func setFlowerMessage(comment: String) -> some View {
         ZStack {
             VStack(alignment: .center, spacing: 4) {
-                // TODO: Server
                 Text(comment)
                     .padding()
-                // TODO: Server
-                Text("20220613")
+                Text("날짜 정보")
 
             }
             .frame(width: 280, height: 240, alignment: .center)
             .foregroundColor(.textBodyColor)
             .background(
-                // TODO: Server
                 Image("letter_yellow")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
@@ -102,6 +72,7 @@ struct FlowerPopUpView: View {
         }
     }
 }
+
 //#if DEBUG
 //let flowerList = FlowerGift.dummyData()
 //#endif

@@ -14,10 +14,12 @@ struct SendFlowerView: View {
     @State private var showAlertforSend: Bool = false
     @State private var isValidate = false
     @State private var input: String?
+    @State private var textFieldInput: String = ""
+
     @State private var showLoading = false
     @State private var isSent = false
     @Binding var gotoMain: Bool
-    private let flowerName = getRandomFlower()
+    @State private var flowerName = getRandomFlower()
     private let placeHolder = "한 줄 편지를 써보세요!"
 
     var body: some View {
@@ -107,11 +109,12 @@ struct SendFlowerView: View {
                     .onAppear {
                         isValidate = false
                     }
+                 
             }
         }
         // MARK: 쪽지 크기&배경 설정
-        .frame(maxWidth: UIScreen.main.bounds.width*0.8, maxHeight: UIScreen.main.bounds.height*0.2)
         .padding(24)
+        .frame(maxWidth: UIScreen.main.bounds.width*0.85, maxHeight: UIScreen.main.bounds.height*0.5)
         .background(Image("letterBackGround").resizable().shadow(color: Color(uiColor: .systemGray4), radius: 4, x: 1, y: 3))
         .overlay {
             Text(input ?? placeHolder)
