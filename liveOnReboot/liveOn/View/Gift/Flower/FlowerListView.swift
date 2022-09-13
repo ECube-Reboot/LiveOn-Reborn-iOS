@@ -55,7 +55,16 @@ struct FlowerListView: View {
                 
             })
         }
-
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                NavigationLink(destination: SendFlowerView(gotoMain: .constant(false))) {
+                    Image("addButton")
+                        .resizable()
+                        .frame(width: 24, height: 24, alignment: .center)
+                        .aspectRatio(contentMode: .fit)
+                }
+            }
+        }
         .navigationToBack(dismiss)
         .navigationTitle("꽃")
         .navigationBarTitleDisplayMode(.inline)

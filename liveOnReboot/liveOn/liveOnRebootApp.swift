@@ -13,34 +13,39 @@ struct liveOnRebootApp: App {
     
     var body: some Scene {
         WindowGroup {
-            if networkManager.isConnected {
-                NavigationView {
-                                  switch UserStatus.currentStatus() {
-                                      case 0:
-                    //                          .nonMember:
-                                          GettingStartView()
-                                      case 1:
-                    //                          .appleSignInFinished:
-                                          InputNickNameView()
-                                      case 2:
-                    //                          .informationEntered:
-                                          InviteCodeView(userData: SignInUser())
-                                      case 3:
-                    //                          .allSettingFinished:
-                                          GiftBoxView()
-                                      default :
-                                          GettingStartView()
-                                  }
-                    GiftBoxView()
-                }
-            } else {
-                Text("네트워크에 연결되지 않았어요 ㅠ")
-                    .foregroundColor(.textBodyColor)
-                    .opacity(0.6)
-                Button("재연결"){
-                    networkManager.startMonitoring()
-                }
-            }
+//            NavigationView {
+////                PictureListView()
+////            SendFlowerView(gotoMain: .constant(false))
+//            }
+            GiftBoxView()
+//            if networkManager.isConnected {
+//                NavigationView {
+//                                  switch UserStatus.currentStatus() {
+//                                      case 0:
+//                    //                          .nonMember:
+//                                          GettingStartView()
+//                                      case 1:
+//                    //                          .appleSignInFinished:
+//                                          InputNickNameView()
+//                                      case 2:
+//                    //                          .informationEntered:
+//                                          InviteCodeView(userData: SignInUser())
+//                                      case 3:
+//                    //                          .allSettingFinished:
+//                                          GiftBoxView()
+//                                      default :
+//                                          GettingStartView()
+//                                  }
+//                    GiftBoxView()
+//                }
+//            } else {
+//                Text("네트워크에 연결되지 않았어요 ㅠ")
+//                    .foregroundColor(.textBodyColor)
+//                    .opacity(0.6)
+//                Button("재연결"){
+//                    networkManager.startMonitoring()
+//                }
+//            }
         }
     }
     init() {
