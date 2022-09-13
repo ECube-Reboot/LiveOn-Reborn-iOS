@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct GiftBoxView: View {
-    @State var gotoMain = false
-    @State var showAlert = false
+    @State private var gotoMain = false
+    @State private var showAlert = false
     var body: some View {
             HStack(alignment: .top, spacing: 12) {
                 VStack (alignment: .center, spacing: 12) {

@@ -10,10 +10,11 @@ import SwiftUI
 struct VoiceMailView: View {
     
     @ObservedObject private var voicemailViewmodel: VoicemailViewModel = VoicemailViewModel.voicemailViewModel
-    
+    @Environment(\.dismiss) private var dismiss
     @State var isShowPopUp: Bool = false
     @State var showCreateView: Bool = false
     @State var isLoaded: Bool = false
+    @State private var showAlert = false
     
     @State private var voicemailIndex: Int = 0
     
@@ -63,7 +64,9 @@ struct VoiceMailView: View {
                         .background(.regularMaterial)
                         .padding(16)
                     }
+                    NavigationLink("",destination: SendVoicemailView(gotoMain: $showCreateView), isActive: $showCreateView)
                 }
+                
                 .overlay {
                     if isShowPopUp {
                         VoicemailPopUpView()
@@ -81,18 +84,30 @@ struct VoiceMailView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .navigationTitle("음성메세지")
         .navigationBarTitleDisplayMode(.inline)
+        .navigationToBack(dismiss)
         .onTapGesture {
             isShowPopUp.toggle()
         }
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                NavigationLink(destination: SendVoicemailView(gotoMain: $showCreateView), isActive: $showCreateView) {
+                Button{
+                    if GiftManager.isExists {
+                        showAlert = true
+                    } else {
+                        showCreateView = true
+                    }
+                } label: {
                     Image("addButton")
                         .resizable()
-                        .frame(width: 24, height: 24, alignment: .center)
                         .aspectRatio(contentMode: .fit)
+                        .frame(width: 24, height: 24, alignment: .center)
                 }
             }
+        }
+        .alert("선물 일일한도 초과", isPresented: $showAlert) {
+            Button("확인", role: .cancel) {  }
+        } message: {
+            Text("선물은 하루에 하나씩만 보낼 수 있어요ㅜㅜ.")
         }
         .task {
             await voicemailViewmodel.voicemailListGet {
