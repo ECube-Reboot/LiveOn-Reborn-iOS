@@ -61,6 +61,9 @@
 		77B5D45C28C7D2300045F0BC /* NavigationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B5D45B28C7D2300045F0BC /* NavigationController+Extension.swift */; };
 		77EB4485289FC4200006F3CB /* SendLetterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93DEA28287ACE8D0045508C /* SendLetterView.swift */; };
 		77EB4489289FD6C00006F3CB /* LetterListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77EB4488289FD6C00006F3CB /* LetterListView.swift */; };
+		77F0582228D0611B00E6EC3B /* GiftsMainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F0582128D0611B00E6EC3B /* GiftsMainService.swift */; };
+		77F0582428D0617900E6EC3B /* GiftsMainDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F0582328D0617900E6EC3B /* GiftsMainDTO.swift */; };
+		77F0582628D061B600E6EC3B /* GiftsMainEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F0582528D061B600E6EC3B /* GiftsMainEndPoint.swift */; };
 		77F6F128288FCF9700263BBB /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F6F127288FCF9700263BBB /* Date+Extension.swift */; };
 		77F6F12E288FD5E700263BBB /* textLimit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F6F12D288FD5E700263BBB /* textLimit.swift */; };
 		77F6F19328900C5700263BBB /* placeHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F6F19228900C5700263BBB /* placeHolder.swift */; };
@@ -177,6 +180,9 @@
 		77B5D45928C7C8830045F0BC /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		77B5D45B28C7D2300045F0BC /* NavigationController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NavigationController+Extension.swift"; sourceTree = "<group>"; };
 		77EB4488289FD6C00006F3CB /* LetterListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterListView.swift; sourceTree = "<group>"; };
+		77F0582128D0611B00E6EC3B /* GiftsMainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftsMainService.swift; sourceTree = "<group>"; };
+		77F0582328D0617900E6EC3B /* GiftsMainDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftsMainDTO.swift; sourceTree = "<group>"; };
+		77F0582528D061B600E6EC3B /* GiftsMainEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftsMainEndPoint.swift; sourceTree = "<group>"; };
 		77F6F127288FCF9700263BBB /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		77F6F12D288FD5E700263BBB /* textLimit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = textLimit.swift; sourceTree = "<group>"; };
 		77F6F19228900C5700263BBB /* placeHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = placeHolder.swift; sourceTree = "<group>"; };
@@ -436,6 +442,9 @@
 				C93A4BE22879279100A277AC /* Letter */,
 				C93A4BE12879278900A277AC /* Picture */,
 				C93A4BE02879278300A277AC /* VoiceMail */,
+				77F0582128D0611B00E6EC3B /* GiftsMainService.swift */,
+				77F0582328D0617900E6EC3B /* GiftsMainDTO.swift */,
+				77F0582528D061B600E6EC3B /* GiftsMainEndPoint.swift */,
 			);
 			path = Gift;
 			sourceTree = "<group>";
@@ -1017,6 +1026,7 @@
 				C92E31EB28795BB0000A315C /* (null) in Sources */,
 				773185C3287C56FE00120FF9 /* Color+Extension.swift in Sources */,
 				3EEF02D3287AFA920010CA03 /* SingleVoicemailView.swift in Sources */,
+				77F0582228D0611B00E6EC3B /* GiftsMainService.swift in Sources */,
 				C92E320728795C9A000A315C /* LetterDTO.swift in Sources */,
 				7714BD8A28C721E8009FA24C /* CalendarDayDTO.swift in Sources */,
 				772ED6F128B08D8E00372993 /* GettingStartView.swift in Sources */,
@@ -1057,6 +1067,7 @@
 				772ED6F528B08E1D00372993 /* AppleUser.swift in Sources */,
 				A932C47428859FE600803302 /* PictureErrorHandling.swift in Sources */,
 				C92E31FB28795C54000A315C /* Util.swift in Sources */,
+				77F0582428D0617900E6EC3B /* GiftsMainDTO.swift in Sources */,
 				77651D1028B0AD3500994C15 /* InputOfficialDateView.swift in Sources */,
 				77EB4485289FC4200006F3CB /* SendLetterView.swift in Sources */,
 				773185BB287C4A9F00120FF9 /* Font+Extension.swift in Sources */,
@@ -1066,6 +1077,7 @@
 				C92E320D28795CDD000A315C /* FlowerEndPoint.swift in Sources */,
 				C92E31F728795C36000A315C /* NetworkViewModel.swift in Sources */,
 				C92E31F328795C21000A315C /* PictureViewModel.swift in Sources */,
+				77F0582628D061B600E6EC3B /* GiftsMainEndPoint.swift in Sources */,
 				775F6F0128C6D3430095C5AC /* CalendarView.swift in Sources */,
 				C92E320B28795CCB000A315C /* VoiceMailDTO.swift in Sources */,
 				775F6F0228C6D4C80095C5AC /* PopupDate.swift in Sources */,
