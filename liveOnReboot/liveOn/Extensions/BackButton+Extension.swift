@@ -18,7 +18,8 @@ extension View {
                     }) {
                         Image(systemName: "chevron.left")
                             .font(.system(size: 16))
-                            .foregroundColor(.black)
+                            .frame(width: 60, height: 44, alignment: .leading)
+                            .foregroundColor(.textBodyColor)
                     }
                 }
             }
