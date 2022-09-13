@@ -9,26 +9,34 @@ import SwiftUI
 
 struct GiftBoxView: View {
     @State var gotoMain = false
+    @State var showAlert = false
     var body: some View {
-        NavigationView {
-
             HStack(alignment: .top, spacing: 12) {
                 VStack (alignment: .center, spacing: 12) {
                     // MARK: 상단 바
                     // 커플 정보 라벨과 선물 제작 버튼
                     HStack {
-                        // TODO: 라이트모드일때 CoupleInfoLabel에 하이라이트 되는 현상 없애기
                         NavigationLink(destination: CoupleInformationView()){
                             CoupleInfoLabel()}
-
                         Spacer()
-
-                        NavigationLink(destination: GiftListView(gotoMain: $gotoMain), isActive: $gotoMain) {
+                        Button{
+                            if !GiftManager.isExists {
+                                showAlert = true
+                            } else {
+                                gotoMain = true
+                            }
+                        } label: {
                             Image("addButton")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 34, height: 34, alignment: .center)
                         }
+                        .alert("선물 일일한도 초과", isPresented: $showAlert) {
+                            Button("확인", role: .cancel) {  }
+                        } message: {
+                            Text("선물은 하루에 하나씩만 보낼 수 있어요ㅜㅜ.")
+                        }
+                        NavigationLink("",destination: GiftListView(gotoMain: $gotoMain), isActive: $gotoMain)
                     }
                     .padding(.bottom, 24)
                     
@@ -37,7 +45,6 @@ struct GiftBoxView: View {
                     
                     // MARK: 보관함 이동 버튼 모음
                     VStack(alignment: .center) {
-                        
                         // 쪽지, 사진, 음성 메시지, 꽃 보관함 이동 버튼
                         LetterAndPictureLinkView()
                             .padding(.bottom, 12)
@@ -45,16 +52,16 @@ struct GiftBoxView: View {
                         
                         Spacer()
                     } // VStack
-                    
                 } // VStack
                 .padding(.horizontal)
                 .foregroundColor(.textBodyColor)
-                
             } // HStack
             .navigationBarTitleDisplayMode(.inline)
             .navigationTitle("")
-        } // NavigationView
         .navigationBarHidden(true)
+        .task {
+            GiftManager.singleton.isGiftExists()
+        }
     } // body
 }
 
