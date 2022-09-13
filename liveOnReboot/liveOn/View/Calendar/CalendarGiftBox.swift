@@ -10,6 +10,7 @@ import SwiftUI
 struct CalendarGiftBox: View {
     @State var date: Date
     @State private var isLoaded: Bool = false
+    @Environment(\.dismiss) private var dismiss
     private let responseList = CalendarViewModel.viewModel.boxList
     var body: some View {
         VStack(alignment: .center, spacing: 0) {
@@ -65,6 +66,7 @@ struct CalendarGiftBox: View {
                     .navigationBarTitleDisplayMode(.inline)
             }
         }
+        .navigationToBack(dismiss)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .padding(.horizontal, 20)
         .navigationBarTitleDisplayMode(.inline)
