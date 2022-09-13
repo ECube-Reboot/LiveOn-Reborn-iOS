@@ -13,6 +13,4 @@ let calendarMainMoyaService = MoyaProvider<CalendarMainServerCommunication>(plug
 enum CalendarMainServerCommunication {
     case getCalendarMain(calendarRequest: String)
     case postCalendarMain(content: CalendarMainPostRequest)
-    
-    case getCalendarDay(calendarRequest: String)
 }

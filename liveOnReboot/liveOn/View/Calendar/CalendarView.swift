@@ -133,6 +133,7 @@ struct CalendarView: View {
                     LazyVGrid(columns: columns, spacing: 0) {
                         ForEach(extractDate(currentDate: self.currentDate)) { calendarData in
                             NavigationLink(destination: CalendarGiftBox(date: calendarData.date)) {
+                                //CardView(value: calendarData)
                                 CardView(value: calendarData,
                                          hadEvent: checkEventDate(date: calendarData.date),
                                          giftType: checkGiftType(date: calendarData.date))
@@ -196,9 +197,6 @@ struct CalendarView: View {
             }
             // MARK: - PopupDate와 CalendarView 사이에 블러 효과
             .opacity(isClicked ? 0.1 : 1 )
-            .ignoresSafeArea(.all, edges: .bottom)
-            .navigationToBack(dismiss)
-            .navigationBarTitleDisplayMode(.inline)
         }
         // MARK: - 데이터 가져오는 부분
         .task {
@@ -206,32 +204,32 @@ struct CalendarView: View {
                 isLoaded = true
             }
         }
-
-//        .toolbar {
+        .toolbar {
             // MARK: - 메인 달력 날짜 고르는 PopupDate Button
-//            Button {
-//               showDatePicker.toggle()
-//                isClicked.toggle()
-//            } label: {
-//                Image(systemName: "calendar")
-//                    .foregroundColor(.burgundy)
-//                    .font(.body)
-//            }
-//        }
-
+            Button {
+                showDatePicker.toggle()
+                isClicked.toggle()
+            } label: {
+                Image(systemName: "calendar")
+                    .foregroundColor(.burgundy)
+                    .font(.body)
+            }
+        }
+        .ignoresSafeArea(.all, edges: .bottom)
+        .navigationToBack(dismiss)
         // MARK: - PopUpView
-//        if showDatePicker {
-//            PopupDate(popupDate: self.currentDate,
-//                      currentDate: $currentDate,
-//                      showDatePicker: $showDatePicker,
-//                      popUpBoolean: $showDatePicker,
-//                      isClicked: $isClicked)
-//        }
+        if showDatePicker {
+            PopupDate(popupDate: self.currentDate,
+                      currentDate: $currentDate,
+                      showDatePicker: $showDatePicker,
+                      popUpBoolean: $showDatePicker,
+                      isClicked: $isClicked)
+        }
         
     }
     
     // MARK: - 기념일이 없는 경우
-    var noEvent: some View {
+    private var noEvent: some View {
         HStack {
             ZStack {
                 RoundedRectangle(cornerRadius: 15)

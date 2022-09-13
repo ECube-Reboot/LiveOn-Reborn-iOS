@@ -8,51 +8,47 @@ import SwiftUI
 struct PictureListView: View {
     
     @Environment(\.dismiss) private var dismiss
-    @ObservedObject var viewModel: PictureViewModel = PictureViewModel()
     @State private var photoIndexPath: Int64 = 0
     @State private var isTapped: Bool = false
+    @State private var loadedImageList: [PictureGetResponse] = []
     @State private var detailedImage: PictureGetResponse = PictureListView.defaultImageData()
-    @State private var isLoaded: Bool = false
-    private let columns = Array(repeating: GridItem(.fixed(175), spacing: 0),count: 2)
+    
+    let columns: [GridItem] = [GridItem(.flexible()), GridItem(.flexible())]
     
     var body: some View {
         ZStack {
-            if !isLoaded {
-                ScrollView {
-                    LazyVGrid(columns: columns) {
-                        ForEach(viewModel.loadedImageList.reversed(), id: \.giftPolaroidId) { data in
-                            Button {
-                                isTapped.toggle()
-                                photoIndexPath = data.giftPolaroidId
-                                detailedImage = viewModel.loadedImageList.first(where: {
-                                    $0.giftPolaroidId == photoIndexPath}) ?? PictureListView.defaultImageData()
-                            }
+            ScrollView {
+                LazyVGrid(columns: columns) {
+                    ForEach(loadedImageList, id: \.giftPolaroidId) { data in
+                        Button {
+                            isTapped.toggle()
+                            print("This is Button Print")
+                            photoIndexPath = data.giftPolaroidId
+                            detailedImage = loadedImageList.first(where: {
+                                $0.giftPolaroidId == photoIndexPath}) ?? PictureListView.defaultImageData()
+                        }
                         label: {
-                            PhotoCard(indexPath: data.giftPolaroidId, imageURLString: data.giftPolaroidImage, comment: data.comment, isTapped: $isTapped)
-                        }
-                        }
-                        .opacity(isTapped ? 0.2 : 1)
-                    }
-                    .navigationTitle("사진")
-                    .navigationBarTitleDisplayMode(.inline)
-                    .navigationToBack(dismiss)
-                    .task {
-                        viewModel.imageListGet {
-                            isLoaded.toggle()
+                            PhotoCard(indexPath: data.giftPolaroidId, imageURLString: data.giftPolaroidImage, isTapped: $isTapped)
                         }
                     }
-                } // ScrollView
-                .blur(radius: isTapped ? 6 : 0)
-                .background(Color.lightgray)
-            } else if viewModel.loadedImageList.isEmpty {
-                Text("아직 주고받은 사진이 없어요.")
-                    .foregroundColor(.textBodyColor)
-                    .opacity(0.5)
-            }
+                    .opacity(isTapped ? 0.2 : 1)
+                }
+                .navigationTitle("사진")
+                .navigationBarTitleDisplayMode(.inline)
+                .navigationToBack(dismiss)
+                .task {
+                    imageListGet()
+                }
+            } // ScrollView
+            .padding()
+            .blur(radius: isTapped ? 6 : 0)
         } // Zstack
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color.backgroundGray)
+        .ignoresSafeArea(edges: .bottom)
         .overlay {
             if isTapped == true {
-                PhotoCardSheet(indexPath: detailedImage.giftPolaroidId, imageURLString: detailedImage.giftPolaroidImage, photoText: detailedImage.comment)
+                PhotoCardSheet(indexPath: detailedImage.giftPolaroidId, imageURLString: detailedImage.giftPolaroidImage)
                     .onTapGesture {
                         withAnimation(.easeIn) {
                             isTapped.toggle()
@@ -61,58 +57,66 @@ struct PictureListView: View {
             }
         }
     }
+    
+    private func imageListGet() {
+        moyaService.request(.imageListGet) { response in
+            switch response {
+            case .success(let result):
+                do {
+                    print("========= result :  \(result.data) =========")
+                    let data = try result.map([PictureGetResponse].self)
+                    print("Data : \(data)")
+                    mapListData(listData: data)
+                    
+                } catch let err {
+                    print(err.localizedDescription)
+                    print("Failed to decode the image list")
+                    break
+                }
+            case .failure(let err):
+                print(err.localizedDescription)
+            }
+        }
+    }
+    private func mapListData(listData: [PictureGetResponse]) {
+        for data in listData {
+            loadedImageList.append(data)
+        }
+    }
 }
-
+// MARK: PhotoCard
+// TODO: 추후에 PictureModel에 넣을 예정
 struct PhotoCard: View {
     
     var indexPath: Int64
     var imageURLString: String
-    var comment: String
     @Binding var isTapped : Bool
     
     var body: some View {
-
-        VStack {
+        
+        GeometryReader { proxy in
             VStack {
-                CacheAsyncImage(
-                    url: URL(string: imageURLString)!
-                ) { phase in
-                    switch phase {
-                    case .success(let image):
-                        // MARK: 각각의 사진 크기 조절
+                VStack(alignment: .leading) {
+                    AsyncImage(url: URL(string: imageURLString)) { image in
                         image
                             .resizable()
                             .aspectRatio(contentMode: .fill)
-                            .frame(width: UIScreen.main.bounds.width * 0.4, height: UIScreen.main.bounds.height * 0.2, alignment: .center)
-                            .clipped()
-
-                    case .failure(let error):
-                        Text(error.localizedDescription)
-                            .frame(width: UIScreen.main.bounds.width * 0.4, height: UIScreen.main.bounds.height * 0.2, alignment: .center)
-
-                    case .empty:
-                        ProgressView()
-                            .frame(width: UIScreen.main.bounds.width * 0.4, height: UIScreen.main.bounds.height * 0.2, alignment: .center)
-                    @unknown default:
-                        Image(systemName: "questionmark")
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: UIScreen.main.bounds.width * 0.4, height: UIScreen.main.bounds.height * 0.2, alignment: .center)
+                            .frame(width: proxy.size.width * 0.85, height: proxy.size.width, alignment: .center)
                             .clipped()
                             .border(Color.gray, width: 0.45)
+
+                    } placeholder: {
+                        ProgressView()
+                            .progressViewStyle(.circular)
                     }
                 }
+                .foregroundColor(.textBodyColor)
+                .padding(12)
             }
-            .foregroundColor(.textBodyColor)
-            // MARK: 각 격자 내부의 사진 패딩값 조절
-            .padding(6)
-
-            Text(comment)
-                .font(.TextStyles.handWrittenCallout)
-                .lineLimit(1)
+            .padding(.bottom, 12)
+            .background(RoundedRectangle(cornerRadius: 6).fill(.thickMaterial)  .border(Color.lightgray, width: 1.0).shadow(color: .gray.opacity(0.4), radius: 10, x: 0, y: 0))
         }
-        .background(RoundedRectangle(cornerRadius: 6).fill(.white).border(Color.lightgray, width: 1.0).shadow(color: .gray.opacity(0.2), radius: 10, x: 0, y: 0))
-        .frame(height: 250)
+        .frame(height: 240)
     }
 }
 
@@ -120,42 +124,22 @@ struct PhotoCardSheet: View {
     
     var indexPath: Int64
     var imageURLString: String
-    var photoText: String
+    var photoText: String = "Temporary Text!"
     
     var body: some View {
         VStack(alignment: .leading) {
-            CacheAsyncImage(
-                url: URL(string: imageURLString)!
-            ) { phase in
-                switch phase {
-                case .success(let image):
-                    // MARK: 각각의 사진 클릭시, 나오는 detial View 사진
-                    image
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: UIScreen.main.bounds.width * 0.6, height: UIScreen.main.bounds.height * 0.4, alignment: .center)
-                        .clipped()
-                        .border(Color.gray, width: 0.45)
+            AsyncImage(url: URL(string: imageURLString)) { image in
+                image
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: UIScreen.main.bounds.width * 0.7, height: UIScreen.main.bounds.height * 0.4, alignment: .center)
 
-                case .failure(let error):
-                    Text(error.localizedDescription)
-                        .frame(width: UIScreen.main.bounds.width * 0.7, height: UIScreen.main.bounds.height * 0.4, alignment: .center)
-
-                case .empty:
-                    ProgressView()
-                        .frame(width: UIScreen.main.bounds.width * 0.7, height: UIScreen.main.bounds.height * 0.4, alignment: .center)
-                @unknown default:
-                    Image(systemName: "questionmark")
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: UIScreen.main.bounds.width * 0.7, height: UIScreen.main.bounds.height * 0.4, alignment: .center)
-                        .clipped()
-                        .border(Color.gray, width: 0.45)
-                }
+            } placeholder: {
+                ProgressView()
+                    .progressViewStyle(.circular)
             }
-
             Text(photoText)
-                .font(.TextStyles.handWrittenCallout)
+                .setHandWritten()
                 .foregroundColor(.textBodyColor)
         }
         .frame(width: UIScreen.main.bounds.width * 0.7, height: UIScreen.main.bounds.height * 0.45, alignment: .center)
@@ -178,62 +162,6 @@ struct VoicemView_Previews: PreviewProvider {
 
 extension PictureListView {
     static func defaultImageData() -> PictureGetResponse {
-        return PictureGetResponse(createdAt: "", giftPolaroidId: 0, giftPolaroidImage: "", userNickName: "", comment: "")
+        return PictureGetResponse(createdAt: "", giftPolaroidId: 0, giftPolaroidImage: "", userNickName: "")
     }
 }
-
-struct CacheAsyncImage<Content>: View where Content: View {
-
-    private let url: URL
-    private let scale: CGFloat
-    private let transaction: Transaction
-    private let content: (AsyncImagePhase) -> Content
-
-    init(
-        url: URL,
-        scale: CGFloat = 1.0,
-        transaction: Transaction = Transaction(),
-        @ViewBuilder content: @escaping (AsyncImagePhase) -> Content
-    ) {
-        self.url = url
-        self.scale = scale
-        self.transaction = transaction
-        self.content = content
-    }
-
-    var body: some View {
-
-        if let cached = ImageCache[url] {
-            content(.success(cached))
-        } else {
-            AsyncImage(
-                url: url,
-                scale: scale,
-                transaction: transaction
-            ) { phase in
-                cacheAndRender(phase: phase)
-            }
-        }
-    }
-
-    func cacheAndRender(phase: AsyncImagePhase) -> some View {
-        if case .success(let image) = phase {
-            ImageCache[url] = image
-        }
-        return content(phase)
-    }
-}
-
-fileprivate class ImageCache {
-    static private var cache: [URL: Image] = [:]
-
-    static subscript(url: URL) -> Image? {
-        get {
-            ImageCache.cache[url]
-        }
-        set {
-            ImageCache.cache[url] = newValue
-        }
-    }
-}
-

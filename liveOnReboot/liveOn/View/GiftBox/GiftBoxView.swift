@@ -8,37 +8,38 @@
 import SwiftUI
 
 struct GiftBoxView: View {
-    @State var gotoMain = false
     var body: some View {
+        
         NavigationView {
-
             HStack(alignment: .top, spacing: 12) {
                 VStack (alignment: .center, spacing: 12) {
-                    // MARK: 상단 바
-                    // 커플 정보 라벨과 선물 제작 버튼
+                    
+                    // MARK: 커플 정보 라벨과 선물 제작 버튼이 들어가는 상단 바
                     HStack {
-                        // TODO: 라이트모드일때 CoupleInfoLabel에 하이라이트 되는 현상 없애기
-                        NavigationLink(destination: CoupleInformationView()){
-                            CoupleInfoLabel()}
-
+                        CoupleInfoLabel()
                         Spacer()
-
-                        NavigationLink(destination: GiftListView(gotoMain: $gotoMain), isActive: $gotoMain) {
+                        NavigationLink(destination: GiftListView()) {
                             Image("addButton")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 34, height: 34, alignment: .center)
                         }
                     }
-                    .padding(.bottom, 24)
                     
-                    // 달력 버튼
-                    CalendarLinkView()
+                    CalendarLinkView(monthDate: Date.now)
                     
-                    // MARK: 보관함 이동 버튼 모음
+                    // TODO: 가운데 정렬
+                    /*
+                     
+                     캘린더는 가운데에 잘 붙어 있는데,
+                     쪽지랑 사진, 음성, 꽃들은 가운데에 안 붙고 왼쪽 정렬되어 있음
+                     
+                     그리고 이 모든 것이 상단 정렬되어 있지 않음.. ^^
+                     
+                     */
+                    
                     VStack(alignment: .center) {
                         
-                        // 쪽지, 사진, 음성 메시지, 꽃 보관함 이동 버튼
                         LetterAndPictureLinkView()
                             .padding(.bottom, 12)
                         VoiceAndFlowerLinkView()
@@ -51,23 +52,32 @@ struct GiftBoxView: View {
                 .foregroundColor(.textBodyColor)
                 
             } // HStack
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationTitle("")
+            
         } // NavigationView
+        .navigationBarTitle("")
         .navigationBarHidden(true)
     } // body
 }
 
-private struct CoupleInfoLabel: View {
-    @State private var isLoaded = false
+struct CoupleInfoLabel: View {
     var body: some View {
         
+        ZStack {
             
-            if isLoaded {
+            RoundedRectangle(cornerRadius: 10)
+                .stroke(lineWidth: 1)
+                .padding(8)
+            // TODO: 파란색 테두리 색상 변경
+                .foregroundColor(Color.teal)
+                .frame(width: 194, height: 54, alignment: .center)
+                .background(RoundedRectangle(cornerRadius: 10)
+                    .fill(.thinMaterial)
+                    .shadow(color: Color(red: 239, green: 238, blue: 35), radius: 4, x: 0, y: 4))
+            
             HStack {
                 
-                // TODO: "재헌" -> 상대방 유저의 이름이 들어가게 바꿀 것
-                Text(MemberConfigService.singleton.profile.currentUserName)
+                // TODO: "재헌" -> 상대방의 이름이 들어가게 바꿀 것
+                Text("재헌")
                 
                 Image("heart")
                     .resizable()
@@ -76,50 +86,25 @@ private struct CoupleInfoLabel: View {
                     .offset(y: 2)
                 
                 // TODO: "유진" -> 유저의 이름이 들어가게 바꿀 것
-                Text(MemberConfigService.singleton.profile.partnerName)
+                Text("유진")
                 
                 // TODO: "365" -> 설정된 첫 날 부터 앱이 실행되고 있는 시점까지의 날짜 계산해서 넣기
-                let date = Date().stringDateToDateFormat(MemberConfigService.singleton.profile.officialDate)
-                Text("D+\(date.countDays())")
-                    .foregroundColor(.coralPink)
-                    .padding(.horizontal,4)
+                Text("D+365")
                 
             } // HStack
-            .padding()
-            .frame(height: UIScreen.main.bounds.width * 0.16)
-            .background(RoundedRectangle(cornerRadius: 10)
-                .stroke(lineWidth: 1)
-                .padding(8)
-                .foregroundColor(Color.teal)
-                .background(RoundedRectangle(cornerRadius: 10)
-                    .fill(.thinMaterial)
-                    .shadow(color: .gray.opacity(0.3), radius: 4, x: 0, y: 4)))
             .font(.TextStyles.handWrittenBody)
             .offset(y: -2)
-            }
-        else { ProgressView()
-                .frame(width: UIScreen.main.bounds.width * 0.4, height: UIScreen.main.bounds.width * 0.16)
-                .background(RoundedRectangle(cornerRadius: 10)
-                    .stroke(lineWidth: 1)
-                    .padding(8)
-                    .foregroundColor(Color.teal)
-                    .background(RoundedRectangle(cornerRadius: 10)
-                        .fill(.thinMaterial)
-                        .shadow(color: .gray.opacity(0.3), radius: 4, x: 0, y: 4)))
-                .task {
-                MemberConfigService.fetchMemberProfile {
-                    isLoaded.toggle()
-                }
-            } }
-         // ZStack
-        
+            
+        } // ZStack
     } // body
 }
 
-private struct CalendarLinkView: View {
+struct CalendarLinkView: View {
+    @State var monthDate: Date
+
     var body: some View {
         
-        NavigationLink(destination: CalendarView()) {
+        NavigationLink(destination: CalendarView().environmentObject(CalendarViewModel())) {
             
             ZStack {
                 Image("calendar")
@@ -129,12 +114,12 @@ private struct CalendarLinkView: View {
                 VStack {
                     
                     // TODO: 앱이 실행되는 시점의 달을 영어로 표시
-                    Text(Date().monthEnglishToString(Date.now))
-                        .font(.TextStyles.smallCalendarNumber)
+                    Text("\(Date().monthEnglishToString(monthDate))")
+                        .font(.TextStyles.mediumCalendarNumber)
                         .offset(y: 12)
                     
                     // TODO: 앱이 실행되는 시점의 달을 숫자로 표시
-                    Text(Date().monthToString(Date.now))
+                    Text("\(Date().monthToString(monthDate))")
                         .font(.TextStyles.largeCalendarNumber)
                     
                 }
@@ -143,10 +128,12 @@ private struct CalendarLinkView: View {
                 
             } // ZStack
         } // NavigationLink
+        .navigationBarTitle("", displayMode: .inline)
+        .navigationBarHidden(true)
     } // body
 }
 
-private struct LetterAndPictureLinkView: View {
+struct LetterAndPictureLinkView: View {
     var body: some View {
         
         HStack {
@@ -168,7 +155,7 @@ private struct LetterAndPictureLinkView: View {
     } // body
 }
 
-private struct VoiceAndFlowerLinkView: View {
+struct VoiceAndFlowerLinkView: View {
     var body: some View {
         
         HStack {
@@ -179,7 +166,7 @@ private struct VoiceAndFlowerLinkView: View {
                     .aspectRatio(contentMode: .fit)
             }
             
-            NavigationLink(destination: FlowerListView().environmentObject(FlowerViewModel())) {
+            NavigationLink(destination: FlowerView()) {
                 Image("flower")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
@@ -187,3 +174,9 @@ private struct VoiceAndFlowerLinkView: View {
         } // HStack
     } // body
 }
+
+//struct GiftBoxView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        GiftBoxView()
+//    }
+//}

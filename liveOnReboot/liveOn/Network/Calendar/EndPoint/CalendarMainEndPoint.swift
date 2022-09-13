@@ -19,15 +19,12 @@ extension CalendarMainServerCommunication: TargetType, AccessTokenAuthorizable {
                 return "/api/v1/calendar"
             case .postCalendarMain:
                 return "/api/v1/calendar"
-            case .getCalendarDay:
-                return "/api/v1/calendar/day"
-                
         }
     }
     
     var method: Moya.Method {
         switch self {
-            case .getCalendarMain, .getCalendarDay:
+            case .getCalendarMain:
                 return .get
             case .postCalendarMain:
                 return .post
@@ -36,7 +33,7 @@ extension CalendarMainServerCommunication: TargetType, AccessTokenAuthorizable {
     
     var task: Task {
         switch self {
-            case .getCalendarMain(let month), .getCalendarDay(let month):
+            case .getCalendarMain(let month):
                 return .requestParameters(parameters: ["calendarRequest" : month], encoding: URLEncoding.queryString)
             case .postCalendarMain(let content):
                 return .requestJSONEncodable(content)
@@ -54,7 +51,7 @@ extension CalendarMainServerCommunication: TargetType, AccessTokenAuthorizable {
     
     var headers: [String : String]? {
         switch self {
-            case .getCalendarMain, .getCalendarDay:
+            case .getCalendarMain:
                 return ["Authorization": "Bearer " + GeneralAPI.token]
             default:
                 return ["Content-Type": "application/json",

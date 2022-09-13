@@ -1,5 +1,5 @@
 //
-//  Voicemail.swift
+//  VoicemailModel.swift
 //  liveOnReboot
 //
 //  Created by 이성민 on 2022/07/10.
@@ -12,10 +12,10 @@ struct Voicemail: Codable {
     let createdAt: String
     let giftVoiceMailDuration: String
     let title: String
-    let voiceMailIconName: String
-    let userNickName: String
-    let voiceMail: String
-    let voiceMailId: Int
+    let voiceMailIconNum: Int
+    var userNickName: String
+    var voiceMail: String
+    var voiceMailId: Int
 
 //    init(getResopnse: VoicemailGetResponse) {
 //        createdAt = getResopnse.createdAt
