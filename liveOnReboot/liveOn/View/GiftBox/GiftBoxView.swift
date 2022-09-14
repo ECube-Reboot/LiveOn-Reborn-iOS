@@ -20,7 +20,7 @@ struct GiftBoxView: View {
                             CoupleInfoLabel()}
                         Spacer()
                         Button{
-                            if !GiftManager.isExists {
+                            if GiftManager.isExists {
                                 showAlert = true
                             } else {
                                 gotoMain = true
@@ -34,7 +34,7 @@ struct GiftBoxView: View {
                         .alert("선물 일일한도 초과", isPresented: $showAlert) {
                             Button("확인", role: .cancel) {  }
                         } message: {
-                            Text("선물은 하루에 하나씩만 보낼 수 있어요ㅜㅜ.")
+                            Text("선물은 하루에 한번만 보낼 수 있어요😭")
                         }
                         NavigationLink("",destination: GiftListView(gotoMain: $gotoMain), isActive: $gotoMain)
                     }
