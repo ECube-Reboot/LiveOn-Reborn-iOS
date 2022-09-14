@@ -59,6 +59,7 @@ struct GiftBoxView: View {
             .navigationBarTitleDisplayMode(.inline)
             .navigationTitle("")
         .navigationBarHidden(true)
+        .navigationBarBackButtonHidden(true)
         .task {
             GiftManager.singleton.isGiftExists()
         }

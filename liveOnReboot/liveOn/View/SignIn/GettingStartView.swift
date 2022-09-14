@@ -58,6 +58,7 @@ struct GettingStartView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .ignoresSafeArea()
         .background(Color.backgroundGray)
+        .navigationBarBackButtonHidden(true)
     }
 }
 

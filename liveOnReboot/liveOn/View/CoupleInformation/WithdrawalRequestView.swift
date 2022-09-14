@@ -27,20 +27,12 @@ struct WithdrawalRequestView: View {
             .padding()
             .frame(maxWidth: .infinity)
             .background(Color.lightgray)
-            
-//            NavigationLink(destination: GettingStartView())
-//            { Text("탈퇴하기")
-//                    .foregroundColor(.white)
-//                    .fontWeight(.bold)
-//                    .frame(maxWidth: .infinity, maxHeight: 60, alignment: .center).background(RoundedRectangle(cornerRadius: 10).fill(Color.accentColor))
-//            }
-//            .buttonStyle(.plain)
+            NavigationLink("", destination: GettingStartView(), isActive: $isrevoked)
             Button(action: {
                 showAlert = true
             }) {
-                Text("탈퇴하기")
+                Text("탈퇴")
                     .fontWeight(.bold)
-                    .font(.title)
                     .foregroundColor(.white)
             }
             .frame(maxWidth: .infinity, maxHeight: 60, alignment: .center)
@@ -49,6 +41,8 @@ struct WithdrawalRequestView: View {
                 Alert(title: Text("정말 회원 탈퇴하시겠습니까?"), primaryButton: .default(Text("확인"), action: {
                     MemberConfigService.revokeMember {
                         isrevoked.toggle()
+                        UserDefaults.standard.removeObject(forKey: "inviteCode")
+                        UserStatus.updateUserStatus(status: .nonMember)
                     }
                     print("회원탈퇴")
                 }), secondaryButton: .cancel(Text("취소")))
