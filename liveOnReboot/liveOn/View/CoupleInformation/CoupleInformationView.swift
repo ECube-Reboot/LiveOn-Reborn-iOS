@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CoupleInformationView: View {
+    @Environment(\.dismiss) private var dismiss
     @State private var showChangeNickNameAlert = false
     @State private var showChangeOfficialDayAlert = false
     @State private var officialDate = Date.now
@@ -40,7 +41,7 @@ struct CoupleInformationView: View {
                     .foregroundColor(.textBodyColor)
                     .listRowBackground(Color.clear)
                     .listRowSeparator(.hidden)
-                    NavigationLink(destination: ChangeOfficialDateView(officialDay: $officialDate)){
+//                    NavigationLink(destination: ChangeOfficialDateView(officialDay: $officialDate)){
                         HStack {
                         Text("우리의 1일")
                                 .font(.TextStyles.handWrittenBody)
@@ -50,13 +51,14 @@ struct CoupleInformationView: View {
                                 .opacity(0.8)
                         }
                         .padding(.vertical, 12)
-                    }
+//                    }
                     .listRowBackground(Color.clear)
                     .foregroundColor(.textBodyColor)
                     .listRowSeparator(.hidden)
                 }
         .listRowBackground(Color.clear)
         .navigationTitle("커플정보")
+        .navigationToBack(dismiss)
         .navigationBarTitleDisplayMode(.inline)
         .onAppear {
             MemberConfigService.fetchMemberProfile {

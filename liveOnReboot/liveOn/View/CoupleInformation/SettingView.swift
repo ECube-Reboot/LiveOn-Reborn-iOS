@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SettingView: View {
+    @Environment(\.dismiss) private var dismiss
     var body: some View {
         List {
             NavigationLink(destination: WebView(urlToLoad: "https://italsehf.notion.site/liveOn-ab35202941ea4a5386f1d7e4ec6d7b9c")){
@@ -38,6 +39,7 @@ struct SettingView: View {
         .listRowBackground(Color.clear)
         .navigationTitle("환경설정")
         .navigationBarTitleDisplayMode(.inline)
+        .navigationToBack(dismiss)
         .listStyle(.plain)
         .background(Color.backgroundGray)
     }
