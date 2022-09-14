@@ -176,14 +176,16 @@ class VoicemailViewModel: NSObject, ObservableObject, AVAudioPlayerDelegate {
 //    }
     
 //    MARK: 혹시나 삭제가 필요할수도 있다고 생각해 일단 남겨둠
-//    func deleteRecording() {
-//        do {
-//            try FileManager.default.removeItem(at: recording!.fileURL)
-//        } catch {
-//            print("Can't delete")
-//        }
-//        isRecorded = false
-//    }
+    func deleteRecording() {
+        if (recording != nil) {
+            do {
+                try FileManager.default.removeItem(at: recording!.fileURL)
+            } catch {
+                print("Can't delete")
+            }
+            isRecorded = false
+        }
+    }
 }
 
 
