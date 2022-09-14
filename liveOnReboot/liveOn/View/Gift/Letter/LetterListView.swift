@@ -13,7 +13,8 @@ struct LetterListView: View {
     @State private var showDetail = false
     @State private var showCreateView = false
     @State private var isLoaded = false
-    
+    @State private var showAlert = false
+    @Environment(\.dismiss) private var dismiss
     private let columns = Array(repeating: GridItem(.adaptive(minimum: 300),
                                             spacing: 1,
                                             alignment: .center),count: 2)
@@ -42,21 +43,34 @@ struct LetterListView: View {
                             .opacity(0.5)
                     }
                 }
+            NavigationLink("",destination: SendLetterView(gotoMain: $showCreateView), isActive: $showCreateView)
         }  // ScrollView
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
         .background(Color.backgroundGray)
         .navigationTitle("쪽지함")
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                NavigationLink(destination: SendLetterView(gotoMain: $showCreateView), isActive: $showCreateView) {
+                Button{
+                    if GiftManager.isExists {
+                        showAlert = true
+                    } else {
+                        showCreateView = true
+                    }
+                } label: {
                     Image("addButton")
                         .resizable()
-                        .frame(width: 24, height: 24, alignment: .center)
                         .aspectRatio(contentMode: .fit)
+                        .frame(width: 24, height: 24, alignment: .center)
                 }
             }
         }
+        .alert("선물 일일한도 초과", isPresented: $showAlert) {
+            Button("확인", role: .cancel) {  }
+        } message: {
+            Text("선물은 하루에 한번만 보낼 수 있어요😭")
+        }
         .navigationBarTitleDisplayMode(.inline)
+        .navigationToBack(dismiss)
         .overlay {
             if showDetail {
                 if let letter = selectedLetter {

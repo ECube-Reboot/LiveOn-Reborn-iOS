@@ -13,6 +13,8 @@ struct PictureListView: View {
     @State private var isTapped: Bool = false
     @State private var detailedImage: PictureGetResponse = PictureListView.defaultImageData()
     @State private var isLoaded: Bool = false
+    @State private var showAlert = false
+    @State private var showCreateView = false
     private let columns = Array(repeating: GridItem(.fixed(175), spacing: 0),count: 2)
     
     var body: some View {
@@ -41,7 +43,18 @@ struct PictureListView: View {
                             isLoaded.toggle()
                         }
                     }
-                } // ScrollView
+                }
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        NavigationLink(destination: SendPictureView(gotoMain: .constant(false))) {
+                            Image("addButton")
+                                .resizable()
+                                .frame(width: 24, height: 24, alignment: .center)
+                                .aspectRatio(contentMode: .fit)
+                        }
+                    }
+                }
+                // ScrollView
                 .blur(radius: isTapped ? 6 : 0)
                 .background(Color.lightgray)
             } else if viewModel.loadedImageList.isEmpty {
@@ -49,6 +62,7 @@ struct PictureListView: View {
                     .foregroundColor(.textBodyColor)
                     .opacity(0.5)
             }
+            NavigationLink("",destination: SendPictureView(gotoMain: $showCreateView), isActive: $showCreateView)
         } // Zstack
         .overlay {
             if isTapped == true {
@@ -60,6 +74,27 @@ struct PictureListView: View {
                     }
             }
         }
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button{
+                    if GiftManager.isExists {
+                        showAlert = true
+                    } else {
+                        showCreateView = true
+                    }
+                } label: {
+                    Image("addButton")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 24, height: 24, alignment: .center)
+                }
+            }
+        }
+        .alert("선물 일일한도 초과", isPresented: $showAlert) {
+            Button("확인", role: .cancel) {  }
+        } message: {
+            Text("선물은 하루에 한번만 보낼 수 있어요😭")
+        }
     }
 }
 
@@ -69,7 +104,7 @@ struct PhotoCard: View {
     var imageURLString: String
     var comment: String
     @Binding var isTapped : Bool
-    
+
     var body: some View {
 
         VStack {
@@ -109,10 +144,14 @@ struct PhotoCard: View {
 
             Text(comment)
                 .font(.TextStyles.handWrittenCallout)
+                .foregroundColor(Color.textBodyColor)
+                .frame(width: UIScreen.main.bounds.width * 0.3)
                 .lineLimit(1)
+                .padding(.bottom, 5)
         }
         .background(RoundedRectangle(cornerRadius: 6).fill(.white).border(Color.lightgray, width: 1.0).shadow(color: .gray.opacity(0.2), radius: 10, x: 0, y: 0))
         .frame(height: 250)
+        
     }
 }
 

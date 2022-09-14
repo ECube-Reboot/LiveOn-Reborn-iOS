@@ -16,7 +16,8 @@ struct FlowerListView: View {
     @State private var selectedCardIndex = 0
     @State private var imageName = ""
     @State private var comment = ""
-
+    @State private var showAlert = false
+    @State private var showCreateView = false
     private let columns : [GridItem] = [
         GridItem(.flexible(), spacing: -10, alignment: .bottom),
         GridItem(.flexible(), spacing: 20, alignment: .top)
@@ -37,6 +38,8 @@ struct FlowerListView: View {
                     .foregroundColor(Color(uiColor: .systemGray2))
                     .multilineTextAlignment(.center)
                     .padding(.bottom, 32)
+                
+                NavigationLink("",destination: SendFlowerView(gotoMain: $showCreateView), isActive: $showCreateView)
             }
 
             if showFlowerPopUp {
@@ -55,12 +58,42 @@ struct FlowerListView: View {
                 
             })
         }
-
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                NavigationLink(destination: SendFlowerView(gotoMain: .constant(false))) {
+                    Image("addButton")
+                        .resizable()
+                        .frame(width: 24, height: 24, alignment: .center)
+                        .aspectRatio(contentMode: .fit)
+                }
+            }
+        }
         .navigationToBack(dismiss)
         .navigationTitle("꽃")
         .navigationBarTitleDisplayMode(.inline)
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
         .background(Color.background)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button{
+                    if GiftManager.isExists {
+                        showAlert = true
+                    } else {
+                        showCreateView = true
+                    }
+                } label: {
+                    Image("addButton")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 24, height: 24, alignment: .center)
+                }
+            }
+        }
+        .alert("선물 일일한도 초과", isPresented: $showAlert) {
+            Button("확인", role: .cancel) {  }
+        } message: {
+            Text("선물은 하루에 한번만 보낼 수 있어요😭")
+        }
     } // body
 
     // UI Functions
@@ -88,7 +121,6 @@ struct FlowerListView: View {
             LazyVGrid(columns: columns, spacing: -40) {
                 if viewModel.flowerList.count > 4 {
                     ForEach(0..<viewModel.flowerListExtracted.count, id: \.self) { index in
-                        // TODO: Server
                         FlowerPopUp(content: viewModel.flowerListExtracted[index].giftFlowerName)
                             .onTapGesture {
                                 imageName = viewModel.flowerListExtracted[index].giftFlowerName
@@ -115,16 +147,6 @@ struct FlowerListView: View {
             .padding()
         }
     }
-
-//    private func extractFourFlowers() -> [FlowerGetResponse]{
-//        var tempArray: [FlowerGetResponse] = []
-//        var i = 0
-//        while i < 3 {
-//            tempArray.append(viewModel.flowerList.removeFirst())
-//            i += 1
-//        }
-//        return tempArray
-//    }
 }
 
 struct FlowerListView_Previews: PreviewProvider {
