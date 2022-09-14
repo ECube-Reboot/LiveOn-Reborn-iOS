@@ -63,7 +63,7 @@ extension MemberConfigEndPoint: TargetType {
     
     var headers: [String : String]? {
         return ["Content-Type": "application/json",
-                "Authorization": "Bearer " + GeneralAPI.token]
+                "Authorization": "Bearer " + GeneralAPI.prodtoken]
     }
     
     
