@@ -82,7 +82,7 @@ struct PictureListView: View {
         .alert("선물 일일한도 초과", isPresented: $showAlert) {
             Button("확인", role: .cancel) {  }
         } message: {
-            Text("선물은 하루에 하나씩만 보낼 수 있어요ㅜㅜ.")
+            Text("선물은 하루에 한번만 보낼 수 있어요😭")
         }
     }
 }
