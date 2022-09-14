@@ -44,16 +44,6 @@ struct PictureListView: View {
                         }
                     }
                 }
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        NavigationLink(destination: SendPictureView(gotoMain: .constant(false))) {
-                            Image("addButton")
-                                .resizable()
-                                .frame(width: 24, height: 24, alignment: .center)
-                                .aspectRatio(contentMode: .fit)
-                        }
-                    }
-                }
                 // ScrollView
                 .blur(radius: isTapped ? 6 : 0)
                 .background(Color.lightgray)
@@ -76,17 +66,19 @@ struct PictureListView: View {
         }
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                Button{
-                    if GiftManager.isExists {
-                        showAlert = true
-                    } else {
-                        showCreateView = true
+                NavigationLink(destination: SendPictureView(gotoMain: .constant(false))) {
+                    Button{
+                        if GiftManager.isExists {
+                            showAlert = true
+                        } else {
+                            showCreateView = true
+                        }
+                    } label: {
+                        Image("addButton")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 24, height: 24, alignment: .center)
                     }
-                } label: {
-                    Image("addButton")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 24, height: 24, alignment: .center)
                 }
             }
         }
