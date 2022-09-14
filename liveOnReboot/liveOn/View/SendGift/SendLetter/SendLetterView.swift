@@ -95,6 +95,7 @@ struct SendLetterView: View {
         .frame(maxWidth: .infinity,maxHeight: .infinity, alignment: .center)
         .background(Color.backgroundGray)
         .onAppear{
+            UITextView.appearance().backgroundColor = .clear
             getRandomColor()
         }
     }

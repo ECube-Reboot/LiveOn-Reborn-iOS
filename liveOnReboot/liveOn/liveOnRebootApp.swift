@@ -42,7 +42,4 @@ struct liveOnRebootApp: App {
             }
         }
     }
-    init() {
-        UITextView.appearance().backgroundColor = .clear
-    }
 }
