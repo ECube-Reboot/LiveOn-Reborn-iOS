@@ -63,10 +63,10 @@ extension VoicemailServerCommunication: TargetType, AccessTokenAuthorizable {
         switch self {
         case .voicemailPost:
             return ["Content-Type": "multipart/form",
-                    "Authorization": "Bearer "+GeneralAPI.token]
+                    "Authorization": "Bearer "+GeneralAPI.prodtoken]
         default:
             return ["Content-Type": "application/json",
-                    "Authorization": "Bearer "+GeneralAPI.token]
+                    "Authorization": "Bearer "+GeneralAPI.prodtoken]
         }
     }
     

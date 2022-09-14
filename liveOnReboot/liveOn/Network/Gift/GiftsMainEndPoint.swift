@@ -47,7 +47,7 @@ extension GiftsMain: TargetType {
         switch self {
             default:
                 return ["Content-Type": "application/json",
-                        "Authorization": "Bearer " + GeneralAPI.token]
+                        "Authorization": "Bearer " + GeneralAPI.prodtoken]
         }
     }
 }
