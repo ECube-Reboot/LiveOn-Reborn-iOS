@@ -56,19 +56,15 @@ struct FlowerPopUpView: View {
     } // body
     private func setFlowerMessage(comment: String) -> some View {
         ZStack {
-            VStack(alignment: .center, spacing: 4) {
-                Text(comment)
-                    .padding()
-                Text("날짜 정보")
-
-            }
-            .frame(width: 280, height: 240, alignment: .center)
-            .foregroundColor(.textBodyColor)
-            .background(
-                Image("letter_yellow")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity))
+            Text(comment)
+                .foregroundColor(.black)
+                .padding()
+                .frame(width: 280, height: 240, alignment: .center)
+                .background(
+                    Image("letter_yellow")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity))
         }
     }
 }

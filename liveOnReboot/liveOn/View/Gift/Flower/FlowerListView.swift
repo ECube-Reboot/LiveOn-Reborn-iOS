@@ -68,27 +68,10 @@ struct FlowerListView: View {
                 }
             }
         }
-        .navigationToBack(dismiss)
         .navigationTitle("꽃")
         .navigationBarTitleDisplayMode(.inline)
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
         .background(Color.background)
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Button{
-                    if GiftManager.isExists {
-                        showAlert = true
-                    } else {
-                        showCreateView = true
-                    }
-                } label: {
-                    Image("addButton")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 24, height: 24, alignment: .center)
-                }
-            }
-        }
         .alert("선물 일일한도 초과", isPresented: $showAlert) {
             Button("확인", role: .cancel) {  }
         } message: {
