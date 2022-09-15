@@ -116,7 +116,7 @@ struct SendPictureView: View {
             }
         }
         .frame(maxWidth:.infinity, maxHeight: .infinity)
-        .background(Color.background)
+        .background(Color.backgroundGray)
     }
 
     private func imagePost(completion: @escaping () -> ()) {

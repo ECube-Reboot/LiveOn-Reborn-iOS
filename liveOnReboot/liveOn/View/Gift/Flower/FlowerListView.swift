@@ -72,7 +72,7 @@ struct FlowerListView: View {
         .navigationTitle("꽃")
         .navigationBarTitleDisplayMode(.inline)
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-        .background(Color.background)
+        .background(Color.backgroundGray)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button{
