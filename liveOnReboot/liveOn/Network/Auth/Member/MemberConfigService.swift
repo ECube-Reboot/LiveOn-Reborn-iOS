@@ -114,8 +114,16 @@ class MemberConfigService: ObservableObject {
             switch response {
                 case .success(let result):
                     if (result.statusCode == 200) {
-                        isMatched = true
-                        completion()
+                        do {
+                            let data = try result.map(IsCoupleMatched.self)
+                            if data.coupleMatched {
+                                isMatched = true
+                                print("data.coupleMatched \(data.coupleMatched)")
+                                completion()
+                            }
+                        } catch _ {
+                            break
+                        }
                     } else {
                         isMatched = false
                     }
