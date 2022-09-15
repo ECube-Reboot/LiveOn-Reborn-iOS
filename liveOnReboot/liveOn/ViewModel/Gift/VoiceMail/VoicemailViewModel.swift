@@ -11,13 +11,13 @@ import AVFoundation
 class VoicemailViewModel: NSObject, ObservableObject, AVAudioPlayerDelegate {
     
     private var audioRecorder: AVAudioRecorder!
-    var audioPlayer: AVAudioPlayer!
     private var savedPath: URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
     
     static var voicemailViewModel = VoicemailViewModel()
     
     lazy var fileName: URL = savedPath.appendingPathComponent("live-On : \(Date().toString(dateFormat: "dd-MM-YY 'at' HH:mm:ss")).m4a")
     
+    var audioPlayer: AVAudioPlayer!
     var recording: Recording?
     var isRecording: Bool = false
     var countSec: Int = 0
@@ -279,6 +279,5 @@ extension VoicemailViewModel {
             self.duration = String(self.countSec)
             self.recordingTimeInString = self.convertSecToMin(seconds: self.countSec)
         })
-
     }
 }
