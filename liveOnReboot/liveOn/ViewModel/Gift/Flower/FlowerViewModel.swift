@@ -53,6 +53,9 @@ class FlowerViewModel: ObservableObject {
                 print(err.localizedDescription)
             }
         }
+        DispatchQueue.main.async {
+            self.flowerList = []
+        }
     }
 
     private func mapListData(listData: [FlowerGetResponse]) {
