@@ -26,7 +26,7 @@ struct PictureListView: View {
             } else {
                 if viewModel.loadedImageList.isEmpty {
                     Text("아직 주고받은 사진이 없어요🥲")
-                        .foregroundColor(.textBodyColor)
+                        .foregroundColor(.emptyGiftTextColor)
                 } else {
                     ScrollView {
                         LazyVGrid(columns: columns) {
