@@ -26,7 +26,9 @@ struct VoiceMailView: View {
             } else {
                 VStack {
                     if voicemailViewmodel.voicemailList.isEmpty {
-                        Text("주고받은 음성메세지가 없어요🥲")
+                        Text("아직 주고받은 음성메세지가 없어요🥲")
+                            .foregroundColor(.emptyGiftTextColor)
+                            .opacity(0.5)
                     } else if voicemailViewmodel.voicemailList.count > 8 {
                         ScrollView(showsIndicators: false) {
                             VStack {
