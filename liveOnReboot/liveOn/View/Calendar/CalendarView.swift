@@ -144,7 +144,7 @@ struct CalendarView: View {
                     // MARK: - Upcoming Events
                     VStack(spacing: 0) {
                         HStack {
-                            Text("Upcoming Events")
+                            Text("이달의 기념일")
                                 .font(.title3.bold())
                                 .foregroundColor(.burgundy)
                                 .frame(maxWidth: .infinity, alignment: .leading)
