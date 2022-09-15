@@ -73,7 +73,6 @@ class VoicemailViewModel: NSObject, ObservableObject, AVAudioPlayerDelegate {
             audioRecorder = try AVAudioRecorder(url: fileName, settings: settings)
             audioRecorder.prepareToRecord()
             audioRecorder.record()
-            isRecording = true
             
             startTimer()
             recordingSec = countSec
@@ -88,9 +87,6 @@ class VoicemailViewModel: NSObject, ObservableObject, AVAudioPlayerDelegate {
         audioRecorder.stop()
         saveRecording()
         timerCount?.invalidate()
-        playingTimeInString = recordingTimeInString
-        isRecording = false
-        isRecorded = true
     }
     
     // MARK: - recording 후
@@ -119,13 +115,13 @@ class VoicemailViewModel: NSObject, ObservableObject, AVAudioPlayerDelegate {
             print("Playing failed: \(error.localizedDescription)")
         }
         
-        playingTimeInString = convertSecToMin(seconds: self.countSec)
-        countSec += 1
-        if countSec <= recordingSec {
-            stopPlaying()
-            timerCount?.invalidate()
-        }
-        countSec = 0
+//        playingTimeInString = convertSecToMin(seconds: self.countSec)
+//        countSec += 1
+//        if countSec <= recordingSec {
+//            stopPlaying()
+//            timerCount?.invalidate()
+//        }
+//        countSec = 0
     }
     
     func stopPlaying() {
