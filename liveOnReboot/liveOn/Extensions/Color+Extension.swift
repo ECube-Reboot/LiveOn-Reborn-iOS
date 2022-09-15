@@ -15,8 +15,6 @@ extension Color {
     static let cassetteGreen = Color(hex: "#717339")
     static let cassetteRed = Color(hex: "#A6633C")
     
-    static let background = Color("background")
-    static let bodyTextColor = Color("bodyText")
     static let placeHolderColor = Color(hex: "D9D9D9")
     static let crimson = Color(hex: "902F2F")
     static let mainBrown = Color(hex: "6C5151")
