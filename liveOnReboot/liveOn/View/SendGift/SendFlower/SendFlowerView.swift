@@ -83,6 +83,7 @@ struct SendFlowerView: View {
                     .font(.TextStyles.handWrittenBody)
                     .foregroundColor(.textBodyColor)
             }
+            .font(.TextStyles.handWrittenBody)
             .padding(20)
 
             if let input = input {

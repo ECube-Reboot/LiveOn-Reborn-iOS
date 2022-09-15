@@ -16,6 +16,8 @@ struct FlowerListView: View {
     @State private var selectedCardIndex = 0
     @State private var imageName = ""
     @State private var comment = ""
+    @State private var sender = ""
+    @State private var date = ""
     @State private var showAlert = false
     @State private var showCreateView = false
     private let columns : [GridItem] = [
@@ -55,7 +57,6 @@ struct FlowerListView: View {
         .task {
             viewModel.flowerListGet(completion: {
                 isLoaded = true
-                
             })
         }
         .toolbar {
@@ -107,6 +108,10 @@ struct FlowerListView: View {
                         FlowerPopUp(content: viewModel.flowerListExtracted[index].giftFlowerName)
                             .onTapGesture {
                                 imageName = viewModel.flowerListExtracted[index].giftFlowerName
+                                comment = viewModel.flowerListExtracted[index].comment
+//                                sender = viewModel.flowerListExtracted[index].senderName
+//                                date = viewModel.flowerListExtracted[index].sendDate
+
                                 withAnimation(.linear(duration: 0.5)) {
                                     showFlowerPopUp = true
                                     selectedCardIndex = index
@@ -119,6 +124,10 @@ struct FlowerListView: View {
                         FlowerPopUp(content: viewModel.flowerList[index].giftFlowerName)
                             .onTapGesture {
                                 imageName = viewModel.flowerList[index].giftFlowerName
+                                comment = viewModel.flowerList[index].comment
+//                                sender = viewModel.flowerListExtracted[index].senderName
+//                                date = viewModel.flowerListExtracted[index].sendDate
+
                                 withAnimation(.linear(duration: 0.5)) {
                                     showFlowerPopUp = true
                                     selectedCardIndex = index
