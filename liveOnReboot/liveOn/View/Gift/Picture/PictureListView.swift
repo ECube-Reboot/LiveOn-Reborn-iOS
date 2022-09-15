@@ -20,38 +20,46 @@ struct PictureListView: View {
     var body: some View {
         ZStack {
             if !isLoaded {
-                ScrollView {
-                    LazyVGrid(columns: columns) {
-                        ForEach(viewModel.loadedImageList.reversed(), id: \.giftPolaroidId) { data in
-                            Button {
-                                isTapped.toggle()
-                                photoIndexPath = data.giftPolaroidId
-                                detailedImage = viewModel.loadedImageList.first(where: {
-                                    $0.giftPolaroidId == photoIndexPath}) ?? PictureListView.defaultImageData()
+                ProgressView()
+            } else {
+                if viewModel.loadedImageList.isEmpty {
+                    Text("아직 주고받은 사진이 없어요🥲")
+                        .foregroundColor(.textBodyColor)
+                } else {
+                    ScrollView {
+                        LazyVGrid(columns: columns) {
+                            ForEach(viewModel.loadedImageList.reversed(), id: \.giftPolaroidId) { data in
+                                Button {
+                                    isTapped.toggle()
+                                    photoIndexPath = data.giftPolaroidId
+                                    detailedImage = viewModel.loadedImageList.first(where: {
+                                        $0.giftPolaroidId == photoIndexPath}) ?? PictureListView.defaultImageData()
+                                }
+                            label: {
+                                PhotoCard(indexPath: data.giftPolaroidId, imageURLString: data.giftPolaroidImage, comment: data.comment, isTapped: $isTapped)
                             }
-                        label: {
-                            PhotoCard(indexPath: data.giftPolaroidId, imageURLString: data.giftPolaroidImage, comment: data.comment, isTapped: $isTapped)
+                            }
+                            .opacity(isTapped ? 0.2 : 1)
                         }
+                        .navigationTitle("사진")
+                        .navigationBarTitleDisplayMode(.inline)
+                        .navigationToBack(dismiss)
+                        .task {
+                            viewModel.imageListGet {
+                                isLoaded = true
+                            }
                         }
-                        .opacity(isTapped ? 0.2 : 1)
-                    }
-                    .navigationTitle("사진")
-                    .navigationBarTitleDisplayMode(.inline)
-                    .navigationToBack(dismiss)
-                    .task {
-                        viewModel.imageListGet {
-                            isLoaded.toggle()
-                        }
-                    }
+                    } // ScrollView
+                    .blur(radius: isTapped ? 6 : 0)
+                    .background(Color.lightgray)
                 }
-                // ScrollView
-                .blur(radius: isTapped ? 6 : 0)
-                .background(Color.lightgray)
-            } else if viewModel.loadedImageList.isEmpty {
-                Text("아직 주고받은 사진이 없어요.")
-                    .foregroundColor(.textBodyColor)
-                    .opacity(0.5)
+                
             }
+//            } else if viewModel.loadedImageList.isEmpty {
+//                Text("아직 주고받은 사진이 없어요.")
+//                    .foregroundColor(.textBodyColor)
+//                    .opacity(0.5)
+//            }
             NavigationLink("",destination: SendPictureView(gotoMain: $showCreateView), isActive: $showCreateView)
         } // Zstack
         .overlay {
