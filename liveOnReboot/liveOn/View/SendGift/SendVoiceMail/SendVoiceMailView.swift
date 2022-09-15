@@ -14,8 +14,10 @@ struct SendVoicemailView: View {
     @ObservedObject var voicemail = VoicemailViewModel.voicemailViewModel
     @FocusState private var isFocused: Bool
     
+    @State var title: String = ""
     @State var isRecording: Bool = false
     @State var isRecorded: Bool = false
+    @State var isPlaying: Bool = false
     @State var showAlertForSend: Bool = false
     @State var showLoading: Bool = false
     @State private var isSent: Bool = false
@@ -30,7 +32,7 @@ struct SendVoicemailView: View {
                 Spacer()
                     .frame(height: frame.size.height * 0.1)
                 
-                TextField("제목을 입력하세요", text: $voicemail.title)
+                TextField("제목을 입력하세요", text: $title)
                     .multilineTextAlignment(.center)
                     .frame(width: 300, height: 20)
                     .focused($isFocused)
@@ -53,39 +55,55 @@ struct SendVoicemailView: View {
                 
                 
                 VStack {
-                    Text(voicemail.recordingTimeInString)
+                    if isRecording == false && isRecording == false {
+                        Text("0:00")
+                    } else if isRecorded == false && isRecording == true {
+                        Text(voicemail.recordingTimeInString)
+                    } else {
+                        Text(voicemail.playingTimeInString)
+                    }
+                    
                     ZStack {
                         Image(systemName: "circle.fill")
                             .resizable()
                             .frame(width: 80, height: 80)
                             .foregroundColor(Color.recordingBtnBackground)
-                        if voicemail.isRecording == false && voicemail.isRecorded == false {
+                        if isRecording == false && isRecorded == false {
                             Image(systemName: "circle.fill")
                                 .resizable()
                                 .frame(width: 50, height: 50)
                                 .foregroundColor(Color.recordingBtn)
                                 .onTapGesture {
+                                    isRecording = true
                                     voicemail.startRecording()
                                 }
-                        } else if voicemail.isRecording == true && voicemail.isRecorded == false {
+                        } else if isRecording == true && isRecorded == false {
                             Image(systemName: "stop.fill")
                                 .resizable()
                                 .foregroundColor(Color.recordingBtn)
                                 .frame(width: 40, height: 40)
                                 .onTapGesture {
+                                    isRecording = false
+                                    isRecorded = true
                                     voicemail.stopRecording()
                                     voicemail.recordingTimeInString = "0:00"
                                 }
                         } else {
                             ZStack {
-                                Image(systemName: "play.fill")
+                                Image(systemName: voicemail.isPlaying ? "pause.fill": "play.fill")
                                     .resizable()
                                     .scaledToFit()
                                     .foregroundColor(Color.recordingBtn)
-                                    .frame(width: 40)
-                                    .padding(.leading, 5)
+                                    .frame(width: voicemail.isPlaying ? 30 : 40)
+                                    .padding(.leading, voicemail.isPlaying ? 0 : 5)
                                     .onTapGesture {
-                                        voicemail.startPlaying()
+                                        if voicemail.isPlaying {
+                                            voicemail.stopPlaying()
+                                            voicemail.isPlaying = false
+                                        } else {
+                                            voicemail.startPlaying()
+                                            voicemail.isPlaying = true
+                                        }
                                     }
                                 HStack {
                                     Spacer()
@@ -97,7 +115,7 @@ struct SendVoicemailView: View {
                                         .onTapGesture {
                                             if voicemail.recording != nil {
                                                 voicemail.deleteRecording()
-                                                voicemail.isRecorded = false
+                                                isRecorded = false
                                             }
                                         }
                                     Spacer()
@@ -105,9 +123,6 @@ struct SendVoicemailView: View {
                             }
                         }
                     }
-                    
-                    
-                    
                 }
             }
             .navigationBarBackButtonHidden(true)
@@ -126,6 +141,7 @@ struct SendVoicemailView: View {
                         if isAbleToSend() {
                             showAlertForSend.toggle()
                         }
+                        voicemail.title = title
                     } label: {
                         Text("선물하기")
                     }
@@ -133,22 +149,13 @@ struct SendVoicemailView: View {
                     .alert(isPresented: $showAlertForSend) {
                         Alert(title: Text("선물하기"), message: Text("선물은 하루에 하나만 보낼 수 있어요. 쪽지를 보낼까요?"), primaryButton: .cancel(Text("취소")), secondaryButton: Alert.Button.default(Text("보내기")) {
                             showLoading = true
-                            voicemail.voicemailPost {
+                            voicemail.voicemailPost() {
                                 showLoading = false
                                 gotoMain = true
                                 isSent = true
+                                isRecorded = false
+                                isRecording = false
                             }
-                            //                            voicemailMoyaService.request(.voicemailPost(title: voicemail.title, voicemail: voicemail.recording!, voicemailDuration: voicemail.recordingTimeInString)) { response in
-                            //                                switch response {
-                            //                                case .success(let result):
-                            //                                    print(result)
-                            //                                    showLoading = false
-                            //                                    gotoMain = true
-                            //                                    isSent = true
-                            //                                case .failure(let err):
-                            //                                    print(err.localizedDescription)
-                            //                                }
-                            //                            }
                         })
                     }
                 }
@@ -169,26 +176,8 @@ struct SendVoicemailView: View {
 }
 
 extension SendVoicemailView {
-    //    private func voicemailPost(completion: @escaping () -> ()){
-    //        print("voicemailPost function: \(String(describing: voicemail.recording))")
-    //        if let recording = voicemail.recording {
-    //            voicemailMoyaService.request(.voicemailPost(title: voicemail.title, voicemail: recording, voicemailDuration: voicemail.recordingTimeInString)) { response in
-    //                switch response {
-    //                case .success:
-    //                    print(response)
-    //                    completion()
-    //                case .failure(let err):
-    //                    print(err.localizedDescription)
-    //                    print("---------- 통신 실패 ----------")
-    //                }
-    //            }
-    //        } else {
-    //            print("Recording not found")
-    //        }
-    //    }
-    
     private func isAbleToSend() -> Bool {
-        if voicemail.isRecorded && voicemail.title != "" {
+        if isRecorded && title != "" {
             return true
         } else {
             return false
