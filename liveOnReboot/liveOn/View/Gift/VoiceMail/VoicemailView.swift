@@ -86,9 +86,6 @@ struct VoiceMailView: View {
         .navigationTitle("음성메세지")
         .navigationBarTitleDisplayMode(.inline)
         .navigationToBack(dismiss)
-//        .onTapGesture {
-//            isShowPopUp.toggle()
-//        }
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button{

@@ -18,6 +18,7 @@ final class PictureViewModel: ObservableObject {
     @Published var imageName: String = ""
     @Published var myImages: [MyPicture] = []
     @Published var loadedImageList: [PictureGetResponse] = []
+    @Published var isLoaded: Bool = false
     
     func showPhotoPicker() {
         do {
@@ -56,6 +57,8 @@ final class PictureViewModel: ObservableObject {
                 print(err.localizedDescription)
             }
         }
+        print("-----------------")
+        isLoaded = true
     }
 }
 

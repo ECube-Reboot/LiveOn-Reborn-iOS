@@ -54,6 +54,7 @@ struct FlowerListView: View {
                     }
             }
         }
+        .navigationToBack(dismiss)
         .task {
             viewModel.flowerListGet(completion: {
                 isLoaded = true
@@ -61,12 +62,24 @@ struct FlowerListView: View {
         }
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                NavigationLink(destination: SendFlowerView(gotoMain: .constant(false))) {
+                Button {
+                    if GiftManager.isExists {
+                        showAlert = true
+                    } else {
+                        showCreateView = true
+                    }
+                } label: {
                     Image("addButton")
                         .resizable()
-                        .frame(width: 24, height: 24, alignment: .center)
                         .aspectRatio(contentMode: .fit)
+                        .frame(width: 24, height: 24, alignment: .center)
                 }
+//                NavigationLink(destination: SendFlowerView(gotoMain: .constant(false))) {
+//                    Image("addButton")
+//                        .resizable()
+//                        .frame(width: 24, height: 24, alignment: .center)
+//                        .aspectRatio(contentMode: .fit)
+//                }
             }
         }
         .navigationTitle("꽃")

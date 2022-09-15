@@ -19,8 +19,10 @@ struct PictureListView: View {
     
     var body: some View {
         ZStack {
-            if !isLoaded {
-                ProgressView()
+            if !viewModel.isLoaded {
+                VStack {
+                    ProgressView()
+                }
             } else {
                 if viewModel.loadedImageList.isEmpty {
                     Text("아직 주고받은 사진이 없어요🥲")
@@ -43,25 +45,20 @@ struct PictureListView: View {
                         }
                         .navigationTitle("사진")
                         .navigationBarTitleDisplayMode(.inline)
-                        .navigationToBack(dismiss)
-                        .task {
-                            viewModel.imageListGet {
-                                isLoaded = true
-                            }
-                        }
                     } // ScrollView
                     .blur(radius: isTapped ? 6 : 0)
                     .background(Color.lightgray)
                 }
                 
             }
-//            } else if viewModel.loadedImageList.isEmpty {
-//                Text("아직 주고받은 사진이 없어요.")
-//                    .foregroundColor(.textBodyColor)
-//                    .opacity(0.5)
-//            }
             NavigationLink("",destination: SendPictureView(gotoMain: $showCreateView), isActive: $showCreateView)
         } // Zstack
+        .navigationToBack(dismiss)
+        .task {
+            viewModel.imageListGet {
+                print("image list loaded")
+            }
+        }
         .overlay {
             if isTapped == true {
                 PhotoCardSheet(indexPath: detailedImage.giftPolaroidId, imageURLString: detailedImage.giftPolaroidImage, photoText: detailedImage.comment)
