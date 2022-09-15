@@ -15,8 +15,9 @@ struct VoiceMailView: View {
     @State var showCreateView: Bool = false
     @State var isLoaded: Bool = false
     @State private var showAlert = false
-    
     @State private var voicemailIndex: Int = 0
+    
+    
     
     var body: some View {
         ZStack {
@@ -66,7 +67,6 @@ struct VoiceMailView: View {
                     }
                     NavigationLink("",destination: SendVoicemailView(gotoMain: $showCreateView), isActive: $showCreateView)
                 }
-                
                 .overlay {
                     if isShowPopUp {
                         VoicemailPopUpView()
@@ -85,9 +85,9 @@ struct VoiceMailView: View {
         .navigationTitle("음성메세지")
         .navigationBarTitleDisplayMode(.inline)
         .navigationToBack(dismiss)
-        .onTapGesture {
-            isShowPopUp.toggle()
-        }
+//        .onTapGesture {
+//            isShowPopUp.toggle()
+//        }
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button{
