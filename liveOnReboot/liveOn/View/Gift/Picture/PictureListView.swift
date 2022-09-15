@@ -69,6 +69,8 @@ struct PictureListView: View {
                     }
             }
         }
+        .navigationTitle("폴라로이드")
+        .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 NavigationLink(destination: SendPictureView(gotoMain: .constant(false))) {
