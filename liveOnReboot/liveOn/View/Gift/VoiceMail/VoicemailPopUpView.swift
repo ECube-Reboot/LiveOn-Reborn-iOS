@@ -11,8 +11,6 @@ struct VoicemailPopUpView: View {
     
     @ObservedObject private var voicemailViewmodel: VoicemailViewModel = VoicemailViewModel.voicemailViewModel
     
-    @State var isPlaying: Bool = false
-    
 //    @Binding var voicemailIndex: Int
     
 //    @Binding var singleVoicemail: VoicemailGetResponse?
@@ -46,21 +44,16 @@ struct VoicemailPopUpView: View {
                             .foregroundColor(Color.shadowColor)
                             .blendMode(.multiply)
                         
-                        Image(systemName: isPlaying ? "pause.fill": "play.fill")
+                        Image(systemName: voicemailViewmodel.isPlaying ? "pause.fill": "play.fill")
                             .resizable()
                             .scaledToFit()
                             .foregroundColor(Color.recordingBtn)
-                            .frame(width: isPlaying ? 30 : 40)
+                            .frame(width: voicemailViewmodel.isPlaying ? 30 : 40)
                             .onTapGesture {
-                                isPlaying.toggle()
-                                if isPlaying {
-                                    voicemailViewmodel.playGet()
-                                } else {
-                                    voicemailViewmodel.stopPlaying()
-                                }
-                                
+                                voicemailViewmodel.isPlaying.toggle()
+                                playWhenTap()
                             }
-                            .padding(.leading, isPlaying ? 0 : 5)
+                            .padding(.leading, voicemailViewmodel.isPlaying ? 0 : 5)
                     }
                 }
             }
@@ -68,3 +61,12 @@ struct VoicemailPopUpView: View {
     }
 }
 
+extension VoicemailPopUpView {
+    private func playWhenTap() {
+        if voicemailViewmodel.isPlaying {
+            voicemailViewmodel.downloadVoicemail()
+        } else {
+            voicemailViewmodel.stopPlaying()
+        }
+    }
+}

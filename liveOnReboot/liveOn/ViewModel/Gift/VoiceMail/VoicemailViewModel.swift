@@ -11,7 +11,7 @@ import AVFoundation
 class VoicemailViewModel: NSObject, ObservableObject, AVAudioPlayerDelegate {
     
     private var audioRecorder: AVAudioRecorder!
-    private var audioPlayer: AVAudioPlayer!
+    var audioPlayer: AVAudioPlayer!
     private var savedPath: URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
     
     static var voicemailViewModel = VoicemailViewModel()
@@ -31,6 +31,7 @@ class VoicemailViewModel: NSObject, ObservableObject, AVAudioPlayerDelegate {
     @Published var isRecorded: Bool = false
     @Published var voicemailList = [VoicemailListGetResponse]()
     @Published var singleVoicemail: VoicemailGetResponse?
+    @Published var isPlaying: Bool = false
     
     override init() {
         super.init()
@@ -53,8 +54,6 @@ class VoicemailViewModel: NSObject, ObservableObject, AVAudioPlayerDelegate {
         
         let recordingSession = AVAudioSession.sharedInstance()
         
-        isRecording = true
-        
         do {
             try recordingSession.setCategory(.playAndRecord, mode: .default)
             try recordingSession.setActive(true)
@@ -74,12 +73,9 @@ class VoicemailViewModel: NSObject, ObservableObject, AVAudioPlayerDelegate {
             audioRecorder = try AVAudioRecorder(url: fileName, settings: settings)
             audioRecorder.prepareToRecord()
             audioRecorder.record()
+            isRecording = true
             
-            timerCount = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
-                self.countSec += 1
-                self.duration = String(self.countSec)
-                self.recordingTimeInString = self.convertSecToMin(seconds: self.countSec)
-            })
+            startTimer()
             recordingSec = countSec
             countSec = 0
         } catch {
@@ -136,7 +132,7 @@ class VoicemailViewModel: NSObject, ObservableObject, AVAudioPlayerDelegate {
         audioPlayer.stop()
     }
     
-    func playGet() {
+    func playGet(data: Data) {
         
         let playSession = AVAudioSession.sharedInstance()
 
@@ -147,33 +143,33 @@ class VoicemailViewModel: NSObject, ObservableObject, AVAudioPlayerDelegate {
         }
 
         do {
-            let url = URL(string: singleVoicemail!.voiceMail)!
-            let data = try Data(contentsOf: url)
             audioPlayer = try AVAudioPlayer(data: data)
             audioPlayer.delegate = self
             audioPlayer.prepareToPlay()
             audioPlayer.play()
+            
         } catch {
             print("Playing failed: \(error)")
         }
+        // timer 두고 singleVoicemail의 duration을 넘으면 isPlaying을 false로
     }
     
-//    func downloadVoicemail() {
-//        let session = URLSession(configuration: .default)
-//        let url = URL(string: singleVoicemail!.voiceMail)!
-//        let request = URLRequest(url: url)
-//        let dataTask = session.dataTask(with: request) { data, _, err in
-//            guard err == nil else {
-//                print("error: \(String(describing: err))")
-//                return
-//            }
-//            guard let data = data else {
-//                return
-//            }
-//            self.playGet(data: data)
-//        }
-//        dataTask.resume()
-//    }
+    func downloadVoicemail() {
+        let session = URLSession(configuration: .default)
+        let url = URL(string: singleVoicemail!.voiceMail)!
+        let request = URLRequest(url: url)
+        let dataTask = session.dataTask(with: request) { data, _, err in
+            guard err == nil else {
+                print("error: \(String(describing: err))")
+                return
+            }
+            guard let data = data else {
+                return
+            }
+            self.playGet(data: data)
+        }
+        dataTask.resume()
+    }
     
 //    MARK: 혹시나 삭제가 필요할수도 있다고 생각해 일단 남겨둠
     func deleteRecording() {
@@ -224,7 +220,9 @@ extension VoicemailViewModel {
                 print(err.localizedDescription)
             }
         }
-        voicemailList = []
+        DispatchQueue.main.async { [weak self] in
+            self?.voicemailList = []
+        }
     }
     
     func voicemailGet(id: Int) {
@@ -264,9 +262,23 @@ extension VoicemailViewModel {
         return "\(m):\(sec)"
     }
     
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        print("finished playing")
+        isPlaying = false
+    }
+    
     private func mapListData(listData: [VoicemailListGetResponse]) {
         for data in listData {
             voicemailList.append(data)
         }
+    }
+    
+    private func startTimer() {
+        timerCount = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
+            self.countSec += 1
+            self.duration = String(self.countSec)
+            self.recordingTimeInString = self.convertSecToMin(seconds: self.countSec)
+        })
+
     }
 }
