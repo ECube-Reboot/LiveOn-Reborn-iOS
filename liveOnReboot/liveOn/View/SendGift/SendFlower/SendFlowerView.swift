@@ -20,7 +20,6 @@ struct SendFlowerView: View {
     @State private var isSent = false
     @Binding var gotoMain: Bool
     @State private var flowerName = getRandomFlower()
-    private let placeHolder = "한 줄 편지를 써보세요!"
 
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -36,14 +35,6 @@ struct SendFlowerView: View {
         }
         .navigationToBack(dismiss)
         .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                Button {
-                    dismiss()
-                } label: {
-                    Image(systemName: "chevron.left")
-                        .foregroundColor(.black)
-                }
-            }
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
                     showAlertforSend.toggle()
@@ -85,11 +76,16 @@ struct SendFlowerView: View {
     }
 
     private func setLetter() -> some View {
+        //        ZStack {
         VStack(alignment: .center) {
-            TextEditor(text: Binding($input, replacingNilWith: ""))
-                .padding()
-                .font(.TextStyles.handWrittenBody)
-                .foregroundColor(.textBodyColor)
+            TextField(text: Binding($input, replacingNilWith: "")) {
+                Text("한 줄 편지를 써보세요!")
+                    .font(.TextStyles.handWrittenBody)
+                    .foregroundColor(.textBodyColor)
+            }
+            .font(.TextStyles.handWrittenBody)
+            .padding(20)
+
             if let input = input {
                 let limit = textLimit.flowerComment
                 Text("\(input.count )/\(textLimit.flowerComment)")
@@ -109,21 +105,15 @@ struct SendFlowerView: View {
                     .onAppear {
                         isValidate = false
                     }
-                 
+
             }
         }
         // MARK: 쪽지 크기&배경 설정
         .padding(24)
         .frame(maxWidth: UIScreen.main.bounds.width*0.85, maxHeight: UIScreen.main.bounds.height*0.5)
         .background(Image("letterBackGround").resizable().shadow(color: Color(uiColor: .systemGray4), radius: 4, x: 1, y: 3))
-        .overlay {
-            Text(input ?? placeHolder)
-                .font(.TextStyles.handWrittenBody)
-                .padding(40)
-                .frame(maxWidth: .infinity,maxHeight: .infinity, alignment: .topLeading)
-                .foregroundColor(.textBodyColor)
-                .opacity(input == nil ? 0.6 : 0)
-        }
+
+        //        }
     }
 }
 

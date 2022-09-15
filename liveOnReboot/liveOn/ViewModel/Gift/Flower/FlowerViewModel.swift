@@ -31,10 +31,8 @@ class FlowerViewModel: ObservableObject {
             switch response {
             case .success(let result):
                 do {
-                    print("데이터 수신 성공")
                     let data = try result.map([FlowerGetResponse].self)
                     self.mapListData(listData: data)
-                    print("저장된 꽃 데이터는 다음과 같습니다 \(self.flowerList)")
                     if self.flowerList.count > 4 {
                         var tempArray: [FlowerGetResponse] = []
                         var i = 0
