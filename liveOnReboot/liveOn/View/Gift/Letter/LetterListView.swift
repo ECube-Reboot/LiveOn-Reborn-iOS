@@ -38,9 +38,8 @@ struct LetterListView: View {
                         }
                         }
                     } else {
-                        Text("아직 주고받은 쪽지가 없어요.")
-                            .foregroundColor(.textBodyColor)
-                            .opacity(0.5)
+                        Text("아직 주고받은 쪽지가 없어요🥲")
+                            .foregroundColor(.emptyGiftTextColor)
                     }
                 }
             NavigationLink("",destination: SendLetterView(gotoMain: $showCreateView), isActive: $showCreateView)
