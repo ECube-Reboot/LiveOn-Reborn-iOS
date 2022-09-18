@@ -11,6 +11,7 @@ extension Color {
     static let backgroundGray = Color(hex: "#FCFAFA")
     static let burgundy = Color(hex: "#6B0600")
     static let textBodyColor = Color(hex: "#5A4C4C")
+    static let emptyGiftTextColor = Color(hex: "#A3A3A3")
     static let lightgray = Color(hex: "#F2F0F0") //shadow 또는 박스 배경
     static let cassetteGreen = Color(hex: "#717339")
     static let cassetteRed = Color(hex: "#A6633C")

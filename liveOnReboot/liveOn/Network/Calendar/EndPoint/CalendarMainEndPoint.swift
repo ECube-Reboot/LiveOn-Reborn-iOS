@@ -55,10 +55,10 @@ extension CalendarMainServerCommunication: TargetType, AccessTokenAuthorizable {
     var headers: [String : String]? {
         switch self {
             case .getCalendarMain, .getCalendarDay:
-                return ["Authorization": "Bearer " + GeneralAPI.prodtoken]
+                return ["Authorization": "Bearer " + GeneralAPI.token]
             default:
                 return ["Content-Type": "application/json",
-                        "Authorization": "Bearer " + GeneralAPI.prodtoken]
+                        "Authorization": "Bearer " + GeneralAPI.token]
         }
     }
 }

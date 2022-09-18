@@ -16,15 +16,18 @@ struct LetterListView: View {
     @State private var showAlert = false
     @Environment(\.dismiss) private var dismiss
     private let columns = Array(repeating: GridItem(.adaptive(minimum: 300),
-                                            spacing: 1,
-                                            alignment: .center),count: 2)
+                                                    spacing: 1,
+                                                    alignment: .center),count: 2)
     var body: some View {
         VStack{
-                if !isLoaded {
-                    ProgressView()
+            if !isLoaded {
+                ProgressView()
+            } else {
+                if viewModel.letterList.isEmpty {
+                    Text("아직 주고받은 쪽지가 없어요🥲")
+                        .foregroundColor(.emptyGiftTextColor)
                 } else {
-                    if !viewModel.letterList.isEmpty {
-                        ScrollView(.vertical) {
+                    ScrollView(.vertical) {
                         LazyVGrid(columns: columns, spacing: 1) {
                             ForEach(viewModel.letterList.reversed(),  id: \.giftNoteId) { letter in
                                 LetterView(letter: letter)
@@ -36,13 +39,10 @@ struct LetterListView: View {
                                     }
                             }
                         }
-                        }
-                    } else {
-                        Text("아직 주고받은 쪽지가 없어요.")
-                            .foregroundColor(.textBodyColor)
-                            .opacity(0.5)
                     }
+                    
                 }
+            }
             NavigationLink("",destination: SendLetterView(gotoMain: $showCreateView), isActive: $showCreateView)
         }  // ScrollView
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)

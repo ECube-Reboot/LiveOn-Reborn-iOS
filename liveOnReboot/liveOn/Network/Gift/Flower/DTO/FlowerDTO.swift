@@ -9,6 +9,11 @@ import SwiftUI
 
 struct FlowerGetResponse: Codable {
     let giftFlowerName: String
+    let comment: String
+
+//    let message: String
+//    let senderName: String
+//    let sendDate: String
 //    let message: String
 }
 

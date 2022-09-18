@@ -71,10 +71,10 @@ extension PictureServerCommunication: TargetType, AccessTokenAuthorizable {
         switch self {
         case .imagePost:
             return ["Content-Type": "multipart/form",
-                    "Authorization": "Bearer "+GeneralAPI.prodtoken]
+                    "Authorization": "Bearer "+GeneralAPI.token]
         default:
             return ["Content-Type": "application/json",
-                    "Authorization": "Bearer "+GeneralAPI.prodtoken]
+                    "Authorization": "Bearer "+GeneralAPI.token]
         }
     }
 }
