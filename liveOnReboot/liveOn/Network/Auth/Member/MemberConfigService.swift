@@ -112,10 +112,21 @@ class MemberConfigService: ObservableObject {
         var isMatched = false
         singleton.memberConfigProvider.request(.validateCoupleMatching) { response in
             switch response {
-                case .success:
-                    isMatched = true
-                    completion()
-                    break
+                case .success(let result):
+                    if (result.statusCode == 200) {
+                        do {
+                            let data = try result.map(IsCoupleMatched.self)
+                            if data.coupleMatched {
+                                isMatched = true
+                                print("data.coupleMatched \(data.coupleMatched)")
+                                completion()
+                            }
+                        } catch _ {
+                            break
+                        }
+                    } else {
+                        isMatched = false
+                    }
                 case .failure:
                     isMatched = false
             }

@@ -35,3 +35,7 @@ struct EditMemberProfileResponse: Codable {
 struct EditNickNameRequest: Codable {
     let nickName: String
 }
+
+struct IsCoupleMatched: Codable {
+    let coupleMatched: Bool
+}

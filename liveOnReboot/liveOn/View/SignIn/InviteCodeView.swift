@@ -29,7 +29,7 @@ struct InviteCodeView: View {
                     .textSelection(.enabled)
                     .frame(width: 268, height: 170, alignment: .center)
                     .textSelection(.enabled)
-                    .background(RoundedRectangle(cornerRadius: 20).fill(Color(uiColor: .systemBackground)).shadow(color: .bodyTextColor.opacity(0.3), radius: 6, x: 0, y: 2))
+                    .background(RoundedRectangle(cornerRadius: 20).fill(Color(uiColor: .systemBackground)).shadow(color: .textBodyColor.opacity(0.3), radius: 6, x: 0, y: 2))
                     .padding(.top, 40)
                 Button {
                     showShareSheet.toggle()
@@ -69,7 +69,7 @@ struct InviteCodeView: View {
         }
         .task {
             if UserDefaults.standard.string(forKey: "inviteCode") == nil {
-                await MemberConfigService.getInviteCode()
+                MemberConfigService.getInviteCode()
             }
              MemberConfigService.validateCoupleMatching {
                 self.isMatched = true

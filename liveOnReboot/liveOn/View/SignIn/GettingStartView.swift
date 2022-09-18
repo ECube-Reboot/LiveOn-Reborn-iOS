@@ -29,7 +29,7 @@ struct GettingStartView: View {
                     Text("하루에 하나씩,\n너에게 보내는 선물")
                         .foregroundColor(.textBodyColor)
                         .font(.TextStyles.handWrittenBody)
-                    Text("Dear, you")
+                    Text("Dear you")
                         .foregroundColor(.mainBrown)
                         .font(.TextStyles.largeCalendarNumber)
                         .fontWeight(.heavy)
@@ -58,6 +58,7 @@ struct GettingStartView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .ignoresSafeArea()
         .background(Color.backgroundGray)
+        .navigationBarBackButtonHidden(true)
     }
 }
 
