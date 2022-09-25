@@ -26,7 +26,7 @@ struct InputBirthDayView: View {
                 DatePicker("birthday", selection: $birthday, in: ...Date(), displayedComponents: .date)
                     .datePickerStyle(.graphical)
             }
-            NavigationLink("", destination: InputOfficialDateView(userData: self.userData), isActive: $goNext)
+            NavigationLink("", destination: MatchSelectionView(), isActive: $goNext)
         }
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
