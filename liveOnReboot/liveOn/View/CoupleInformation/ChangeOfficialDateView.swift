@@ -10,7 +10,7 @@ import SwiftUI
 struct ChangeOfficialDateView: View {
     @Binding var officialDay: Date
     // 임시, 나중에 서버 연동후에 데이터는 제대로 관리할 예정
-    @State private var tempSelection: Date = Date()
+    @State private var tempSelection: Date = Date().stringDateToDateFormat(MemberConfigService.singleton.profile.officialDate)
     @State private var showCompletionAlert = false
     @Environment(\.dismiss) private var dismiss
     var body: some View {
@@ -30,22 +30,26 @@ struct ChangeOfficialDateView: View {
         .toolbar(content: {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button("저장"){
-                    officialDay = tempSelection
-                    showCompletionAlert.toggle()
+                    CoupleService.patchOfficialDate(officialDate: OfficialDate(officialDate: tempSelection.toServerFormatString())) {
+                        if CoupleService.singleton.isSuccessed {
+                            showCompletionAlert.toggle()
+                        }
+                    }
                 }
                 .disabled(officialDay == tempSelection)
             }
         })
         .alert(isPresented: $showCompletionAlert) {
-            Alert(title: Text("저장 완료"), message: Text(""), dismissButton: .default(Text("확인")))
+            Alert(title: Text("1일 수정 완료"),
+                  message: Text("\(tempSelection.toServerFormatString())으로 정확하게 입력해둘게요!"),
+                  dismissButton: .default(Text("확인")) {
+                MemberConfigService.fetchMemberProfile {
+                    dismiss()
+                }
+            }
+            )
         }
         .navigationToBack(dismiss)
         .navigationTitle("1일 날짜 수정")
     }
 }
-//
-//struct ChangeOfficialDateView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ChangeOfficialDateView()
-//    }
-//}

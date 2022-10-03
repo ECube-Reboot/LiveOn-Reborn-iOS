@@ -21,7 +21,7 @@ enum SignInLiteral {
     static var inviteCodeTitle = "상대방 초대하기"
     static var inviteCodeDescription = "상대가 앱을 설치하고 초대코드를 입력하면 서로를 이어드릴게요."
     static var inviteCodeShareSheetTitle = "liveOn 초대코드 보내기"
-    static var inviteCodeShareSheetText = "님으로부터 초대장이 왔어요! liveOn앱에서 초대코드를 입력해주세요 :)"
+    static var inviteCodeShareSheetText = "초대장이 왔어요! liveOn앱에서 초대코드를 입력해주세요 :)"
     
     static var enterCodeTitle = "5자리 초대코드를 \n입력해주세요"
     static var enterCodeDescription = "먼저 리본에 가입한 상대방에게 받은 초대코드를 입력해주세요."

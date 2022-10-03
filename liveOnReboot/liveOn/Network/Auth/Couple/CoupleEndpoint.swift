@@ -1,61 +1,61 @@
 //
-//  AuthEndPoint.swift
+//  CoupleEndpoint.swift
 //  liveOnReboot
 //
-//  Created by Jihye Hong on 2022/08/26.
+//  Created by Jineeee on 2022/10/03.
 //
 
 import Foundation
 import Moya
 
-enum AuthEndpoint {
-    case login(request: LoginRequestDTO)
+enum CoupleEndpoint {
     case getCode
     case checkCode(param: String)
+    case postOfficialdate(officialDate: OfficialDate)
+    case patchOfficialdate(officialDate: OfficialDate)
 }
 
-extension AuthEndpoint: TargetType {
+extension CoupleEndpoint: TargetType {
     var baseURL: URL {
         return URL(string: GeneralAPI.baseURL)!
     }
     
     var path: String {
         switch self {
-        case .login:
-            return "api/v1/auth/login"
-        case .getCode, .checkCode:
-            return "/api/v1/couple/code"
+            case .getCode, .checkCode:
+                return "/api/v1/couple/code"
+            case .patchOfficialdate, .postOfficialdate:
+                return "/api/v1/couple/officialdate"
         }
     }
     
     var method: Moya.Method {
         switch self {
-            case .login, .checkCode:
+            case .checkCode, .postOfficialdate:
                 return .post
             case .getCode:
                 return .get
+            case .patchOfficialdate:
+                return .patch
         }
     }
     
     var task: Task {
         switch self {
-            case .login(let loginRequestDTO):
-                return .requestJSONEncodable(loginRequestDTO)
             case .getCode:
                 return .requestPlain
             case .checkCode(let code):
                 return .requestJSONEncodable(code)
+            case .postOfficialdate(let date):
+                return .requestJSONEncodable(date)
+            case .patchOfficialdate(let date):
+                return .requestJSONEncodable(date)
         }
         
     }
     
     var headers: [String: String]? {
-        switch self {
-        case .login :
-            return ["Content-Type": "application/json"]
-        default :
             return ["Content-Type": "application/json",
                     "Authorization": "Bearer " + GeneralAPI.prodtoken]
-        }
     }
 }

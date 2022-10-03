@@ -9,9 +9,9 @@ import SwiftUI
 
 struct MatchSelectionView: View {
     var body: some View {
-        SignInLayoutView(title: "상대와 함께하기", description: "선물함은 함께 채워나가야죠! 함께할 상대와 만나봐요!") {
+        SignInLayoutView(title: "상대와 만나기", description: "선물함은 함께 채워나가야죠! 함께할 상대와 만나봐요!") {
             VStack {
-                NavigationLink(destination: InviteCodeView(userData: SignInUser())) {
+                NavigationLink(destination: InviteCodeView()) {
                     ActionButton(description: "상대방을 초대할게요", label: "초대코드 생성", image: "createBox")
                 }
                 HStack(alignment: .center, spacing: 0) {
@@ -37,23 +37,6 @@ extension MatchSelectionView {
         let image: String
         
         var body: some View {
-//            VStack(alignment: .center, spacing: 4) {
-//                Image(image)
-//                    .resizable()
-//                    .scaledToFit()
-//                    .frame(maxWidth: 32, maxHeight: 32)
-//                Text(description)
-//                    .opacity(0.6)
-//                    .frame(maxWidth: .infinity)
-//                    Text(label)
-//                        .bold()
-//            }
-//            .padding()
-//            //.frame(height: 80)
-//            .background(
-//                RoundedRectangle(cornerRadius: 20)
-//                    .stroke()
-//            )
             HStack(alignment: .center, spacing: 8) {
                 Spacer()
                 Image(image)

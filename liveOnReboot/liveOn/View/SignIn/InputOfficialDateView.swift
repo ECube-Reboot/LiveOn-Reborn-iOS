@@ -8,12 +8,11 @@
 import SwiftUI
 
 struct InputOfficialDateView: View {
-    @ObservedObject var userData: SignInUser
     @Environment(\.dismiss) private var dismiss
     
     @State var officialDate = Date.now
     @State var goNext: Bool = false
-    
+    @State private var showAlert: Bool = false
     var body: some View {
         SignInLayoutView(title: SignInLiteral.inputOfficailDateTitle, description: SignInLiteral.inputOfficailDateDescription) {
             VStack {
@@ -30,19 +29,21 @@ struct InputOfficialDateView: View {
                 DatePicker("officialDate", selection: $officialDate, in: ...Date(), displayedComponents: .date)
                     .datePickerStyle(.graphical)
             }
-            NavigationLink("", destination: InviteCodeView(userData: self.userData), isActive: $goNext)
+            NavigationLink("", destination: GiftBoxView(), isActive: $goNext)
+        }
+        .alert(isPresented: $showAlert){
+            Alert(title: Text("실패"), message: Text("문제가 생겼어요 다시 시도해주세요🥲"), dismissButton: .cancel())
         }
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button("다음"){
-                    userData.officialDay = self.officialDate
-                   MemberConfigService.postMemeberInformation(
-                        information: PostMemberInformationDTO(birthDay: userData.birthDay.toString(dateFormat: "YYYY-MM-dd"),
-                                                              nickName: userData.nickName,
-                                                              officialDay: userData.officialDay.toString(dateFormat: "YYYY-MM-dd"))
-                    ) {
-                        UserStatus.updateUserStatus(status: UserStatus.informationEntered)
-                        goNext.toggle()
+                    CoupleService.postOfficialDate(officialDate: OfficialDate(officialDate: self.officialDate.toServerFormatString())) {
+                        if CoupleService.singleton.isSuccessed {
+                            goNext.toggle()
+                            CoupleService.singleton.isSuccessed.toggle()
+                        } else {
+                            showAlert.toggle()
+                        }
                     }
                 }
             }
@@ -53,6 +54,6 @@ struct InputOfficialDateView: View {
 
 struct InputOfficialDateView_Previews: PreviewProvider {
     static var previews: some View {
-        InputOfficialDateView(userData: SignInUser())
+        InputOfficialDateView()
     }
 }

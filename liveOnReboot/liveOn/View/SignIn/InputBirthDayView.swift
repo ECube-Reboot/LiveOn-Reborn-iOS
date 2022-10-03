@@ -32,7 +32,10 @@ struct InputBirthDayView: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button("다음"){
                     userData.birthDay = self.birthday
-                    goNext.toggle()
+                    MemberConfigService.postMemeberInformation(information: PostMemberProfile(birthDay: userData.birthDay.toServerFormatString(), nickName: userData.nickName)) {
+                        goNext.toggle()
+                        MemberConfigService.singleton.isSuccess = false
+                    }
                 }
             }
         }
@@ -45,3 +48,5 @@ struct InputBirthDayView_Previews: PreviewProvider {
         InputBirthDayView(userData: SignInUser())
     }
 }
+
+

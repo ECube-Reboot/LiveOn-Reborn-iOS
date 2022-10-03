@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct InviteCodeView: View {
-    @ObservedObject var userData: SignInUser
     @ObservedObject var viewModel = SignInViewModel()
     @Environment(\.dismiss) private var dismiss
     
@@ -18,12 +17,11 @@ struct InviteCodeView: View {
     @State private var inviteCodeToShow = ""
     @State private var isMatched = false
     var body: some View {
-        if !isMatched {
         SignInLayoutView(title: SignInLiteral.inviteCodeTitle, description: SignInLiteral.inviteCodeDescription) {
             VStack {
                 NavigationLink("", destination: GiftBoxView(), isActive: $isMatched)
                 //TODO: 코드 GET API 연동
-                Text( UserDefaults.standard.string(forKey: "inviteCode") ?? "")
+                Text(UserDefaults.standard.string(forKey: "inviteCode") ?? "")
                     .font(.title)
                     .fontWeight(.heavy)
                     .textSelection(.enabled)
@@ -39,47 +37,49 @@ struct InviteCodeView: View {
             }
             .sheet(isPresented: $showShareSheet) {
                 if let code = UserDefaults.standard.string(forKey: "inviteCode") {
-                ShareSheet(activityItems: [ MyActivityItemSource(title: SignInLiteral.inviteCodeShareSheetTitle, text: "\(userData.nickName)\(SignInLiteral.inviteCodeShareSheetText) 초대코드 : [\(code)]")])
+                ShareSheet(activityItems: [ MyActivityItemSource(title: SignInLiteral.inviteCodeShareSheetTitle, text: "\(SignInLiteral.inviteCodeShareSheetText) 초대코드 : [\(code)]")])
                 }
             }
                 
                 Spacer()
-                Button {
-                    showEnterCodeSheet.toggle()
+                Text("매칭코드는 다시 확인할 수 있어요")
+                    .foregroundColor(.textBodyColor)
+                    .opacity(0.6)
+                    .frame(maxWidth: .infinity, alignment: .center)
+                NavigationLink(destination: InputOfficialDateView()) {
+                    Text("넘어가기")
+                        .fontWeight(.bold)
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 64)
+                        .background(RoundedRectangle(cornerRadius: 10).fill(Color.lightgray))
                 }
-            label: {
-                Text("이미 초대코드가 있어요")
-                    .fontWeight(.bold)
-                    .padding()
-                    .background(RoundedRectangle(cornerRadius: 10).fill(Color.lightgray))
-            }
-            .fullScreenCover(isPresented: $showEnterCodeSheet) {
-                EnterCodeView(userData: userData)
-            }
                 
+//                Button {
+//                     매칭 확인 api 연동
+//                    MemberConfigService.validateCoupleMatching {
+//                       self.isMatched = true
+//                       UserStatus.updateUserStatus(status: UserStatus.allSettingFinished)
+//                   }
+//
+//                }
+//            label: {
+//                Text("넘어가기")
+//                    .fontWeight(.bold)
+//                    .frame(maxWidth: .infinity)
+//                    .frame(height: 64)
+//                    .background(RoundedRectangle(cornerRadius: 10).fill(Color.lightgray))
+//            }
+//
             }
             .frame(maxWidth: .infinity)
-//            .toolbar {
-//                ToolbarItem(placement: .navigationBarTrailing) {
-//                    NavigationLink("둘러보기", destination: GiftBoxView())
-//                }
-//            }
             .navigationToBackShowOptional(dismiss, isHidden: UserStatus.checkStatus(status: UserStatus.informationEntered))
             
         }
         .task {
             if UserDefaults.standard.string(forKey: "inviteCode") == nil {
-                MemberConfigService.getInviteCode()
-            }
-             MemberConfigService.validateCoupleMatching {
-                self.isMatched = true
-                UserStatus.updateUserStatus(status: UserStatus.allSettingFinished)
+                CoupleService.getInviteCode()
             }
         }
-        } else {
-            GiftBoxView()
-        }
-        
     }
     
     var copyButton: some View {

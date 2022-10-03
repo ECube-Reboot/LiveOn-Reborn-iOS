@@ -19,7 +19,7 @@ struct FetchMemberProfile: Codable {
 }
 
 struct PostMemberProfile: Codable {
-    let birthDay, nickName, officialDate: String
+    let birthDay, nickName: String
 }
 
 struct EditMemberProfileRequest: Codable {
