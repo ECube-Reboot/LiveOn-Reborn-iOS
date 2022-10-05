@@ -15,6 +15,7 @@ struct liveOnRebootApp: App {
         WindowGroup {
             if networkManager.isConnected {
                 NavigationView {
+                    MatchSelectionView()
                                   switch UserStatus.currentStatus() {
                                       case 0:
                     //                          .nonMember:
@@ -24,7 +25,7 @@ struct liveOnRebootApp: App {
                                           InputNickNameView()
                                       case 2:
                     //                          .informationEntered:
-                                          InviteCodeView(userData: SignInUser())
+                                          MatchSelectionView()
                                       case 3:
                     //                          .allSettingFinished:
                                           GiftBoxView()
@@ -36,9 +37,6 @@ struct liveOnRebootApp: App {
                 Text("네트워크에 연결되지 않았어요 ㅠ")
                     .foregroundColor(.textBodyColor)
                     .opacity(0.6)
-                Button("재연결"){
-                    networkManager.startMonitoring()
-                }
             }
         }
     }

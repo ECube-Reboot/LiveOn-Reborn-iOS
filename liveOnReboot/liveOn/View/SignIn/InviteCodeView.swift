@@ -46,38 +46,26 @@ struct InviteCodeView: View {
                     .foregroundColor(.textBodyColor)
                     .opacity(0.6)
                     .frame(maxWidth: .infinity, alignment: .center)
-                NavigationLink(destination: InputOfficialDateView()) {
+                NavigationLink(destination: InputOfficialDateView(), isActive: $isMatched) {
                     Text("넘어가기")
                         .fontWeight(.bold)
                         .frame(maxWidth: .infinity)
                         .frame(height: 64)
-                        .background(RoundedRectangle(cornerRadius: 10).fill(Color.lightgray))
+                        .background(RoundedRectangle(cornerRadius: 10).fill(Color.accentColor))
+                        .foregroundColor(.white)
                 }
-                
-//                Button {
-//                     매칭 확인 api 연동
-//                    MemberConfigService.validateCoupleMatching {
-//                       self.isMatched = true
-//                       UserStatus.updateUserStatus(status: UserStatus.allSettingFinished)
-//                   }
-//
-//                }
-//            label: {
-//                Text("넘어가기")
-//                    .fontWeight(.bold)
-//                    .frame(maxWidth: .infinity)
-//                    .frame(height: 64)
-//                    .background(RoundedRectangle(cornerRadius: 10).fill(Color.lightgray))
-//            }
-//
             }
             .frame(maxWidth: .infinity)
-            .navigationToBackShowOptional(dismiss, isHidden: UserStatus.checkStatus(status: UserStatus.informationEntered))
-            
+            .navigationToBack(dismiss)
         }
         .task {
             if UserDefaults.standard.string(forKey: "inviteCode") == nil {
                 CoupleService.getInviteCode()
+            }
+            MemberConfigService.validateCoupleMatching {
+                if MemberConfigService.singleton.isMatched {
+                    isMatched = true
+                }
             }
         }
     }

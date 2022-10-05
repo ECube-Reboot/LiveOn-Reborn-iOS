@@ -16,7 +16,7 @@ class MemberConfigService: ObservableObject {
     @ObservedObject static var singleton: MemberConfigService = MemberConfigService()
     @Published var profile = FetchMemberProfile()
     @State var isSuccess = false
-    @State var isMatched = false
+    @Published var isMatched = false
     
     static func postMemeberInformation(information: PostMemberProfile, completion: @escaping () -> ()) {
         singleton.memberConfigProvider.request(.postMemberProfile(param: information)) { response in
@@ -88,7 +88,6 @@ class MemberConfigService: ObservableObject {
                                 let data = try result.map(IsCoupleMatched.self)
                                 if data.coupleMatched {
                                     singleton.isMatched = true
-                                    print("data.coupleMatched \(data.coupleMatched)")
                                     completion()
                                 }
                             } catch _ {
