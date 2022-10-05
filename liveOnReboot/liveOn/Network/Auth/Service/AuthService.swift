@@ -11,7 +11,8 @@ import Moya
 class AuthService {
     let authProvider = MoyaProvider<AuthEndpoint>(plugins: [NetworkLoggerPlugin(verbose: true)])
     
-    func login(accessToken: String) -> Void {
+    @Published var userSetting = false
+    func login(accessToken: String) {
         var tokenResponse = LoginResponseDTO(accessToken: "", isNewMember: false, refreshToken: "", userSettingDone: false)
         
         let param = LoginRequestDTO.init(accessToken: accessToken)
@@ -20,6 +21,7 @@ class AuthService {
             switch response {
             case .success(let result):
                 tokenResponse = try! result.map(LoginResponseDTO.self)
+                self.userSetting = tokenResponse.userSettingDone
                 KeyChain.create(key: "accessToken", token: tokenResponse.accessToken)
                 KeyChain.create(key: "refreshToken", token: tokenResponse.refreshToken)
             case .failure(let err):

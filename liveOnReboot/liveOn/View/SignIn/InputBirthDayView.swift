@@ -33,6 +33,7 @@ struct InputBirthDayView: View {
                 Button("다음"){
                     userData.birthDay = self.birthday
                     MemberConfigService.postMemeberInformation(information: PostMemberProfile(birthDay: userData.birthDay.toServerFormatString(), nickName: userData.nickName)) {
+                        UserStatus.updateUserStatus(status: .informationEntered)
                         goNext.toggle()
                         MemberConfigService.singleton.isSuccess = false
                     }

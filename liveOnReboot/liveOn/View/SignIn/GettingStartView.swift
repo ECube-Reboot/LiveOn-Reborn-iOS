@@ -12,9 +12,8 @@ import AuthenticationServices
 struct GettingStartView: View {
     @ObservedObject var appleSignInViewModel: AppleSignInViewModel = AppleSignInViewModel()
     @State private var isActive: Bool = false
-    
     let authProvider = MoyaProvider<AuthEndpoint>(plugins: [NetworkLoggerPlugin(verbose: true)])
-    
+    @State private var isMember: Bool = false
     var body: some View {
         VStack {
             VStack(alignment: .leading, spacing: 4) {
@@ -37,16 +36,26 @@ struct GettingStartView: View {
                 .padding(.leading, 20)
                 Spacer()
                     .frame(height: 120, alignment: .center)
-                NavigationLink(destination: InputNickNameView(), isActive: $isActive) {
-                    Text("")
+                
+                if isMember {
+                    NavigationLink(destination: GiftBoxView(), isActive: $isActive) {
+                        Text("")
+                    }
+                } else {
+                    NavigationLink(destination: InputNickNameView(), isActive: $isActive) {
+                        Text("")
+                    }
                 }
                 SignInWithAppleButton(.signIn, onRequest: { request in request.requestedScopes = []
                 }, onCompletion: { result in
                     switch result {
                         case .success:
                             UserStatus.updateUserStatus(status: UserStatus.appleSignInFinished)
-                            appleSignInViewModel.didFinishAppleSignin(result: result)
+                            if appleSignInViewModel.didFinishAppleSignin(result: result){
+                               isMember = true
+                            }
                             isActive.toggle()
+                            
                         case .failure:
                             return
                     }
