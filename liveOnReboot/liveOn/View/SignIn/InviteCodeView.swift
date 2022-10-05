@@ -42,12 +42,13 @@ struct InviteCodeView: View {
             }
                 
                 Spacer()
-                Text("매칭코드는 다시 확인할 수 있어요")
+                Text("매칭코드를 공유하셨다면, 우선 다음을 눌러 진행해주세요.")
                     .foregroundColor(.textBodyColor)
                     .opacity(0.6)
                     .frame(maxWidth: .infinity, alignment: .center)
-                NavigationLink(destination: InputOfficialDateView(), isActive: $isMatched) {
-                    Text("넘어가기")
+                    .multilineTextAlignment(.center)
+                NavigationLink(destination: InputOfficialDateView()) {
+                    Text("다음")
                         .fontWeight(.bold)
                         .frame(maxWidth: .infinity)
                         .frame(height: 64)
@@ -58,14 +59,9 @@ struct InviteCodeView: View {
             .frame(maxWidth: .infinity)
             .navigationToBack(dismiss)
         }
-        .task {
+        .onAppear {
             if UserDefaults.standard.string(forKey: "inviteCode") == nil {
                 CoupleService.getInviteCode()
-            }
-            MemberConfigService.validateCoupleMatching {
-                if MemberConfigService.singleton.isMatched {
-                    isMatched = true
-                }
             }
         }
     }

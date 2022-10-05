@@ -19,7 +19,7 @@ enum SignInLiteral {
     static var inputOfficailDateDescription = "며칠째 사랑 중인지 알려드릴께요."
     
     static var inviteCodeTitle = "상대방 초대하기"
-    static var inviteCodeDescription = "상대가 앱을 설치하고 초대코드를 입력하면 서로를 이어드릴게요."
+    static var inviteCodeDescription = "상대가 초대코드를 입력하면 이어드릴게요. 매칭코드는 다시 확인할 수 있어요."
     static var inviteCodeShareSheetTitle = "liveOn 초대코드 보내기"
     static var inviteCodeShareSheetText = "초대장이 왔어요! liveOn앱에서 초대코드를 입력해주세요 :)"
     
