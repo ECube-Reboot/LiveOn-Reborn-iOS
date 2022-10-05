@@ -14,8 +14,8 @@ struct liveOnRebootApp: App {
     var body: some Scene {
         WindowGroup {
             if networkManager.isConnected {
+                
                 NavigationView {
-                    MatchSelectionView()
                                   switch UserStatus.currentStatus() {
                                       case 0:
                     //                          .nonMember:
@@ -44,3 +44,4 @@ struct liveOnRebootApp: App {
         UITextView.appearance().backgroundColor = .clear
     }
 }
+
