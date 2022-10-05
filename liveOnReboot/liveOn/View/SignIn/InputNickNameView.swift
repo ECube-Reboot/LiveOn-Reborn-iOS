@@ -22,6 +22,9 @@ struct InputNickNameView: View {
                 .opacity(0.5)
             NavigationLink("", destination: InputBirthDayView(userData: self.userData), isActive: $goNext)
         }
+        .onTapGesture {
+            hideKeyboard()
+        }
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button("다음"){
