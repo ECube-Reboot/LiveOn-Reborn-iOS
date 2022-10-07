@@ -23,6 +23,10 @@ struct SettingView: View {
             .listRowBackground(Color.clear)
             .listRowSeparator(.hidden)
             .padding(.vertical, 12)
+            NavigationLink("만든 사람들", destination: MemberView())
+            .listRowBackground(Color.clear)
+            .listRowSeparator(.hidden)
+            .padding(.vertical, 12)
         }
         .listRowBackground(Color.clear)
         .navigationTitle("환경설정")
