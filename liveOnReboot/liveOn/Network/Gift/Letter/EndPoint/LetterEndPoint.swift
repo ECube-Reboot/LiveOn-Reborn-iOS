@@ -53,7 +53,7 @@ extension LetterServerCommunication: TargetType, AccessTokenAuthorizable {
         switch self {
             default:
                 return ["Content-Type": "application/json",
-                        "Authorization": "Bearer " + GeneralAPI.prodtoken]
+                        "Authorization": "Bearer " + GeneralAPI.token]
         }
     }
 }

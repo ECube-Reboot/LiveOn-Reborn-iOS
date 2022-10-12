@@ -55,7 +55,7 @@ extension AuthEndpoint: TargetType {
             return ["Content-Type": "application/json"]
         default :
             return ["Content-Type": "application/json",
-                    "Authorization": "Bearer " + GeneralAPI.prodtoken]
+                    "Authorization": "Bearer " + GeneralAPI.token]
         }
     }
 }

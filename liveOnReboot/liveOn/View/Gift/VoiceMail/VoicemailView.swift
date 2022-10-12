@@ -15,8 +15,9 @@ struct VoiceMailView: View {
     @State var showCreateView: Bool = false
     @State var isLoaded: Bool = false
     @State private var showAlert = false
-    
     @State private var voicemailIndex: Int = 0
+    
+    
     
     var body: some View {
         ZStack {
@@ -25,7 +26,8 @@ struct VoiceMailView: View {
             } else {
                 VStack {
                     if voicemailViewmodel.voicemailList.isEmpty {
-                        Text("주고받은 음성메세지가 없어요🥲")
+                        Text("아직 주고받은 음성메세지가 없어요🥲")
+                            .foregroundColor(.emptyGiftTextColor)
                     } else if voicemailViewmodel.voicemailList.count > 8 {
                         ScrollView(showsIndicators: false) {
                             VStack {
@@ -66,7 +68,6 @@ struct VoiceMailView: View {
                     }
                     NavigationLink("",destination: SendVoicemailView(gotoMain: $showCreateView), isActive: $showCreateView)
                 }
-                
                 .overlay {
                     if isShowPopUp {
                         VoicemailPopUpView()
@@ -85,9 +86,6 @@ struct VoiceMailView: View {
         .navigationTitle("음성메세지")
         .navigationBarTitleDisplayMode(.inline)
         .navigationToBack(dismiss)
-        .onTapGesture {
-            isShowPopUp.toggle()
-        }
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button{

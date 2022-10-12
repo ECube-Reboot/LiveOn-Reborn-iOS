@@ -32,8 +32,7 @@ struct UpcomingEventsView: View {
                     .font(.callout)
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
-            .frame(height: UIScreen.main.bounds.height * 0.055)
-          //  .frame(maxHeight: UIScreen.main.bounds.height * 0.06)
+            .frame(maxHeight: UIScreen.main.bounds.height * 0.06)
             .padding(.leading, 4)
         }
         .padding(.vertical)

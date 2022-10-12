@@ -16,6 +16,8 @@ struct FlowerListView: View {
     @State private var selectedCardIndex = 0
     @State private var imageName = ""
     @State private var comment = ""
+    @State private var sender = ""
+    @State private var date = ""
     @State private var showAlert = false
     @State private var showCreateView = false
     private let columns : [GridItem] = [
@@ -52,30 +54,15 @@ struct FlowerListView: View {
                     }
             }
         }
+        .navigationToBack(dismiss)
         .task {
             viewModel.flowerListGet(completion: {
                 isLoaded = true
-                
             })
         }
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                NavigationLink(destination: SendFlowerView(gotoMain: .constant(false))) {
-                    Image("addButton")
-                        .resizable()
-                        .frame(width: 24, height: 24, alignment: .center)
-                        .aspectRatio(contentMode: .fit)
-                }
-            }
-        }
-        .navigationToBack(dismiss)
-        .navigationTitle("꽃")
-        .navigationBarTitleDisplayMode(.inline)
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-        .background(Color.backgroundGray)
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Button{
+                Button {
                     if GiftManager.isExists {
                         showAlert = true
                     } else {
@@ -87,8 +74,18 @@ struct FlowerListView: View {
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 24, height: 24, alignment: .center)
                 }
+//                NavigationLink(destination: SendFlowerView(gotoMain: .constant(false))) {
+//                    Image("addButton")
+//                        .resizable()
+//                        .frame(width: 24, height: 24, alignment: .center)
+//                        .aspectRatio(contentMode: .fit)
+//                }
             }
         }
+        .navigationTitle("꽃")
+        .navigationBarTitleDisplayMode(.inline)
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+        .background(Color.background)
         .alert("선물 일일한도 초과", isPresented: $showAlert) {
             Button("확인", role: .cancel) {  }
         } message: {
@@ -124,6 +121,10 @@ struct FlowerListView: View {
                         FlowerPopUp(content: viewModel.flowerListExtracted[index].giftFlowerName)
                             .onTapGesture {
                                 imageName = viewModel.flowerListExtracted[index].giftFlowerName
+                                comment = viewModel.flowerListExtracted[index].comment
+//                                sender = viewModel.flowerListExtracted[index].senderName
+//                                date = viewModel.flowerListExtracted[index].sendDate
+
                                 withAnimation(.linear(duration: 0.5)) {
                                     showFlowerPopUp = true
                                     selectedCardIndex = index
@@ -136,6 +137,10 @@ struct FlowerListView: View {
                         FlowerPopUp(content: viewModel.flowerList[index].giftFlowerName)
                             .onTapGesture {
                                 imageName = viewModel.flowerList[index].giftFlowerName
+                                comment = viewModel.flowerList[index].comment
+//                                sender = viewModel.flowerListExtracted[index].senderName
+//                                date = viewModel.flowerListExtracted[index].sendDate
+
                                 withAnimation(.linear(duration: 0.5)) {
                                     showFlowerPopUp = true
                                     selectedCardIndex = index

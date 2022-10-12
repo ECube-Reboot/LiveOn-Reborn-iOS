@@ -22,6 +22,8 @@ struct FlowerPopUpView: View {
 
     var imageName: String
     var comment: String
+//    var sender: String
+//    var date: String
     @Binding var popUpBoolean: Bool
     @Binding var cardIndex: Int
 
@@ -56,19 +58,24 @@ struct FlowerPopUpView: View {
     } // body
     private func setFlowerMessage(comment: String) -> some View {
         ZStack {
-            VStack(alignment: .center, spacing: 4) {
-                Text(comment)
-                    .padding()
-                Text("날짜 정보")
+            VStack {
 
+//                Text(sender)
+//                    .foregroundColor(.textBodyColor)
+
+                Text(comment)
+                    .foregroundColor(.textBodyColor)
+                    .padding()
+                    .frame(width: 280, height: 240, alignment: .center)
+                    .background(
+                        Image("letter_yellow")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(maxWidth: .infinity, maxHeight: .infinity))
+
+//                Text(date)
+//                    .foregroundColor(.textBodyColor)
             }
-            .frame(width: 280, height: 240, alignment: .center)
-            .foregroundColor(.textBodyColor)
-            .background(
-                Image("letter_yellow")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity))
         }
     }
 }

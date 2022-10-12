@@ -19,51 +19,46 @@ struct PictureListView: View {
     
     var body: some View {
         ZStack {
-            if !isLoaded {
-                ScrollView {
-                    LazyVGrid(columns: columns) {
-                        ForEach(viewModel.loadedImageList.reversed(), id: \.giftPolaroidId) { data in
-                            Button {
-                                isTapped.toggle()
-                                photoIndexPath = data.giftPolaroidId
-                                detailedImage = viewModel.loadedImageList.first(where: {
-                                    $0.giftPolaroidId == photoIndexPath}) ?? PictureListView.defaultImageData()
+            if !viewModel.isLoaded {
+                VStack {
+                    ProgressView()
+                }
+            } else {
+                if viewModel.loadedImageList.isEmpty {
+                    Text("아직 주고받은 사진이 없어요🥲")
+                        .foregroundColor(.emptyGiftTextColor)
+                } else {
+                    ScrollView {
+                        LazyVGrid(columns: columns) {
+                            ForEach(viewModel.loadedImageList.reversed(), id: \.giftPolaroidId) { data in
+                                Button {
+                                    isTapped.toggle()
+                                    photoIndexPath = data.giftPolaroidId
+                                    detailedImage = viewModel.loadedImageList.first(where: {
+                                        $0.giftPolaroidId == photoIndexPath}) ?? PictureListView.defaultImageData()
+                                }
+                            label: {
+                                PhotoCard(indexPath: data.giftPolaroidId, imageURLString: data.giftPolaroidImage, comment: data.comment, isTapped: $isTapped)
                             }
-                        label: {
-                            PhotoCard(indexPath: data.giftPolaroidId, imageURLString: data.giftPolaroidImage, comment: data.comment, isTapped: $isTapped)
+                            }
+                            .opacity(isTapped ? 0.2 : 1)
                         }
-                        }
-                        .opacity(isTapped ? 0.2 : 1)
-                    }
-                    .navigationTitle("사진")
-                    .navigationBarTitleDisplayMode(.inline)
-                    .navigationToBack(dismiss)
-                    .task {
-                        viewModel.imageListGet {
-                            isLoaded.toggle()
-                        }
-                    }
+                        .navigationTitle("사진")
+                        .navigationBarTitleDisplayMode(.inline)
+                    } // ScrollView
+                    .blur(radius: isTapped ? 6 : 0)
+                    .background(Color.lightgray)
                 }
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        NavigationLink(destination: SendPictureView(gotoMain: .constant(false))) {
-                            Image("addButton")
-                                .resizable()
-                                .frame(width: 24, height: 24, alignment: .center)
-                                .aspectRatio(contentMode: .fit)
-                        }
-                    }
-                }
-                // ScrollView
-                .blur(radius: isTapped ? 6 : 0)
-                .background(Color.lightgray)
-            } else if viewModel.loadedImageList.isEmpty {
-                Text("아직 주고받은 사진이 없어요.")
-                    .foregroundColor(.textBodyColor)
-                    .opacity(0.5)
+                
             }
             NavigationLink("",destination: SendPictureView(gotoMain: $showCreateView), isActive: $showCreateView)
         } // Zstack
+        .navigationToBack(dismiss)
+        .task {
+            viewModel.imageListGet {
+                print("image list loaded")
+            }
+        }
         .overlay {
             if isTapped == true {
                 PhotoCardSheet(indexPath: detailedImage.giftPolaroidId, imageURLString: detailedImage.giftPolaroidImage, photoText: detailedImage.comment)
@@ -74,19 +69,23 @@ struct PictureListView: View {
                     }
             }
         }
+        .navigationTitle("폴라로이드")
+        .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                Button{
-                    if GiftManager.isExists {
-                        showAlert = true
-                    } else {
-                        showCreateView = true
+                NavigationLink(destination: SendPictureView(gotoMain: .constant(false))) {
+                    Button{
+                        if GiftManager.isExists {
+                            showAlert = true
+                        } else {
+                            showCreateView = true
+                        }
+                    } label: {
+                        Image("addButton")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 24, height: 24, alignment: .center)
                     }
-                } label: {
-                    Image("addButton")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 24, height: 24, alignment: .center)
                 }
             }
         }
