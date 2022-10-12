@@ -57,6 +57,7 @@
 		77719B7928EAD32700F72FED /* CoupleEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77719B7828EAD32700F72FED /* CoupleEndpoint.swift */; };
 		77719B7B28EAD40F00F72FED /* CoupleDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77719B7A28EAD40F00F72FED /* CoupleDTO.swift */; };
 		77719B7D28EAD43600F72FED /* CoupleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77719B7C28EAD43600F72FED /* CoupleService.swift */; };
+		7774E7F328F5536800BCA5D3 /* MemberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7774E7F228F5536800BCA5D3 /* MemberView.swift */; };
 		77B5D44E28C733A80045F0BC /* MemberConfigDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B5D44D28C733A80045F0BC /* MemberConfigDTO.swift */; };
 		77B5D45028C734870045F0BC /* MemberConfigEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B5D44F28C734870045F0BC /* MemberConfigEndPoint.swift */; };
 		77B5D45A28C7C8830045F0BC /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B5D45928C7C8830045F0BC /* NetworkManager.swift */; };
@@ -179,6 +180,7 @@
 		77719B7828EAD32700F72FED /* CoupleEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoupleEndpoint.swift; sourceTree = "<group>"; };
 		77719B7A28EAD40F00F72FED /* CoupleDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoupleDTO.swift; sourceTree = "<group>"; };
 		77719B7C28EAD43600F72FED /* CoupleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoupleService.swift; sourceTree = "<group>"; };
+		7774E7F228F5536800BCA5D3 /* MemberView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberView.swift; sourceTree = "<group>"; };
 		77B5D44D28C733A80045F0BC /* MemberConfigDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberConfigDTO.swift; sourceTree = "<group>"; };
 		77B5D44F28C734870045F0BC /* MemberConfigEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberConfigEndPoint.swift; sourceTree = "<group>"; };
 		77B5D45928C7C8830045F0BC /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -664,6 +666,7 @@
 			children = (
 				C92E31DC28795B71000A315C /* CoupleInformationView.swift */,
 				7725D93528B7294700EF5BA6 /* SettingView.swift */,
+				7774E7F228F5536800BCA5D3 /* MemberView.swift */,
 				7725D93D28B7572D00EF5BA6 /* WithdrawalRequestView.swift */,
 				7725D93928B7488500EF5BA6 /* ChangeNickNameView.swift */,
 				7725D93F28B75F3A00EF5BA6 /* ChangeOfficialDateView.swift */,
@@ -1036,6 +1039,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7774E7F328F5536800BCA5D3 /* MemberView.swift in Sources */,
 				C936B2F8289FB2D800011C64 /* DateToStringUpcomingEventsViewModel.swift in Sources */,
 				C92E31EB28795BB0000A315C /* (null) in Sources */,
 				773185C3287C56FE00120FF9 /* Color+Extension.swift in Sources */,
