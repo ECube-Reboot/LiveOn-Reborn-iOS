@@ -22,6 +22,7 @@ extension Font {
       static var handWrittenTitle: Font { Font.liveOnFont(weight: .handWritten, size: 32.0)}
         static var handWrittenBody: Font { Font.liveOnFont(weight: .handWritten, size: 26.0)}
         static var handWrittenCallout: Font { Font.liveOnFont(weight: .handWritten, size: 24.0)}
+        static var handWrittenCaption: Font { Font.liveOnFont(weight: .handWritten, size: 12.0)}
     }
 }
 

@@ -26,13 +26,17 @@ struct InputBirthDayView: View {
                 DatePicker("birthday", selection: $birthday, in: ...Date(), displayedComponents: .date)
                     .datePickerStyle(.graphical)
             }
-            NavigationLink("", destination: InputOfficialDateView(userData: self.userData), isActive: $goNext)
+            NavigationLink("", destination: MatchSelectionView(), isActive: $goNext)
         }
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button("다음"){
                     userData.birthDay = self.birthday
-                    goNext.toggle()
+                    MemberConfigService.postMemeberInformation(information: PostMemberProfile(birthDay: userData.birthDay.toServerFormatString(), nickName: userData.nickName)) {
+                        UserStatus.updateUserStatus(status: .informationEntered)
+                        goNext.toggle()
+                        MemberConfigService.singleton.isSuccess = false
+                    }
                 }
             }
         }
@@ -45,3 +49,5 @@ struct InputBirthDayView_Previews: PreviewProvider {
         InputBirthDayView(userData: SignInUser())
     }
 }
+
+

@@ -26,4 +26,9 @@ extension UserStatus {
     static func checkStatus(status: UserStatus)-> Bool {
         return currentStatus() == status.rawValue
     }
+    
+    static func resetStatus() {
+        UserDefaults.standard.removeObject(forKey: "userStatus")
+        UserDefaults.standard.removeObject(forKey: "inviteCode")
+    }
 }

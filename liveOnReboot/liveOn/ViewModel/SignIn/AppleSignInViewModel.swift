@@ -20,7 +20,7 @@ class AppleSignInViewModel: ObservableObject {
 //    init() {
 //        NotificationCenter.default.addObserver(self, selector: #selector(getAuthorizationState), name: ASAuthorizationAppleIDProvider.credentialRevokedNotification, object: nil)
 //    }
-    func didFinishAppleSignin(result: Result<ASAuthorization, Error>) -> Void {
+    func didFinishAppleSignin(result: Result<ASAuthorization, Error>) -> Bool {
         switch result {
         case.success(let auth):
             switch auth.credential {
@@ -34,14 +34,18 @@ class AppleSignInViewModel: ObservableObject {
                         let tokenStr = String(data: idToken, encoding: .ascii)
                         
                         authService.login(accessToken: tokenStr!)
+                        return authService.userSetting
+                    
                     } else {
-                        print("missing some fields")
+                        return false
                     }
                 default:
                     print(auth.credential)
+                    return false
             }
         case .failure(let error):
             print(error)
+                return false
     }
 }
     

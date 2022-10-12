@@ -52,12 +52,14 @@ extension MemberConfigEndPoint: TargetType {
     
     var task: Task {
         switch self {
-            case .fetchMemberProfile, .postMemberProfile, .revokeMember, .validateCoupleMatching :
+            case .fetchMemberProfile, .revokeMember, .validateCoupleMatching :
                 return .requestPlain
             case .editNickName(let request):
                 return .requestJSONEncodable(request)
             case  .editOfficialDate(let request):
                 return .requestJSONEncodable(request)
+            case .postMemberProfile(let result):
+                return .requestJSONEncodable(result)
         }
     }
     

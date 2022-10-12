@@ -15,52 +15,22 @@ class MemberConfigService: ObservableObject {
     
     @ObservedObject static var singleton: MemberConfigService = MemberConfigService()
     @Published var profile = FetchMemberProfile()
-    static func postMemeberInformation(information: PostMemberInformationDTO, completion: @escaping () -> ()) {
-        singleton.signInMoyaService.request(.postMemberInformation(param: information)) { response in
-            switch response {
-                case .success:
-                    completion()
-                    return
-                case .failure(let err):
-                    print(err.localizedDescription)
-            }
-        }
-    }
-    static func getInviteCode(){
-        singleton.signInMoyaService.request(.getCode) { response in
+    @State var isSuccess = false
+    @Published var isMatched = false
+    
+    static func postMemeberInformation(information: PostMemberProfile, completion: @escaping () -> ()) {
+        singleton.memberConfigProvider.request(.postMemberProfile(param: information)) { response in
             switch response {
                 case .success(let result):
-                    do {
-                        let data = try result.map(InviteCode.self)
-                        singleton.fetchInviteCode(code: data.code)
-                    } catch _ {
-                        break
-                    }
+                    switch result.statusCode {
+                    case 200..<300:
+                            completion()
+                    default :
+                            break
+                }
                 case .failure(let err):
                     print(err.localizedDescription)
             }
-        }
-    }
-    
-    private func fetchInviteCode(code: String) {
-        UserDefaults.standard.set(code, forKey: "inviteCode")
-    }
-    
-    static func checkInviteCode(input: String, status: @escaping (Bool) -> ()) {
-        singleton.signInMoyaService.request(.checkCode(param: input)) { response in
-            switch response {
-                case .success(let result):
-                    if  (String(data: result.data, encoding: .utf8) == "success") {
-                        status(true)
-                    }
-                    else{
-                        status(false)
-                        print("실패")
-                    }
-                case .failure(let err):
-                    print(err.localizedDescription)
-            }
-            
         }
     }
     
@@ -108,29 +78,28 @@ class MemberConfigService: ObservableObject {
         }
     }
     
-    static func validateCoupleMatching(completion: @escaping () -> ())->Bool {
-        var isMatched = false
+    static func validateCoupleMatching(completion: @escaping () -> ()) {
         singleton.memberConfigProvider.request(.validateCoupleMatching) { response in
             switch response {
                 case .success(let result):
-                    if (result.statusCode == 200) {
-                        do {
-                            let data = try result.map(IsCoupleMatched.self)
-                            if data.coupleMatched {
-                                isMatched = true
-                                print("data.coupleMatched \(data.coupleMatched)")
-                                completion()
+                    switch result.statusCode {
+                        case 200..<300:
+                            do {
+                                let data = try result.map(IsCoupleMatched.self)
+                                if data.coupleMatched {
+                                    singleton.isMatched = true
+                                    completion()
+                                }
+                            } catch _ {
+                                break
                             }
-                        } catch _ {
+                        default :
                             break
-                        }
-                    } else {
-                        isMatched = false
                     }
                 case .failure:
-                    isMatched = false
+                    break
             }
         }
-        return isMatched
     }
+    
 }

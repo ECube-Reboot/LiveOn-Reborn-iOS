@@ -21,6 +21,12 @@ struct InputNickNameView: View {
                 .frame(maxWidth: .infinity, alignment: .trailing)
                 .opacity(0.5)
             NavigationLink("", destination: InputBirthDayView(userData: self.userData), isActive: $goNext)
+            NavigationLink(destination: GiftBoxView()) {
+                Text("")
+            }
+        }
+        .onTapGesture {
+            hideKeyboard()
         }
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
@@ -32,11 +38,5 @@ struct InputNickNameView: View {
             }
         }
         .ignoresSafeArea(edges: .bottom)
-    }
-}
-
-struct InputNickNameView_Previews: PreviewProvider {
-    static var previews: some View {
-        InputNickNameView()
     }
 }

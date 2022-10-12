@@ -97,6 +97,9 @@ struct SendLetterView: View {
         .onAppear{
             getRandomColor()
         }
+        .onTapGesture {
+            hideKeyboard()
+        }
     }
     
     private func getRandomColor() {

@@ -37,16 +37,17 @@ struct CoupleInformationView: View {
             .padding(.vertical, 12)
             .listRowBackground(Color.clear)
             .listRowSeparator(.hidden)
-            //                    NavigationLink(destination: ChangeOfficialDateView(officialDay: $officialDate)){
-            HStack {
-                Text("우리의 1일")
-                Spacer()
-                Text(MemberConfigService.singleton.profile.officialDate)
-                    .font(.callout)
-                    .opacity(0.8)
+            
+            NavigationLink(destination: ChangeOfficialDateView(officialDay: $officialDate)){
+                HStack {
+                    Text("우리의 1일")
+                    Spacer()
+                    Text(MemberConfigService.singleton.profile.officialDate)
+                        .font(.callout)
+                        .opacity(0.8)
+                }
+                .padding(.vertical, 12)
             }
-            .padding(.vertical, 12)
-            //                    }
             .listRowBackground(Color.clear)
             .listRowSeparator(.hidden)
         }
@@ -54,11 +55,6 @@ struct CoupleInformationView: View {
         .navigationTitle("커플정보")
         .navigationToBack(dismiss)
         .navigationBarTitleDisplayMode(.inline)
-        .onAppear {
-            MemberConfigService.fetchMemberProfile {
-                
-            }
-        }
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 NavigationLink(destination: SettingView()) {

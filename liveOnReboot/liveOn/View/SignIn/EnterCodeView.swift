@@ -17,7 +17,6 @@ struct EnterCodeView: View {
     @State private var goNext: Bool = false
     
     var body: some View {
-        NavigationView {
             SignInLayoutView(title: SignInLiteral.enterCodeTitle, description: SignInLiteral.enterCodeDescription) {
                 VStack {
                     TextField(SignInLiteral.enterCodePlaceholder, text: $code)
@@ -30,7 +29,7 @@ struct EnterCodeView: View {
                 }
                     // MARK: 코드 확인
                     Button {
-                        MemberConfigService.checkInviteCode(input: code) { result in
+                        CoupleService.checkInviteCode(input: code) { result in
                             checkCodeMatched(status: result)
                             if result {
                                 UserDefaults.standard.set(true, forKey: "isMatched")
@@ -53,9 +52,8 @@ struct EnterCodeView: View {
                 .disabled(code.count != 5)
                 NavigationLink("", destination: WelcomMatchingView(userData: userData), isActive: $goNext)
             }
-                .navigationCancel(dismiss)
                 .frame(maxHeight: .infinity)
-        }
+                .navigationToBack(dismiss)
     }
     func isCorrect(userCode: String) -> Bool {
         return self.code == userCode
