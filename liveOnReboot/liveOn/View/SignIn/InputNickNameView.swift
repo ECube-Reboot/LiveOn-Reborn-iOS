@@ -10,7 +10,6 @@ import SwiftUI
 struct InputNickNameView: View {
     @ObservedObject var userData = SignInUser()
     @State var input: String = ""
-    @Binding var isMember: Bool
     @State var goNext: Bool = false
     var body: some View {
         SignInLayoutView(title: SignInLiteral.inputNickNameTitle, description: SignInLiteral.inputNickNameDescription) {
@@ -22,7 +21,7 @@ struct InputNickNameView: View {
                 .frame(maxWidth: .infinity, alignment: .trailing)
                 .opacity(0.5)
             NavigationLink("", destination: InputBirthDayView(userData: self.userData), isActive: $goNext)
-            NavigationLink(destination: GiftBoxView(), isActive: $isMember) {
+            NavigationLink(destination: GiftBoxView()) {
                 Text("")
             }
         }
