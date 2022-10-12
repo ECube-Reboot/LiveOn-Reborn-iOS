@@ -31,4 +31,6 @@ enum SignInLiteral {
     static var welcomMatchingDescription = "소중한 추억 쌓으러 가볼까요?"
     static var welcomMatchingImageName = "successMatching"
     
+    static var defaultOfficialDate = "0001-01-01"
+    
 }

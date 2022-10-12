@@ -126,10 +126,16 @@ private struct CoupleInfoLabel: View {
                 Text(MemberConfigService.singleton.profile.partnerName)
                 
                 // TODO: "365" -> 설정된 첫 날 부터 앱이 실행되고 있는 시점까지의 날짜 계산해서 넣기
+                if MemberConfigService.singleton.profile.officialDate == SignInLiteral.defaultOfficialDate {
+                    Text("D+??")
+                        .foregroundColor(.coralPink)
+                        .padding(.horizontal,4)
+                } else {
                 let date = Date().stringDateToDateFormat(MemberConfigService.singleton.profile.officialDate)
                 Text("D+\(String(date.countDays()))")
                     .foregroundColor(.coralPink)
                     .padding(.horizontal,4)
+                }
                 
             } // HStack
             .padding()
