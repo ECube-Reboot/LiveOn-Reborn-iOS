@@ -86,4 +86,22 @@ class CoupleService: ObservableObject {
             }
         }
     }
+    
+    static func patchBirthdayDate(birthDay: BirthDay, completion: @escaping ()->()) {
+        singleton.coupleProvider.request(.patchBirthdayDate(birthDay: birthDay)) { response in
+            switch response {
+                case .success(let result):
+                    switch result.statusCode {
+                        case 200..<300 :
+                            singleton.isSuccessed = true
+                        default :
+                            break
+                    }
+                    completion()
+                    
+                case .failure(let err):
+                    print(err.localizedDescription)
+            }
+        }
+    }
 }

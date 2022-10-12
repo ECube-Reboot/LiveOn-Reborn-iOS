@@ -37,8 +37,9 @@ struct InputOfficialDateView: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button("다음"){
-                    CoupleService.postOfficialDate(officialDate: OfficialDate(officialDate: self.officialDate.toServerFormatString())) {
+                    CoupleService.patchOfficialDate(officialDate: OfficialDate(officialDate: officialDate.toServerFormatString())){
                         if CoupleService.singleton.isSuccessed {
+                            UserStatus.updateUserStatus(status: .allSettingFinished)
                             goNext.toggle()
                             CoupleService.singleton.isSuccessed.toggle()
                         } else {

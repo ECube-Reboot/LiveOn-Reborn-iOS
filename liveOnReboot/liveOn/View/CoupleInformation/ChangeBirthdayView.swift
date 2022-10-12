@@ -1,15 +1,14 @@
 //
-//  ChangeOfficialDateView.swift
+//  ChangeBirthdayView.swift
 //  liveOnReboot
 //
-//  Created by Jineeee on 2022/08/25.
+//  Created by Jineeee on 2022/10/12.
 //
 
 import SwiftUI
 
-struct ChangeOfficialDateView: View {
-    @Binding var officialDay: Date
-    @State private var tempSelection: Date = Date().stringDateToDateFormat(MemberConfigService.singleton.profile.officialDate)
+struct ChangeBirthdayView: View {
+    @State private var tempSelection: Date = Date()
     @State private var showCompletionAlert = false
     @Environment(\.dismiss) private var dismiss
     var body: some View {
@@ -29,17 +28,16 @@ struct ChangeOfficialDateView: View {
         .toolbar(content: {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button("저장"){
-                    CoupleService.patchOfficialDate(officialDate: OfficialDate(officialDate: tempSelection.toServerFormatString())) {
+                    CoupleService.patchBirthdayDate(birthDay: BirthDay(birthDay: tempSelection.toServerFormatString())) {
                         if CoupleService.singleton.isSuccessed {
                             showCompletionAlert.toggle()
                         }
                     }
                 }
-                .disabled(officialDay == tempSelection)
             }
         })
         .alert(isPresented: $showCompletionAlert) {
-            Alert(title: Text("1일 수정 완료"),
+            Alert(title: Text("생일 수정 완료"),
                   message: Text("\(tempSelection.toServerFormatString())으로 정확하게 입력해둘게요!"),
                   dismissButton: .default(Text("확인")) {
                 MemberConfigService.fetchMemberProfile {
@@ -49,6 +47,6 @@ struct ChangeOfficialDateView: View {
             )
         }
         .navigationToBack(dismiss)
-        .navigationTitle("1일 날짜 수정")
+        .navigationTitle("생일 수정")
     }
 }

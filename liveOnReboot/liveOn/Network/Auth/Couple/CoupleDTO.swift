@@ -15,6 +15,10 @@ struct OfficialDate: Codable {
     let officialDate: String
 }
 
+struct BirthDay: Codable {
+    let birthDay: String
+}
+
 
 
 struct CoupleProfileResponse: Codable {

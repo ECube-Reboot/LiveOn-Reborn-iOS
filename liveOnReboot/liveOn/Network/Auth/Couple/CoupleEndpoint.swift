@@ -13,6 +13,7 @@ enum CoupleEndpoint {
     case checkCode(param: String)
     case postOfficialdate(officialDate: OfficialDate)
     case patchOfficialdate(officialDate: OfficialDate)
+    case patchBirthdayDate(birthDay: BirthDay)
 }
 
 extension CoupleEndpoint: TargetType {
@@ -26,6 +27,8 @@ extension CoupleEndpoint: TargetType {
                 return "/api/v1/couple/code"
             case .patchOfficialdate, .postOfficialdate:
                 return "/api/v1/couple/officialdate"
+            case .patchBirthdayDate:
+                return "/api/v1/member/birthday"
         }
     }
     
@@ -35,7 +38,7 @@ extension CoupleEndpoint: TargetType {
                 return .post
             case .getCode:
                 return .get
-            case .patchOfficialdate:
+            case .patchOfficialdate, .patchBirthdayDate:
                 return .patch
         }
     }
@@ -50,12 +53,14 @@ extension CoupleEndpoint: TargetType {
                 return .requestJSONEncodable(date)
             case .patchOfficialdate(let date):
                 return .requestJSONEncodable(date)
+            case .patchBirthdayDate(let date):
+                return .requestJSONEncodable(date)
         }
         
     }
     
     var headers: [String: String]? {
             return ["Content-Type": "application/json",
-                    "Authorization": "Bearer " + GeneralAPI.prodtoken]
+                    "Authorization": "Bearer " + GeneralAPI.token]
     }
 }

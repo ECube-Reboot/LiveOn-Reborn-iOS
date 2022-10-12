@@ -74,18 +74,12 @@ struct FlowerListView: View {
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 24, height: 24, alignment: .center)
                 }
-//                NavigationLink(destination: SendFlowerView(gotoMain: .constant(false))) {
-//                    Image("addButton")
-//                        .resizable()
-//                        .frame(width: 24, height: 24, alignment: .center)
-//                        .aspectRatio(contentMode: .fit)
-//                }
             }
         }
         .navigationTitle("꽃")
         .navigationBarTitleDisplayMode(.inline)
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-        .background(Color.background)
+//        .background(Color.background)
+//        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
         .alert("선물 일일한도 초과", isPresented: $showAlert) {
             Button("확인", role: .cancel) {  }
         } message: {

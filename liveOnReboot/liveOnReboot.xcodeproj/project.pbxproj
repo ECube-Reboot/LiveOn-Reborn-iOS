@@ -58,6 +58,7 @@
 		77719B7B28EAD40F00F72FED /* CoupleDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77719B7A28EAD40F00F72FED /* CoupleDTO.swift */; };
 		77719B7D28EAD43600F72FED /* CoupleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77719B7C28EAD43600F72FED /* CoupleService.swift */; };
 		7774E7F328F5536800BCA5D3 /* MemberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7774E7F228F5536800BCA5D3 /* MemberView.swift */; };
+		77B39B9128F6EAD000DCBB57 /* ChangeBirthdayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B39B9028F6EAD000DCBB57 /* ChangeBirthdayView.swift */; };
 		77B5D44E28C733A80045F0BC /* MemberConfigDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B5D44D28C733A80045F0BC /* MemberConfigDTO.swift */; };
 		77B5D45028C734870045F0BC /* MemberConfigEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B5D44F28C734870045F0BC /* MemberConfigEndPoint.swift */; };
 		77B5D45A28C7C8830045F0BC /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B5D45928C7C8830045F0BC /* NetworkManager.swift */; };
@@ -181,6 +182,7 @@
 		77719B7A28EAD40F00F72FED /* CoupleDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoupleDTO.swift; sourceTree = "<group>"; };
 		77719B7C28EAD43600F72FED /* CoupleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoupleService.swift; sourceTree = "<group>"; };
 		7774E7F228F5536800BCA5D3 /* MemberView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberView.swift; sourceTree = "<group>"; };
+		77B39B9028F6EAD000DCBB57 /* ChangeBirthdayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeBirthdayView.swift; sourceTree = "<group>"; };
 		77B5D44D28C733A80045F0BC /* MemberConfigDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberConfigDTO.swift; sourceTree = "<group>"; };
 		77B5D44F28C734870045F0BC /* MemberConfigEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberConfigEndPoint.swift; sourceTree = "<group>"; };
 		77B5D45928C7C8830045F0BC /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -670,6 +672,7 @@
 				7725D93D28B7572D00EF5BA6 /* WithdrawalRequestView.swift */,
 				7725D93928B7488500EF5BA6 /* ChangeNickNameView.swift */,
 				7725D93F28B75F3A00EF5BA6 /* ChangeOfficialDateView.swift */,
+				77B39B9028F6EAD000DCBB57 /* ChangeBirthdayView.swift */,
 			);
 			path = CoupleInformation;
 			sourceTree = "<group>";
@@ -1142,6 +1145,7 @@
 				775F6F0328C6D4D40095C5AC /* UpcomingEventsView.swift in Sources */,
 				7725D94028B75F3A00EF5BA6 /* ChangeOfficialDateView.swift in Sources */,
 				C92E31ED28795C06000A315C /* DateToStringUpcomingEventsViewModel.swift in Sources */,
+				77B39B9128F6EAD000DCBB57 /* ChangeBirthdayView.swift in Sources */,
 				7725D93A28B7488500EF5BA6 /* ChangeNickNameView.swift in Sources */,
 				77651D1828B0B7FA00994C15 /* WelcomMatchingView.swift in Sources */,
 				77B5D44E28C733A80045F0BC /* MemberConfigDTO.swift in Sources */,
