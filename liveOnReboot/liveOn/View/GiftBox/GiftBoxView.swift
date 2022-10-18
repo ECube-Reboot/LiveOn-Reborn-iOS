@@ -24,9 +24,16 @@ struct GiftBoxView: View {
                             CoupleInfoLabel(isLoaded: $isLoaded)
                         }
                     } else {
-                        NavigationLink(destination: InviteCodeView()) {
-                            notMatchedLabel
+                        HStack {
+                            NavigationLink(destination: InviteCodeView()) {
+                                notMatchedLabel
+                            }
                         }
+                    }
+                    NavigationLink(destination: SettingView()) {
+                        Image(systemName: "gearshape")
+                            .frame(width: 44, height: 44, alignment: .center)
+                            .foregroundColor(.textBodyColor)
                     }
                     Spacer()
                     Button{

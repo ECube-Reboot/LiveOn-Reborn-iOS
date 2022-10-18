@@ -55,13 +55,6 @@ struct CoupleInformationView: View {
         .navigationTitle("커플정보")
         .navigationToBack(dismiss)
         .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                NavigationLink(destination: SettingView()) {
-                    Image(systemName: "gearshape")
-                }
-            }
-        }
         .listStyle(.plain)
         .background(Color.backgroundGray)
     }

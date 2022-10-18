@@ -14,7 +14,6 @@ struct liveOnRebootApp: App {
     var body: some Scene {
         WindowGroup {
             if networkManager.isConnected {
-                
                 NavigationView {
                                   switch UserStatus.currentStatus() {
                                       case 0:

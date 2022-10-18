@@ -58,7 +58,6 @@ class MemberConfigService: ObservableObject {
             switch response {
                 case .success:
                     completion()
-                    print("성공")
                     return
                 case .failure(let err):
                     print(err.localizedDescription)

@@ -51,10 +51,12 @@ struct GettingStartView: View {
                     switch result {
                         case .success:
                             UserStatus.updateUserStatus(status: UserStatus.appleSignInFinished)
-                            if appleSignInViewModel.didFinishAppleSignin(result: result){
-                               isMember = true
+                            let dispatchGroup = DispatchGroup()
+                            dispatchGroup.enter()
+                            appleSignInViewModel.didFinishAppleSignin(result: result, group: dispatchGroup)
+                            dispatchGroup.notify(queue: .main) {
+                                isActive.toggle()
                             }
-                            isActive.toggle()
                             
                         case .failure:
                             return

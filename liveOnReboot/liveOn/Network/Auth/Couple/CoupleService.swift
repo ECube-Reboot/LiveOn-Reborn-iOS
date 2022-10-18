@@ -42,7 +42,6 @@ class CoupleService: ObservableObject {
                     }
                     else{
                         status(false)
-                        print("실패")
                     }
                 case .failure(let err):
                     print(err.localizedDescription)

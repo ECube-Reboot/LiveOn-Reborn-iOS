@@ -11,6 +11,7 @@ struct InputNickNameView: View {
     @ObservedObject var userData = SignInUser()
     @State var input: String = ""
     @State var goNext: Bool = false
+    @State private var settingDone: Bool = false
     var body: some View {
         SignInLayoutView(title: SignInLiteral.inputNickNameTitle, description: SignInLiteral.inputNickNameDescription) {
             TextField(SignInLiteral.inputNickNamePlaceHolder, text: $input)
@@ -21,8 +22,11 @@ struct InputNickNameView: View {
                 .frame(maxWidth: .infinity, alignment: .trailing)
                 .opacity(0.5)
             NavigationLink("", destination: InputBirthDayView(userData: self.userData), isActive: $goNext)
-            NavigationLink(destination: GiftBoxView()) {
-                Text("")
+            NavigationLink("",destination: GiftBoxView(),isActive: $settingDone)
+        }
+        .onAppear {
+            if AuthService.shared.userSetting {
+                self.settingDone.toggle()
             }
         }
         .onTapGesture {

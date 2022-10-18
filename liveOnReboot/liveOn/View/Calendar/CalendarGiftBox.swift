@@ -67,6 +67,7 @@ struct CalendarGiftBox: View {
             }
         }
         .navigationToBack(dismiss)
+        .navigationTitle("달력")
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .padding(.horizontal, 20)
         .navigationBarTitleDisplayMode(.inline)

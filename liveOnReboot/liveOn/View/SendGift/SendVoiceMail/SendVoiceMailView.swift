@@ -123,6 +123,9 @@ struct SendVoicemailView: View {
                             }
                         }
                     }
+                    .onTapGesture {
+                        hideKeyboard()
+                    }
                 }
             }
             .navigationBarBackButtonHidden(true)
@@ -171,6 +174,9 @@ struct SendVoicemailView: View {
                 }
             }
             NavigationLink("", destination: GiftDeliveryView(gotoMain: $gotoMain), isActive: $isSent)
+        }
+        .onTapGesture {
+            hideKeyboard()
         }
     }
 }
